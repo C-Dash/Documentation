@@ -28,7 +28,7 @@
 
 let index_htm = `
 <span class="title">Documentation</span>
-<p style="background-color: white; margin-left: -10px; padding-left: 10px;">Now Open! 
+<p style="background-color: white; margin-left: -10px; padding-left: 10px;">This is a very early draft of the C-Dash Docs.  It is not yet ready for public consumption.  Nevertheless you are welcome to take a look around. 
 </p>  
 <ul class="treeview">
 
@@ -64,7 +64,7 @@ let header_htm = `
 <div style="float: left; width: 100%; margin: 0px"><img src="../resources/images/c_dash_banner_stretched.jpg" height="50px"></div>
 <div style= "width: 50%; float: right; padding-top: 20px; font-size: 17px;">
 <div class="rightflex">
-<div><a href="https://github.com/pbcgis" target="github">GitHub</a></div> 
+<div><a href="https://github.com/cdash" target="github">GitHub</a></div> 
 <div><a href="https://www.youtube.com/channel/UCPkMHdYokjSvoaljowhkjBQ" target="youtube">YouTube</a></div>
 <div><a href="../home/index.htm">Home</a></div>
 </div></div>
