@@ -1,0 +1,85 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Dev Machine</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/cdash_ico.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the docutree_includes.js.
+          When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+    <script src="../resources/docutree_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Local Development Set-Up</h1>
+
+  <p> One of the recent (in dog years) miracles of cloud computing is the <b>Containerization</b> of web applications. A container in this sense is similar to what we used to call a "server."  Whereas servers used to be actual computers, they now may be implemented as collections of code that act like a server. 
+  <p>
+  Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces and a command prompt accessible through our browser, with all of the back-end code accessible to our favorite text editor.  And all of this wil be running on whatever computer we want asuch as our work-a-day laptop or desktop mac or PC.
+<p>
+  This capability means that we can have a development environment that is the same as a the production server -- except for the tweak that we make to it.  Our development environmwent is a safe sandbox to try and to test.  When we have perfected our upgrades, they can be implemented on the production server.
+<p>
+  Because these development environments are a snap to set up, we can also use them to learn about how Omeka works and to try hacks.  Because we can easily just blow the whole thing away and launch exact copies.
+
+<h2>Docker Resources</h2>
+<p> You can have allof the resources that make up the C-Dash application at the GitHub repository, <b>pbcGIS-cdash-dev</b>.  We wil describe it more detail later.  For now, download the whole repository to your computer, install Docker and then run these commands:
+
+  <h3>Big Docker Ideas and Commands</h3>
+<p>It is really a triumph of the free and open source culture that all of the multitudes of programs that are necessarry tocreate and share web applications is available over the internet for free. Furthermore that all of this code is available so sytematically that complex applications can be snapped together like legos into amazing teams of networked services that actually work together.  
+<p>
+  Using your computer's command shell, get yourself into the cdash-docker-dev-x.x.x  folder and run:
+</p>
+<pre>
+   %> docker image build -t cdash-omeka-dev-3.1.1 .
+</pre>
+<p>This will create a container that is a Debian Linux server that is running the Apache web server and has all of the PHP gizmos and settings to run Omeka-S -- which is also installed by essentially unpacking a zip file. 
+</p>
+
+<p>Omeka needs to point at an implementation of the MySQL database server that is on an accessible network. We can create the database server as another Docker container.  The file, docker-compose.yml includes the instructions for doing this. 
+We use a ready-rolled docker image for MariaDB, and set another server to run Adminer -- which is a MYSQL administrator tool that is also written in PHP.   
+<p>All of this is snapped together by running the following command in your docker shell: 
+<pre>
+   %> docker-compose up -d
+</pre>
+
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
