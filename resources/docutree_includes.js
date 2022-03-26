@@ -33,39 +33,39 @@ let index_htm = `
 <ul class="treeview">
 
 <li class="chapter"><a href="../home/index.htm">Extending Omeka</a></li>
-    <ul class="verses">
+    <!-- ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
-    </ul>
+    </ul -->
 
 <li class="chapter"><a href="../docker/index.htm">Development Set-Up</a></li>
-    <ul class="verses">
+    <!-- ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
-    </ul>
+    </ul -->
 
 <li class="chapter"><a href="../omeka_modules/index.htm">Understanding Critical Modules</a></li>
-  <ul class="verses">
+  <!-- ul class="verses">
     <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
     <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
-  </ul>
+  </ul -->
 <li class="chapter"><a href="../template/index.htm">Documentation Template / Style Guide</a></li>
-  <ul class="verses">
+  <!-- ul class="verses">
     <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
     <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
     
-</ul>
+</ul -->
 
 
 
 </ul> <!-- Closes Index -->
 `
 let header_htm = `
-<div style="float: left; width: 100%; margin: 0px"><img src="../resources/images/c_dash_banner_stretched.jpg" height="50px"></div>
+<div style="float: left; width: 50%; margin: 0px"><img src="../resources/images/c_dash_banner_stretched.jpg" height="50px"></div>
 <div style= "width: 50%; float: right; padding-top: 20px; font-size: 17px;">
 <div class="rightflex">
-<div><a href="https://github.com/cdash" target="github">GitHub</a></div> 
-<div><a href="https://www.youtube.com/channel/UCPkMHdYokjSvoaljowhkjBQ" target="youtube">YouTube</a></div>
+<div><a href="https://github.com/c-dash" target="github">GitHub</a></div> 
+<!-- div><a href="https://www.youtube.com/channel/UCPkMHdYokjSvoaljowhkjBQ" target="youtube">YouTube</a></div -->
 <div><a href="../home/index.htm">Home</a></div>
 </div></div>
 `;

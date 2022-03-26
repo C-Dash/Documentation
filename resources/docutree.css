@@ -185,12 +185,12 @@ a:hover {
 }
 
 /*** Brand-specific colors for layout elements ***/
-#header a:link {
+/*#header a:link {
   color: linen;
 }
 #header a:visited {
   color: linen;
-}
+} */
 #footer a:visited {
   color: red;
 }

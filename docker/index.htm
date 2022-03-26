@@ -68,6 +68,44 @@ We use a ready-rolled docker image for MariaDB, and set another server to run Ad
    %> docker-compose up -d
 </pre>
 
+<h2>Adminer and the Omeka Database</h2>
+
+<p>Starting the docker machine and configuring containers:
+<ul>
+  <li>PHP -enabled web server with Omeka installed, 
+  <li>A MariaDB database server 
+  <li>the Adminer adminstritative toolkit for MariaDB
+  </uL>
+<p>Gets you an empty omeka instance.
+<h3>Building the CDASH demo</h3> 
+  <p>To build CDASH involves loading several modules, configuring the custom schema with item templates and custom vocabulary, creating the cdash theme, and loading several items.  Al of this work would be tedious to have to repeat.  Luckily the way Omeka works is that the result of all of these actions is saved in the Omeka database on the MariaDB server.  
+  <p>The structure and content of the entire CDASH application -- except for the media files can be backed up by using Adminer tp dump the Omeka database.  And the entire CDASH demo instance may be installed by recovering the database dump.
+<h3>Log in to Adminer</h3>
+<p>To start Adminter, invoke it in your browser at 
+  <pre>
+  http>//localhost:8080
+  <pre>
+<p>Your credentials are:
+  <ul>
+    <li>system: MySql
+    <li>server:  mariadb
+    <li>Username: root
+    <li>password: blabla
+    <li>database: leave blank
+    </ul>
+  <p>If you forgot these, you would find them as part of the adminer configuration spelled out in the docker-compose.yml file.
+   
+
+  <p>To turn this into CDASH you need only to use Adminter to load the database that contains all of the CDASH customizations.    
+<p>The database dump file that will instantiate cdash canbe found in the folder <b>db-data</b>.  
+<ol>
+  <li>In Adminer, drop the existing database named Omeka,if it exists.
+  <li>Create a new database named Omeka.
+  <li>Import the database dump file. 
+  <li>Log in as <b>admin@devnull.net</b> password: <b>blabla</b>
+  </ol>
+
+
 
 
 
