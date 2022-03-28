@@ -3,7 +3,7 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Dev Machine</title>
+    <title>C-Dash Development Installation</title>
     <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
     <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
     <meta name="author" content="Paul B. Cote">
@@ -18,7 +18,7 @@
     <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
     
 
-    <!-- The index sidebar and all content other than the main article coe form the docutree_includes.js.
+    <!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
           When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
     <script src="../resources/docutree_includes.js"></script>
     <!-- THis has to come after the cityschema_includes file-->
@@ -32,7 +32,7 @@
           <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
         </div> 
 <div id="main-container">
-  <div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+  <div id="header"> <!-- Content provided by docutree_includes.js --> </div>
 
 <!-- Page content goes inside the article div -->
   <div id="article">
@@ -41,14 +41,14 @@
 
   <p> One of the recent (in dog years) miracles of cloud computing is the <b>Containerization</b> of web applications. A container in this sense is similar to what we used to call a "server."  Whereas servers used to be actual computers, they now may be implemented as collections of code that act like a server. 
   <p>
-  Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces and a command prompt accessible through our browser, with all of the back-end code accessible to our favorite text editor.  And all of this wil be running on whatever computer we want asuch as our work-a-day laptop or desktop mac or PC.
+  Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces and a command prompt accessible through our browser, with all of the back-end code accessible to our favorite text editor.  And all of this will run on whatever computer we want such as our work-a-day laptop or desktop mac or PC. 
 <p>
-  This capability means that we can have a development environment that is the same as a the production server -- except for the tweak that we make to it.  Our development environmwent is a safe sandbox to try and to test.  When we have perfected our upgrades, they can be implemented on the production server.
+  This capability means that we can have a development environment that is the same as a the production server -- except for the tweak that we make to it.  Our development environment is a safe sandbox to try and to test.  When we have perfected our upgrades, they can be implemented on the production server.
 <p>
   Because these development environments are a snap to set up, we can also use them to learn about how Omeka works and to try hacks.  Because we can easily just blow the whole thing away and launch exact copies.
 
 <h2>Docker Resources</h2>
-<p> You can have allof the resources that make up the C-Dash application at the GitHub repository, <b>pbcGIS-cdash-dev</b>.  We wil describe it more detail later.  For now, download the whole repository to your computer, install Docker and then run these commands:
+<p> You can have all of the resources that make up the C-Dash application at the <a href="https://github.com/c-dash" target="github">C-DASH GitHub repository</a>, <b>pbcGIS-cdash-dev</b>.  We will describe it more detail later.  For now, download the whole repository to your computer, install Docker and then run these commands:
 
   <h3>Big Docker Ideas and Commands</h3>
 <p>It is really a triumph of the free and open source culture that all of the multitudes of programs that are necessarry tocreate and share web applications is available over the internet for free. Furthermore that all of this code is available so sytematically that complex applications can be snapped together like legos into amazing teams of networked services that actually work together.  
@@ -81,10 +81,10 @@ We use a ready-rolled docker image for MariaDB, and set another server to run Ad
   <p>To build CDASH involves loading several modules, configuring the custom schema with item templates and custom vocabulary, creating the cdash theme, and loading several items.  Al of this work would be tedious to have to repeat.  Luckily the way Omeka works is that the result of all of these actions is saved in the Omeka database on the MariaDB server.  
   <p>The structure and content of the entire CDASH application -- except for the media files can be backed up by using Adminer tp dump the Omeka database.  And the entire CDASH demo instance may be installed by recovering the database dump.
 <h3>Log in to Adminer</h3>
-<p>To start Adminter, invoke it in your browser at 
+<p>To start Adminer, invoke it in your browser at 
   <pre>
   http>//localhost:8080
-  <pre>
+  </pre>
 <p>Your credentials are:
   <ul>
     <li>system: MySql
@@ -93,20 +93,39 @@ We use a ready-rolled docker image for MariaDB, and set another server to run Ad
     <li>password: blabla
     <li>database: leave blank
     </ul>
-  <p>If you forgot these, you would find them as part of the adminer configuration spelled out in the docker-compose.yml file.
+  <p>If you forgot these, you would find them as part of the Adminer configuration spelled out in the docker-compose.yml file.
    
 
-  <p>To turn this into CDASH you need only to use Adminter to load the database that contains all of the CDASH customizations.    
+
+  <p>To turn this into CDASH you need only to use Adminer to load the database that contains all of the CDASH customizations.    
 <p>The database dump file that will instantiate cdash canbe found in the folder <b>db-data</b>.  
 <ol>
   <li>In Adminer, drop the existing database named Omeka,if it exists.
-  <li>Create a new database named Omeka.
   <li>Import the database dump file. 
-  <li>Log in as <b>admin@devnull.net</b> password: <b>blabla</b>
+  <li>Point your web browser at http://localhost/omeka-s to launch C-Cash. 
+  <li>TOcheck out the Omeka Administrator tools, Point your web browser at http://localhost/omeka-s/admin 
+    Log in as <b>admin@devnull.net</b> password: <b>blabla</b>
   </ol>
 
+<h2>Inspect Shared File-System</h2>
+<p>The <b>cdash-persist</b> folder is attached to your Omeka server as a <b>Bind Mount</b> which means that the files inside this directory are not destroid when your docker app is turned off or erased.  In production, cdash-persist is a file share in the Azure cloud. In our new development environment, these resources are in our file-system.  You can see them in your local cdash-dev folder.  
+</p>
+<p>Cdash-persist has all the files that you need to customize Omeka and some other resources that are useful for learning php and experimenting with foundation concepts of Omeka like the basic Laminas and Doctrine tutorials.
+</p>
+<h3>Look Around on the Unix Console</h3>
+<p>You now should now be able to go to your docker control panel and find the CDash Docker web application that has three containers.  The image below shows how to launch the command line prompt on the web server container. 
+</p>
+<figure class="middle">
+  <img src="images/docker_app_cli.jpg">
+  <figcaption>Three services inside the CDash web app.</figcaption>
+  </figure>
+<p>Once you are there, you should be able to verify that the folders <b>cdash-persist</b> and <b>php-tut</b> are mounted on /var/www/html.  Try using your computer's file manager tocreate a new file in one of those folders, and observe that the new file shows up onyour dev container, and vice versa.
+</p>
 
+<p>If this command-line stuff is a foreign language to you, and if you want to be able to administer and trouble=shoot or customize your Omeka server, you may need to learn some basic Unix, which is beyond the scope of this tutorial.  
 
+  <p> Anyhow, if you have made it this far, you now have your own development sandbox for tweaking C-Dash. 
+  
 
 
   </div> <!-- Closes #article div -->
