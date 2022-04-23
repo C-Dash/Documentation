@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Tutorials</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
+          When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+    <script src="../resources/docutree_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  
+  
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Fundamental Tutorials</h1>
+  <p>CDash is built on Omeka and includes a few official modules and a couple of third party modules, and a custom CDASH theme. All of this is based on the web application foundation PHP with the Laminas Framework.  Additionally Omeka depends on the Object-Relational Mapping framework Doctrine. 
+    
+  <p>As a user or administrator, it is not necessary to know much about these.  Strategically speaking a person who is concerned about the longevity of the project would be concerned about the longevity of the 3d party extensions.  Are they designed well?  If we needed to upgrade Omeka and these extensions are not upgraded for us, would we be in a pickle?  
+  
+  <p>As a developer who would add features to the CDASH theme, it is necessary to understand some PHP, Laminas and Doctrine.  Knowing these will also be helpful for evaluating and potentially upgrading the 3d party extensions. 
+
+  <p>For our own benefit, we have worked through the basic Laminas 3.0 tutorial, and have included all of the resources in the development repository.  We are in the process of working on some Doctrine tutorials.
+
+    <h3>Laminas MVC Layer documentation</h3> 
+    The opening page for the MVC layer is not helpful at all.  But there are several useful links featured on the right side of the page:
+    <a href="https://docs.laminas.dev/laminas-modulemanager/intro/" target="laminasdoc"> Laminas Framework Module Documentation</a>
+    
+    <p>We are going to dive in to the <a href="https://docs.laminas.dev/laminas-mvc/quick-start/" target="laminasdoc">Laminas Skeleton quick-start tutorial</a>.  Luckily , your dockerdevelopment machine has Composer installed and a bind mount to your php-tut folder.  
+    <ol>
+      <li>Open the command shell on your Omeka server
+      <li>Create a new folder /var/www/html/php-tut/laminas/skeleton_tut
+      <li>Change your working directory to that folder.  
+      <li>Then you wil be ready to follow the tutorial setup 
+      </ol>
+    
+      <p>Here is where things get a little confusing.  There are at least two tutorials labeled quickstart in the laminas documentation site.  They all seem to be incomplete and designed to be very hard to follow. Here is what I have done:
+    
+    
+        <h3>Installi the laminas-mvc-skeleton </h3>
+        <p>This page explains how to install a bare bones Laminas app.<a href="https://docs.laminas.dev/tutorials/getting-started/skeleton-application/" target="laminas_doc">https://docs.laminas.dev/tutorials/getting-started/skeleton-application/"> Laminas MVC Skeleton Application Quickstart</a>
+        <p>
+        
+        <h3>Explore the big concepts of Modules, Controllers, Factories, Routes and Actions</h3> 
+      
+        <p>We have installed the skeleton application in the php_tut directory.  It is referenced from your worksoation for editing, and the very same files are referenced by the apache server on your Omeka=s container of your Dev server.  
+        <p>
+        Open the php-tut/laminas_mvctut folder in your text editor. 
+        <p>
+          Notice that there is a directory structure named Application in the modules folder, and alsothat the laminas_mvctut/config/modules.config.php file places a key for the Applications namespace into a list the module namespaces that will be returned to any app that asks for the modules.config.
+        <p>
+        I read somewhere that a Laminas module functions as php namespace.   <li><a href="https://www.php.net/manual/en/language.namespaces.rationale.php" target="phpdoc">PHP Documentation on Namespaces</a>
+        <p>
+        The skeleton application uses the Application module to control the most basic behavior.  If you look at laminas_mvctut/public/index.php you can see that it checks for a lot of stuff and then runs the init function of the Application module.  <b><i>Whee is this init function???</i></b>
+        <p> 
+        If you enter "http://localhost/php-tut/laminas-mvctut/public/" in your browser and look at the bold comments you can see how the laminas_mvctut/public/index.php bounces to the laminas_mvctut/modules/application/public/index/index.phtml.  YOu can verify this by looking at and modifying the echo statements at the top of each of these files.
+      <p>
+        An important function of php applications is to control what is shown (or viewed) according to the URL that a user enters.  This behavior is controlled first by <b>routes</b> that are defined in the laminas_mvctut/Modules/Application/module.config.php.  
+        <p>
+        You can see here how the module.config.php invokes the Application namespace and a few objects from a couple of other Laminas namespaces that are provided from in laminas_mvctut/vendor/laminas/.  Then the config script assigns specific behaviors (ie. the IndexController ) to Home (or "/" ) or for Application 
+    
+    
+    <h3>The Laminas Album Tutorial (a CRUD application)</h3>
+    
+    <li><a href="https://docs.laminas.dev/tutorials/getting-started/overview/" target="phpdoc">Laminas Overview (Album Tutorial)</a>
+    
+    <p>To access the laminas MVC tutorial on our dev server, use <a href="http://localhost/php-tut/laminas-mvctut/public/album" target="mvctut">http://localhost/php-tut/laminas-mvctut/public/album</a>.  You can find the code for the running app at <b>/var/www/html/php-tut/laminas-mvctut </b> on the Omeka container.  Our docker.compose/yml file mounts this tutorial directory to a folder on your local hard drive. 
+<p>
+The Laminas album catalog tutorial uses the Table gateway pattern for managing album objects in the relational database.  This is discussed at <a href="https://docs.laminas.dev/tutorials/getting-started/database-and-models/" target="outboard">https://docs.laminas.dev/tutorials/getting-started/database-and-models/#the-model-files</a>
+
+<p>It might be useful to try to find a tutorial that would let us represent our albums, above, with doctrine objects...  
+<p>Maybe first, we will investigate a more direct route.  Lets see if we can figure out how Omeka uses Doctrine.  Maybe the Omeka documentation wil simply tell us what we need to know...
+<p><a href="https://omeka.org/s/docs/developer/api/" target="omeka">The Omeka API documentation</a> is a useful place to start, as it seems to describe the objects of Omeka and their functions. 
+<p> A couple of things jump out at you:
+  <ul>
+    <li>Most , if not all of the content objects seem to be exposed as RDF resources.
+    <li>There is a REST api that uses the classic URL queries, and the PHP api that one probably has access to when writing modules and themes. 
+    <li>It looks like the REST api is limited just to searchs and reads (??)
+    </ul>
+      
+      
+  
+  
+</div> <!-- Closes #article div -->
+<div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

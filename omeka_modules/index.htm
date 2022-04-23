@@ -63,50 +63,6 @@ The <a href="https://omeka.org/s/docs/developer/modules/" target="omekadoc"> Ome
 <p>
   The Omeka modules page does recommend looking at the docs for the Laminas MVC layer (linked below) and the quick start tutorial.
 
-<h3>Laminas MVC Layer documentation</h3> 
-The opening page for the MVC layer is not helpful at all.  But there are several useful links featured on the right side of the page:
-<a href="https://docs.laminas.dev/laminas-modulemanager/intro/" target="laminasdoc"> Laminas Framework Module Documentation</a>
-
-<p>We are going to dive in to the <a href="https://docs.laminas.dev/laminas-mvc/quick-start/" target="laminasdoc">Laminas Skeleton quick-start tutorial</a>.  Luckily , your dockerdevelopment machine has Composer installed and a bind mount to your php-tut folder.  
-<ol>
-  <li>Open the command shell on your Omeka server
-  <li>Create a new folder /var/www/html/php-tut/laminas/skeleton_tut
-  <li>Change your working directory to that folder.  
-  <li>Then you wil be ready to follow the tutorial setup 
-  </ol>
-
-  <p>Here is where things get a little confusing.  There are at least two tutorials labeled quickstart in the laminas documentation site.  They all seem to be incomplete and designed to be very hard to follow. Here is what I have done:
-
-
-    <h3>Installi the laminas-mvc-skeleton </h3>
-    <p>This page explains how to install a bare bones Laminas app.<a href="https://docs.laminas.dev/tutorials/getting-started/skeleton-application/" target="laminas_doc">https://docs.laminas.dev/tutorials/getting-started/skeleton-application/"> Laminas MVC Skeleton Application Quickstart</a>
-    <p>
-    
-    <h3>Explore the big concepts of Modules, Controllers, Factories, Routes and Actions</h3> 
-  
-    <p>We have installed the skeleton application in the php_tut directory.  It is referenced from your worksoation for editing, and the very same files are referenced by the apache server on your Omeka=s container of your Dev server.  
-    <p>
-    Open the php-tut/laminas_mvctut folder in your text editor. 
-    <p>
-      Notice that there is a directory structure named Application in the modules folder, and alsothat the laminas_mvctut/config/modules.config.php file places a key for the Applications namespace into a list the module namespaces that will be returned to any app that asks for the modules.config.
-    <p>
-    I read somewhere that a Laminas module functions as php namespace.   <li><a href="https://www.php.net/manual/en/language.namespaces.rationale.php" target="phpdoc">PHP Documentation on Namespaces</a>
-    <p>
-    The skeleton application uses the Application module to control the most basic behavior.  If you look at laminas_mvctut/public/index.php you can see that it checks for a lot of stuff and then runs the init function of the Application module.  <b><i>Whee is this init function???</i></b>
-    <p> 
-    If you enter "http://localhost/php-tut/laminas-mvctut/public/" in your browser and look at the bold comments you can see how the laminas_mvctut/public/index.php bounces to the laminas_mvctut/modules/application/public/index/index.phtml.  YOucan verify this by looking at and modifying the echo statements at the top of each of these files.
-  <p>
-    An important function of php applications is to control what is shown (or viewed) according to the URL that a user enters.  This behavior is controlled first by <b>routes</b> that are defined in the laminas_mvctut/Modules/Application/module.config.php.  
-    <p>
-    You can see here how the module.config.php invokes the Application namespace and a few objects from a couple of other Laminas namespaces that are provided from in laminas_mvctut/vendor/laminas/.  Then the config script assigns specific behaviors (ie. the IndexController ) to Home (or "/" ) or for Application 
-
-
-<h3>The Laminas Album Tutorial (a CRUD application)</h3>
-
-<li><a href="https://docs.laminas.dev/tutorials/getting-started/overview/" target="phpdoc">Laminas Overview (Album Tutorial)</a>
-
-
-
 
 
   When Omeka recognizes a module in the Modules directory, the loader reads the Module Config.ini 
