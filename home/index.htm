@@ -18,34 +18,44 @@
     <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
     
 
-    <!-- The index sidebar and all content other than the main article coe form the docutree_includes.js.
-          When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
-    <script src="../resources/docutree_includes.js"></script>
+    <!-- The index sidebar and all content other than the main article coe form the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
     <!-- THis has to come after the cityschema_includes file-->
     <script src="../resources/docutree.js"></script>
     </head>
     <body>
       <div id="grid-container">
         <div id="index-container">
-          <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
-          <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
-          <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
         </div> 
 <div id="main-container">
-  <div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
 
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">Cultivating Place-Based Information with Omeka</h1>
-  <p>  <p>These notes are intended as a guide for maintaining and developing C-DASH. The <b>Cambridge Digital Architectural Survey and History</b>.      C-Dash is an archival tool that creates a newtork of information about places in the city.
+  <p>The Cambridge Historical Commission collects documents about each building in the city.  The collection now spans ten file cabinets filled with folders, each of which is labeled with a street address (most of the time) or the name of a place.  The file drawers are roughly partitioned to districts, with the folders being alphabetized by street-name.  The C-Dash project has digitized each of the documents and is now in the process of creating a map-based web site to make these available to the public.
   
-    <p>Visit the <a href="https://chcomeka.azurewebsites.net/omeka-s/s/cdash/page/home" target="cdash">C-Dash pilot installation running on the Azure cloud</a>.  We have a <a href="https://www.pbcgis.com/cdash/CDashSlideshow.pdf" target="outboard">C-Dash  Slideshow</a> that illustrates a lot of the big ideas and context.
+    <figure class="middle">
+      <img src="images/cdash_home.jpg">
+      <figcaption>CDash Home Screen</figcaption>
+    </figure>
+
+    <p>Visit the <a href="https://chcomeka.azurewebsites.net/omeka-s/s/cdash/page/home" target="cdash">C-Dash pilot installation running on the Azure cloud</a>.  We have a  
+      
+    <p>For an illustrated tour of our process, visit the   
+      <a href="https://www.pbcgis.com/cdash/CDashSlideshow.pdf" target="outboard">C-Dash  Slideshow</a>.
+
+     <p>We hope that the tools and procedures we are developing will be useful for other local historical commissions. Visit our <a href="https://github.com/c-dash" target="github">C-DASH project on GitHub</a> to download the a working Omeka development environment with the custom modules and themes to play with C-DASH on your own computer. 
+     </p>
 
 
-
-  <p>The collection of documents is managed with ten file cabinets filled with folders, each of which is labeled with a street address (most of the time) or the name of a place.  The file drawers are roughly partitioned to districts, with the folders being alphabetized by street-name.
-  <p>The digital documents in C-DASH are scanned page-sides that are named to reflect the subject address or name and an index number that distinguishes sequential document in number (per folder) and page number (per document).  
+  
+  <!--p>The digital documents in C-DASH are scanned page-sides that are named to reflect the subject address or name and an index number that distinguishes sequential document in number (per folder) and page number (per document).  
   <p>
     The scan files went through a process of semi-automated validation of the addresses, and sorted into six document types (see table, below) to discriminate Interior or Exterior photos, Maps, Correspondence, Ephemera, Articles, etc.  This process resulted in the name for each scan file to be formalized into a code that can be expanded into an automatically generated metadata page, and a network of information about places, related documents, and the scanned pages of those documents. 
   <p>
@@ -59,15 +69,15 @@
   <p>  
     Most of the tasks involved in the day-to-day-mamagement of the archive should be easy to do for a person who is willing to learn -- and who is provided with decent documentation. Adminstrative tasks dealing with backups and monitoring the cloud-based application would require a person who is comfortable with Azure cloud infrastructure (or your facility may be usng another host. )  Upgrading and implementing new features in the applicati0on wil require a person who undertsnads how to deal with web sites, Cascading Style Sheets, PHP code -- particularly the Laminas framework. 
   <p>
-    One of the goal;s of this documentation is to provide an understanding of all of this as we can withot duplicating the fundamental documentation provided by others. 
+    One of the goals of this documentation is to provide an understanding of all of this as we can without duplicating the fundamental documentation provided by others. 
     
-  </p>
+  </p -->
 
 
 
 
   </div> <!-- Closes #article div -->
-  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
 
 
 

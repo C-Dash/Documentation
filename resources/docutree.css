@@ -82,7 +82,7 @@
 
 
 /*** These flex properties apply in the headers and footers ***/
-/*** Referenced in the docutree_includes.js               ***/
+/*** Referenced in the cdash_includes.js               ***/
   .rightflex {
     display: flex;
     flex-wrap: nowrap;
