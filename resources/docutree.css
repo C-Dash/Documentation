@@ -141,15 +141,15 @@ h1 {
 h2 {
   color: gray;
   font-size: 19px;
-  font-weight: 550;
+  font-weight: 600;
   margin-bottom: 7px; 
 }
 
 h3 {
   color: gray;
   font-size: 19px;
-  font-weight: 450;
-  margin-bottom: 1px; 
+  font-weight: 500;
+  margin-bottom: 0px;
 }
  /* Expands images while mouse is down */
 img {
