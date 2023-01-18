@@ -32,11 +32,11 @@ let index_htm = `
 </p>  
 <ul class="treeview">
 
-<li class="chapter"><a href="../home/index.htm">Extending Omeka</a></li>
-    <!-- ul class="verses">
+<li class="chapter"><a href="../home/index.htm">EEExtending Omeka</a></li>
+    <ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
-    </ul -->
+    </ul>
 
 <li class="chapter"><a href="../docker/index.htm">Development Set-Up</a></li>
     <!-- ul class="verses">
@@ -50,13 +50,15 @@ let index_htm = `
     <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
   </ul -->
 <li class="chapter"><a href="../template/index.htm">Documentation Template / Style Guide</a></li>
-  <!-- ul class="verses">
-    <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
-    <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
-    
-</ul -->
 
-
+<ul class="verses">
+<li><a href="../template/index.htm#css">Basic Styling</a>
+<li><a href="../template/index.htm#slideshow_element">Slide Shows</a>
+<li><a href="../template/index.htm#figures">Figures</a>
+<li><a href="../template/index.htm#table">Tables</a>
+<li><a href="../template/index.htm#tabtargets">Controlling new Tabs</a>
+<li><a href="../template/index.htm#blocks">Colored Text Blocks</a>
+</ul>
 
 </ul> <!-- Closes Index -->
 `
@@ -70,7 +72,7 @@ let header_htm = `
 </div></div>
 `;
 
-let index_head_htm = `<div style="background-image: ../resources/images/c_dash_banner_stretched.jpg;"><img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/cdash_ico.ico"><p class="title">C-Dash</p></div>`;
+let index_head_htm = `<div style="background-image: ../resources/images/c_dash_banner_stretched.jpg;"><img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/favicon.ico"><p class="title">C-Dash</p></div>`;
 
 let index_footer_htm = `
 <!-- div class="middleflex " >

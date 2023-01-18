@@ -1,0 +1,182 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>CDASH: Schema </title>
+    <meta name="description" content="Describes the rules for arranging information about places, documents, media in the Cambridge Digital Architectural Survey and History">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">CDASH Schema: The CHC Building Files In Omeka</h1>
+  <p>The Cambridge Architectural Survey and History (CDASH) is system for exposing and enriching the a large collection of documents occupying 10 file cabinets in the office of the Cambridge Historical Commission.  The physical collection, known as <b>The Building Files</b> includes many sorts of documents.  The collection is ordered by folders, each of which is named for a place in the city.   
+  <p>
+  The cataloger's perspective on CDASH begins with the essential structure of the Building Files collection is mapped onto a set of digital catalog concepts provided by <a href="https://omeka.org/s/" target="outboard"> the Omeka-S platform </a> -- an open-source web publishing tool widely used by archives and museums. 
+<p>
+  For the owners, managers and contributors of CDASH, it is essential to understand how Omeka-S represents information as <b>Items</b>, and how CDASH uses Omeka items to represent the documents and places represented in the Building Files.  
+
+
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../schema/index.htm#building_files">Building Files Collection</a>
+    <li><a href="../schema/index.htm#Scanning">Scanning, Rough Cataloging and Geocoding</a>
+    <li><a href="../schema/index.htm#items">Omeka Items</a>
+    <li><a href="../schema/index.htm#docitems">CDASH Document Items</a>
+    <li><a href="../schema/index.htm#placeitems">CDASH Place Items</a>
+    <li><a href="../schema/index.htm#docplace">Documents Items are Related to Place Items</a>
+      <li><a href="../schema/index.htm#editing">Enriching the Collection</a>
+    <li><a href="../schema/index.htm#editing">Creating and Editing CDASH Items</a>
+    <li><a href="../schema/index.htm#resources">CDASH Vocabulary Developer Resources</a>
+    </ul>
+  
+  
+  
+  <h2 id="building_files">The Building Files Collection</h2>
+  <p>The structure of CDASH comes from the way that the hard-copy source material was organized.  Documents of various types are filed into manila folders.  Each folder is labeled with the name of a place.  Most folder names describe stretches of street addresses.  The documents within a folder are usually labeled according to a more specific street address, or sometimes the name of a place or, rarely, the title of an article. Folders are arranged in file cabinet drawers associated with neighborhoods.
+  </p><p>
+    This arrangement of Neighborhood Drawers, Street Folders, and Place-Related Documents provides an intuitive means of filing and retrieving documents.  A streetmap with a neighborhood overlay is a necessary reference for anyone not fully immersed in the history of arcane street-names that are preserved among the folders. 
+ 
+ 
+    <h3 id="scanning">Scanning, Rough Cataloging and Geocoding </h3>
+    <p>The geographical hierarchy encoded into the names of folders and their included documents was preserved in the folder structure and file names created in the scanning process.  
+      <p>
+        Procedures of rough-sorting, name validation and geocoding are being applied to these scans.  The tools and procedures involved in these will lbe described in these pages at a later date. 
+      <p>
+      Ultimately, the resulting organization of digital documents and places is set up so that in the end, the structure of the digitized Building Files collection in has been preserved and in the structure of the collection in Omeka. 
+
+<h2 id="items">Omeka Items</h2>
+<p>Omeka can be thought of as structure and tool-kit for organizing and cataloging information about things.  Omeka represents things as <b>Items</b>. Each item has a landing page that is the public view of a digital image or sme other media along with some descriptive information or metadata about the item. Metadata is used as titles, captions, information about the provenance of the item. Metadata is also used for cataloging, discovery and for linking items together.  
+
+  <h3>Item Types and Omeka Resource Templates</h3>
+  <p><a href="https://omeka.org/s/docs/user-manual/content/resource-template/" target="omekadoc">Resource templates</a> are Omeka's means of providing for the definition of different types of Items. CDASH makes use of two resource templates to define <b>Place Items</b> and <b>Document Items</b>.  
+
+<p>Systematic assignment of properties to items is what makes the information in Omeka stick together in useful ways, such as discovering information about places that are near specific things or events, and for filtering documents of different types. One of the more critical aspects of the on-going design and management of CDASH is care in choosing and consistency in recording of item properties with the goal of facilitating search and discovery within CDASH and possibly other systems that might refer to CDASH items. 
+
+  <h3>Learn More about Omeka Items</h3>
+    <p>These topics from the Omeka-S User Manual provide n-depth information about Omeka Items:</p>
+    <ul>
+      <li><a href="https://omeka.org/s/docs/user-manual/content/items/" target="omekadoc">Items</a> What they are and how to create and edit them. 
+      <li><a href="https://omeka.org/s/docs/user-manual/content/resource-template" target="omekadoc">Resource Templates</a> The metadata skeleton for Items and their relationships.
+      <li><a href="https://omeka.org/s/docs/user-manual/content/vocabularies/" target="omekadoc">Vocabularies</a>
+      <li><a href="https://omeka.org/s/docs/user-manual/content/media/" target="omekadoc">Media</a>    
+    </ul> 
+
+
+<h2 id="docitems">CDASH Document Items</h2>
+<p>The most typical sort of an item in CDASH, is a scanned document from the Building Files Collection. After the scannning and sorting workflow described above, the image files related to a pages of specific document would be imported into Omeka as <b>Media</b> and linked to an Omeka item of type CDASH Document.  The CDASH Document amounts to a collection of metadata properties, some of which have default values assigned depending on the document type and the name of the place that the document is associated with. Other optional metadata properties may be filled in later. 
+  <p>
+  There are several types of documents in the CDASH collection, including Exterior or Interior Images, Architectural Inventory Forms, etc.  The full list of Document Types and the other properties of Document Items is expanded in the <a href="../doc_items/index.htm">Document Item Data Dictionary</a>.
+
+<h2 id="placeitems">CDASH Place Items</h2>
+<p>To best represent the structure of the Building Files collection in Omeka, it was useful to create a second type of item, used to describe places.  The most typical CDASH Place is a simple street address that was found on the tab of one of the folders, or written on a paper artifact from the Building Files.  But CDASH Place items can also be used to represent specific Buildings, Monuments, Trees, etc.  A more complete dictionary of Place types is provided elsewhere [LINK].
+<p>
+Each CDASH Place item has coordinates that allow for the place to appear as map marker.  In the first stages of CDASH development most of these marker locations have been assigned to verified GIS address locations.  In many cases the locations of place markers has been interpolated between known address locations.  There are potential mishaps in the assignment of locations owing to the historical nature of the Building Files collection and various changes that have occurred with the renaming and renumbering of streets. 
+<p>
+  The Place Item template provides for many metadata properties to be filled in to record information about buildings and other designed places.  Click here to visit <a href="../place_items/index.htm#dictionary">the data dictionary for CDASH Place Items. </a>
+
+
+<h2 id="docplace">Documents Items are Related to Place Items</h2> 
+Each document item in Omeka includes a reference to one or more places.  Rather than referring to a single place with explicit coordinates, the Document item template allows for the document item to be related to one or more place items. This architecture allows us to have documents that are related to more than one place.  More importantly, having place items related to documents allows the manager to fine-tune the location of a place marker without having to update individual many documents that relate to that place.  
+
+<h2 id="enrichment">Enrichment of the Collection</h2>
+<p>The initial structure of CDASH resulting from rough sort of the scans and automated georeferencing and cataloging ads many search, filtering and discovery capabilities to the building files and expands their availability to the world-wide web.  
+  
+  <p>After this automated stage has been done, the schema is designed to facilitate create new Place and Document items and to fine-tune and otherwise add knowledge to item  metadata properties to deepen the search, filter and discoverability of the items. 
+
+<h3 id="editing">Creating and Editing Omeka Items</h3>
+<p>We will be doing trainiing and practice on this.  But for now, you should know that <a href="https://omeka.org/s/docs/user-manual/content/items/" target="omekadoc">The Omeka User Manusl page about Items</a> is the official font of wisdom concerning the creation and editing of items. 
+<p>In understanding the CDASH Schema there are a few important capabilities that are good to know about. 
+
+
+<h3>Multiple Values or Annotations for A Property</h3>
+<p>It is useful to know that Omeka allows for multiple values to be added for most properties.  For example, if a building was once used as a bank, and then became a drug store, the curator can add both values.  This is accomplished by completing the first value entry, then clicking the button at the bottom of the property entry slot and then entering the second value. 
+<p>
+In some cases, you may want to annotate a value to clarify an information source or an event that is referred to by a date.  For example, it can be useful to add an annotation to an Appear Date to clarify that the Building first appears on the 1873 Bromley map.  Or in the case of a Rennovated Date, an annotation can be added to reflect the nature of the renovation.
+
+
+
+<h3 id="resources">CDASH Vocabulary Developer Resources</h3>
+<p>The community of digital archiving has developed standards and principles to enhance the ways that items held in various collections may be discovered and connected together.  In the immediate neighborhood of CDASH we can point to <a href="https://www.digitalcommonwealth.org/" target="outboard">Digital Commonwealth</a>.  The metadata templates for CDASH use conventional metadata vocabularies where appropriate.  We have also created some special vocabularies.  All of the resources related to creating the vocabularies and resource templates can be found in the <a href="https://github.com/C-Dash/Development-Container/tree/main/cdash-persist/vocabulary" target="github">CDASH GitHub repository</a> in the Persist/Vocabularies folder. 
+</p> 
+
+<p><b><span style="color: red;">Warning! </span></b> Fooling around with the live resource templates and vocabularies can result in information being erased from existing items!
+
+
+<h3>...To be Continued</h3>
+<p>More will be written later about the tools and workflows for creatng CDASH Document Items.  
+
+ 
+ 
+ 
+ <!--   <p>Most of the item properties are drawn from the standard Dublin Core specification for describing documents.  Where standard properties were not available, we created special CDASH terms using the <a href="https://github.com/Daniel-KM/Omeka-S-module-CustomOntology" target="github">Custom Ontology Module</a>.  Exported versions of the resource templates and custom vocabularies are stored in the cdash_persist/vocabularies folder in the cdash_development repository. 
+
+<h2>The Cascade of Accession</h2>
+<p>A helpful way to understand the organization of documents and place references in CDASH is to trace the way that place references and item names are derived from the original paper artifacts.  
+
+<h2>What is In a Name?</h2>
+<p>Information in CDASH is built on rules for naming things. For example: A key stage in the development of the CDASH catalog is when names are assigned to single-page or multiple-page documents in a folder by a scanner operator who is following a cascade of rules:
+  <ol>
+    <li>Name each files according to the address on the folder name unless there is a more specific address or title on the document itself.
+    <li>A serial number in initialized for every new folder.  This number is appended to the file names for each page within the folder.
+    <li>When a document is encountered that has a new title or address, this becomes the file-name prefix.  The serial number keeps growing until it is ultimately a count of the pages within the folder.
+  </ol>
+  <p>It is worth mentioning that before the scanners get the folders, they their contents have been put in order by Historical COmission staff. 
+  
+  <p>The next stage is the rough-sort.  Whereupon the sequense of scans in each folder are perused by an operator who selects groups of associated scans, and drag/drops the group onto a tile that represents one of the nine document types.  This process is known as Renaming, or Itemizing. 
+<p>
+<h3>File-Name Encoding</h3>
+<p>At this stage, the file names of each scan file include the following information which determine all of the properties that new-born items have in CDASH.  Over time, some items will have additional properties entered by contributres who may adjust or augment the original default properties of an item. 
+
+
+
+  <h2>Place Identifiers</h2>
+  
+  
+    <h1>Item Identifiers for Places and Documents</h1>
+  <p>Omeka-S hhas a built-in unique identifier for each resource.  
+  -->
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

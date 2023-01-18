@@ -27,41 +27,83 @@
 
 
 let index_htm = `
-<span class="title">Documentation</span>
 <p style="background-color: white; margin-left: -10px; padding-left: 10px;">This is a very early draft of the C-Dash Docs.  It is not yet ready for public consumption.  Nevertheless you are welcome to take a look around. 
 </p>  
 <ul class="treeview">
-
-<li class="chapter"><a href="../home/index.htm">Extending Omeka</a></li>
+<h3>Extending Omeka</h3>
+<li class="chapter"><a href="../home/index.htm">Enriching and Connecting Place-Based Knowledge</a></li>
     <!-- ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
     </ul -->
+</ul>
+<h3>Cataloger Viewpoint</h3>
+<ul class="treeview">
+   <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>
+   <ul class="verses">
+   <li><a href="../schema/index.htm#building_files">Building Files Collection</a>
+   <li><a href="../schema/index.htm#Scanning">Scanning, Rough Cataloging and Geocoding</a>
+   <li><a href="../schema/index.htm#items">Omeka Items</a>
+   <li><a href="../schema/index.htm#docitems">CDASH Document Items</a>
+   <li><a href="../schema/index.htm#placeitems">CDASH Place Items</a>
+   <li><a href="../schema/index.htm#docplace">Documents Items are Related to Place Items</a>
+     <li><a href="../schema/index.htm#editing">Enriching the Collection</a>
+   <li><a href="../schema/index.htm#editing">Creating and Editing CDASH Items</a>
+   <li><a href="../schema/index.htm#resources">CDASH Vocabulary Developer Resources</a>
+   </ul>
+ 
+ 
 
+    <li class="chapter"><a href="../place_items/index.htm">Place Items Data Dictionary</a></li>
+    <ul class="verses">
+    <li><a href="../place_items/index.htm#dictionary">Place Properties Dictionary</a>
+    <li><a href="../place_items/index.htm#types">Place Types</a>
+    <li><a href="../place_items/index.htm#neiborhoods">CHC Neighborhoods</a>
+    <li><a href="../place_items/index.htm#tbd">Terms To be Determined:</a>
+    <li><a href="../place_items/index.htm#use">Building Use</a>
+    <li><a href="../place_items/index.htm#style">Building Style</a>
+    <li><a href="../place_items/index.htm#material">Building Material</a>
+  </ul>
+
+
+    <li class="chapter"><a href="../doc_items/index.htm">Document Items Data Dictionary</a></li>
+    <ul class="verses">
+    <li><a href="../doc_items/index.htm#css">Metadata Properties Dictionary</a>
+      <li><a href="../doc_items/index.htm#doctypes">Document Types and Default Properties</a>
+    <li><a href="../doc_items/index.htm#subjects">CDASH Subject Keywords</a>
+    </ul>
+</ul>
+
+
+<h3>Developer Viewpoint</h3>
+<ul class="treeview">
 <li class="chapter"><a href="../docker/index.htm">Development Set-Up</a></li>
     <!-- ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
     </ul -->
 
-<li class="chapter"><a href="../omeka_modules/index.htm">Understanding Critical Modules</a></li>
-  <!-- ul class="verses">
+<!-- li class="chapter"><a href="../omeka_modules/index.htm">Understanding Critical Modules</a></li>
+  <ul class="verses">
     <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
     <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
   </ul -->
 <li class="chapter"><a href="../template/index.htm">Documentation Template / Style Guide</a></li>
-  <!-- ul class="verses">
-    <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
-    <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
-    
-</ul -->
+    <ul class="verses">
+    <li><a href="../template/index.htm#css">Basic Styling</a>
+    <li><a href="../template/index.htm#slideshow_element">Slide Shows</a>
+    <li><a href="../template/index.htm#figures">Figures</a>
+    <li><a href="../template/index.htm#table">Tables</a>
+    <li><a href="../template/index.htm#tabtargets">Controlling new Tabs</a>
+    <li><a href="../template/index.htm#blocks">Colored Text Blocks</a>
+    </ul>
 
 
 
 </ul> <!-- Closes Index -->
 `
 let header_htm = `
-<div style="float: left; width: 50%; margin: 0px"><img src="../resources/images/c_dash_banner_stretched.jpg" height="50px"></div>
+<!-- div style="float: left; width: 50%; margin: 0px"><img src="../resources/images/c_dash_banner_stretched.jpg" height="50px"></div -->
 <div style= "width: 50%; float: right; padding-top: 20px; font-size: 17px;">
 <div class="rightflex">
 <div><a href="https://github.com/c-dash" target="github">GitHub</a></div> 
@@ -70,7 +112,7 @@ let header_htm = `
 </div></div>
 `;
 
-let index_head_htm = `<div style="background-image: ../resources/images/c_dash_banner_stretched.jpg;"><img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/cdash_ico.ico"><p class="title">C-Dash</p></div>`;
+let index_head_htm = `<div style="background-image: ../resources/images/c_dash_banner_stretched.jpg;"><img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/favicon.ico"><p class="title">C-Dash Docs</p></div>`;
 
 let index_footer_htm = `
 <!-- div class="middleflex " >

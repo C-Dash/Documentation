@@ -1,0 +1,15 @@
+
+<p>Troubleshooting possible issues with database connection.</p>
+
+<pre>
+  SET GLOBAL general_log=ON;
+  SET GLOBAL log_output='TABLE';
+<pre>
+
+
+<pre>
+  SET GLOBAL general_log=OFF;
+  TRUNCATE table mysql.general_log;
+  SET GLOBAL general_log=ON;
+</pre>
+

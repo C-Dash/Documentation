@@ -1,0 +1,179 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Style Guide</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">The CDASH Search Module</h1>
+  <p>We need to a search function that sorts its results according to the Street Name and House Number.  
+  <p>As it happens, the ability to customize the Omeka search tools are very limited.  There is an elaborate Advanced Search module available, but it failed to work, on install, and a peek inside was a daunting amount of php code.
+  <p>So it seems that a simple modification to Omeka to change the default search-function-query would be a better way to satisfying the goal of staying as close as possible to the Generic Omeka-S distribution as possible.   
+ 
+    <h2>Design Goals</h2>
+    <h3>Change Default Search Behavior</h3>
+    <ul>
+      <li>Default searches should return only items
+      <li>Should search for items with title that contains the user-entered search term
+      <li>Default search order should be Ascending according to Street name and Street number, with the alpha order of street name being the first term.
+      <li>We want to make the listing of document items more compact, eliminating the thumbnail, or putting it it into a dive that flips-down on request.
+      </ul>
+    <h3>CDASH "Search Places" function</h3>
+    <p>A search form where the ghost text in the form is <b>Search Places</b>.  Appears on the map side of the panel.
+      <ul>
+      <li>default search is "Title Contains" order by address.
+      <li>Returns only items that use the <b>Places</b> template.
+      <li>gets a new geojson query to map the returned places.
+      <li>Return page has a listing for each place with a drop-down that lists items within that place.  
+      </ul>
+    
+    <h3>CDASH "Search Documents" function</h3>
+        <p>Appears on the Info side of the screen. 
+        <ul>
+          <li>default search is "Title Contains" order by address.
+          <li>Search only items that use the <b>Document</b> template 
+          <li>Return page has row for each document title and a dropdown for each that shows the thumbnail. 
+          <li>Returns a new geojson that includes only the places related to items that answer the search.
+        </ul>
+      
+      <h3>CDASH "Advanced Document Search" Function</h3>
+        Has link at top of search results page. 
+       <ul>
+        <li>similar to Omeka advanced search, but with lists and prompts tailored to CDASH content. 
+        </ul>
+
+    <h2>How does the Omeka-S Search function Work</h2>
+    <p>To explore this, we make a new site with the Default Theme.  Add our demo items to the site and play with the search tool, while inspecting the Omeka-S distribution which is been unzipped in my bitbucket folder and opened in VS Code. 
+    
+    <h3>The Admin Interface</h3>
+    <ol>
+      <li>Set up a new site with the Default theme.
+      <li>Edit the site search settings
+      <li>Turn on search for <b>Site Pages</b> and <b>Items</b>
+      </ol>
+
+<h3>Look at the Search Form as it appears on the Home Page </h3>
+<p>The search form appears in the navigation bar at the top of the home page in the default form.  We can expect that this form has a manifestation as a View element (.phtml) and a Controller element (.php).  
+
+  <h3>Check Behavior of the Form in terms of its affect on Routes (creating URLs) </h3>
+  <p>Our limited experience with php and the laminas framework has created an expectation that I can learn something useful by looking at the web requests coded as URLs that are generated when you fill out forms and click on things.  In the case of our generic search function.  Playing with the search bar and looking at the routes is interesting.  And we van then go look them up in the file <b>Omeka-S/config/routes_config.php</b> to see an overview of how Omeka-S communicates.  
+  
+    <p>When the search setting for the default site allow for the search to be carried out on Site Pages as well as items, entering "East" into the search tab results in a URL that looks like:
+
+      <pre>
+        http://localhost/omeka-s/s/default/index/search?fulltext_search=East
+      </pre>
+    
+    <p>The return page begins with an <b>Items</b> header.  This is a call to the omeka <b>indexController</b> with <b>Search</b> action.  What you would expect from the route definitions.
+    
+    <p>When the site search settings are set to return only items, which is going to be more like what we need for our Place and Document searches,  then the same search produces the following URL: 
+    
+    <p>Therefore the resulting web request would look like:
+      <pre>
+        http://localhost/omeka-s/s/default/item?fulltext_search=East
+      </pre>
+    
+    <p>Which is a call to the <b>itemController</b>.  How does this happen? 
+    
+    <p>It is useful at this point to look at the <b>Omeka-S/config/routes_config.php</b> file to see how the web requests that are received are turned into commands and arguments issued to specific code classes (controllers) that then return web pages (views) as a result. 
+      
+  
+
+    <h3>Look at the Search Form as .phtml </h3>
+    Lets see what we can learn by finding the form that is referenced in the Layout.phtml of the Default theme.  Inspecting this we find a reference to <b>common/search-form</b> which leads us to the the main Omeka-S distro in the </b>view/common</b> folder where we eventually find <b>search-form.phtml</b>.
+  
+<p>The essence of the search form is the <b>action</b>, which ends up being a web request to the Omeka-S application.  Web requests to Omeka are like commands with arguments that can be submitted through the URL slot in the browser, or issued, invisibly by html forms, javascript or php code.  
+  
+<p>The statement,
+  <pre>    
+       $searchAction = $this->url('site/resource', ['controller' => 'index', 'action' => 'search'], true);
+  </pre>
+<p>indicates that submitting the form is going to call the index controller with the action set to <b>'search'</b>. 
+
+  <pre>
+    <form action="<?php echo $this->escapeHtml($searchAction); ?>" id="search-form">
+      <input type="text" name="fulltext_search" value="<?php echo $searchValue; ?>"
+            placeholder="<?php echo $translate('Search'); ?>"
+            aria-label="<?php echo $translate('Search'); ?>">
+      <button type="submit"><?php echo $translate('Search'); ?></button>
+  </form>
+</pre>  
+
+<p>Determines that the URL established above will have an key-value argument, named <b>fulltext_search</b> with a value specified by the string entered in the form by the user.
+
+  <h2>Look at the Controllers</h2>
+  <p>So now we know enough to look for the <b>Omeka-s/application/src/site/IndexController.php</b> and its <b>searchAction</b> function. This would be the function that is called by the search form. 
+
+<p>Here, we can see that the searchAction function loads the site settings from this->siteSettings().  -- which is apparently a property of all controllers. Further down we can see that the $siteSettings->get('search_resource_names', ['site_pages', 'items']); ks loaded into a variable that is later checked to see if there is more than one sort of resource involved in searches. If there is only one of these, then the route is redirected to use the ItemController with the <b>BrowseAction</b>.  The search query is also set here to trigger a 'full_text' query.  
+<p>
+We are getting close.   If the searchsettings indicate just one of the resource types, then the indexController bumps over to the <b>itemController / searchAction</b> 
+
+
+at this point, i think that we can ignore the rest of the code in this controller, which calls upon the multi-part return view, which we don't need. So on to the <b>ItemController</b>. 
+<p>
+The <b>IndexController</b> has complexities that call for different behaviors if the user sets up searches to involve site pages or item sets.  We don't need this. 
+<p>
+
+
+  item?property[0][joiner]=and&property[0][property]=1&property[0][type]=in&property[0][text]=Contact
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
