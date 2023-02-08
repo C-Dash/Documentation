@@ -111,6 +111,7 @@ tab-bar li {
 show-footer {
     grid-area: show-footer;
     border: 3px dotted green;
+    border-left: 0;
     overflow: auto;
     /*resize: horizontal;*/
     min-width: 120px;
