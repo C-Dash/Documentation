@@ -38,16 +38,26 @@
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">Local Development Set-Up</h1>
+  <p>The deliverables for mthe CDASH project include a continerized application that can be deployed on a web services provider like Amazon or Azure. The same container architecture can us used to install a complete instance of CDASH on a local computer for development purposes. 
 
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
+    <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
+    </ul>
+
+  <h2 id="containers">CDASH Is a Contianerized Web Application</h2> 
   <p> One of the recent (in dog years) miracles of cloud computing is the <b>Containerization</b> of web applications. A container in this sense is similar to what we used to call a "server."  Whereas servers used to be actual computers, they now may be implemented as collections of code that act like a server. 
   <p>
   Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces and a command prompt accessible through our browser, with all of the back-end code accessible to our favorite text editor.  And all of this will run on whatever computer we want such as our work-a-day laptop or desktop mac or PC. 
-<p>
-  This capability means that we can have a development environment that is the same as a the production server -- except for the tweak that we make to it.  Our development environment is a safe sandbox to try and to test.  When we have perfected our upgrades, they can be implemented on the production server.
+
+  <h3>Easy to Set-Up Development Versioning</h3> 
+  <p>
+  Because containers encapsulate the entire server and data structure od a web application it  means that we can have a development environment that is the same as a the production server -- except for the tweak that we make to it.  Our development environment is a safe sandbox to try and to test.  When we have perfected our upgrades, they can be implemented on the production server.
 <p>
   Because these development environments are a snap to set up, we can also use them to learn about how Omeka works and to try hacks.  Because we can easily just blow the whole thing away and launch exact copies.
 
-<h2>Docker Resources</h2>
+<h2 id="dockerfiles">Docker Resources and setup</h2>
 <p> You can have all of the resources that make up the C-Dash application at the <a href="https://github.com/c-dash" target="github">C-DASH GitHub repository</a>, <b>pbcGIS-cdash-dev</b>.  We will describe it more detail later.  For now, download the whole repository to your computer, install Docker and then run these commands:
 
   <h3>Big Docker Ideas and Commands</h3>

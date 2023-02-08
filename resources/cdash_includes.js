@@ -78,10 +78,16 @@ let index_htm = `
 <h3>Developer Viewpoint</h3>
 <ul class="treeview">
 <li class="chapter"><a href="../docker/index.htm">Development Set-Up</a></li>
-    <!-- ul class="verses">
-      <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
-      <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
-    </ul -->
+<ul class="verses">
+  <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
+  <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
+</ul>
+
+<li class="chapter"><a href="../theme_layout/index.htm">CDASH Layout</a></li>
+    <ul class="verses">
+    <li><a href="../theme_layout/index.htm#themes">Omeka Themes</a>
+    <li><a href="../theme_layout/index.htm#wireframe">Wireframe Demo</a>
+    </ul>
 
 <!-- li class="chapter"><a href="../omeka_modules/index.htm">Understanding Critical Modules</a></li>
   <ul class="verses">
