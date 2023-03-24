@@ -71,12 +71,14 @@
 <p>This will create a container that is a Debian Linux server that is running the Apache web server and has all of the PHP gizmos and settings to run Omeka-S -- which is also installed by essentially unpacking a zip file. 
 </p>
 
-<p>Omeka needs to point at an implementation of the MySQL database server that is on an accessible network. We can create the database server as another Docker container.  The file, docker-compose.yml includes the instructions for doing this. 
+<p>Omeka needs to point at an implementation of the MySQL database server that is on an accessible network. We can create the database server as another Docker container.  The file, <b>docker-compose.yml</b> includes the instructions for doing this. 
 We use a ready-rolled docker image for MariaDB, and set another server to run Adminer -- which is a MYSQL administrator tool that is also written in PHP.   
 <p>All of this is snapped together by running the following command in your docker shell: 
 <pre>
    %> docker-compose up -d
 </pre>
+<p>If you have updated your version of Omeka, then you probably wil change the tag used in your Docker image build command, above.  And you will also edit the reference to this image in your <b>docker-compose.yml</b> file.  
+
 
 <h2>Adminer and the Omeka Database</h2>
 
