@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Omeka Fundamentals</title>
+    <meta name="description" content="CDASH is an Omeka application. This document introduces Omeka fundamentals for the CDASH Manager and Contributor">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Omeka Fundamentals for the CDASH Contributor, Curator and Manager</h1>
+
+  <p>The basics of managing and contributing to CDASH are the basics of Omeka-S.  The purpose of this page is to provide pointers to the sections of the <a href="https://omeka.org/s/docs/user-manual/#omeka-s-user-manual" target ="Omeka">Omeka S User Manual</a> with commentary about some of the particular customizations that make the CDASH implementation unique. 
+  </p>
+
+  <h3>Recommended Reading for the CDASH Manager</h3>
+  <p>To begin this tour, you should log in to <a href="https://chcomeka.azurewebsites.net/omeka-s/admin" target = "admin">the Admin branch of the Cambridge Historical Commission demo site</a> using your new Administrator user-name. Then you can explore the fundamentals of the Omeka Administrative interface while you are perusing the documentation.
+  <ul>
+    <li><a href="https://omeka.org/s/docs/user-manual/" target = "omeka">Omeka-S Intro Video</a>.
+    <li><a href="https://omeka.org/s/docs/user-manual/admin-dashboard/" target = "omeka">Adminstrative Dashboard</a>.
+    <li><a href="https://omeka.org/s/docs/user-manual/sites/site_users/" target = "omeka">Site Users</a>.
+    </ul>
+
+    <h3>Items, Linked Resources, Media, Item Sets, Item Templates</h3>
+    <p>Much of the magic of CDASH is involved with the design of two main classes of Items. The page on items introduces sme of the basics. 
+    <ul>
+      <li><a href="https://omeka.org/s/docs/user-manual/content/items/" target = "omeka">Items</a>.  
+      </ul>
+     <p>While looking at the Items page, pay particular attention to the section on <a href="https://omeka.org/s/docs/user-manual/content/items/#linked-resources" target = "omeka">Linked Resources</a> is an important mechanism that we use to link Document Items to Place Items. 
+
+
+      <p><a href="https://omeka.org/s/docs/user-manual/content/items/#item-sets" target = "omeka">  Item Sets</a> -- which is one of the ways that we discriminate between and <b>Place Items</b> and <b>Document Items</b>.  ANother section of interest describes 
+
+    <p>Even though most almost all Place and Document Items are initially created through bulk item proedures to be described in a forth-coming page about the CDASH Bulk Item Creation process, it will stil be a good idea to reading the sections on the Itme page that pertain to 
+
+      https://omeka.org/s/docs/user-manual/content/items/#add-an-item
+      <a href="https://omeka.org/s/docs/user-manual/content/items/#add-an-item" target="omeka">Adding an Item</a> and 
+      
+      <a href="https://omeka.org/s/docs/user-manual/content/items/#edit-an-item" target="omeka">Editing an Item</a>
+      
+     <p>It is also useful to understand how <a a href="https://omeka.org/s/docs/user-manual/content/items/#add-an-item" targt="omeka">Media are relate to Items</a>
+
+      <h3>Depencency of Document Items on Place Items and of Media on Document Items</h3>
+      <p>It is useful to think of the CDASH collection as a hierarchy of dependencies.  Each Document Item is dependent on a Place Item. The only way that documents are discoverable on the map is when the document item in question is related to a Place Item. 
+      <p>
+        Currently, Place Items do not have media.  lthough this could change, if for example, Eric wanted to choose a specific image to be the thumbnail image for the place page pertaining to a particular building. 
+      <p>For now, all media are related to Document items.  if a document item is deleted fomr CDASH, its media are also deleted. 
+      <P>
+      <h3>A quick Note on Backups and Recoverability</h3>
+      <p>Speaking of accidentally deleting media form CDASH and other accidental catastrophes.  Future pages in this documentation will discuss the way that the CDASH Manager and CDASH Owner can make sure that accidental data losses like this can be recovered.
+
+
+<h2>Resource Templates and Vocabularies</h2>
+<p>You may have noticed in the section on creating items, that one of the most critical properties of each item is the <a href="https://omeka.org/s/docs/user-manual/content/resource-template/" target = "omeka">Resource Template</a>  A fair amout of work has gone into defining the Resource Templates for Place and Document Items. These templates may be modified, but this should always be done with care. 
+</p>Backups of the resource templates are stored in the <b>CDASH Persist/Vocabularies</b> folder (link forthcoming.)
+
+<h3>Vocabularies</h3>
+<p>Most CDASH vocabularies are defined with reference to the general -purpose metadata standard <b>Dublin Core (DCMI)</b> DCMI provides the most common descriptive elements for documents, including Title, Attribution and so on. 
+<h3>Dublin Core Identifier</h3>
+One of the most critical item attributes is the Dublin Core Identifier.  It is absolutely fundamental that each CDASH item should have a DC Identifier that is completely unique.  The way we achive this for places is by concatenating the "cdp-" with the <b>CDASH Place Name</b>.  The unique Identifier for CDASH Documents is the concatenation of the following sub-strings:
+<ul>
+  <li>Box Identifier.  e.g. cdb_09
+  <li>Folder Identifier e.g. f13 (unique within a box)
+  <li>Document Identifier = 
+     <ul>
+      <li>"d" for document
+      <li>Document Index Number e.g. 0012 (unique per folder) 
+      <li>Document Type Code e.g. AM
+      </ul>
+    </ul>
+    <p>An example of a complete Document ID: <b>cdb_Box09_f9_d0039VE</b>
+      
+  <h3>Custom CDASH Vocabularies</h3>
+  <p>We have defined several special CDASH metadata terms to cover concepts not coverd by the DCMI.  You can find these in the <b>CDASH Terms</b> vocabulary. 
+  <p>If you need to edit these, you will find the vocabulary file in the <b>CDASH Persist/Vocabularies</b> folder (link forthcoming.)
+
+  <h2>CDASH Sites</h2> 
+  <p>So far we have been exploring CDASH from the Administrator's interface.  But users and also many page editing tasks may be taken care of from the prettier user interface provided through the custom CDASH Theme.  Themes provide the styling and structure that make CDASH unique.
+  <h3>Multiple potential Sites</h3>
+  <p>Note that the admin interface that we have been exploring is for the  <b>Cambridge Historical Commission</b>.  Within this ioveral Omeka-S facility, the CHC could have multiple <a href="https://omeka.org/s/docs/user-manual/sites/" target="omeka">Omeka-S <B>Sites</b></a> which have different presentation styles, resource templates and item-relational architectures.
+  <p>
+    For now, the only site we have defined is CDASH, but it is useful to keep in mind that this same Omeka-S Facility could also host other sites designed for other collections.
+
+  <h3>Launching the CDASH Phoenix site from the Admin interface<h3>
+  <p>Currently, the active CDASH site is named <b>CDASH Phoenix</b>.
+  For fun, lets go to the <b>Sites</b> menu on the left-hand side of the admin interface and explore some of the basic site properies. 
+  <p>Click the little link-out button to the right of the CDASH Phoenix
+title to open anothe browser tab that brings you to the pretty CDASH interface. 
+<p>Find your way to an item.  Notice that while you are logged in as adminstrator, you have a special tool bar at the bottom of the item show page, which wil allow you to edit items. 
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
