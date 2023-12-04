@@ -37,20 +37,29 @@ let index_htm = `
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
     </ul -->
 </ul>
-<h3>Cataloger Viewpoint</h3>
+<h3>Contributor / Manager Viewpoint</h3>
 <ul class="treeview">
-   <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>
-   <ul class="verses">
-   <li><a href="../schema/index.htm#building_files">Building Files Collection</a>
-   <li><a href="../schema/index.htm#Scanning">Scanning, Rough Cataloging and Geocoding</a>
-   <li><a href="../schema/index.htm#items">Omeka Items</a>
-   <li><a href="../schema/index.htm#docitems">CDASH Document Items</a>
-   <li><a href="../schema/index.htm#placeitems">CDASH Place Items</a>
-   <li><a href="../schema/index.htm#docplace">Document Items are Related to Place Items</a>
-     <li><a href="../schema/index.htm#editing">Automating and Enriching the Collection</a>
-   <li><a href="../schema/index.htm#editing">Creating and Editing CDASH Items</a>
-   <li><a href="../schema/index.htm#resources">CDASH Vocabulary Developer Resources</a>
-   </ul>
+  <li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
+    <ul class="verses">
+      <li><a href="../fundamentals/index.htm#reading">Recommended Reading for the CDASH Manager</a>
+      <li><a href="../fundamentals/index.htm#items">Items</a>
+      <li><a href="../fundamentals/index.htm#templates">Resource Templates and Vocabularies</a>
+      <li><a href="../fundamentals/index.htm#vocabularies">Vocabularies</a>
+      <li><a href="../fundamentals/index.htm#sites">Omeka Sites (like CDASH)</a>
+      <li><a href="../fundamentals/index.htm#sites">Skill Building Exercises</a>
+    </ul>
+    <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>
+    <ul class="verses">
+      <li><a href="../schema/index.htm#building_files">Building Files Collection</a>
+      <li><a href="../schema/index.htm#Scanning">Scanning, Rough Cataloging and Geocoding</a>
+      <li><a href="../schema/index.htm#items">Omeka Items</a>
+      <li><a href="../schema/index.htm#docitems">CDASH Document Items</a>
+      <li><a href="../schema/index.htm#placeitems">CDASH Place Items</a>
+      <li><a href="../schema/index.htm#docplace">Document Items are Related to Place Items</a>
+        <li><a href="../schema/index.htm#editing">Automating and Enriching the Collection</a>
+      <li><a href="../schema/index.htm#editing">Creating and Editing CDASH Items</a>
+      <li><a href="../schema/index.htm#resources">CDASH Vocabulary Developer Resources</a>
+    </ul>
  
  
 

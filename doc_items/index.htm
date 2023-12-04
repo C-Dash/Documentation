@@ -109,7 +109,20 @@
       </tr>
 
       <tr><td><b>CDASH Document Identifier</b><br>text, Required</td>
-        <td>This value is normally assigned by the CDASH Doucument Item Uploader. If you need to make one by hand, make sure it is unique.  Consisting of: The name of the item's accession batch folder, an under-score and the index number for the item. </td>
+        <td>This value is normally assigned by the CDASH Doucument Item Uploader. If you need to make one by hand, make sure it is unique.  Consisting of:  the concatenation of the following sub-strings:
+          <ul>
+            <li>Box Identifier.  e.g. cdb_09
+            <li>Folder Identifier e.g. f13 (unique within a box)
+            <li>Document Identifier = 
+               <ul>
+                <li>"d" for document
+                <li>Document Index Number e.g. 0012 (unique per folder) 
+                <li>Document Type Code e.g. AM
+                </ul>
+              </ul>
+              <p>An example of a complete Document ID: <b>cdb_Box09_f9_d0039VE</b>
+
+        </td>
       </tr>
 
       <tr><td><b>Street Sort Key</b><br>text, Required, Private</td>

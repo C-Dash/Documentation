@@ -127,7 +127,7 @@
           <br>This value is normally assigned by the CDASH Doucument Item Uploader.   </td>
       </tr>
       <tr><td><b>CDASH Place Identifier</b><br>text, Required</td>
-        <td>Create a place ID begining with "CDL_" then the unique address name of that place.  Must be unique. </td>
+        <td>Create a place ID begining with "cdp_" then the unique address name of that place.  All spaces are replaced with underscores.  Example: "cdp_77_Massachusetts_Ave" or "cdp_Edward_Richardson_House". Must be unique. </td>
       </tr>
       <tr><td><b>Collection</b><br>text</td>
         <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History </td>
@@ -145,19 +145,47 @@
 <p>Each CDASH Place is assigned to one place type.  At the bulk cataloging stage these are all plain street addresses.  Later in the data enrichment phase. Historical Commission staff may create new place items or correct or enhance existing items to better reflect the subject matter of the related documents.  For this effort, it is necessary to try to cover at least 95% of the possible place -types with controlled vocabulary pick-lists.
 
 <ul>
-<li>  Address
-<li>  Building
-<li style="color:red">  Road  (Street Scene? or see below.)
-<li style="color:red">  Squares (Streets and Squares?)
-<li>  Natural Feature
-<li>  Park 
-<li style="color:red">  Monument (Considering something more general like “small-scale features.”)
-<li>  Bridge
-<li>  Canal
+  <li><b>Address: </b>
+  <li><b>Building: </b>
+  <li><b>Streets and Squares: </b>These places refer to stretches of streets and squares.  Their spots are located in rights-of-way.  When a neighborhood or survey district boundary is nearby, try to put the spot in the most appropriate district. 
+  <li><b>Bridge: </b>
+  <li><b>Object: </b> This category will include but is not limited to:
+    <ul>
+    <li>monuments
+      <li>benches
+      <li>flagpoles
+      <li>fences
+      <li>signs
+      <li>public art
+      <li>water fountains
+    </ul>
+  <li><b>Open Space: </b> broad category with future option to parse into subgroups (see below). Examples: Charles River Reservation, Fresh Pond, Fresh Pond Golf Course, and the Harvard Science Center Plaza. This category will include but is not limited to some of the items below. As we handle the survey files, it will be useful for us all to observe and think about items that may fall into this category and keep in mind possible subcategories, which will include:
+    <ul>
+      <li>bodies of water (term still TBD)
+      <li>cemeteries
+      <li>parks
+    </ul>
+
 </ul>
 
-<h3 id="neighborhoods">CHC Neighborhoods</h3>
-<p style="color:red"> Lets discuss several questions about these.
+<h3 id="neighborhoods">CDD Neighborhoods</h3>
+<p>This list comes from the Community Development Department Neighborhoods layer.
+  <ul>
+    <li>East Cambridge
+    <li>MIT
+    <li>Wellington-Harrington
+    <li>The Port
+    <li>Cambridgeport
+    <li>Mid-Cambridge
+    <li>Riverside
+    <li>Baldwin (Agassiz)
+    <li>Neighborhood Nine
+    <li>West Cambridge
+    <li>North Cambridge
+    <li>Cambridge Highlands
+    <li>Strawberry Hill
+  </ul>
+
 <h3>CHC Survey Areas</h3>
 <ul>
   <li>East Cambridge
@@ -196,7 +224,7 @@
       <li>Education
     <li>Garage
     <li>Stable/Carriage house
-    <li>Shed/Out-building
+    <li>Shed/Out-Building
     <li>Gas Station/Service Station
     <li>Recreational
     <li>Utilities
@@ -204,7 +232,7 @@
     
     </ul>
 
-  <h3 id="style">Buildng Style</h3>
+  <h3 id="style">Building Style</h3>
   <ul>
 <li>First Period/Post-Medieval English
 <li>Georgian
