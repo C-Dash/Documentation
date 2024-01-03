@@ -86,7 +86,7 @@ let index_htm = `
 
 <h3>Developer Viewpoint</h3>
 <ul class="treeview">
-<li class="chapter"><a href="../docker/index.htm">Development Set-Up</a></li>
+<li class="chapter"><a href="../docker/index.htm">Application Development and Production Set-Up</a></li>
 <ul class="verses">
   <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
   <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
@@ -103,6 +103,9 @@ let index_htm = `
     <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
     <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
   </ul -->
+<br>
+ <hr>
+ <br> 
 <li class="chapter"><a href="../template/index.htm">Documentation Template / Style Guide</a></li>
     <ul class="verses">
     <li><a href="../template/index.htm#css">Basic Styling</a>

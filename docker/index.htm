@@ -3,7 +3,7 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>C-Dash Development Installation</title>
+    <title>C-Dash Application Development and Production</title>
     <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
     <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
     <meta name="author" content="Paul B. Cote">
@@ -37,7 +37,7 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Local Development Set-Up</h1>
+  <h1 class="title">C-Dash Application Development and Production</h1>
   <p>The deliverables for mthe CDASH project include a continerized application that can be deployed on a web services provider like Amazon or Azure. The same container architecture can us used to install a complete instance of CDASH on a local computer for development purposes. 
 
   <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
@@ -49,7 +49,8 @@
   <h2 id="containers">CDASH Is a Contianerized Web Application</h2> 
   <p> One of the recent (in dog years) miracles of cloud computing is the <b>Containerization</b> of web applications. A container in this sense is similar to what we used to call a "server."  Whereas servers used to be actual computers, they now may be implemented as collections of code that act like a server. 
   <p>
-  Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces and a command prompt accessible through our browser, with all of the back-end code accessible to our favorite text editor.  And all of this will run on whatever computer we want such as our work-a-day laptop or desktop mac or PC. 
+  Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces and a command prompt accessible through our browser, with all of the back-end code accessible to our favorite text editor.  And all of this will run on whatever computer we want.  We can run the container on a desktop or laptop computer -- for experimenting with changes.  When we are happy with the way it works we can deploy the tested container to the cloud (in our case the city's cloud host, Azure.)
+   
 
   <h3>Easy to Set-Up Development Versioning</h3> 
   <p>
@@ -61,7 +62,54 @@
 <p> You can have all of the resources that make up the C-Dash application at the <a href="https://github.com/c-dash" target="github">C-DASH GitHub repository</a>, <b>pbcGIS-cdash-dev</b>.  We will describe it more detail later.  For now, download the whole repository to your computer, install Docker and then run these commands:
 
   <h3>Big Docker Ideas and Commands</h3>
-<p>It is really a triumph of the free and open source culture that all of the multitudes of programs that are necessarry tocreate and share web applications is available over the internet for free. Furthermore that all of this code is available so sytematically that complex applications can be snapped together like legos into amazing teams of networked services that actually work together.  
+<p>Web applications, like CDASH are often described as a <b>Stack</b> of code.  The stack idea is helpful for understanding CDASH as a sort of pyramid of very common tools with some particular mofications near the top that define the particular features that are unique to CDASH. 
+<h3>The CDASH Stack</h3>
+<ol>
+  <li>Host (Local or Cloud)
+  <li>Container System (Docker)
+  <li>Operating System (linux) 
+  <li>Web Server(Apache)
+  <li>Web Development Framework (PHP)
+  <li>Database Server (MariaDB)
+  <li>Asset / Content Management Application (Omeka-S with additional Modules)
+  <li>CDASH Customizations
+</ol>
+
+<p>Every element of this stack is made of commodity free software that is reliable and has its own documentation.  The CDASH Developer is assumed to be able to figure out all of those pieces. This documentation is going to point out the CDASH Customizations as a crib-note for the developer.  This will also be useful information for the <b>CDASH Administrator and Owner</b> roles, since these customizations are among the CDASH assets that, if lost, could mean the death of the project.
+<p>
+<h2>Owner and Administrator Viewpoint:  CDASH Project Assets</h2>
+<p>CDASH assets are files that are necessary to build or re-build the CDASH project.  At first you can think of the initial state of CDASH with no items as an web server and empty <b>Omeka Instance</b>  with the CDASH customizations applied.  It is important to know that an Omeka Instance is made up of files and also as a schema of tables that are stored in the <b>MariaDB database server</b>.  The Omeka documentation does not talk much about the database server, but it is important for the CDASH Administrator to be aware of this fundamental aspect of this essential aspect of how information is stored, and --hopefully-- restored in the event of losses due to hardware issues or administrative mishaps. 
+
+  <figure class="middle"> 
+  <img src="images/omeka_in_azure.jpg">
+    <figcaption>Fig Middle Caption</figcaption>
+    </figure>
+
+  <p>&lt; Diagram: Omeka / Persistent Files / Mariadb
+<h2>The CDASH Tablespace in MariaDB</h2>    
+<p>It is useful to think of the database as a very important aspect of Omeka's mmemory. When you launch a brand new, empty instance of Omeka, the Omeka tablespace in the MariaDB can be thought of as Empty.  The minute you start to configure Omeka, adding a name and adminstrators and stuff.  All of these changes are stores n the database schema. If you then want to upgrade or re-install Omeka, you can either clear out the Omeka tablespace in MariaDB to start from scratch, or point to the existing table schema which will allow you to pick up where you left off.   This aspect of the Omeka-S database is useful to know because having a back-up of it can be really useful in case someone makes a big mistake -- it can sometimes be fixed by restoring a backup of one or more tables.  
+<h2>CDASH_Offline FIles</h2>
+<p>The CHC_Offline folder, is an important collection of resources that provide information about the configuration of the container host.  Including
+  <ul>
+    <li>Configuration information for the Azure host including essential information for restarting, troubleshooting backing up and restoring the container with CDASH customizations and assets.  
+    <li>The Production Docker configuration and related resources
+    
+    <li>Custom CDASH vocabulary export/import files
+    <li>MariaDB backup files  
+    </ul>
+<h2>CDASH Persistent File System</h2>
+<p>A bare-bones docker container creates a linux server with a file-system that is ready-to-go.  
+
+  
+  
+  As Items are added, they consist entirely of data stored in the Omeka databse schema.  Media consist of Files that stored in the Omeka Files directory   
+
+
+
+
+  
+  
+  Furthermore that people have figured out patterns that allow complex applications to be devised by snapping a lot if individual programs together like legos into amazing teams of networked services that actually work together.  
 <p>
   Using your computer's command shell, get yourself into the cdash-docker-dev-x.x.x  folder and run:
 </p>
