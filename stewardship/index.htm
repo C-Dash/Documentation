@@ -3,9 +3,9 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Stewardship of Digital Resources</title>
-    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
-    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <title>Governanace and Stewardship of Digital Resources</title>
+    <meta name="description" content="Roles and responsibilities for protecting assets in the cloud-based archive ">
+    <meta name="keywords" content="Governance, Roles, Digital asset management.">
     <meta name="author" content="Paul B. Cote">
     
 <!-- don't edit between here and the Article div.  -->
@@ -37,20 +37,77 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Stewardship of Digital Resources</h1>
-  <p>This page describes the assets associated with the CDASH project and the concerns regarding their long-term preservation.  Assets involve custom code, hundreds of thousands of scanned historical documents, and descriptive information about each of those documents.  These assets have been developed at great expense over many years.  We hope that these assets will remain intact indefinitely as files along with their catalog and organization that makes them discoverable.  To that end, it is useful to describe the nature of the assets and our expectations regarding routine storage, as well as the predictable ways that the assets and their organization may become lost, corrupt, recovered or unrecoverable. 
-  <p>Responsibility for the on-going stewardship of the collection rests with individual municipal employees.  This document identifies the roles of the key positions involved.  
+  <h1 class="title">Governance and Stewardship of Digital Resources</h1>
+  <p>This page describes the assets associated with the Cambridge Historical Commission digital archives assembled and managed in a cloud-based installation of Omeka-S. There will be a large amount of time and effort involved in the assembly of assets in this system -- including code, digital documents and their metadata.  There are many potential things that can go wrong that might lead to the loss or degradation of some or all of these assets. Protecting the archive involves having responsible parties being aware of their roles in understanding what the assets are; how the assets are backed up and restored when necessary, and following a routine of checking and reporting on the health of the system on a regular basis.  
+    
 
-  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <!-- h3>Topic Index</h3 -->  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
   <ul class="verses">
-    <li><a href="../template/index.htm#docs">CDASH Documents and Catalog Information</a>
-    <li><a href="../template/index.htm#code">CDASH Code Base</a>
+    <li><a href="../template/index.htm#assets">CDASH Assets Summary</a>
     <li><a href="../template/index.htm#hazards">Predictable Hazards</a>
-    <li><a href="../template/index.htm#roles">Roles and Responsibilities</a>
+    <li><a href="../template/index.htm#roles">Stewardship Roles and Responsibilities</a>
     <li><a href="../template/index.htm#tabtargets">IT Service Agreement</a>
     </ul>
-    <h2 id="assets">CDASH Assets</h2>
+    
+  <h2 id="assets">CHC Omeka Assets</h2>
+  <p>For this discussion of governance, we can think of assets as digital files that would be difficult and costly to replace.   
+    A detailed view of the assets involved with the CHC Omeka installation is provided in a dedicated page outlining the <a href="../assets/index.htm">CHC Omeka Assets</a>.  To summarize briefly, they concict of the following:
+    <ul>
+      <li>Customized code and configuration knowledge
+      <li>Cumulative Administrative Information such as usernames and passwords, page content and other modifications to the Omeka site.  
+      <li>Digital Documents and Metadata
+    </ul>
+  <h2 id="hazards">Predictable Hazards</h2>
+  <p>A plan and governance system set up to protect assets may benefit from setting up systems and procedures for preventing or for recovering from predictable hazards that may bring about the loss or degradation of assets. 
+    <ul>
+      <li>Hardware failure, locally or on the cloud host. 
+      <li>Cloud resources being de-commissioned due to accidents or misunderstandings.
+      <li>Personnel churn of CHC employees or consultants.
+      <li>Accidental deletion of files and/or data.
+      <li>Obsolescence of Omeka and/or its dependencies requiring planned or unplanned migration of documents and metadata to another asset management system. 
+      </ul>
+
+<h1 id="roles">Roles and Responsibilities</h1>
+<p>The following is a draft sketch of a set of governance roles responsibilities and relationships and procedures that may provide a high degree of protection for the CHC's investments in digital archives. 
+
+<h2>CHC Omeka Owner</h2>
+<p>Most likely this is the Director of the CHC.  
+<ul>
+  <li>Is responsible for the long term viability of the Omeka installation and all associated assets.
+   <li>Makes and maintains agreements with the IT department. 
+   <li>Hires the CHC Omeka Administrator and is part of the team that manages the CHC Omeka Developer/Consultant.
+   <li>Receives weekly reports on the hhealth of the CHC Omeka INstallation form the CHC Omeka Adminstrator. 
+  </ul>
+
+<h2>Cambridge Cloud Owner / Administrator</h2>
+<p>Most likely this is the director of the Cambridge IT department and their designated cloud administrator.
+  <uL>
+    <li>Pays monthly Azure bills.
+    <li>Informs CHC Owner and Administrator of any issues that may be of interest regarding the cloud host. 
+    <li>Holds full rights to commission and delegate Azure resources
+    <li>Evaluates and advises on system design.
+    <li>Keeps a copy of the basic CHC Omeka Architecture and Recovery memo on-file 
+    <li>in case of the unexpected need to bring on a new CHC Omeka Developer/Consultant, can assist with evaluating and on-boarding candidates.
+  </ul>
+
+  <h2>CHC Omeka Developer / Consultant</h2>
+  <ul>
+    <li>Designs, develops, documents installs and provides training for the applications related to the CHC Omeka Archive
+    </ul>
+  <p>In the event that the Omeka Developer should need to be replaced, a consultant who has experience with common php/linux applications such as wordpress should be able to figure out how this system works from the documentation. 
   
+    <h2>CHC Omeka Administrator</h2>
+    <ul>
+      <li>Creates new digital documents with metadata and integrates these into the Omeka archive
+      <li>Works with staff to facilitate the use and adjustment of archived resources
+        <li>Weekly checks the integrity of the collection and alerts the Developer/Consultant of any problems or questions in a timely mannere (within a week)  
+          <li>Reports on archive integrity to CHC Omeka Owner every week. 
+      <li>Maintains local copies of the CHC-Offline files.
+      <li>Evaluates system documentation to assure that the system is transferrable to a new Developer Consultant if needed.
+      </ul>
+
+
+
 
   </div> <!-- Closes #article div -->
   <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 

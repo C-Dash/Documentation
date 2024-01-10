@@ -36,7 +36,27 @@ let index_htm = `
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
     </ul -->
-</ul>
+
+    <li class="chapter"><a href="../stewardship/index.htm">Governance and Stewardship Roles</a></li>
+    <ul class="verses">
+    <li><a href="../template/index.htm#assets">CDASH Assets Summary</a>
+    <li><a href="../template/index.htm#hazards">Predictable Hazards</a>
+    <li><a href="../template/index.htm#roles">Stewardship Roles and Responsibilities</a>
+    <li><a href="../template/index.htm#tabtargets">IT Service Agreement</a>
+    </ul>
+
+    <li class="chapter"><a href="../assets/index.htm">CHC Omeka Assets</a></li>
+    <ul class="verses">
+    <li><a href="../assets/index.htm#containers">Containerized Web Application</a>
+    <li><a href="../assets/index.htm#stack">The CHC Omeka Application Stack</a>
+    <li><a href="../assets/index.htm#offline">Off-Line Files</a>
+      <li><a href="../assets/index.htm#data">MySQL Data</a>
+    <li><a href="../assets/index.htm#persist">Persistent Application Files</a>
+      <li><a href="../assets/index.htm#scans">Scan Batches</a>
+    </ul>
+
+
+  </ul>
 <h3>Contributor / Manager Viewpoint</h3>
 <ul class="treeview">
   <li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
