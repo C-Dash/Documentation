@@ -39,10 +39,10 @@ let index_htm = `
 
     <li class="chapter"><a href="../stewardship/index.htm">Governance and Stewardship Roles</a></li>
     <ul class="verses">
-    <li><a href="../template/index.htm#assets">CDASH Assets Summary</a>
-    <li><a href="../template/index.htm#hazards">Predictable Hazards</a>
-    <li><a href="../template/index.htm#roles">Stewardship Roles and Responsibilities</a>
-    <li><a href="../template/index.htm#tabtargets">IT Service Agreement</a>
+    <li><a href="../stewardship/index.htm#assets">CDASH Assets Summary</a>
+    <li><a href="../stewardship/index.htm#hazards">Predictable Hazards</a>
+    <li><a href="../stewardship/index.htm#roles">Stewardship Roles and Responsibilities</a>
+    <li><a href="../stewardship/index.htm#tabtargets">IT Service Agreement</a>
     </ul>
 
     <li class="chapter"><a href="../assets/index.htm">CHC Omeka Assets</a></li>
@@ -112,6 +112,20 @@ let index_htm = `
   <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
 </ul>
 
+<li class="chapter"><a href="../audit_report/index.htm">Culture of Preparedness and Accountability</a></li>
+  <ul class="verses">
+    <li><a href="../audit_report/index.htm#treasurer">Omeka Administrator is the Treasurer of Irreplaceable Information Assets</a>
+    <li><a href="../audit_report/index.htm#audits">The Importance of Frequent Audits</a>
+    <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
+    <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
+    <li><a href="../audit_report/index.htm#level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</a>
+    <li><a href="../audit_report/index.htm#level2">Preparedness Level 2: Check Basic Functionality</a>
+    <li><a href="../audit_report/index.htm#level3">Preparedness Level 3: Count your Chickens </a>
+    <li><a href="../audit_report/index.htm#giveashit">The Critical Importance of Giving a Shit</a>
+    <li><a href="../audit_report/index.htm#to-to">To-Do: Automated Audit Dashboard</a>
+    </ul>
+
+
 <li class="chapter"><a href="../azure_overview/index.htm">CHC Omeka in Azure Overview, Integrity Check, and Restoration</a></li>
   <ul class="verses">
     <li><a href="../azure_overview/index.htm#omeka">The CHC's Omeka Repository in Azure</a>
@@ -125,18 +139,6 @@ let index_htm = `
     <li><a href="../azure_overview/index.htm#recovery">Recovering a Past State of CDASH</a>
     </ul>
 
-<li class="chapter"><a href="../audit_report/index.htm">Archival Culture of Preparedness and Accountability</a></li>
-  <ul class="verses">
-    <li><a href="../audit_report/index.htm#treasurer">Omeka Administrator is the Treasurer of Irreplaceable Information Assets</a>
-    <li><a href="../audit_report/index.htm#audits">The Importance of Frequent Audits</a>
-    <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
-    <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
-    <li><a href="../audit_report/index.htm#level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</a>
-    <li><a href="../audit_report/index.htm#level2">Preparedness Level 2: Check Basic Functionality</a>
-    <li><a href="../audit_report/index.htm#level3">Preparedness Level 3: Count your Chickens </a>
-    <li><a href="../audit_report/index.htm#giveashit">The Critical Importance of Giving a Shit</a>
-    <li><a href="../audit_report/index.htm#to-to">To-Do: Automated Audit Dashboard</a>
-    </ul>
 
 
 <li class="chapter"><a href="../theme_layout/index.htm">CDASH Layout</a></li>
