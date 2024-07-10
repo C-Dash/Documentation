@@ -61,24 +61,25 @@
   
 
 
-<h2>Set up volume for persistent files</h2>
-<p>Containerized applications are designed to re-build themselves from an image periodically.  In our installation, we want to be able to save certain resources which are normally installed in the image file-system.  To accomodate this, we create a chc-persist file system, that will be the home of three of the folders that arenormally installed with Omeka-S, namely. 
+<h2>Set up volume for persistent files and scans</h2>
+<p>Containerized applications are designed to re-build themselves from an image periodically.  In our installation, we want to be able to save certain resources which are normally installed in the image file-system.  To accomodate this, we create a <b>persist</b> file system, that will be the home of three of the folders that are normally installed with Omeka-S, namely. 
+<p><b>Persist</b></p>
   <ul>
     <li><b>files</b>: which holds the media thumbnails 
     <li><b>config</b>: Omeka config files
     <li><b>theme</b>: A default omeka thema and our CDASH custom theme.
   </ul> 
-<p>Depending on whether you are preparing a development server on your desktop or a production server on a cloud host, you will have different mechanisms for setting up a your persistent files. You can see hints as to how these will be set up in the docker files for the dev or production set up.
-<p>It is necessarry for you to be able to edit the files in config and themes, either in place in your dev computer or to be able to upload updated files to your host as they are modified.
-<p>Inspect the following files to see how they can be modified to alter the properties of your installation. 
-<ul>
-  <li><b>config/local.config.php</b> Notice how our special version has some log code options for development or production which you can comment out as appropriate.
-  <li><b>database.ini</b> regulates connection information for the MySQL database and the specific tablespace to be used for the Omeka installation. 
-  </ul>
+  <p><b>Scans</b></p>
+    <li>Home to batches of scans and the CSV files and import arguments used to import them into Omeka items. Scan batches  be described later on another page.
+    </ul> 
+
+<p>Depending on whether you are preparing a development server on your desktop or a production server on a cloud host, you will have different mechanisms for setting up bind mounts . You can see hints as to how these will be set up in the docker files for the dev or production set up.  For the development image, you can see how this is handled in <b>cdash-dev-docker/docker-compose.yml</b>.  In production, these mounted volumes are prepared as storage containers which are mounted to the web app through the azure portal. 
+
+<p>One difference between the dev and the production containers is that the persist volume for dev contains the modules folder so that the develop[er can fiddle with modules.  For performance reasons, omeka modules are installed in the image itself. 
 
 
 <h2>Set Up Docker Resources</h2>
-<p>You are going to need a docker named volume on your docker host machine to hold your CHCPersist filesystem. Set this up as a volume in your DockerDesktop client.   You can see how this connects to the docker container by looking in the Docker-Compose.yml file. 
+
 <p>Download the latest version of Omeka-S and unzip it in a temp folder so that we can take some resources out of it. Grab the contents of the Config folder and the Themes folder and Files.  
 
   Using your computer's command shell, get yourself into the cdash-docker-dev-x.x.x  folder and run:
@@ -199,13 +200,26 @@ If the database designated in your config/database.ini file was left from the pr
 <h3>Install CDASH Resource Templates</h3>
 <p>The Omeka Resource Templates are imported and exported through the <b>omeka-s/admin/resource-template</b> window.  Whenever you make shenges to resource templates, they should be exported to the folder, <b>chc-offline/vocabularies/resource_templates</b>.  Depending on whether you are working in Dev or Prod.  You can find the most recent export files for Places and Documents there, and import them. 
 
+  <h2>Set up Value Suggest</h2>
+  <p>Add value suggest to Creator, and Subject, Building Styles, Buildnig Materiaal
+  
+  <h2>Set up CDASH Site Metadata Browse</h2>
+  <p>IsPartOf (folder) 
+  
+  <h2>Set Up Vocabularies (pick lists)</h2>
+  
+
 <h2>Create Item Groups for Places and Documents</h2>
 <p>CDASH defines two basic types of Omeka items: <b>CDASH Places</b>, and <b>CDASH Documents</b> Before you can start importing items you need to set up these item sets using the admin/item-sets dialog.  The key thing to get right here is that the Title property for each item set should be CDASH Places and CDASH Documents, respectively.
 
 <h2>Import Items and Media</h2>
 <p>ANother page is going to cover how to import items and media.
+<p>Check all of the item / schema features and relationships: item-Sets, multi-value subjects and uses, etc.
 
-<h2>Add the CDASH Site and make it Your Default Site
+
+<hr>
+<h1>Create the CDASH Site.
+  <h2>Add the CDASH Site and make it Your Default Site
 <p>Use the cdash-phoenix theme.
 
 <h3>Define Resource Query for CDASH</h3>
@@ -214,17 +228,48 @@ If the database designated in your config/database.ini file was left from the pr
 <h3>Configure Resource Pages for CDASH Theme</h3>
 <p>Values, Media Embeds, Linked Resources, Mapping.</p> Eveb though the maps do not appear on item pages because of a theme modification, including the Mapping block here adds coordinate infomration to each item page, which uis necessary for highlighting the location in the CDASH Map.
 
-<h2>Set Up the CDASH Search form<h2>
-<p>Describe the queries
 
-<h2>Set up Value Suggest</h2>
-<p>Add value suggest to Creator, and Subject, Building Styles, Buildnig Materiaal
 
-<h2>Set up CDASH Site Metadata Browse</h2>
-<p>IsPartOf (folder) 
+<h2>Check and Troubleshoot CDASH Features
 
-<h2>Set Up Vocabularies (pick lists)</h2>
+  <h3>Turn on your Browser's Developer Tools</h3>
+  <p>The CDASH theme writes useful commentary in the dveloper console.
 
+  <h3>CDASH Spots don't show up on the Map?</h3>
+  <p>Check out cdash/assets/php/placemarkers.php
+
+  <h3>Set Up the CDASH Search form<h3>
+    <p>What is special about the CDASH search functions
+    <p>Check the query in cdash/view/common/search.php
+    <p>This query will ned to be updated manually for each new instance of CDASH. See comments in the code for more detailed instructions. 
+  
+  <h3>Check the Place - Document Information Exchange Function</h3>
+  <p>to be described on the CDASH Manager Tutorial Page
+
+
+
+
+    <hr>
+
+  <h2>Save an Empty CDASH Instance as a Database Dump</h2>
+  <p>Everything we have done in this tutorial so far has created an empty CDASH instance using the latest Omeka-s version. Now we can freeze this as a dump of the Omeka table-space. 
+  <p>Your export options should be as pictured in the screenshot :
+
+    <figure class="middle"> 
+      <img src="./images/adminer_export_empty.jpg">
+        <figcaption>Export options to export all of the tables and data frm MySQL</figcaption>
+        </figure>
+    
+
+
+<p>The <b>Create</b> option is used because we want to keep the option of having more than one database (tablespace) in a given MySQL server.  We will talk more about this in a future section on importing an empty CDASH instance. Name the file <b>cdash_4.0.4.CDASH_Empty_20240126.SQL.gz</b>
+
+
+    <h2>Updating CDASH for newer versions of Omeka-S</h2>
+    <p>Assemble updated modules
+    <p>Prepare new Docker container image.
+
+<h2>Migrate all CDASH Content 
 
 
 

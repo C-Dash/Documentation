@@ -57,7 +57,7 @@ let index_htm = `
 
 
   </ul>
-<h3>Contributor / Manager Viewpoint</h3>
+<h3>Contributor Viewpoint</h3>
 <ul class="treeview">
   <li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
     <ul class="verses">
@@ -104,13 +104,40 @@ let index_htm = `
 </ul>
 
 
-<h3>Developer Viewpoint</h3>
+<h3>Developer / Administrator Viewpoint</h3>
 <ul class="treeview">
 <li class="chapter"><a href="../docker/index.htm">Application Development and Production Set-Up</a></li>
 <ul class="verses">
   <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
   <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
 </ul>
+
+<li class="chapter"><a href="../azure_overview/index.htm">CHC Omeka in Azure Overview, Integrity Check, and Restoration</a></li>
+  <ul class="verses">
+    <li><a href="../azure_overview/index.htm#omeka">The CHC's Omeka Repository in Azure</a>
+    <li><a href="../azure_overview/index.htm#assets">A Dynamic Collection of Information Assets</a>
+    <li><a href="../azure_overview/index.htm#fences">Walking the Fences: Tour the Essential Omeka Components and their Backups in the Azure Portal</a>
+    <li><a href="../azure_overview/index.htm#registry">The Docker Registry and Deployment Images</a>
+    <li><a href="../azure_overview/index.htm#webapp">The CHC Omeka Web Application</a>
+    <li><a href="../azure_overview/index.htm#shares">Azure File Shares</a>
+    <li><a href="../azure_overview/index.htm#mysql">MySQL Database</a>
+    <li><a href="../azure_overview/index.htm#cloneempty">Building an Empty CDASH Instance</a>
+    <li><a href="../azure_overview/index.htm#recovery">Recovering a Past State of CDASH</a>
+    </ul>
+
+<li class="chapter"><a href="../audit_report/index.htm">Archival Culture of Preparedness and Accountability</a></li>
+  <ul class="verses">
+    <li><a href="../audit_report/index.htm#treasurer">Omeka Administrator is the Treasurer of Irreplaceable Information Assets</a>
+    <li><a href="../audit_report/index.htm#audits">The Importance of Frequent Audits</a>
+    <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
+    <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
+    <li><a href="../audit_report/index.htm#level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</a>
+    <li><a href="../audit_report/index.htm#level2">Preparedness Level 2: Check Basic Functionality</a>
+    <li><a href="../audit_report/index.htm#level3">Preparedness Level 3: Count your Chickens </a>
+    <li><a href="../audit_report/index.htm#giveashit">The Critical Importance of Giving a Shit</a>
+    <li><a href="../audit_report/index.htm#to-to">To-Do: Automated Audit Dashboard</a>
+    </ul>
+
 
 <li class="chapter"><a href="../theme_layout/index.htm">CDASH Layout</a></li>
     <ul class="verses">

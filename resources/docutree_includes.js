@@ -32,7 +32,7 @@ let index_htm = `
 </p>  
 <ul class="treeview">
 
-<li class="chapter"><a href="../home/index.htm">EEExtending Omeka</a></li>
+<li class="chapter"><a href="../home/index.htm">Extending Omeka</a></li>
     <ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
       <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
