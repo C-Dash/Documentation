@@ -114,8 +114,7 @@ let index_htm = `
 
 <li class="chapter"><a href="../audit_report/index.htm">Culture of Preparedness and Accountability</a></li>
   <ul class="verses">
-    <li><a href="../audit_report/index.htm#treasurer">Omeka Administrator is the Treasurer of Irreplaceable Information Assets</a>
-    <li><a href="../audit_report/index.htm#audits">The Importance of Frequent Audits</a>
+    <li><a href="../audit_report/index.htm#audits">The Importance of Regular Audits</a>
     <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
     <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
     <li><a href="../audit_report/index.htm#level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</a>
