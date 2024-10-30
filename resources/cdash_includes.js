@@ -70,7 +70,7 @@ let index_htm = `
     </ul>
     <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>
     <ul class="verses">
-      <li><a href="../schema/index.htm#building_files">Building Files Collection</a>
+      <li><a href="../schema/index.htm#digitization">Digitizing and Digesting the Collection</a>
       <li><a href="../schema/index.htm#Scanning">Scanning, Rough Cataloging and Geocoding</a>
       <li><a href="../schema/index.htm#items">Omeka Items</a>
       <li><a href="../schema/index.htm#docitems">CDASH Document Items</a>

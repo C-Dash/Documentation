@@ -51,31 +51,67 @@
     <p>
     The table below outlines each of the properties for the CDASH Document Item and provides guidelines for entering their contents.  For more information on the concept of a CDASH Document Item, and on how to handle Omeka Items, see <a href="../schema/index.htm" target="">CDASH Schema</a>.
     
-
+<h2>Required Properties</h2>
     <table class="dictionary">
-      <tr><th width="20%">Name</th><th width="80%">Description
-      <tr><td><b>Resource Template</b><br>Pull-Down</td>
-      <td>All CDASH Documents use the CDASH Document template.</td>
+      <tr><th width="20%">Name</th><th width="80%">Description</th>
+        <tr><td><b>Resource Template</b><br>Pull-Down</td>
+          <td>All CDASH Places use the <b>CDASH Document</b> template.</td>
+          </tr>
+          <tr><td><b>Class</b><br>Pull-Down</td>
+            <td>All Place Items use Choose <b>Bibliographic Ontology: Document.</b></td>
+          </tr>
+          <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
+            <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a> In the case of Document Items, the exact location of the Place Marker is not important, since it will synced with the PDIX function.  But each document needs to have an initial Place Marker. </td>
+          </tr>
+    
+          <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
+            <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every Document Item should be associated with one and only one folder.   </td>
+          </tr>
+    
+          <tr><td><b>Place Item</b><br>Omeka Item Resource</td>
+            <td>Use the <b>Omeka Resource</b> button and the associated item picker tools to choose the Place Item that will be the parent of the current Document Item.   </td>
+          </tr>
+      <tr><td><b>Document Title</b><br>Text</td>
+        <td>Document Title is composed of the Place Title (dash) Document Type.  If you have a more specific title for a document, use <b>Alternate Title</b>(see below)</td>
       </tr>
-      <tr><td><b>Class</b><br>Pull-Down</td>
-        <td>Choose <b>Text</b> or <b>Image</b>.</td>
-      </tr>
-      <tr><td><b>Title</b><br>Text, Required</td>
-        <td>If the document has a title, enter it here.  Otherwise a default title is constructed from the name of the associated Place and the Document Type.</td>
-      </tr>
-      <tr><td><b>Alternate Title</b><br>Text</td>
-        <td>If the primary title has been re-assigned to the actual title of the document, then the alternate title assumes the previously assigned default title comprised as the associated CDASH Place name with the CDASH document type. </td>
-      </tr>
-      <tr><td><b>CDASH Place</b><br>Omeka Resource</td>
-        <td>Each document Item must be related to at least one CDASH Place Item. These are normally assigned when the item is created through the bulk import procedure.  If additional place references are added, use the <b>Items</b> button to initiate the process of choosing a place item. </td>
-      </tr>
-      <tr><td><b>CDASH Folder</b><br>Text, Required</td>
-        <td>The name of the physical folder in the Building Files where the original hard-copy document is filed.  This value is filled in automatically for items imported through the bulk import process.</td>
-      </tr>
-      <tr><td><b>CDASH Document Type</b><br>Controlled Vocabulary<br>Required</td>
+      <tr><td><b>Document Type</b><br>Pick from list.<br></td>
         <td>Each document Item is assigned a type -- e.g. Interior Image. These types are assigned during the bulk import process or chosen from the list, <a href="#doctypes">CDASH Document Types.</a></td>
       </tr>
-      <tr><td><b>Author, Photographer, Artist. </b><br>Text</td>
+      <tr><td><b>Number of Pages</b><br>Integer</td>
+        <td>This value is useful for assessing the relevance of search results. 
+   </td>
+      </tr>
+      <tr><td><b>Place Item</b><br>Omeka Resource</td>
+        <td>Each document Item must be related one and only one CDASH Place Item. Use the <b>Omeka Resource</b> button to initiate the process of choosing a place item. </td>
+      </tr>
+
+      <tr><td><b>Neighborhood</b><br>Pick From List</td>
+        <td>Each cdash document item is assigned to a CDD Neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The automatic item uploader adds a second value for Neighborhood. <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
+      </tr>
+      
+      <tr><td><b>Research District</b><br>Pick from List</td>
+        <td>Each cdash document item is assigned to a CHC Research District. Pick from the list of CHC neighborhoods. 
+      </tr>
+        <tr><td><b>Street Sort Key</b><br>Text</td>
+          <td>This string is used for sorting items according to their street address.  This key consists of the street name (with "_" for spaces), concatenated with an 8-digit string consisting of the house number left-padded with zeros. The final two characters of the key consists of the two letter abbreviation of the document type. Example: Massachusetts_Ave_00000077
+      </tr>
+      <tr><td><b>Collection</b><br>text</td>
+        <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History</i> </td>
+      </tr>
+      <tr><td><b>Rights</b><br>text</td>
+        <td>If a document has a known copyright status enter it.  Defaults to: <i>Rights status not evaluated.</i> </td>
+      </tr>
+
+
+    </table>
+
+    <h2>Optional Values for Document Items</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">
+        <tr><td><b>Alternate Title</b><br>Text</td>
+          <td>If the document has a title other than the CDASH default title, you can enter it here.  </td>
+        </tr>
+      <td><b>Author, Photographer, Artist. </b><br>Text</td>
         <td>If the credit for the content of the document is known, enter it here.  If the creator is well known, use the buttons provided to choose a name from the Library of Congress Name Authority or the Getty List of Artist Names.  Otherwise, just enter the name. </td>
       </tr>
       <tr><td><b>Creation Date</b><br>Date</td>
@@ -88,55 +124,27 @@
         <td>One or more keywords or phrases that help to categorize documents.  These wil be most useful if they are consistently applied.  Use the buttons provided to search through the <a href="https://authorities.loc.gov/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First" target="outboard">Library of Congress  Subject Headings</a> or <a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="outboard">the Getty Art and Architecture Thesaurus.</a> or pick from <a href="#subjects">a list of list of frequently used CDASH Document Subjects</a>. 
           Even though all of the CDASH documents are concerned with Architecture and Buildings, these subjects are be included in the event that more generalized discovery systems harvest CDASH metadata to refer to items. <p></td>
       </tr>
-      <tr><td><b>Neighborhood</b><br>Text</td>
-        <td>Each cdash document item is assigned to a CHC neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The automatic item uploader adds a second value for Neighborhood. <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
-      </tr>
-      <tr><td><b>Street Address</b><br>Text</td>
-        <td>This is normally the address associated with the CDASH place associated with this document item. Referenced above. </td>
-      </tr>
-      <tr><td><b>MACRIS Inventory Number</b><br>Text, URL</td>
-        <td>When a document or a place is connected with a specific referent of the Massachusetts Cultural Resource Information System,  Use the URI button to set the <b>Label</b> field to be the MACRIS ID, and the <b>URI</b> field to the landing page for the related MACRIS Resource. 
-          <br>After saving, check that the result performs as a clickable link.</td>
-      </tr>
-      <tr><td><b>Collection</b><br>text</td>
-        <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History</i> </td>
-      </tr>
-      <tr><td><b>Rights</b><br>text</td>
-        <td>If a document has a known copyright status enter it.  Defaults to: <i>Rights status not evaluated.</i> </td>
-      </tr>
-      <tr><td><b>Extent</b><br>text</td>
-        <td>The size or duration of the resource.  In many cases this will describe the number of pages or number of media files included in the document.</td>
-      </tr>
+    </table>
 
-      <tr><td><b>CDASH Document Identifier</b><br>text, Required</td>
-        <td>This value is normally assigned by the CDASH Doucument Item Uploader. If you need to make one by hand, make sure it is unique.  Consisting of:  the concatenation of the following sub-strings:
-          <ul>
-            <li>Batch Identifier.  e.g. cdb_230931
-            <li>Folder Identifier e.g. f13 (unique within a box)
-            <li>Document Identifier = 
-               <ul>
-                <li>"d" for document
-                <li>Document Index Number e.g. 0012 (unique per folder) 
-                <li>Document Type Code e.g. AM
-                </ul>
-              </ul>
-              <p>In the first round of item creation from the original boxes packed for the scanning process, the batch ID is the name of the box.  Subsequently, batches of items wil be given a serial number based on the hear and the date as <b>YYMMDD</b>  
-              <p>An example of a complete Document ID: <b>cdb_Box09_f9_d0039VE</b> or <b>cdb_231130_f9_d0039VE</b>
+      <h3>
+        <h2>Deprecated Properties</h2>
+        <p>These properties are created and populated by the bulk import process.  Once the items are created, these are not used. 
+        <table class="dictionary">
+          <tr><th width="20%">Name</th><th width="80%"></tr>
+      <tr><td><b>CDASH Folder</b><br>Text</td>
+        <td>These folder references were used during the bulk import process to generate Omeka item sets.  Use the Item-Sets tab on the Item edit page to manage the association between place items and folders.  See above.
+      </td></tr>
+
+      <tr><td><b>CDASH Document Identifier</b><br>Text</td>
+        <td>This value is used by the CDASH Doucument Item Uploader. It is not necessary to create new identifiers when creating items deom scratch.  
 
         </td>
       </tr>
 
-      <tr><td><b>Street Sort Key</b><br>text, Required, Private</td>
-        <td>This string provides a useful way of sorting items according to their street address.  This key conxists of the "_" delimited street name, concatenated with an 8 digit string consisting of the house number laft-paded with zeros. The final two characters of the key consists of the two letter abbreviation of the document type. Example: Massachusetts_Av_00000077_IE
-          <br>This value is normally assigned by the CDASH Doucument Item Uploader.   </td>
-      </tr>
-
-      <tr><td><b>Item Set</b><br>Omeka Item Set</td>
-        <td>Every document Item should be assigned to the <b>CDASH Document</b> item set.  Normally assigned by the CDASH Item Uploader</i> </td>
-      </tr>
-
     </table>
-  
+
+    <h2>Controlled Vocabularies for Documents</h2>
+    <p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Document Items.  These lists are implemented and managed with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target="omeka">Omeka-S Custom Vocab module. </a> 
 
     <h3 id="defaults">CDASH Document Types and Default Metadata Properties</h3>
     <p>The CDASH Document collection is initialized through a semi-automated rough sort process that resulted in the assignment of scanned images to one of thirteen pre-defined item types.  These are document types that were chosen to comprise a nearly-complete categorization of the types of documents contained in the Building Files collection. 
@@ -154,82 +162,69 @@
     <h2 id="doctypes">CDASH Document Types </h2>
     <table class="dictionary">
 
-      <tr><th width="7%"></th><th width="30%">Type</th><th width="63%">Subject Keywords</th></tr>
+      <tr><th width="10%">Code</th><th width="90%">Type</th></tr>
       <tr>
         <td>AI</td>
         <td>Architectural Inventory Form</td>
-        <td>Survey Forms</td>
       </tr>
 
       <tr>
         <td>RF</td>
         <td>Research Form</td>
-        <td>Research</td>
       </tr>
 
       <tr>
         <td>RN</td>
         <td>Research Notes</td>
-        <td>Research</td>
       </tr>
 
       <tr>
         <td>HS</td>
-        <td>Historical Building Survey</td>
-        <td>Survey Forms</td>
+        <td>Historic American Buildings Survey</td>
       </tr>
 
       <tr>
         <td>SM</td>
         <td>Supplemental Material</td>
-        <td style="color: red">Documents?</td>  
       </tr>
 
       <tr>
         <td>DM</td>
         <td>Demolition Memo</td>
-        <td>Architecture | Buildings | Historical Commission | Business Letter | Correspondence</td>
       </tr>
 
       <tr>
         <td>AM</td>
-        <td>Article or Monograph</td>
         <td>Published Material</td>
       </tr>
 
       <tr>
         <td>VP</td>
         <td>Plan View</td>
-        <td>Plans</td>
       </tr>
 
       <tr>
         <td>VE</td>
         <td>Exterior View</td>
-        <td>Exterior Views</td>
       </tr>
 
       <tr>
         <td>VI</td>
         <td>Interior View</td>
-        <td>Interior Views</td>
       </tr>
 
       <tr>
         <td>VD</td>
         <td>Detail View</td>
-        <td>Detail Views</td>
       </tr>
 
       <tr>
         <td>CS</td>
-        <td>Photo Contact Sheet</td>
-        <td>Photographs</td>
+        <td>Contact Sheet</td>
       </tr>
 
       <tr>
         <td>EP</td>
-        <td>Ephemera</td>
         <td>Ephemera</td>
       </tr>
 

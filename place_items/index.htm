@@ -57,26 +57,64 @@
   <h2>CDASH Place Items: Metadata Properties Dictionary</h2>
     
     <table class="dictionary">
-
+      <h2>Required Place Properties</h2>
       <tr><th width="20%">Name</th><th width="80%">Description
       <tr><td><b>Resource Template</b><br>Pull-Down</td>
-      <td>All CDASH Places use the CDASH Place template.</td>
+      <td>All CDASH Places use the <b>CDASH Place</b> template.</td>
       </tr>
       <tr><td><b>Class</b><br>Pull-Down</td>
-        <td>Choose <b>Location</b>.</td>
+        <td>All Place Items use <b>Dublin Core: Location</b></td>
       </tr>
-      <tr><td><b>Place Name</b><br>Text, Required</td>
-        <td>The name of the place.  In the case of Address type places, this is the address. In the case of a building, monument or park, it might be the name of the thing.</td>
+      <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
+        <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a></td>
       </tr>
-      <tr><td><b>Alternate Name</b><br>Text</td>
-        <td>This property is available for occasions when a place may be known by more than one name.  </td>
+
+      <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
+        <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every place should be associated with at lest one or possibly more folders.   </td>
       </tr>
-      <tr><td><b>CDASH Folder</b><br>Text, Required</td>
-        <td>The name of the physical folder in the Building Files where the original hard-copy document is filed.  This value is filled in automatically for items imported through the bulk import process.</td>
+
+      <tr><td><b>Place Item</b><br>Text</td>
+        <td>The name of the place item.  This shows up as the Title in the item show page, and is the identifying string when choosing a place as a property of a Document item. 
+        <p>In the case of Address type places, uwe the street address or range. In the case of a named place, the name is formed as an Address and the Place Name.  eg: </b>77 Massachusetts Ave - MIT Bldg 7</b>.   </td>
       </tr>
-      <tr><td><b>Place Type</b><br>Controlled Vocabulary<br>Required</td>
-        <td>Each place Item is assigned a type -- e.g. Building, Park, Monument, etc.  During the bulk import most places are of type Address.  The type may be changed for later. To change the type of place, choose a value from the list. <a href="#types">CDASH Place Types.</a></td>
+
+      <tr><td><b>Place Name</b><br>Text</td>
+        <td>In the case of named places, this property carries the base-name of the place - without the pre-pended address.   </td>
       </tr>
+
+      <tr><td><b>Place Type</b><br>Use pick-list.<br></td>
+        <td>Each place Item is assigned a type. Choose one from the pick-list provided.</td>
+      </tr>
+
+      <tr><td><b>Street Address</b><br>Text</td>
+        <td>Examples: 77 Massachusetts Ave, or 12-14 Broadway Terrace.  Make sure that the street name and suffic are spelled thhe same as other places on the same street. </td>
+      </tr>
+      <tr><td><b>Neighborhood</b><br>Text</td>
+        <td>Each cdash document item is assigned to a CHC neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The neighborhood name is disambiguated by the addition of <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
+      </tr>
+
+      <tr><td><b>Research District</b><br>Pick from List</td>
+        <td>Each cdash document item is assigned to a CHC Research District. Pick from the list of CHC neighborhoods. 
+      </tr>
+
+      <tr><td><b>Street Name</b><br>Text</td>
+        <td>The street name portion of the address may be useful for filtering/faceting results. </td>
+      </tr>
+
+      <tr><td><b>Street Sort Key</b><br>Text</td>
+        <td>This string is used for sorting items according to their street address.  This key consists of the street name (with "_" for spaces), concatenated with an 8-digit string consisting of the house number left-padded with zeros. The final two characters of the key consists of the two letter abbreviation of the document type. Example: Massachusetts_Ave_00000077
+   </td>
+      </tr>
+
+
+
+
+
+    </table>
+<h2>Optional Place Properties</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
+
       <tr><td><b>Description</b><br>Text</td>
         <td>A description of the place which might appear as a caption. </td>
       </tr>
@@ -90,13 +128,6 @@
       <tr><td><b>Architect, Developer, Builder </b><br>Text</td>
         <td>The name of the individual(s) or firm(s) that deserve credit for the design or construction of the thing.  You may use Annotations to describe the role played by each.  Hopefully you can find validated spellings for architect names at <a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="outboard">the Getty Art and Architecture Thesaurus.</a>  </td>
       </tr>
-      <tr><td><b>Neighborhood</b><br>Text</td>
-        <td>Each cdash document item is assigned to a CHC neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The neighborhood name is disambiguated by the addition of <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
-      </tr>
-      <tr><td><b>Street Address</b><br>Text</td>
-        <td>This is normally the address associated with the CDASH place associated with this document item. Referenced above. </td>
-      </tr>
-
       <tr><td><b>Appear Date</b><br>Date</td>
         <td>The date when the existence of the thing is first recorded.  It may be the year built, or it may be the date of the first map that records the existence of the thing.  A plain four-digit year is sufficient.  Use annotations to clarify the sources or events associated with this date.</td>
       </tr>
@@ -109,37 +140,42 @@
       <tr><td><b>Special District or Designation/s</b><br>Text, URL</td>
         <td>Enter the name of any onservation or historic district or historical designation that applies to this property. Feel free to use the URI type entries to add hyperlinks to the official descriptive pages.</td>
       </tr>
-      <tr><td><b>MACRIS Inventory Number</b><br>Text, URL</td>
-        <td>When a document or a place is connected with a specific referent of the Massachusetts Cultural Resource Information System,  Use the URI button to set the <b>Label</b> field to be the MACRIS ID, and the <b>URI</b> field to the landing page for the related MACRIS Resource. 
-          <br>After saving, check that the result performs as a clickable link.</td>
-      </tr>
-      <tr><td><b>Assessing Map Lot</b><br>URL</td>
-        <td>Optionally use this field to add a reference to the Assessor's Map-Lot.  References can be found on the CDASH map. </td>
-      </tr>
-      <tr><td><b>GIS Buildng ID</b><br>Text</td>
-        <td>Optionally use this field to add a reference to the GIS Buildng ID for buildings.  References can be found on the CDASH map. </td>
-      </tr>
-      <tr><td><b>Street Name</b><br>Text</td>
-        <td>The street name portion of the address may be useful for filtering/faceting results. </td>
-      </tr>
-      <tr><td><b>Street Sort Key</b><br>text, Required, Private</td>
-        <td>This string provides a useful way of sorting items according to their street address.  This key conxists of the "_" delimited street name, concatenated with an 8 digit string consisting of the house number laft-paded with zeros. The final two characters of the key consists of the two letter abbreviation of the document type. Example: Massachusetts_Av_00000077_IE
-          <br>This value is normally assigned by the CDASH Doucument Item Uploader.   </td>
-      </tr>
-      <tr><td><b>CDASH Place Identifier</b><br>text, Required</td>
-        <td>Create a place ID begining with "cdp_" then the unique address name of that place.  All spaces are replaced with underscores.  Example: "cdp_77_Massachusetts_Ave" or "cdp_Edward_Richardson_House". Must be unique. </td>
+      <td><b>Alternate Name</b><br>Text</td>
+        <td>This property is available for occasions when a place may be known by more than one name.  </td>
       </tr>
       <tr><td><b>Collection</b><br>text</td>
         <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History </td>
       </tr>
-      <tr><td><b>Item Set</b><br>Omeka Item Set</td>
-        <td>In order to appear on the map. each Place item should be assigned to the <b>CDASH Place</b> item set.   </td>
+
+    </table>
+
+    <h2>Deprecated Place Properties</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
+
+      <tr><td><b>MACRIS Inventory Number</b><br>Text, URL</td>
+        <td>When a document or a place is connected with a specific referent of the Massachusetts Cultural Resource Information System,  Use the URI button to set the <b>Label</b> field to be the MACRIS ID, and the <b>URI</b> field to the landing page for the related MACRIS Resource. <a href="https://maps.mhc-macris.net/" target=""macris">Search MACRIS here.</a>
+          <br>After saving, check that the result performs as a clickable link.
+          <br>This field is not recommended since the MACRIS map layer is easier for users and much easier to manage. 
+        </td></tr>
+      <tr><td><b>Assessing Map Lot</b><br>URL</td>
+        <td>Optionally use this field to add a reference to the Assessor's Map-Lot.  References can be found on the CDASH map. 
+          <br>This field is not recommended since the Assessing map layer is easier for users and much easier to manage. 
+
+        </td></tr>
+      <tr><td><b>CDASH Place Identifier</b><br>text</td>
+        <td>The place Identifier property is used during the bulk import process.  When Place items are new, this identifier can be used for posting revisions from the import CSV tables.  When creating place Items from scratch, it is not necessary to create a Place Identifier.  </td>
       </tr>
+      <tr><td><b>CDASH Folder</b><br>Text</td>
+        <td>
+          These folder references were used during the bulk import process to generate Omeka item sets.  Use the Item-Sets tab on the Item edit page to manage the association between place items and folders.  See above.
+      </td></tr>
+
 
     </table>
   
 <h2>Controlled Vocabularies for Places</h2>
-<p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Place Items.
+<p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Place Items.  These lists are implemented and managed with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target="omeka">Omeka-S Custom Vocab module. </a> 
 
 <h3 id="types">Place Types</h3>
 <p>Each CDASH Place is assigned to one place type.  At the bulk cataloging stage these are all plain street addresses.  Later in the data enrichment phase. Historical Commission staff may create new place items or correct or enhance existing items to better reflect the subject matter of the related documents.  For this effort, it is necessary to try to cover at least 95% of the possible place -types with controlled vocabulary pick-lists.
