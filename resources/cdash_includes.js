@@ -83,9 +83,9 @@ let index_htm = `
     </ul>
     -->
    <li class="chapter"><a href="../item_creation/index.htm">Correcting Creating and Enriching CDASH Items</a></li>
-    <ul class="verses">
+    <!-- ul class="verses">
       <li><a href="../fundamentals/index.htm#reading">Recommended Reading for the CDASH Manager</a>
-    </ul>
+    </ul -->
  
 
     <li class="chapter"><a href="../place_items/index.htm">Place Items Data Dictionary</a></li>
