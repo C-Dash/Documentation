@@ -59,7 +59,7 @@ let index_htm = `
   </ul>
 <h3>Contributor Viewpoint</h3>
 <ul class="treeview">
-  <li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
+  <!--li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
     <ul class="verses">
       <li><a href="../fundamentals/index.htm#reading">Recommended Reading for the CDASH Manager</a>
       <li><a href="../fundamentals/index.htm#items">Items</a>
@@ -68,8 +68,9 @@ let index_htm = `
       <li><a href="../fundamentals/index.htm#sites">Omeka Sites (like CDASH)</a>
       <li><a href="../fundamentals/index.htm#sites">Skill Building Exercises</a>
     </ul>
+    -->
     <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>
-    <ul class="verses">
+    <!--ul class="verses">
       <li><a href="../schema/index.htm#digitization">Digitizing and Digesting the Collection</a>
       <li><a href="../schema/index.htm#Scanning">Scanning, Rough Cataloging and Geocoding</a>
       <li><a href="../schema/index.htm#items">Omeka Items</a>
@@ -80,7 +81,11 @@ let index_htm = `
       <li><a href="../schema/index.htm#editing">Creating and Editing CDASH Items</a>
       <li><a href="../schema/index.htm#resources">CDASH Vocabulary Developer Resources</a>
     </ul>
- 
+    -->
+   <li class="chapter"><a href="../item_creation/index.htm">Correcting Creating and Enriching CDASH Items</a></li>
+    <ul class="verses">
+      <li><a href="../fundamentals/index.htm#reading">Recommended Reading for the CDASH Manager</a>
+    </ul>
  
 
     <li class="chapter"><a href="../place_items/index.htm">Place Items Data Dictionary</a></li>
