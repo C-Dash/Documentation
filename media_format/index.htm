@@ -64,6 +64,18 @@
   Fortunately, digital archiving projects and interest groups have hashed and re-hashed the question of best practices for archiving digital media.  We have chosen 
   <a href="https://www.archives.gov/files/preservation/technical/guidelines.pdf" target="nara">U.S. National Archives and Records Administration (NARA)
 Technical Guidelines for Digitizing Archival Materials for Electronic Access: Creation of Production Master Files – Raster Images</a> Accessed from <a href="https://www.archives.gov/files/preservation/technical/" target="nara">https://www.archives.gov/files/preservation/technical/</a> for our recommendations summarized below.
+
+<h2 id="tools">Tools For Handling and Checking Image Files</h2>
+<p>When scanning documents and manipulating the results, use a tool that allows you to 
+  <ul>
+    <li>Inspect and set the color profile
+    <li>Flatten the image to remove transparency
+    <li>Set the compression format
+  </ul>
+<p>To determine whether an image is formatted correctly, you can inspect its properties by right-clicking it in Windows, choose Properties, and then inspect the Details tab. 
+
+<p>If you ware experimenting with a new workflow and want to test your images for compatibility with the Omeka importer, try importing the the image as media for an item in the Stage instance.   
+
 <h2 id="image">Recommendations for Image Files</h2>
 <p>The following properties can be evaluated for any image using your computer's file explorer.  In Windows, right-click the image and choose properties.</p>
 <h3 id="tif">TIFF Format</h3>
@@ -81,12 +93,20 @@ Technical Guidelines for Digitizing Archival Materials for Electronic Access: Cr
   <li>8 bits per channel.
   <li>Gray Scale: One Channel -- 8 bits.
   <li>Color: 3 Channel RGB -- 24 bits. 
-  <li>Transparency:  It is rare to see transparency in historical documents. When transparency is present in an image it is encoded as aan additional channel (Alpha) whcih may result in a 4-channel, 32-bit RGB-a image.  While this is not necessarily going to be a problem, it is probably unnecessary.
+  <li>Transparency:  It is rare to see transparency in historical documents. When transparency is present in an image it is encoded as an additional channel (Alpha) which may result in a 4-channel, 32-bit image.  This unnecessary complication causes problems occasionally.  To remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per chanmel.)
 </ul>
 
 <h3 id="profiles">Color Profiles:</h3>
-<p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> than simple RGB.  These should be avoided. 
+<p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> than simple RGB or sRGB.  These should be avoided.   
 </p>
+<p>According to the NARA Guidelines (p38):
+  <blockquote>
+    An ideal workflow would be to scan originals with a calibrated and characterized device, assign the profile of that
+device to the image file, and convert the file to the chosen workspace (Adobe RGB 1998 for color or Gray Gamma
+2.2 for grayscale).
+  </blockquote>
+
+
 <h3>Compression:</h3>
 <ul>
   <li>No Compression

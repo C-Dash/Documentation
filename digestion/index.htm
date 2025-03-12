@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Digitizing the Architectural History Files</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Digitizing the Architectural History Files</h1>
+
+
+    <p>
+      This page describes how the process of transforming the physical Architectural Survey the Digital has translated , much of organizational scheme into the document management elements and relationships provided by Omeka-S.
+
+
+
+      <h2 id="digitization">Digitizing and Digesting the Collection</h2>
+      <p>The systematic organization and labeling of the folders, pages and documents was a good basis for organizing a protocol for naming and organizing scanned files.  
+      <p><b>Segmentatiion into Boxes / Batches: </b> Files were taken out of the drawers.  The porientation and ordering of pages and labeling of documents was looked after.  The cleaned folders loaded into bankers boxes labeled 1 - 45. 
+      <p><b>Scanning: </b>  For each box, the scanning contractor (BosScans) created a file-system folder with the same name as a folder in the box.  Each page in the box was scanned with an index number preserving the order that the pages hhad been place into the folder. Each file is named for the last address indication that had been eoncountered in the bundle of pages. All of these sub folders containing TIFF files are themselves organized in parent folders associated with each box.  
+        <p><b>Rough Sort / Renaming: </b> At the outset of the project, CHC staff got together to build a rough category scheme defining the types of documents found in the collection.  You can find these in the <a href="../doc_items.index.htm#doctypes" target ="datadict"> Document Types.</a>  We developed a drag-and-drop sorting tool that allowed for a simple means of re-grouping pages as multi-page documents, and at the same time, checking the spelling of street names against our address-geocoding database.  The result of this process was Box-folders with properly named sub-folders containing scannned pages with articulated encoded file names.
+          <p><b>Batch Folder Enrichment: </b> As it happens, the segmentation of the collection into boxes has turned into a handy way of parceling out work. The next phase for each box involves pre-screening the media for problems, and creating a table of the folder names that can be looked through to identify those folders that may be used to tag their contents as related to a specific Named Place.   At this stage folder names are inspected and fixed to create neat folder names that will become item sets in Omeka.
+        <p><b>Initial Place and Document Digestion and Geocoding</b> The next phase, a bunch of stuff happens to parse file names and folder information, to develop a list of Folders, Places, Documents and Pages.  At this stage, a fuzzy geocoding algorithm is used to assign accurate-enough coordinates for about 80% pf hr documents, and needs-correcting rough coordinates for the rest.
+        
+    <p>...To be continued</p>
+    
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
