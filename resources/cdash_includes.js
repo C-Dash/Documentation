@@ -109,8 +109,8 @@ let index_htm = `
    <li class="chapter"><a href="../media_format/index.htm">Media Format Requirements</a></li>
   <ul class="verses">
     <li><a href="../media_format/index.htm#lifecycle">Lifecyle Concerns for Archiving Digital Data</a>
-    <li><a href="../media_format/index.htm#slideshow_element">Slide Shows</a>
-    <li><a href="../media_format/index.htm#toolchaiks">Toolchains and Possible Formats</a>
+    <li><a href="../media_format/index.htm#lifecycle">Media Lifecycle Concerns</a>
+    <li><a href="../media_format/index.htm#pdfa">Quick Links for creating and sabing PDFa Files</a>
     <li><a href="../media_format/index.htm#images">Recommendations for Image Files</a>
     <li><a href="../media_format/index.htm#tif">TIFF Format</a>
     <li><a href="../media_format/index.htm#name">File Names</a>
@@ -120,7 +120,6 @@ let index_htm = `
     <li><a href="../media_format/index.htm#compression">Compression</a>
     <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
     </ul>
-
 </ul>
 
 
