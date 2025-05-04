@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>CDASH Document Items </title>
+    <meta name="description" content="Describes the rules for arranging information about places, documents, media in the Cambridge Digital Architectural Survey and History">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">CDASH Document Items</h1>
+  <p>This page discusses the notion of CDASH Document Items as catalog records attached to digitized documents within the digital collection management environment provided by Omeka-S.
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../doc_items/index.htm#css">Metadata Properties Dictionary</a>
+      <li><a href="../doc_items/index.htm#doctypes">Document Types and Default Properties</a>
+    <li><a href="../doc_items/index.htm#subjects">CDASH Subject Keywords</a>
+    </ul>
+  
+  <h2 id="dictionary">CDASH Document Items: Metadata Properties</h2>
+
+    <p>
+    The table below outlines each of the properties for the CDASH Document Item and provides guidelines for entering their contents.  For more information on the concept of a CDASH Document Item, and on how to handle Omeka Items, see <a href="../schema/index.htm" target="">CDASH Schema</a>.
+    
+<h2>Required Properties</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th>
+        <tr><td><b>Resource Template</b><br>Pull-Down</td>
+          <td>All CDASH Places use the <b>CDASH Document</b> template.</td>
+          </tr>
+          <tr><td><b>Class</b><br>Pull-Down</td>
+            <td>All Place Items use Choose <b>Bibliographic Ontology: Document.</b></td>
+          </tr>
+          <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
+            <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a> In the case of Document Items, the exact location of the Place Marker is not important, since it will synced with the PDIX function.  But each document needs to have an initial Place Marker. </td>
+          </tr>
+    
+          <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
+            <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every Document Item should be associated with one and only one folder.   </td>
+          </tr>
+    
+          <tr><td><b>Place Item</b><br>Omeka Item Resource</td>
+            <td>Use the <b>Omeka Resource</b> button and the associated item picker tools to choose the Place Item that will be the parent of the current Document Item.   </td>
+          </tr>
+
+      <tr><td><b>Document Type</b><br>Pick from list.<br></td>
+        <td>Each document Item is assigned a type -- e.g. Interior Image. These types are assigned during the bulk import process or chosen from the list, <a href="#doctypes">CDASH Document Types.</a></td>
+      </tr>
+      <tr><td><b>Number of Pages</b><br>Integer</td>
+        <td>This value is useful for assessing the relevance of search results. 
+   </td>
+      </tr>
+      <tr><td><b>Place Item</b><br>Omeka Resource</td>
+        <td>Each document Item must be related one and only one CDASH Place Item. Use the <b>Omeka Resource</b> button to initiate the process of choosing a place item. </td>
+      </tr>
+
+      <tr><td><b>Neighborhood</b><br>Pick From List</td>
+        <td>Each cdash document item is assigned to a CDD Neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The automatic item uploader adds a second value for Neighborhood. <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
+      </tr>
+      
+      <tr><td><b>Research District</b><br>Pick from List</td>
+        <td>Each cdash document item is assigned to a CHC Research District. Pick from the list of CHC neighborhoods. 
+      </tr>
+        <tr><td><b>Street Sort Key</b><br>Text</td>
+          <td>This string is used for sorting items according to their street address.  This key consists of the street name (with "_" for spaces), concatenated with an 8-digit string consisting of the house number left-padded with zeros.  Example: Massachusetts_Ave_00000077
+      </tr>
+      <tr><td><b>Collection</b><br>text</td>
+        <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History</i> </td>
+      </tr>
+      <tr><td><b>Rights</b><br>text</td>
+        <td>If a document has a known copyright status enter it.  Defaults to: <i>Rights status not evaluated.</i> </td>
+      </tr>
+
+
+    </table>
+
+    <h2>Optional Values for Document Items</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">
+        <tr><td><b>Alternate Title</b><br>Text</td>
+          <td>If the document has a title other than the CDASH default title, you can enter it here.  </td>
+        </tr>
+      <td><b>Author, Photographer, Artist. </b><br>Text</td>
+        <td>If the credit for the content of the document is known, enter it here.  If the creator is well known, use the buttons provided to choose a name from the Library of Congress Name Authority or the Getty List of Artist Names.  Otherwise, just enter the name. </td>
+      </tr>
+      <tr><td><b>Creation Date</b><br>Date</td>
+        <td>If the creation or issue date for the document is known, use the date picker widgets to enter a date.  A plain four-digit year is sufficient.</td>
+      </tr>
+      <tr><td><b>Description</b><br>Text</td>
+        <td>A description of the document which might appear as a caption. </td>
+      </tr>
+      <tr><td><b>Subject/s</b><br>Text</td>
+        <td>One or more keywords or phrases that help to categorize documents.  These wil be most useful if they are consistently applied.  Use the buttons provided to search through the <a href="https://authorities.loc.gov/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First" target="outboard">Library of Congress  Subject Headings</a> or <a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="outboard">the Getty Art and Architecture Thesaurus.</a> or pick from <a href="#subjects">a list of list of frequently used CDASH Document Subjects</a>. 
+          Even though all of the CDASH documents are concerned with Architecture and Buildings, these subjects are be included in the event that more generalized discovery systems harvest CDASH metadata to refer to items. <p></td>
+      </tr>
+    </table>
+
+      <h3>
+        <h2>Deprecated Document Properties</h2>
+        <p>These properties are created and populated by the bulk import process.  Once the items are created, these are not used. 
+        <table class="dictionary">
+          <tr><td><b>Document Title</b><br>Text</td>
+            <td>CDASH Document Titles that appear on Document Show Pages are now autmatically generated by concatenating the name of the document's parent Place Item and the document's Document Type property.  
+            If you have a more specific title for a document, use <b>Alternate Title</b>(see below)</td>
+          </tr>
+          <tr><th width="20%">Name</th><th width="80%"></tr>
+      <tr><td><b>CDASH Folder</b><br>Text</td>
+        <td>These folder references were used during the bulk import process to generate Omeka item sets.  Use the Item-Sets tab on the Item edit page to manage the association between place items and folders.  See above.
+      </td></tr>
+
+      <tr><td><b>CDASH Document Identifier</b><br>Text</td>
+        <td>This value is used by the CDASH Doucument Item Uploader. It is not necessary to create new identifiers when creating items deom scratch.  
+
+        </td>
+      </tr>
+
+    </table>
+
+    <h2>Controlled Vocabularies for Documents</h2>
+    <p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Document Items.  These lists are implemented and managed with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target="omeka">Omeka-S Custom Vocab module. </a> 
+
+    <h3 id="defaults">CDASH Document Types and Default Metadata Properties</h3>
+    <p>The CDASH Document collection is initialized through a semi-automated rough sort process that resulted in the assignment of scanned images to one of thirteen pre-defined item types.  These are document types that were chosen to comprise a nearly-complete categorization of the types of documents contained in the Building Files collection. 
+      <p>Classification of document types is accomplished quickly by looking at one-inch thumbnails of  scanned pages, selecting pages that belong together, then dragging their icons into a bin according to the type of document represented. 
+      <p>
+        Assignment of document types determines the assignment of several default item properties like titles, subjects that set up various search and filter and navigation possibilities.
+      <p>The table below exposes the configuration of document types and corresponding default properties that are set in the CDASH Rough Sort toolkit [link forthcoming].
+
+    <h3 id="autotitle">Automatic Title Assignment for Document Items</h3>
+    <p>DUring the bulk-upload process, the title for each document is constructed by concatenating the Place Name associated with the document, a hyphen, and the Document Type.  For example:
+      <ul>
+        <li><b>77 Massachusetts Avenue - Photo Contact Sheet</b>
+      </ul>
+
+    <h2 id="doctypes">CDASH Document Types </h2>
+    <table class="dictionary">
+
+      <tr><th width="10%">Code</th><th width="90%">Type</th></tr>
+      <tr>
+        <td>AI</td>
+        <td>Architectural Inventory Form</td>
+      </tr>
+
+      <tr>
+        <td>RF</td>
+        <td>Research Form</td>
+      </tr>
+
+      <tr>
+        <td>RN</td>
+        <td>Research Notes</td>
+      </tr>
+
+      <tr>
+        <td>HS</td>
+        <td>Historic American Buildings Survey</td>
+      </tr>
+
+      <tr>
+        <td>SM</td>
+        <td>Supplemental Material</td>
+      </tr>
+
+      <tr>
+        <td>DM</td>
+        <td>Demolition Memo</td>
+      </tr>
+
+      <tr>
+        <td>AM</td>
+        <td>Published Material</td>
+      </tr>
+
+      <tr>
+        <td>VP</td>
+        <td>Plan View</td>
+      </tr>
+
+      <tr>
+        <td>VE</td>
+        <td>Exterior View</td>
+      </tr>
+
+      <tr>
+        <td>VI</td>
+        <td>Interior View</td>
+      </tr>
+
+      <tr>
+        <td>VD</td>
+        <td>Detail View</td>
+      </tr>
+
+      <tr>
+        <td>CS</td>
+        <td>Contact Sheet</td>
+      </tr>
+
+      <tr>
+        <td>EP</td>
+        <td>Ephemera</td>
+      </tr>
+
+    </table>
+
+
+  <h2 id="subjects">CDASH Recommended Subjects</h2>
+  <p>Assigning subject keywords to document items causes them to be more amenable to search, filtering and discovery.  
+    <p>
+    To save time and to promote consistency, CDASH metadata editors are offered a list of CDASH Subjects that they can pick from.  The list is easily editable by a user with administrative permission. 
+<p>
+    Users will always be able to choose from other lists or just type free-text. 
+<p>These terms are drawn from popular authoritative conventions wherever possible.
+  <ul>
+    <li><a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="sidecar">Getty Art & Architecture Thesaurus</a>
+      <li><a href="https://authorities.loc.gov/" target="sidecar">Library of Congress Subject Authority Headings</a>
+  </ul>
+ <p style="color: red;"><i>Before we start the data enrichment phase of CDASH this list should be substantially ammended.</i></p>
+
+  <h3>CDASH Document Subjects</h3>
+  <ul>
+    <li>Architecture
+    <li>Buildings
+    <li>Structures
+    <li>Architectural Documents
+    <li>Published Material
+    <li>Photographs
+    <li>Application Forms
+    <li>National Register of Historic Places
+    <li>Landmark Buildings
+    <li>Survey Form
+    <li>Research
+   <li>Descriptive Notes
+   <li>Historical Commission
+    <li>Correspondence
+    <li>Plans
+    <li>Interior Views
+    <li>Exterior Views
+    <li>Site Plans
+  </ul>
+
+</div> <!-- Closes #article div -->
+<div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>

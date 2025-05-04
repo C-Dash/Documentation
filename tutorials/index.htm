@@ -1,0 +1,148 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Tutorials</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  
+  
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Fundamental Tutorials</h1>
+  <p>CDash is built on Omeka and includes a few official modules and a couple of third party modules, and a custom CDASH theme. All of this is based on the web application foundation PHP with the Laminas Framework.  Additionally Omeka depends on the Object-Relational Mapping framework Doctrine. 
+    
+  <p>As a user or administrator, it is not necessary to know much about these.  Strategically speaking a person who is concerned about the longevity of the project would be concerned about the longevity of the 3d party extensions.  Are they designed well?  If we needed to upgrade Omeka and these extensions are not upgraded for us, would we be in a pickle?  
+  
+  <p>As a developer who would add features to the CDASH theme, it is necessary to understand some PHP, Laminas and Doctrine.  Knowing these will also be helpful for evaluating and potentially upgrading the 3d party extensions. 
+
+  <p>For our own benefit, we have worked through the basic Laminas 3.0 tutorial, and have included all of the resources in the development repository.  We are in the process of working on some Doctrine tutorials.
+
+    <h3>Laminas MVC Layer documentation</h3> 
+    The opening page for the MVC layer is not helpful at all.  But there are several useful links featured on the right side of the page:
+    <a href="https://docs.laminas.dev/laminas-modulemanager/intro/" target="laminasdoc"> Laminas Framework Module Documentation</a>
+    
+    <p>We are going to dive in to the <a href="https://docs.laminas.dev/laminas-mvc/quick-start/" target="laminasdoc">Laminas Skeleton quick-start tutorial</a>.  Luckily , your dockerdevelopment machine has Composer installed and a bind mount to your php-tut folder.  
+    <ol>
+      <li>Open the command shell on your Omeka server
+      <li>Create a new folder /var/www/html/php-tut/laminas/skeleton_tut
+      <li>Change your working directory to that folder.  
+      <li>Then you wil be ready to follow the tutorial setup 
+      </ol>
+    
+      <p>Here is where things get a little confusing.  There are at least two tutorials labeled quickstart in the laminas documentation site.  They all seem to be incomplete and designed to be very hard to follow. Here is what I have done:
+    
+    
+        <h3>Installi the laminas-mvc-skeleton </h3>
+        <p>This page explains how to install a bare bones Laminas app.<a href="https://docs.laminas.dev/tutorials/getting-started/skeleton-application/" target="laminas_doc">https://docs.laminas.dev/tutorials/getting-started/skeleton-application/"> Laminas MVC Skeleton Application Quickstart</a>
+        <p>
+        
+        <h3>Explore the big concepts of Modules, Controllers, Factories, Routes and Actions</h3> 
+      
+        <p>We have installed the skeleton application in the php_tut directory.  It is referenced from your worksoation for editing, and the very same files are referenced by the apache server on your Omeka=s container of your Dev server.  
+        <p>
+        Open the php-tut/laminas_mvctut folder in your text editor. 
+        <p>
+          Notice that there is a directory structure named Application in the modules folder, and alsothat the laminas_mvctut/config/modules.config.php file places a key for the Applications namespace into a list the module namespaces that will be returned to any app that asks for the modules.config.
+        <p>
+        I read somewhere that a Laminas module functions as php namespace.   <li><a href="https://www.php.net/manual/en/language.namespaces.rationale.php" target="phpdoc">PHP Documentation on Namespaces</a>
+        <p>
+        The skeleton application uses the Application module to control the most basic behavior.  If you look at laminas_mvctut/public/index.php you can see that it checks for a lot of stuff and then runs the init function of the Application module.  <b><i>Whee is this init function???</i></b>
+        <p> 
+        If you enter "http://localhost/php-tut/laminas-mvctut/public/" in your browser and look at the bold comments you can see how the laminas_mvctut/public/index.php bounces to the laminas_mvctut/modules/application/public/index/index.phtml.  YOu can verify this by looking at and modifying the echo statements at the top of each of these files.
+      <p>
+        An important function of php applications is to control what is shown (or viewed) according to the URL that a user enters.  This behavior is controlled first by <b>routes</b> that are defined in the laminas_mvctut/Modules/Application/module.config.php.  
+        <p>
+        You can see here how the module.config.php invokes the Application namespace and a few objects from a couple of other Laminas namespaces that are provided from in laminas_mvctut/vendor/laminas/.  Then the config script assigns specific behaviors (ie. the IndexController ) to Home (or "/" ) or for Application 
+    
+    
+    <h3>The Laminas Album Tutorial (a CRUD application)</h3>
+    
+    <li><a href="https://docs.laminas.dev/tutorials/getting-started/overview/" target="phpdoc">Laminas Overview (Album Tutorial)</a>
+    
+    <p>To access the laminas MVC tutorial on our dev server, use <a href="http://localhost/php-tut/laminas-mvctut/public/album" target="mvctut">http://localhost/php-tut/laminas-mvctut/public/album</a>.  You can find the code for the running app at <b>/var/www/html/php-tut/laminas-mvctut </b> on the Omeka container.  Our docker.compose/yml file mounts this tutorial directory to a folder on your local hard drive. 
+<p>
+The Laminas album catalog tutorial uses the Table gateway pattern for managing album objects in the relational database.  This is discussed at <a href="https://docs.laminas.dev/tutorials/getting-started/database-and-models/" target="outboard">https://docs.laminas.dev/tutorials/getting-started/database-and-models/#the-model-files</a>
+
+<p>It might be useful to try to find a tutorial that would let us represent our albums, above, with doctrine objects...  
+<p>Maybe first, we will investigate a more direct route.  Lets see if we can figure out how Omeka uses Doctrine.  Maybe the Omeka documentation wil simply tell us what we need to know...
+<p><a href="https://omeka.org/s/docs/developer/api/" target="omeka">The Omeka API documentation</a> is a useful place to start, as it seems to describe the objects of Omeka and their functions. 
+<p> A couple of things jump out at you:
+  <ul>
+    <li>Most , if not all of the content objects seem to be exposed as RDF resources.
+    <li>There is a REST api that uses the classic URL queries, and the PHP api that one probably has access to when writing modules and themes. 
+    <li>It looks like the REST api is limited just to searchs and reads (??)
+    </ul>
+    
+<h1>Hacking the Mapping Module</h1>
+<p>Part of my adventure in building C-Dash was learning that the Mapping Module was missing a key feature that is needed for attaching locations to Feature Sets.  So I need to look into modifying the Mapping module. 
+<p>This adventure will be an opportunity to develop my new understanding of php/Laminas applications and also learn a lot about (hopefully) working with and contributing to open source code. 
+
+<h2>Learn Basic GitHub</h2>
+<p>Omeka is an open source project.  Which means that its source code is available and a community of developers is encouraged to modify the code for the sake of adding features and fixing bugs.  GitHub is the most popular and very useful means of sharing code.  GitHub also offers very powerful tools for managing versions which is useful not only for sharing abt also during the process of development. 
+
+<p>This will involve several steps:
+  <ol>
+    <li>Clone the current mapping module to on-line C-Dash Git Repository.  This will be the reference repo.
+    <li>Create a Branch for my changes.  The first branch is named <b>verbose-hackery</b> which is where I wil make experiments to try to figure out how the mapping module works.
+    <li>Create a local repo in my persist/modules folder which will be the mapping module used by my development instance of Omeka. 
+    <li>Use the Git web tools to make Verbose-Hackery the default branch -- which will be the target when I push updates to the remote origin.
+    <li>Use the Git command Line Interface to <b>git switch verbose-hackery</b> which will allow me to make edits to the working Mapping Module and see what happens. 
+    <li>If I ever need to go back to the original Mapping Module behavior, all I need to do is <b>git switch main</b> to return my working Mapping module back to its original state. 
+    </ol>
+   
+<h2>How does the Mapping Module Work?<h2>
+<p>Superficially speaking, the mapping module adds a <b>Mapping</b> tab to the <b>Add Item</b> page.  We would like to also add this to the <b>Add Item-Set</b> page.  Under the surface, we suppose that the Mapping module also adds a table to the Omeka-S schema to hold mapping markers and their relation with items. 
+<p>No doubt, there is much more, but we will start by trying to figure out how these things work. Maybe if we rtrace the concepts covered in the Laminas MVC tutorial, we may have someting like a conceptual overview of how modules and specifically our Mapping module are put together. . 
+
+  <h2>The Laminas Module Manager</h2>
+  <p>According to the tutorial, the first thing that the Laminas framework does is look for the Module Class, which is created in the sinilarly-named php file at the top level of the module folder.  Ours is <b>omeka-s/module/mapping/module.php.</b>
+
+    <blockquote>
+      This Module class serves as the single entry point for ModuleManager listeners to interact with a module. From within this class, modules can override or provide additional application configuration, perform initialization tasks such as registering autoloader(s), services and event listeners, declaring dependencies, and much more.
+      <p>From <a href="https://docs.laminas.dev/laminas-modulemanager/module-class/">docs.laminas.dev/laminas-modulemanager/module-class/</a>
+    </blockquote>
+
+    
+  
+    
+  
+  
+</div> <!-- Closes #article div -->
+<div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

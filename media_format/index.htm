@@ -1,0 +1,150 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Recommended Media Formats for CHC Omeka Applications</title>
+    <meta name="description" content="Describes file formats recommended for the Cambridge Digital Architectural Survey and History ">
+    <meta name="keywords" content="Archiving">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Recommended Media Formats for CHC Omeka Applications</h1>
+  <p>  
+  </p>
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../media_format/index.htm#lifecycle">Lifecyle Concerns for Archiving Digital Data</a>
+    <li><a href="../media_format/index.htm#lifecycle">Media Lifecycle Concerns</a>
+    <li><a href="../media_format/index.htm#pdfa">Quick Links for creating and sabing PDFa Files</a>
+    <li><a href="../media_format/index.htm#images">Recommendations for Image Files</a>
+    <li><a href="../media_format/index.htm#tif">TIFF Format</a>
+    <li><a href="../media_format/index.htm#name">File Names</a>
+    <li><a href="../media_format/index.htm#pages">Single Page</a>
+    <li><a href="../media_format/index.htm#color">Color Representation /  Bit Depth</a>
+    <li><a href="../media_format/index.htm#profiles">Color Profiles</a>
+    <li><a href="../media_format/index.htm#compression">Compression</a>
+    <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
+    </ul>
+    <h2 id="lifecycle">Lifecyle Concerns for Archiving Digital Data</h2>
+  <p>Documents in CHC Omeka applications are composed of descriptive metadata attached to one or more scanned pages or born-digital documents such as web pages.  We will use the term <b>Media</b> to described the digital documents or pages associated with Omeka documents. Omeka provides a framework for managing, searching, discovering  and viewing media and their metadata. More importantly, Omeka has to perform as a vehicle for taking the metadata and digital media into the future whence it will be necessary to systematically migrate the metadata and media to some unknown future management and publishing system.  
+  </p>
+  <p>There are many possible formats for media that can be created by the tools for scanning pages or saving born-digital documents.  Not all of these possible formats are readable by the import tools in Omeka.  In the long run we also have to be concerned about the media import ant export tolerances of the as-yet unknown tools that may be used to harvest and migrate the CHC-assets in the future. The best bet for assuring the future resilience of the digital collection is to avoid the use of any media formats that may cause problems in automated processing in the future.
+  <p>
+  Fortunately, digital archiving projects and interest groups have hashed and re-hashed the question of best practices for archiving digital media.  We take guidance from the Digital Commonwealth 
+  <p>
+<ul>
+  <li><a href="https://www.digitizationguidelines.gov/guidelines/FADGITechnicalGuidelinesforDigitizingCulturalHeritageMaterials_ThirdEdition_05092023.pdf" target="doc">Federal Agencies Digital Guidlines Initiative, (FAGDI): Technical Guidelines for DigitizingCultural Heritage Materials( 2023)</a> See the tables beginning on Page 27,
+  </ul> 
+
+<p>or...
+<ul>
+  <li>
+  <a href="https://www.archives.gov/files/preservation/technical/guidelines.pdf" target="nara">U.S. National Archives and Records Administration (NARA)
+Technical Guidelines for Digitizing Archival Materials for Electronic Access: Creation of Production Master Files – Raster Images</a> Accessed from <a href="https://www.archives.gov/files/preservation/technical/" target="nara">https://www.archives.gov/files/preservation/technical/</a> (See Page 60.
+  </ul>
+
+<h2 id="pdfa">Quick Links for Scanning and Saving Archival PDFs</h2>
+<p>PDF format documents are easy to handle today.  A hundred years from now, we probably should expect problems.  Features that make PDFs compact today, such as relying on external font libraries or clever media or compression formats are all likely to cause problems in the future.  Luckily for us, archivists have come up with a common denominator for packaging documents as Archival PDF documents.  We can be reasonably sure that archival tools of the future will be able to read these and if necessary import these into the archival systems of the future, or to migrate these to digital document formats of the future, if necessary.    
+<p>Here are some PDFs that describe how Historical Commission staff can compile Archival PDFs as sequenses of scanned pages, or save digital documents as Archival PDF from digital documents.
+<ul>
+  <li><a href="./PDFA_and_Image_instructions.pdf" target="pdfa"> Create PDFa Documents on the Ricoh Copier</a>
+  <li><a href="SaveAs_PDFA_instructions_PDFA.pdf" target="pdfa"> Save Digital Documents as PDFa</a>
+  </ul>
+
+
+<h2 id="tools">Tools For Handling and Checking Image Files</h2>
+<p>When scanning documents and manipulating the results, use a tool that allows you to 
+  <ul>
+    <li>Inspect and set the color profile
+    <li>Flatten the image to remove transparency
+    <li>Set the compression format
+  </ul>
+<p>To determine whether an image is formatted correctly, you can inspect its properties by right-clicking it in Windows, choose Properties, and then inspect the Details tab. 
+
+<p>If you ware experimenting with a new workflow and want to test your images for compatibility with the Omeka importer, try importing the the image as media for an item in the Stage instance.   
+
+<h2 id="image">Recommendations for Image Files</h2>
+<p>The following properties can be evaluated for any image using your computer's file explorer.  In Windows, right-click the image and choose properties.</p>
+<h3 id="tif">TIFF Format</h3>
+<p>The TIFF format for digital images is a very flexible container for a varieety of image encodings some of which are considered solid for archival use and many others, that are less portable.  While TIFF is recommended, it is necessary to look at specific properties of the TIFF file to assure that the image will be most likely to be preserved and transferrable for the long-term. 
+<h3 id="names">File Names:</h3>
+<p>Even though WIndows and Apple operating systems may be more flexible in terms of file and folder names, our folder and file names should be compatible with the more universal conventions used by Linux OS amd web applications.
+<ul>
+  <li>Use only alphabetical and numerical characters plus "-", and "_".
+  <li>No spaces or tabs in filenames!
+  <li>Tif files should end with a simple ".tif" suffix.
+  </ul> 
+<h3 id="pages">Single-Page Media</h3>
+<p>Although it may be possible to save Tif files with multiple pages (or frames), these files cannot be loaded into Omeka and are also problematic in other archival management applications.  Therefore all images should contain a single page or frame. 
+<h3 id="color">Color Representation /  Bit Depth:</h3>
+<ul>
+  <li>8 bits per channel.
+  <li>Gray Scale: One Channel -- 8 bits.
+  <li>Color: 3 Channel RGB -- 24 bits. 
+  <li>Transparency:  It is rare to see transparency in historical documents. When transparency is present in an image it is encoded as an additional channel (Alpha) which may result in a 4-channel, 32-bit image.  This unnecessary complication causes problems occasionally.  To remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per chanmel.)
+</ul>
+
+<h3 id="profiles">Color Profiles:</h3>
+<p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> other than simple RGB or sRGB.  These should be avoided.   
+</p>
+<p>According to the NARA Guidelines (p38):
+  <blockquote>
+    An ideal workflow would be to scan originals with a calibrated and characterized device, assign the profile of that
+device to the image file, and convert the file to the chosen workspace (Adobe RGB 1998 for color or Gray Gamma
+2.2 for grayscale).
+  </blockquote>
+
+
+<h3>Compression:</h3>
+<ul>
+  <li>No Compression
+  <li>LZW Compression
+</ul>
+<p>Various scanners and file-save operations will default to other sorts of compression that will cause problems.  Therefore it is important to choose tools and export functions that use No compression or LZW and make sure to check frequently that your images are safe.
+</p> 
+<h3 id="pixels">Image Pixel Dimensions and DPI</h3>
+<p>Pixel Dimension os the count of pixels for the height and width of the rectangular image.  In most cases, our digial documents are less than 30" x 40' Inches scanned at 200 dpi.  This would be a maximum pixel dimension of 6000 x 8000 pixels.  Or 11" x 17" at 300dpi or 3300 x 5500 pixels.  Exceeding these tolerances is probably overkill for most images.
+</p>
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

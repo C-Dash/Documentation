@@ -1,0 +1,241 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>CHC Omeka Assets</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js --> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">CHC Omeka Assets and Management</h1>
+  <p>The deliverables from the CDASH project include a <a href="https://learn.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries" target="sidecar">Containerized Web Application</a> that can be deployed on a web services provider like Amazon or Azure. The same container architecture can us used to install a complete instance of CDASH on a local computer for development purposes. 
+<p><i><b>About Names:</b> You will notice that we prefix certain file names and service names with CHC rather than CDASH.  This is because we can think of CDASH is one collection within the Historical Commission's greater Omeka installation.  Even though CDASH is the first and only collection at the moment, it is foreseeable that the CHC's Omeka installation may eventually host other collections. </i>
+
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../assets/index.htm#containers">Containerized Web Application</a>
+    <li><a href="../assets/index.htm#stack">The CHC Omeka Application Stack</a>
+    <li><a href="../assets/index.htm#offline">Off-Line Files</a>
+      <li><a href="../assets/index.htm#data">MySQL Data</a>
+    <li><a href="../assets/index.htm#persist">Persistent Application Files</a>
+      <li><a href="../assets/index.htm#scans">Scan Batches</a>
+    </ul>
+
+  <h2 id="containers">CDASH Is a Containerized Web Application</h2> 
+  <p> One of the recent miracles of cloud computing is the <b>Containerization</b> of web applications. A container in this sense is similar to what we used to call a "server."  Whereas servers used to be actual computers, they now may be implemented as collections of code that act like a server. 
+  <p>
+  Because of containers, we are able to have a web server and a database server all speaking with each other as if they were on the cloud with their web interfaces run on whatever computer we want.  We can run the container on a desktop or laptop computer -- for experimenting with changes.  When we are happy with the way it works we can deploy the tested container to the cloud (in our case the city's cloud host, Azure.)  
+   
+  <h3>Easy to Set-Up Development Versioning</h3> 
+  <p>
+  Because containers encapsulate the entire server and data structure of a web application it  means that we can have a development environment that is the same as a the production server -- except for the tweak that we make to it.  Our development environment is a safe sandbox to try and to test.  When we have perfected our upgrades, they can be implemented on the production server.
+
+<h2 id="dockerfiles">Docker Resources and setup</h2>
+<p> You can have all of the resources that make up the C-Dash application at the <a href="https://github.com/c-dash" target="github">C-DASH GitHub repository</a>, <b>pbcGIS-cdash-dev</b>.  We will describe it more detail later.  For now, download the whole repository to your computer, install Docker and then run these commands:
+
+  <h2 id="stack">The CHC Omeka Stack</h2>
+<p>Web applications, like CDASH are often described as a <b>Stack</b> of code.  The stack idea is helpful for understanding CDASH as a sort of pyramid of very common tools with some particular mofications near the top that define the particular features that are unique to CDASH. 
+
+<ol>
+  <li>Host (Local or Cloud)
+  <li>Container Image (Docker)
+  <ul>
+  <li>Operating System (linux) 
+  <li>Web Server(Apache)
+  <li>Web Development Framework (PHP)
+  <li>Database Server (MySQL)
+  <li>Asset / Content Management Application (Omeka-S with additional Modules)
+  <li>CDASH Customizations
+  </ul>
+</ol>
+
+<p>Every element of this stack is made of free software that is reliable and has its own documentation.  The CDASH Developer is assumed to be able to figure out all of those pieces. This documentation is going to point out the CDASH Customizations as a crib-note for the developer.  This will also be useful information for the <b>CDASH Administrator and Owner</b> roles, since these customizations are among the CDASH assets that, if lost, could mean the death of the project.
+<p>
+<h2>Owner and Administrator Viewpoint:  CDASH Project Assets</h2>
+<p>CDASH assets are files that are necessary to build or re-build the CDASH project.  At first you can think of the initial state of CDASH with no items as an web server and empty <b>Omeka instance</b>  with the CDASH customizations applied.  
+
+  <figure class="middle"> 
+  <img src="images/omeka_in_azure.jpg">
+    <figcaption>Architecture of the CHC Omeka Resource Group in Azure</figcaption>
+    </figure>
+
+
+
+    <h2 id="offline">CHC-Offline Files</h2>
+    <p>The CHC-Offline folder contains all of the information necessary for building the CDASH application from scratch.  The folder is also used to hold backups from the Omeka database taken at strategic times  
+      <ul>
+        <li><b>Docs: </b> Configuration information for the Azure host including essential information for restarting, troubleshooting backing up and restoring the container with CDASH customizations and assets.  
+        <li><b>CDASH-Prod-Docker: </b>The latest Docker configuration and related resources for the CHC Omeka installation
+        <li><b>Vocabulary:</b> Custom CDASH vocabulary export/import files      
+        <li><b>CSVImportPlus: </b>Development repository for the <a href="https://github.com/C-Dash/CDASH-CSVImportPlus" target="github">CDASH custom CSV Import module</a>. 
+        <li><b>Pages: </b> HTML exports of pages that were created for CDASH.  
+        <li><b>DBExports: </b> database exports -- including a copy of the Omeka table-space that can reconstruct an empty CDASH instance and backups of the Omeka tablespace taken at intervals.
+          
+        </ul>
+    <p>Note that a copy of the CHC-Offline files can be downloaded from GitHub.  Because several files in this repository contain dummy passwords, the CHC Omeka administrator should keep her own copy of this file system that contains passwords for the production server.  Keeping a local copy of CHC-Offline as weall as an Azure file share and on your local computer could be a life-saver in case something happens to the Azure files. 
+    <P><b>Soft Delete Protection: 14 days.</b>
+    
+    <h2>The Initial Docker Application and Accumulated Data and Tweaks</h2>
+    <p>The resources in the Docker folder contain scripts and resources that create a linux server with a generic file-system and the additional program files to create an Omeka server that is empty.  The Docker scripts produce a filesystem image that is stored on the Docker host.  This image can be started and stopped and reloaded to restore the initial state of the application.  This is very handy for being able to rebuild the server when the host shuts down or if we need to scale it up or move it. 
+    <p>But what about the data we add and the tweaks that we make to our application?  We don't want these to be wiped out every time we load the image. 
+    <p>There are a lot of things that we do to our Omeka installation that we want to accumulate and not be wiped out everytime our container image reloads.  These data accumulate in the <b>Omeka Tablespace in MySQL database</b> and in the subfolders CHC_Persist fileSystem. 
+
+
+      <h2 id="data">The Omeka Tablespace in MySQL</h2>    
+     <p>Everything we see when we load a page in Omeka comes from static information about how to create pages  included with the initial Omeka installation plus dynamic data that is pulled from tables the MySQL database. Information such as all of the settings and configuration that are made to Omeka, including customized vocabularies and resource templates that are created for the CDASH application, and information about items and media are all stored in these tables.  
+    <p>      
+    During routine use and administration of Omeka, it is unnecessary to think about the Omeka tablespace in MYSQL.  However, if it ever becomes necessary to move the Omeka installation with its accumulated items and configuration, it is necessary to understand that much of the information you will need will be in this tablespace.  
+    <h3>Backup and Recovery</h3>
+    <p>
+      When we set up the CDASH application for the first time, we save a copy of the initial tablespace that includes all of the CDASH customizations. Part of the configuration of our Azure host includes routines for taking backups of the data tables every day.  These backups are deleted after 30 days.  
+
+    
+    <h2>CHCPersist Files</h2>
+    <p>Some of the data and configuration and interface tweaks that accumulate as we work with our Omeka applications are stored as files. To protect these from being re-initialized when the CHC-Omeka image is reloaded, they are stored in a persistent file-system, CHC-Persist. These files include:
+      <ul>
+        <li><b>Files:</b> A directory that contains copies of the original media files, which have been renamed with unique ID strings to match references in the database.  This folder also contains the  Large Medium and Small thumbnail images that are produced for each image as they are imported. 
+        <li><b>Config:</b> Config files contain settings that are read by Omeka on-the-fly.  These configuration options contain such things as the size of the thubnail images and the connection strings used to connect Omeka to the database. The default passwords and connection information that is set in the GitHub versions of these files are for local development.  The CDASH administrator should have her own copy of the chcpersist file-system that contains the secret passwords that are used in production.  
+        <li><b>CHC-Scans: </b> A folder that contains batches of scanned documents.  Each batch containing the initial metadata for the related document items.  These batches are discussed in greater detail on a forthcoming page about importing items. 
+        <li><b>Modules:</b> CDASH depends on several Omeka modules.  They are included in this folder so that they will be available on the development instance.  When preparing to deploy the production instance, this modules folder should be zipped and included in the CDASH-Docker-Prod folder where it will become part of the docker image. This is for performance reasons.
+        </ul>
+      <p>The storage account for chcpersist is set up to allow for recovery of accidentally deleted files for 30 days.
+
+      <h2 id="scans">CHC-Scans Files</h2>
+      <p>CDASH Items and their associated media files are imported into Omeka through a modified version of the Omeka CSV Import module.  The process described in a forth-coming page in this manual.  Batches are uploaded as zipped folders that contain the scanned documents and the CSV files that create the associated items with initial metadata.  To import the items, the batch folders are unzipped.  Once the items are created, the unzipped batch may be be deleted.  The zipped batches are retained on the Azure storage. They can be useful if there was ever a need to re-import the items.  We presume that the batches are also stored on a local file-system in the CHC offices.
+      <p>CHC-Scans is set up as an <a href="https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview" target="azure">Azure Cold Storage tier</a> which allows quick access but cheap long-term storage.
+      <p>After some experience we may re-think the necessity of keeping these files in the cloud.  
+     <p>For the development version of CHC Omeka, the CHCScans folder is kept as a sub-folder of the CHCPersist file system.  
+
+    
+
+
+
+  
+  <!--
+<h1>Building the CDASH Application from Scratch</h1>
+<p>We will describe the building the development set-up for Omeka with CDASH customizations. This is si,ilar enough to building the production instance.  The action begins with Docker Desktop set up on the computer. The  CHCOffLine and CHCPersist folders exist as described above.  The 
+
+<h2>Set Up Docker Resources</h2>
+<p>You are going to need a docker named volume on your docker host machine to hold your CHCPersist filesystem. Set this up as a volume in your DockerDesktop client.   You can see how this connects to the docker container by looking in the Docker-Compose.yml file. 
+<p>Download the latest version of Omeka-S and unzip it in a temp folder so that we can take some resources out of it. Grab the contents of the Config folder and the Themes folder and Files.  
+
+  Using your computer's command shell, get yourself into the cdash-docker-dev-x.x.x  folder and run:
+</p>
+<pre>
+   %> docker image build -t cdash-omeka-dev-3.1.1 .
+</pre>
+<p>This will create a container that is a Debian Linux server that is running the Apache web server and has all of the PHP gizmos and settings to run Omeka-S -- which is also installed by essentially unpacking a zip file. 
+</p>
+
+<p>Omeka needs to point at an implementation of the MySQL database server that is on an accessible network. We can create the database server as another Docker container.  The file, <b>docker-compose.yml</b> includes the instructions for doing this. 
+We use a ready-rolled docker image for MariaDB, and set another server to run Adminer -- which is a MYSQL administrator tool that is also written in PHP.   
+<p>All of this is snapped together by running the following command in your docker shell: 
+<pre>
+   %> docker-compose up -d
+</pre>
+<p>If you have updated your version of Omeka, then you probably wil change the tag used in your Docker image build command, above.  And you will also edit the reference to this image in your <b>docker-compose.yml</b> file.  
+
+
+<h2>Adminer and the Omeka Database</h2>
+
+<p>Starting the docker machine and configuring containers:
+<ul>
+  <li>PHP -enabled web server with Omeka installed, 
+  <li>A MariaDB database server 
+  <li>the Adminer adminstritative toolkit for MariaDB
+  </uL>
+<p>Gets you an empty omeka instance.
+<h3>Building the CDASH demo</h3> 
+  <p>To build CDASH involves loading several modules, configuring the custom schema with item templates and custom vocabulary, creating the cdash theme, and loading several items.  Al of this work would be tedious to have to repeat.  Luckily the way Omeka works is that the result of all of these actions is saved in the Omeka database on the MariaDB server.  
+  <p>The structure and content of the entire CDASH application -- except for the media files can be backed up by using Adminer tp dump the Omeka database.  And the entire CDASH demo instance may be installed by recovering the database dump.
+<h3>Log in to Adminer</h3>
+<p>To start Adminer, invoke it in your browser at 
+  <pre>
+  http>//localhost:8080
+  </pre>
+<p>Your credentials are:
+  <ul>
+    <li>system: MySql
+    <li>server:  mariadb
+    <li>Username: root
+    <li>password: blabla
+    <li>database: leave blank
+    </ul>
+  <p>If you forgot these, you would find them as part of the Adminer configuration spelled out in the docker-compose.yml file.
+   
+
+
+  <p>To turn this into CDASH you need only to use Adminer to load the database that contains all of the CDASH customizations.    
+<p>The database dump file that will instantiate cdash canbe found in the folder <b>db-data</b>.  
+<ol>
+  <li>In Adminer, drop the existing database named Omeka,if it exists.
+  <li>Import the database dump file. 
+  <li>Point your web browser at http://localhost/omeka-s to launch C-Cash. 
+  <li>TOcheck out the Omeka Administrator tools, Point your web browser at http://localhost/omeka-s/admin 
+    Log in as <b>admin@devnull.net</b> password: <b>blabla</b>
+  </ol>
+
+<h2>Inspect Shared File-System</h2>
+<p>The <b>cdash-persist</b> folder is attached to your Omeka server as a <b>Bind Mount</b> which means that the files inside this directory are not destroid when your docker app is turned off or erased.  In production, cdash-persist is a file share in the Azure cloud. In our new development environment, these resources are in our file-system.  You can see them in your local cdash-dev folder.  
+</p>
+<p>Cdash-persist has all the files that you need to customize Omeka and some other resources that are useful for learning php and experimenting with foundation concepts of Omeka like the basic Laminas and Doctrine tutorials.
+</p>
+<h3>Look Around on the Unix Console</h3>
+<p>You now should now be able to go to your docker control panel and find the CDash Docker web application that has three containers.  The image below shows how to launch the command line prompt on the web server container. 
+</p>
+<figure class="middle">
+  <img src="images/docker_app_cli.jpg">
+  <figcaption>Three services inside the CDash web app.</figcaption>
+  </figure>
+<p>Once you are there, you should be able to verify that the folders <b>cdash-persist</b> and <b>php-tut</b> are mounted on /var/www/html.  Try using your computer's file manager tocreate a new file in one of those folders, and observe that the new file shows up onyour dev container, and vice versa.
+</p>
+
+<p>If this command-line stuff is a foreign language to you, and if you want to be able to administer and trouble=shoot or customize your Omeka server, you may need to learn some basic Unix, which is beyond the scope of this tutorial.  
+
+  <p> Anyhow, if you have made it this far, you now have your own development sandbox for tweaking C-Dash. 
+  
+  -->
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

@@ -1,0 +1,288 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>CDash Application Development and Setup</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js --> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">CDASH Application Setup</h1>
+  <p>The deliverables from the CDASH project include a <a href="https://learn.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries" target="sidecar">Containerized Web Application</a> that can be deployed on a web services provider like Amazon or Azure. The same container architecture can us used to install a complete instance of CDASH on a local computer for development purposes. 
+<p><i><b>About Names:</b> You will notice that we prefix certain file names and service names with CHC rather than CDASH.  This is because we can think of CDASH is one collection within the Historical Commission's greater Omeka installation.  Even though CDASH is the first and only collection at the moment, it is foreseeable that the CHC's Omeka installation may eventually host other collections. </i>
+
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../docker/index.htm#scratch">Docker Resources and Set-Up Tips</a>
+  </ul>
+
+ 
+
+  
+  
+<h1 id="scratch">Building the CDASH Application from Scratch</h1>
+<p>We will describe the building the development set-up for Omeka with CDASH customizations. This is si,ilar enough to building the production instance.  The action begins with Docker Desktop set up on the computer. The  CHCOffLine and CHCPersist folders exist as described above.  
+
+  <figure class="middle"> 
+    <img src="../assets/images/omeka_in_azure.jpg">
+      <figcaption>Architecture of the CHC Omeka Resource Group in Azure</figcaption>
+      </figure>
+  
+
+
+<h2>Set up volume for persistent files and scans</h2>
+<p>Containerized applications are designed to re-build themselves from an image periodically.  In our installation, we want to be able to save certain resources which are normally installed in the image file-system.  To accomodate this, we create a <b>persist</b> file system, that will be the home of three of the folders that are normally installed with Omeka-S, namely. 
+<p><b>Persist</b></p>
+  <ul>
+    <li><b>files</b>: which holds the media thumbnails 
+    <li><b>config</b>: Omeka config files
+    <li><b>theme</b>: A default omeka thema and our CDASH custom theme.
+  </ul> 
+  <p><b>Scans</b></p>
+    <li>Home to batches of scans and the CSV files and import arguments used to import them into Omeka items. Scan batches  be described later on another page.
+    </ul> 
+
+<p>Depending on whether you are preparing a development server on your desktop or a production server on a cloud host, you will have different mechanisms for setting up bind mounts . You can see hints as to how these will be set up in the docker files for the dev or production set up.  For the development image, you can see how this is handled in <b>cdash-dev-docker/docker-compose.yml</b>.  In production, these mounted volumes are prepared as storage containers which are mounted to the web app through the azure portal. 
+
+<p>One difference between the dev and the production containers is that the persist volume for dev contains the modules folder so that the develop[er can fiddle with modules.  For performance reasons, omeka modules are installed in the image itself. 
+
+
+<h2>Set Up Docker Resources</h2>
+
+<p>Download the latest version of Omeka-S and unzip it in a temp folder so that we can take some resources out of it. Grab the contents of the Config folder and the Themes folder and Files.  
+
+  Using your computer's command shell, get yourself into the cdash-docker-dev-x.x.x  folder and run:
+</p>
+<pre>
+   %> docker image build -t cdash-omeka-dev-4.0.4 .
+</pre>
+<p>This will create a container that is a Debian Linux server that is running the Apache web server and has all of the PHP gizmos and settings to run Omeka-S -- which is also installed by essentially unpacking a zip file. 
+</p>
+
+<p>Omeka needs to point at an implementation of the MySQL database server that is on an accessible network. We can create the database server as another Docker container.  The file, <b>docker-compose.yml</b> includes the instructions for doing this. 
+We use a ready-rolled docker image for MariaDB, and set another server to run Adminer -- which is a MYSQL administrator tool that is also written in PHP.   
+<p>All of this is snapped together by running the following command in your docker shell: 
+<pre>
+   %> docker-compose up -d
+</pre>
+<p>If you have updated your version of Omeka, then you probably wil change the tag used in your Docker image build command, above.  And you will also edit the reference to this image in your <b>docker-compose.yml</b> file.  
+
+
+
+
+
+
+<h2>Adminer and the Omeka Database</h2>
+
+<p>Starting the docker machine and configuring containers:
+<ul>
+  <li>PHP -enabled web server with Omeka installed, 
+  <li>A MariaDB database server 
+  <li>the Adminer adminstritative toolkit for MariaDB
+  </uL>
+<p>Gets you an empty Omeka instance.
+
+  <p>You now should now be able to go to your docker control panel and find the CDash Docker web application that has three containers.  The image below shows how to launch the command line prompt on the web server container. 
+  </p>
+  <figure class="middle">
+    <img src="images/docker_app_cli.jpg">
+    <figcaption>Three services inside the CDash web app.</figcaption>
+    </figure>
+
+  <h2>Inspect Shared File-System</h2>
+  <p>The <b>cdash-persist</b> folder is attached to your Omeka server as a <b>Bind Mount</b> which means that the files inside this directory are not destroyed when your docker app is turned off or erased.  In production, cdash-persist is a file share in the Azure cloud. In our new development environment, these resources are in our file-system.  You can see them in your local cdash-dev folder.  
+  </p>
+  <p>CDASH-persist has all the files that you need to customize Omeka and some other resources that are useful for learning php and experimenting with foundation concepts of Omeka like the basic Laminas and Doctrine tutorials.
+  </p>
+  <h3>Look Around on the Unix Console</h3>
+  <p>YOu can launch a terminal window on your Omeka server either frm your cloud host or through docker desktop.  At this point, it would be good to open up a shell and look around your Omeka installation.  
+
+  <p>Once you are there, you should be able to verify that the folders <b>cdash-persist</b> and <b>php-tut</b> are mounted on /var/www/html.  Try using your computer's file manager to create a new file in one of those folders, and observe that the new file shows up on your dev container, and vice versa.
+  In case anything needs troubleshooting with the installation, you may need to use this shell to change permission on your files directory in your cdash-persist folder. 
+  
+<h2>Inspect and Set Up your MySQL Database</h2>
+<p>Almost all of the changes that you might make to your Omeka site are stored in the Omeka tablespace in your MySQL database. The Omeka developer will need to know how to get to this database to set up the initial Omeka tablespace, to export a backup of an existing tablespace or import one.   
+ <p>On a local docker installation using our template, you will use Adminer to manage your database.  On a cloud host, you would probably use the SQL Workbench client.   If you are using a cloud host, you will need to set up your local SQL Workbench to access your MYSQL database. You should vind connnection information on your cloud portal. 
+<p>We will discuss the Adminer adminstration here and leave it to you to translate to whatever adminstrative client and cloud host you might be using if you have a different set up.
+
+  <h3>Log in to Adminer</h3>
+  <p>To start Adminer, invoke it in your browser at 
+    <pre>
+    http>//localhost:8080
+    </pre>
+  <p>Your credentials are:
+    <ul>
+      <li>system: MySql
+      <li>server: db
+      <li>Username: root
+      <li>password: blabla
+      <li>database: leave blank
+      </ul>
+    <p>If you forgot these, you would find them as part of the Adminer configuration spelled out in the docker-compose.yml file.
+
+  <p>The MySQL database is persistent between installations of Omeka.  So if you have already been working on an installation, you will find the Omeka tablespace already made, and there wil be a bunch of tables in it -- which you can explore. 
+  <p>  If you want to restore an installation saved from a previous SQL dump of the Omeka tablespace, you can drop the Omeka tablespace, and re-create it using the SQL commands below.  Then import the previously saved tables.
+  <p>In some situations, you may want to have alternate table-spaces in MySQL with different names. If this is the case, you can modify the SQL commands below to use whatever name you want, and then change your <b>config/database.ini</b> file to direct your Omeka installation to look at the alternate database. 
+    
+
+  <p>To create an initial Omeka database in MySql.  You can do this by running the following SQL statement at the SQL Prompt.  
+  <pre>
+    CREATE USER 'omeka'@'%' IDENTIFIED BY 'blabla';
+    SELECT CURRENT_USER();
+    CREATE DATABASE omeka;
+    USE omeka;
+    GRANT ALL PRIVILEGES ON omeka.* to 'omeka';
+    FLUSH PRIVILEGES;
+  </pre>
+
+  With this tablespace built, you can now import tables that you may have exported form a previous installation of Omeka.  When exporting an Omeka tablespace we always use the <b>Use</b> option so that we can import the tables into an alternatively named table-space in case we need to have more than one in our MySQL installation.  
+
+  <h1>Start Omeka</h2>
+  <p>Now its time to start Omeka.  Point your web browser to <b>http://localhost/omeka-s/admin</b>.   In some cases, it may complain that your <b>files directory does not have the proper permissions</b>/  If you get this, you wil lneed to go into your Omeka container with the command shell, go to the chc-persist files, which ought to be mounted at /var/www/html/persist or something like that and use <b>chmod a+rw files</b>.
+    
+  <p>
+    If you are starting with an empty tablespace, you will be asked to enter an initial admin user and password.  For development we will use:
+    <ul>
+      <li>Email: admin@devnull.net
+      <li>Password: blabla
+    </ul>
+
+If the database designated in your config/database.ini file was left from the previous omeka container or if you had restored tables from a previous incarnation of your container, you will essentially be picking up where you left off, presuming your persist/files directory was also left intact.  We will cover saving and restoring database states later.
+
+  
+<hr>
+
+  <h2>Building the CDASH demo</h2> 
+  <p>To build CDASH involves loading several modules, configuring the custom schema with item templates and custom vocabulary, creating the cdash theme, and loading several items.  All of this work would be tedious to have to repeat.  Luckily the way Omeka works is that the result of all of these actions is saved in the Omeka database on the MySQL server. 
+  
+<h3>Install Modules</h3>
+<p>Use the Omeka Admin interface to install of the modules that were included in your omeka-s modules folder. 
+<p>Notice that on the development version of Omeka, we have put the modules folder into chcpersist so that we can play with them without always having to create a new image of our container each time.  On the production version of Omeka-s, the modules folder is part of the image, since this seems to substantially speed up performance of Omeka.
+
+<h3>Install CDASH Custom Metadata Terms</h3>
+<p>CDASH has defined several special metadata terms for properties that are unique to CDASH.  These are imported from <b>chcoffline/vocabulary/cdash-terms_20231231.ttl</b>.  Choose the version with the latest date. Take a look at the file in your text editor if you like.  Then use omeka-s/admin/vocabulary page yo import your Custom CDASH Terms.  Use the following parameters to make sure that your terms match with the resource templates that we are going to import next.
+  <ul>
+    <li>Label: "CDASH Terms"
+    <li>Prefix: "cdash"
+    <li>Namespace URL: "http://github.com/c-dash/ns/cdash/"
+  </ul>
+<h3>Install CDASH Resource Templates</h3>
+<p>The Omeka Resource Templates are imported and exported through the <b>omeka-s/admin/resource-template</b> window.  Whenever you make shenges to resource templates, they should be exported to the folder, <b>chc-offline/vocabularies/resource_templates</b>.  Depending on whether you are working in Dev or Prod.  You can find the most recent export files for Places and Documents there, and import them. 
+
+  <h2>Set up Value Suggest</h2>
+  <p>Add value suggest to Creator, and Subject, Building Styles, Buildnig Materiaal
+  
+  <h2>Set up CDASH Site Metadata Browse</h2>
+  <p>IsPartOf (folder) 
+  
+  <h2>Set Up Vocabularies (pick lists)</h2>
+  
+
+<h2>Create Item Groups for Places and Documents</h2>
+<p>CDASH defines two basic types of Omeka items: <b>CDASH Places</b>, and <b>CDASH Documents</b> Before you can start importing items you need to set up these item sets using the admin/item-sets dialog.  The key thing to get right here is that the Title property for each item set should be CDASH Places and CDASH Documents, respectively.
+
+<h2>Import Items and Media</h2>
+<p>ANother page is going to cover how to import items and media.
+<p>Check all of the item / schema features and relationships: item-Sets, multi-value subjects and uses, etc.
+
+
+<hr>
+<h1>Create the CDASH Site.
+  <h2>Add the CDASH Site and make it Your Default Site
+<p>Use the cdash-phoenix theme.
+
+<h3>Define Resource Query for CDASH</h3>
+<p>Add all items 
+
+<h3>Configure Resource Pages for CDASH Theme</h3>
+<p>Values, Media Embeds, Linked Resources, Mapping.</p> Eveb though the maps do not appear on item pages because of a theme modification, including the Mapping block here adds coordinate infomration to each item page, which uis necessary for highlighting the location in the CDASH Map.
+
+
+
+<h2>Check and Troubleshoot CDASH Features
+
+  <h3>Turn on your Browser's Developer Tools</h3>
+  <p>The CDASH theme writes useful commentary in the dveloper console.
+
+  <h3>CDASH Spots don't show up on the Map?</h3>
+  <p>Check out cdash/assets/php/placemarkers.php
+
+  <h3>Set Up the CDASH Search form<h3>
+    <p>What is special about the CDASH search functions
+    <p>Check the query in cdash/view/common/search.php
+    <p>This query will ned to be updated manually for each new instance of CDASH. See comments in the code for more detailed instructions. 
+  
+  <h3>Check the Place - Document Information Exchange Function</h3>
+  <p>to be described on the CDASH Manager Tutorial Page
+
+
+
+
+    <hr>
+
+  <h2>Save an Empty CDASH Instance as a Database Dump</h2>
+  <p>Everything we have done in this tutorial so far has created an empty CDASH instance using the latest Omeka-s version. Now we can freeze this as a dump of the Omeka table-space. 
+  <p>Your export options should be as pictured in the screenshot :
+
+    <figure class="middle"> 
+      <img src="./images/adminer_export_empty.jpg">
+        <figcaption>Export options to export all of the tables and data frm MySQL</figcaption>
+        </figure>
+    
+
+
+<p>The <b>Create</b> option is used because we want to keep the option of having more than one database (tablespace) in a given MySQL server.  We will talk more about this in a future section on importing an empty CDASH instance. Name the file <b>cdash_4.0.4.CDASH_Empty_20240126.SQL.gz</b>
+
+
+    <h2>Updating CDASH for newer versions of Omeka-S</h2>
+    <p>Assemble updated modules
+    <p>Prepare new Docker container image.
+
+<h2>Migrate all CDASH Content 
+
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

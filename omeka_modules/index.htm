@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Omeka Modules</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Hacking Omeka</h1>
+  <p>CDASH is designed to be a few simple extensions to the relatively successful open-source web-library application, <a href="https://omeka.org/s/" target="outboard">Omeka-S</a>.
+  
+  <h2>Omeka as a Digital Asset Management System</h2>
+
+   <h3>Omeka Resources</h3>
+    <p>Conceptually, Omeka is a means of creating and managing and publishing <a href="https://omeka.org/s/docs/developer/api/#resources" target="outboard">several types of digital resources</a> that are useful for representing Items (things and documents) that may be related to <a href="">Digital Media Files</a> along with descriptive information (metadata properties, resource classes, vocabularies).  Some resources, like Item-Sets, Resource Classes, Sites and Site Pages provide a means for creating sets of different categories of items. 
+  <p>
+  <h3>Omeka User Views: Research, Discover, Browse</h3>
+   The most visible aspect of Omeka are the web pages that enable search and display of items and their associated metadata. 
+  </p>
+
+
+
+
+    a very useful Digital Asset Management and Publishing solution for an organization, like the Cambridge Historical Commission that wants to catalog and expose a collection of digital documents -- predominantly scanned paper documents and PDFs. 
+
+
+  <h2>Owner's Perspective: Operating Costs</h2>
+    From the Application Owner's perspective, this aspect of the design of CDASH has an important bearing on the potential life-time cost of operatinng CDASH.  The Omeka S project is a very successful open source project with thousands of installations and an on-going paid support staff that makes frequent new releases.
+  <p>Omeka is published as an free and open-source code=base, which means that:
+    <ul>
+      <li>There is no fee required to use and upgrade the software.
+      <li>The installation has a degree of longevity since there is no license to time out and even if the Omeka project loses interest or dissolves, a developer with the right skills should be able to keep the installation running or at least to export the digital documents (metadata, media files, and relationships) to a reasonable exchange format sutable for migrating all to a new asset management platform. 
+      <li>The fact that there is a large and active community of users and a paid development staff provides confidence that the Omeka platform wil continue to improve in terms of performance and useful capabilities -- which will be free and open source. 
+      </ul>
+    <h3>Out-of-the-Box Installation Requirements
+      <p>
+        Omeka out-of-the-box is easy to install and set up given  developer with a reasonable familiarity with hosted web applications.
+    
+    
+    independent developers can modify Omeka to do useful things beyond what is configurable out-of-the-box.
+    
+    These modifications come in the shape of <a href="https://omeka.org/s/docs/developer/themes/" target="outboard">Themes</a> that modify the way Omeka resources are presented and interacted with; and <a href="https://omeka.org/s/docs/developer/modules/Modules" target="outboard"> Modules</a> that change the nature of Omeka resources, modify and add new user features and administrative proecedures. 
+  
+    <p>
+      This web site is a useful example of an Omeka Project that provides a useful report about long-term considerations. 
+    <a href="http://discovery.civilwargovernors.org/omeka-future" target="outboard">The Future of the Civil War Governor's Archive</a>
+
+  <p>The overall framework that underlies Omeka is the Laminas framework for PHP web applications.  This framework makes use of several patterns of application design which have sorted themselves out after many years of trying to make applications that are scalable and easy to understand.  One of the key patterns in PHP frameworks like Laminas is known as <B>MVC</b> or <b>Model-View-Controller</b>.  
+
+  
+  
+  
+    <p>Omeka is a Laminas application that manages a collection of objects:  (Images or other digital artifacts) and a database of descriptive information along with functions for linking,filtering and sorting objects.  In the vocabulary of web apps,this fundamental layer of objects and behaviors is referred to as the <b>Model</b>.  
+    
+    
+    
+    Another layer of the basic Omeka platform is the graphical display of the images and descriptions which can be re-mixed based on different sorts of queries.  This display aspect of the application is known as the <b>View</b>.  And then there is one more set of components that needs to be addressed which is the forms for managing the Object Model and the setting up the User View.  Allof these back-end adminstration forms are categorized as the <b>Controller</b>.
+  
+ <p>For the ordinary admistrative user, the controller is embodies in web-based configuration forms.  For application developers it is handy to know that the many functions of the controller may be addressed programmatically through the Appllication Programmer Interface or API.
+
+<p>Omeka is animplementation of the Laminas MVC pattern adapted for the purposes of managing and exposing collections connecting electronic artifacts and descriptive information.
+
+<p>Most installations of Omeka make use of extensions (known as <b>Mosules</b>) that modify or add functions to the Model, View or Controller functions.  Some extensions are maintained by the Omeka team, and some have been developed by others.  Daniel Berthereau (DanielKM) is a very prolific developer and maintainer of many useful and popular Omeka modules -- including the Archive Repertory and Clean URL modules.  The Archive Repertory extension extensions modifies the structure of the object collection model that names and organizes the actual image artifacts according to a deliberate scheme iof identifiers -- as opposed to randomly adssigned ones.  The Clean URL module exposes the collection based uo URLs based on the same deliberately chosen identifiers and paths.    
+
+<p>These modules are desireable; yet, choosing to organize the collection according to the affordances of a third-party modules poses a potential hazard that in the future we may want to upgrade the base Omeka version but for lack of a compatible update of one of the modules that we are dependent on.  Unfortunately thedocumentationfor Laminas, Omeka and the two modules inquestionassume a lot of prior knowledge about Php,and Laminas, and it is fairly daunting for an average scripter (notsoftware engineer) to understand how modules work,let alone evaluate their long-term sustainability.
+<p>
+I have begun this document as a means of organizing my research intthe fundamental patterns of Php, Laminas and Omeka extensiosn ingeneral.  Beginning with the Omeka Archive Repertory module.
+</p>
+<h2>What is an Omeka Module</h2>
+<p> An Omeka module is a package of Php, Html and Javascript code that to replaces and extends and ecisting components of Omeka. 
+
+<h2>Useful Resources</h2>
+
+<h3>Omeka Documentation</h3>
+The <a href="https://omeka.org/s/docs/developer/modules/" target="omekadoc"> Omeka Documentation on Modules.</a> seems like a good place to start.  Unfortunately, it is not very helpful for a person like me who knows very little about pHp and Laminas.  They are still calling it Zend at this time, although all of the Omeka code has been upgraded to use the new name.  
+<p>
+  The Omeka modules page does recommend looking at the docs for the Laminas MVC layer (linked below) and the quick start tutorial.
+
+
+
+  When Omeka recognizes a module in the Modules directory, the loader reads the Module Config.ini 
+
+
+<h2>Tracking Flow of Control Through Omeka CSV Import Module</h2>
+<p>The goal here is to understand how the Daniel-KM's fork of the Omeka-S CSV Import module works.  Ultimately we want to understand how we might modify this plugin to take a pre-defined set of field mappings for our three resource types: Locations, Documents and Media.
+<p>We hope that this reverse engineering the CSV Import module, may help us apply out shallow understanding of HP and Laminas to an understanding of how Omeka and its Modules work.  Maybe we will learn how to add our own mods, and maybe this will prepare us to make better use of the Omeka API in our CDASH custom Omeka theme. 
+
+<h3>Digging In: Basic Routes, Views and Actions</h3>
+<p>Digging In to a Laminas module can be like digging in soup until you begin to understand the whole "Config over Code" mentality and the software patterns that you are just expected to understand.  It is a little like the signage on New England country roads.  If you don't know what road you're on, you don't belong here.
+<p>I may be going senile, but it took me more than a Month after completting the Laminas MVC Tutorial before I began to get any traction tracing the flow of control in the CSV Import module.  After many false starts and blind alleys, it seems like the right pathway for reverse engineering the module revealed itself.  I feel sort of the idiot fro not arriving here sooner!
+<h3>Learn the Page Routes and Actions from config/module.config. php</h3>  
+  <p>It makes sense to trace the flow control through the user experience.  I began by looking at the first form that appears when the user engages the CSVImport module.   Where can I find the code 
+  
+
+
+  <li>Demo user interface
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

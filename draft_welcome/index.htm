@@ -1,0 +1,271 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Style Guide</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h2>Preserving and Exposing the Building Files</h2>
+  <p>The Cambridge Historical Commission Building Files Collection is ten file cabinets full of information about every building in the city of Cambridge.  The collection includes systematic survey information collected for each building in the city, Clippings, Postcards, Maps, Ephemera...  The collection is actively managed with several new entries each week. 
+  <p>
+  Each of the 40 file-cabinet drawers is filled with folders. Named and ordered according to <b>Street Address</b> or address-range.  Some folders have additional information written on their name-tab to designate <b>Named Place</b>, such as specific <b>Buildings</b>, <b>Streets and Squares</b>, <b>Canals</b>, etc. 
+  <p>
+  The <b>C-Dash (Cambridge Digital Architectural Survey and History)</b> project has developed a set of tools workflows for scanning each  document in the building files.  Through a semi-automated chain of procedures, the scanned files are transformed into a hierarchy of <b>Documents</b>, categorized by <b>Document Type</b>. Each document is related to a <b>Place</b> of a given Place Type. The product of this effort is a digital repository, catalog and map-based discovery system.
+<p>
+  The easiest way to explain or understand CDASH would be to just start panning and zooming around on the map. Gray markers  represent an Address. Colored markers repreent named locations.  Hover over a marker to see the name of the place.  Clicking a colored one.  Notice the hierarchy of Places and related Documents.  Each document references the name of its parent folder, which you can click to understand meaningful ways that documents are organized in the physical collection.  Once you get the hang of it, you will see that a large proportion of the information that was put into the Building Files, has been successfully preserved in the digital collection which can now be explored by anyone in their home or while exploring the city itself. 
+  <p>
+
+  The CDASH web site is based on the popular open-source digital archiving platform Omeka-S.  The cusomized Omeka-S Theme and Modules behind CDASH are documented and made available for re-use at the CDASH <a href="https://c-dash.github.io/Documentation/home/" target="docs">c-dash.github.io</a>.   
+
+  <h2>Box 9 Challenge Review</h2>
+<p>The current state of CDASH is just before the production scale upload of scans into the system. The scope of the on-line collection is <b>Box 9</b> one of 45 Boxes.  Chosen because it contanis many examples of special folders. To get a flavor of how our semi-automated cataloging procedures, try entering "Bla" into the place search field at the top right.   Try an <a href="/omeka-s/s/cdp/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=1&property%5B0%5D%5Btype%5D=in&property%5B0%5D%5Btext%5D=detail&sort_by=cdash%3AstreetSort&sort_order=asc&submit=Search">advanced Search for Documents whose titles include the word "Detail"</a>.
+<p>
+One of the main things we need to do before starting with the bulk uploading is to look over sme of the specifics of the category and tag names that we are applying.  These can be reviewed in the following pages fmro our CDASH Project Documentation 
+<ul>
+  <li><a href="https://c-dash.github.io/Documentation/place_items/index.htm" target="docs"> CDASH Place Items Data Dictionary</a>
+  <li><a href="https://c-dash.github.io/Documentation/doc_items/index.htm" target="docs">  CDASH Document Items Data Dictionary</a>
+</ul>
+<p>These pages include all of the changes from our first review of the metadata scheme.  Questions that remain after this first review are highlighted in red. 
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+<h2>Preserving and Opening the Building Files</h2>
+<p>The Cambridge Historical Commission Architectural Survey Files Collection is ten file cabinets full of information on nearly every building, demolished or extant, in the city of Cambridge. The collection includes systematic survey information collected for each building in the city, clippings, photographs, maps, ephemera, and more. The collection is actively managed with several new entries each week.
+
+<p>Each of the 40 file cabinet drawers is filled with folders, each named and ordered according to Street Address or address range. Some folders show additional information on their name-tab to designate a Named Place, such as specific Buildings, Streets and Squares, Canals, etc.
+
+<p>The CDASH (Cambridge Digital Architectural Survey and History) project has developed a set of tools and workflows for scanning each document in the building files. Through a semi-automated chain of procedures, the scanned files are transformed into a hierarchy of Documents, categorized by Document Type. Each document is related to a Place of a given Place Type. The product of this effort is a digital repository, catalog, and map-based discovery system.
+
+<p>The easiest way to explain or understand CDASH is to begin by panning and zooming around on the map. Gray markers represent an Address. Colored markers represent named locations. Hover over a marker to see the name of the place. Click a colored one. Notice the hierarchy of Places and related Documents. Each document references the name of its parent folder, which you can click to understand meaningful ways that documents are organized in the physical collection. Once you are comfortable navigating the site, you will see that a large proportion of the information that was put into the Building Files has been successfully preserved in the digital collection which can now be explored by anyone in their home or on the streets of Cambridge.
+
+<p>The CDASH web site is based on the popular open-source digital archiving platform Omeka-S. The customized Omeka-S Theme and Modules behind CDASH are documented and made available for re-use at the CDASH <a href="https://c-dash.github.io/Documentation/home/" target="docs">c-dash.github.io</a> project development web site.
+<h2>Box 9 Challenge Review</h2>
+<p>The current state of CDASH stands just before the production scale upload of scans into the system. The scope of the on-line collection is Box 9: one of 45 Boxes. Box 9 was chosen for challenge review because it contains many examples of special folders. To get a flavor of how our semi-automated cataloging procedures are designed, try entering "Bla" into the place search field at the top right corner of the screen. Try an Advanced Search for Documents whose titles include the word "Detail".
+
+<p>One of the main things we need to do before starting with the bulk uploading is to look over some of the specifics of the category and tag names that we are applying. These can be reviewed in the following pages from our CDASH Project Documentation:
+<ul>
+<li><a href="https://c-dash.github.io/Documentation/place_items/index.htm" target="docs">CDASH Place Items Data Dictionary</a>
+<li><a href="https://c-dash.github.io/Documentation/doc_items/index.htm" target="docs">CDASH Document Items Data Dictionary</a>
+</ul>
+These pages include all changes from our first review of the metadata scheme. Questions that remain after this first review are highlighted in red.
+
+
+
+
+    named and ordered according to a <B>Street Address</b>, address-range.  Some folders are concerned with specific buildings or other <b>Named Places</b> .   Two systematic surveys of buildnigs have been conducted since <b>Date?</b>.  These 
+  
+  
+  <p>Welcome to the Cambridge Digital Architectural Survey and History (CDASH) Box 9 Challenge Preview.  We are nearing the end of the development phase of CDASH, getting closer to the finalizytion of our Omeka schema design and preparing for the bulk upload of the digitized files.  What you see here is one box of approximately 40 boxes of folders and documents selected because of its challenging nature including many special folders designating named places and special topics mainly along Massachusetts Avenue.   </p>
+  
+  <h3>Design and Development Review</h3>
+    <p>Over the past several months we have engaged with Historical Commission Staff in a review of the CDASH metadata tags.  We have also been refining our semi-automated procedures for digesting and categorizing digitized folder and document information into a specially designed schema of Items and metadata using the popular open-source archiving tool, Omeka-S.    </p>
+    <p>The reason for sharing this unfinished preview is so that the CHC staff can have a look at the architecture of the CDASH schema of Place Item Types and Document Item Types so that we can make final tweaks to this schema before getting started on the production-scale digestion, geocoding and import import of documents.  </p>
+  <h3>Open Issues</h3>
+    <p>At this stage it will be obvious that there are several obvious areas for improvement to be addressed in the CDASH user interface.  We have been collecting these in <a href="/omeka-s/s/cdp/page/todo">the To-Do page</a>.  If you find an issue or want to make a suggestion that is not already mentioned on the To-Do page, please send an email to Meta  
+
+    </p>
+  <h3>Source: The Building Files</h3>
+  <p>The Cambridge Digital Architectural Survey and History (CDASH) is a project to transform 10 file cabinets full of research material related to the architectural history of Cambridge (The Building Files) into a digital archive system that can serve as a vehicle for exploring the collection on the web and for further development of the information by historical commission staff. 
+  
+  <p>The physical collection of Building Files contains approximately 16,000 folders, 70,000 documents comprised of 100,000 pages (based on an extrapolation from the first 29 of approximately 40 file boxes).  
+  </p>
+
+  <p>The building files is a hierarchy of location-specific folders containing various types of documents. The vast majority of folders  are named for ranges of street-addresses.  A subset of folders pertain to named places. e.g. Hale House. A smaller subset of folders refer to specific topics, e.g. City Hall Brick and Mortar Studies.  Unmarked documents within a folder are presumed to relate to the address or named place marked on the folder.  Some documents are marked with more specific addresses. 
+  </p>
+
+  <h3>Destination: Omeka-S Digital Archive</h3>
+<p>The focus of the CDASH project has been to develop efficient, semi-automated process of digitzation, rough-sorting and geo-coding that will result in a digital archive designed using the popular open-source development and publishing tool <a href="https://omeka.org/s/" target="sidecar">Omeka-S</a>. </p>
+
+<p>The fundamental building block of an Omeka-S archive is an Item. An Item is like a catalog record, which can relate to a real-world object or a document. To address the management needs for a building files archive, the CDASH application defines two top-level categories of items:  <b>Place Items</b> and <b>Document Items</b>.    </p>
+
+
+<h3>Place Items</h3>
+<p>Place Items represent addresses or named places.  Each Place item has coordinates that cause the place to be discoverable on the CDASH map. There are several sub-categories of named places (described below).  Place items have many attributes that will allow an expert to add knowledge about a place, such as its type, and its architect, historical designation and temporal extent.    </p>
+<p>Each place item has a list of links to the Document Items that refer to that place.  </p>
+
+<p><b>Place Types</b>
+<ul>
+  <li><b>Addresses:</b> Most of the places included in CDASH are of type: Address.  Documents associated with addresses may refer to Buildings or other types of place that may currently or previouly occupied the location in question.  The ambiguity of Address places may be cleared up by creating new named places in Omeka and re-assigning documents.  
+  <li><b>Named Places:</b> There are several potential categories of names places.  During the semi-automated import phase, these place names may be inferred from the names of folders.  In later stages of the management of CDASH, place information may be further enhanced.
+    <ul>
+    <li><b>Buildings:</b> e.g. <a href="/omeka-s/s/cdp/item/20058" target="sidecar">City Hall</a>,  <a href="/omeka-s/s/cdp/item/20062" target="sidecar">Joseph H Lord House</a>, and many more.
+    <li><b>Roads:</b> Some folders are dedicated to photographs of streetscapes, for example, <a href="/omeka-s/s/cdp/item/20064" target="sidecar">Mass Ave Quincy Square to Central Square</a>
+    <li><b>Parks</b>
+    <li><b>Monuments</b>
+    <li><b>Bridges</b> 
+    <li><b>Canals</b> 
+    </ul>
+  </ul>
+
+  <p><b>Place Uses</b>
+  <p>Commission staff have put together the following glossary of keywords fro describing places according to their use.  The names of topic-specific folders may also become Place-Use keywords.  
+  <table>
+  <tr><td>Residential
+      </td><td>  Single-Family Residential
+      </tr><tr>
+      </td><td>Two-Family Residential
+      </td><td>Three-Family Residential
+      </tr><tr>
+      </td><td>Apartment Building/Multi-Family Residential
+      </td><td>Commercial
+      </tr><tr>
+      </td><td>Mixed-use
+      </td><td>Hospital/Medical Building
+      </tr><tr>
+      </td><td>Religious Building
+      </td><td>Industrial
+      </tr><tr> 
+      </td><td>Institutional
+      </td><td>Education
+      </tr><tr>
+      </td><td> 	Garage
+      </td><td>Stable/Carriage house
+      </tr><tr> 
+      </td><td>Shed/Out-building
+      </td><td>Gas Station/Service Station
+      </tr><tr> 
+      </td><td>	Recreational
+      </td><td>	Utilities
+      </tr><tr> 
+      </td><td> Other
+      </td><td>
+      </tr>
+    </table>
+        
+    
+
+
+  <h3>Document Items</h3>
+
+  <p>Document Items represent documents of various types, described below. Each document is related to a place through a link.  At the outset of scanning, CHC staff helped to establish a category scheme for the most common types of documents in the building files.  Our rough sorting and digestion workflows have assigned each scanned page with a document item of one of the following types.    
+
+  </p> 
+  <p><b>Document Types</b>
+
+<p>The following document types were identified by the commission staff as the most common types of documents occuring in the building files.  Each of the scans was grouped into items categorized as one of these types.</p>
+<ul>
+  <li><strong>Architectural Inventory Form</strong></li>
+  <li><strong>Historical Building Survey</strong></li>
+  <li><strong>Research Form</strong></li>
+  <li><strong>Research Notes</strong></li>
+  <li><strong>Published Material</strong></li>
+  <li><strong>Exterior View</strong></li>
+  <li><strong>Interior View</strong></li>
+  <li><strong>Detail View</strong></li>
+  <li><strong>Plan View</strong></li>
+  <li><strong>Photo Contact Sheet</strong></li>
+  <li><strong>Correspondence</strong></li>
+  <li><strong>Demolition Memo</strong></li>
+  <li><strong>Supplemental Material</strong></li>
+  <li><strong>Ephemera</strong></li>
+</ul>
+
+<p>The hierarchy of Place and Document items allows information about named places to be developed and inherited by the documents related to that place.   </p>
+
+
+<hr>
+<h3>Exploration and Discovery in Omeka-S</h3>
+<p>  The primary means for discovering documents is exploring the map.  Hovering over markers reveals the address ot the name of the place.  Clicking brings up the page for the Place, with its list of related documents.  </p>
+<p>Places can be discovered through the Search Box at the top of the page.  
+</p>
+
+  <h3>Automated Population of Metadata and Potential for Enrichment</h3>
+  <p>The semi-automated procedures for digitizing, and digesting the building files has resulted in some boiler-plate titles,  subject keywords, and folder references being recorded for document items  based on a semi-automated rough sort process.    </p>
+
+    <p>A recent innovation for CDASH has been the assignment of Named Place and Topic information to Place and Document items associated with folders named for specific buildings, streets or other named places.  Occasionally where a topic is specified in a folder name, this topic finds its way into the title or subject list for the associated documents.
+    </p>
+  <h3>Hidden Potential Attributes</h3> 
+  <p>There are lots of potential metadata attributes that can be specified for places and documents.  These potential attributes are accessible through the edit interface for items but they invisible to users if they are not filled in.
+  </p>
+
+
+
+
+<h2>Open Issues and Suggested Features</h2>
+
+  <p>This preview edition of CDASH is posted so that CHC staff can review the automated assignment of metadata to places and documents based on our semi-automated digitization, rough-sort and digestion procedures.&nbsp; There are many known issues and potential features that either need to be addressed in future releases.&nbsp; If you find issues or have suggestions, email them to Meta.</p>
+
+<h3>Before Proceeding with Pre-Processing and Bulk Import of Scans</h3>
+
+<ul>
+  <li>Final metadata review with Staff.  Once bulk loading begins, it wil lbe costly to change the automatically defined metadata properties and their values. 
+    <li>Settle outstanding issues regarding place and document types.  Do we want to continue with <b>Monument</b> or has the staff come up with a more general like “small-scale features.” 
+	<li>Should folder topic information be embedded ni document titles (e.g. &quot;City Hall: Paint and Mortar Studies Interior Photo&quot;)</li>
+  <li>Informal street spellngs like "Mass Ave" should be replaced with their official spellings.
+  <li>In the current batch there are a few markers that should have their locations adjusted.  
+</ul>
+
+<h4>Finalize Metadata</h4>
+<p>All of the changes specified by staff in out first metadata review have been implemented. There are still some questions and possible improvements.  These will be easy to fix before our bulk-uploading process starts.   
+<ul>
+  <li>The document type, <b>Article / Monograph</b> has been changed to <b>Published Materials</b> 
+  <li>There is an outstanding question about the place-type <b>Monuments</b> 
+  <li>I suggest that we change the place-type <b>Roads</b> to <b>Street</b> or maybe our street-specific collections might fall under a new heading <b>Streets and Squares</b> 
+  <li>Other?
+  </ul>
+
+  <h3>Before finalizing the current CDASH scope of work</h3>
+
+  <h4>Features/Bugs</h4>
+<ul>
+  <li>Currently, if you find your way to a document through the Search bar, the map does not update to show the location of that document's place item.  
+	<li>Map marker icons could reflect place type: Address,&nbsp; Building, Road</li>
+  <li>Need a <b>Print</b> button on each item's show page.
+  <li>Items returned from search should be organized in 3 columns. 
+  <li>Show page count or item count for lists of items returned from search or a place item's list of Related Documents 
+  <li>Make a button to hide and reveal the map tools panel. 
+  <li>
+
+</ul>
+
+<h3>Future Features Beyond the Current Scope</h3>
+
+<ul>
+	<li>It would be cool if the advanced search included dynamic facets and spatial filtering according to the current map extent.&nbsp;</li>
+  <li>Fix the layout so it works well on a cell phone.
+</ul>
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

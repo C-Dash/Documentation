@@ -1,0 +1,186 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Omeka Fundamentals</title>
+    <meta name="description" content="CDASH is an Omeka application. This document introduces Omeka fundamentals for the CDASH Manager and Contributor">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Omeka Fundamentals for the CDASH Contributor, Curator and Manager</h1>
+
+  <p>The basics of managing and contributing to CDASH are the basics of Omeka-S.  The purpose of this page is to provide pointers to the sections of the <a href="https://omeka.org/s/docs/user-manual/#omeka-s-user-manual" target ="Omeka">Omeka S User Manual</a> with commentary about some of the particular customizations that make the CDASH implementation unique. 
+  </p>
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+      <li><a href="../fundamentals/index.htm#reading">Recommended Reading for the CDASH Manager</a>
+      <li><a href="../fundamentals/index.htm#items">Items</a>
+      <li><a href="../fundamentals/index.htm#templates">Resource Templates and Vocabularies</a>
+      <li><a href="../fundamentals/index.htm#vocabularies">Custom Vocabularies</a>
+      <li><a href="../fundamentals/index.htm#sites">Omeka Sites (like CDASH)</a>
+      <li><a href="../fundamentals/index.htm#sites">Skill Building Exercises</a>
+    </ul>
+
+
+  <h3 id="reading">Recommended Reading for the CDASH Manager</h3>
+  <p>To begin this tour, you should log in to <a href="https://chcomeka.azurewebsites.net/omeka-s/admin" target = "admin">the Admin branch of the Cambridge Historical Commission demo site</a> using your new Administrator user-name. Then you can explore the fundamentals of the Omeka Administrative interface while you are perusing the documentation.
+  <ul>
+    <li><a href="https://omeka.org/s/docs/user-manual/" target = "omeka">Omeka-S Intro Video</a>.
+    <li><a href="https://omeka.org/s/docs/user-manual/admin-dashboard/" target = "omeka">Adminstrative Dashboard</a>.
+    <li><a href="https://omeka.org/s/docs/user-manual/sites/site_users/" target = "omeka">Site Users</a>.
+    </ul>
+
+    <h3 id="items">Items, Item Sets, Item Templates</h3>
+    <p>Much of the magic of CDASH is involved with the design of two main classes of Items. The page on items introduces sme of the basics. 
+    <ul>
+      <li><a href="https://omeka.org/s/docs/user-manual/content/items/" target = "omeka">Items</a>.  
+      </ul>
+     <p>While looking at the Items page, pay particular attention to the section on <a href="https://omeka.org/s/docs/user-manual/content/items/#linked-resources" target = "omeka">Linked Resources</a> is an important mechanism that we use to link Document Items to Place Items. 
+
+
+      <p><a href="https://omeka.org/s/docs/user-manual/content/items/#item-sets" target = "omeka">  Item Sets</a> -- which is one of the ways that we discriminate between and <b>Place Items</b> and <b>Document Items</b>.  ANother section of interest describes 
+
+    <p>Even though most almost all Place and Document Items are initially created through bulk item proedures to be described in a forth-coming page about the CDASH Bulk Item Creation process, it will still be a good idea to reading the sections on the Itme page that pertain to 
+
+      https://omeka.org/s/docs/user-manual/content/items/#add-an-item
+      <a href="https://omeka.org/s/docs/user-manual/content/items/#add-an-item" target="omeka">Adding an Item</a> and 
+      
+      <a href="https://omeka.org/s/docs/user-manual/content/items/#edit-an-item" target="omeka">Editing an Item</a>
+      
+      <p>It is also useful to understand how <a a href="https://omeka.org/s/docs/user-manual/content/items/#add-an-item" targt="omeka">Media are relate to Items</a>
+    
+      <h3>Depencency of Document Items on Place Items and of Media on Document Items</h3>
+      <p>It is useful to think of the CDASH collection as a hierarchy of dependencies.  Each Document Item is dependent on a Place Item. The only way that documents are discoverable on the map is when the document item in question is related to a Place Item. 
+      <p>
+        Currently, Place Items do not have media --although this could change -- if for example, Eric wanted to choose a specific image to be the thumbnail image for the place page pertaining to a particular building. 
+      <p>For now, all media are related to Document items.  if a document item is deleted from CDASH, omeka deletes its copies of the media. 
+      <P>
+      <h3>A quick Note on Backups and Recoverability</h3>
+      <p>Speaking of accidentally deleting media form CDASH and other accidental catastrophes.  Future pages in this documentation will discuss the way that the CDASH Manager and CDASH Owner can make sure that accidental data losses like this can be recovered.
+
+
+<h2 id="templates">Resource Templates and Vocabularies</h2>
+<p>You may have noticed in the section on creating items, that one of the most critical properties of each item is the <a href="https://omeka.org/s/docs/user-manual/content/resource-template/" target = "omeka">Resource Template</a>. Omeka has a default resource template for items, a generic set of Dublin Core document properties.
+
+  A substantial amount of work has gone into defining the Resource Templates for Place and Document Items. These templates may be modified, but this should always be done with care. You can look at the definitions for these custom templates on the page, <a href="../schema/index.htm">CDASH Schema: The CHC Building Files In Omeka</a>
+  <ul>
+  <li> <a href="../place_items_index.htm"> Detailed Data Dictionary for Place Items</a>
+  <li> <a href="../doc_items_index.htm"> Detailed Data Dictionary for Document Items</a>
+  </ul>
+</p>Backups of the resource templates are stored in the <b>CDASH Persist/Vocabularies</b> folder (link forthcoming.)
+<p><b><span style="color: red;">IMPORTANT: Removing properties form a resource template wil lcause the permanent deletion of data.  </span></b> Be very careful not to remove properties from resource templates unless you are sure!
+
+<h3 id="vocabularies">Vocabularies and Schema</h3>
+
+<p>Most CDASH vocabularies are defined with reference to the general -purpose metadata standard <b>Dublin Core (DCMI)</b> DCMI provides the most common descriptive elements for documents, including Title, Attribution and so on. 
+<h3>Dublin Core Identifier</h3>
+One of the most critical item attributes is the Dublin Core Identifier.  It is absolutely fundamental that each CDASH item should have a DC Identifier that is completely unique. This will normally be the case if you follow the rules provided in the detailed data dictionaries given above.  If it happens that there are two items with the same ID, confusing things might happen, such as some document items may lose their connection with places.  If you suspect that this is happening, you can trouble-shoot the issue bu searching for the suspect place item according to its name.  
+      
+  <h3>Custom CDASH Vocabularies</h3>
+  <p>We have defined several special CDASH metadata terms to cover concepts not covered by the DCMI.  You can find these in the <b>CDASH Terms</b> vocabulary. 
+  <p>If you need to edit these, you will find the vocabulary file in the <b>CDASH Persist/Vocabularies</b> folder (link forthcoming.)
+
+  <h3>Pick-Lists and other Controlled Vocabularies</h3>
+  <p>CDASH includes custom pick-lists that help to normalize the categorization of Place-Type, Site Use, CDD Neighborhood, CHC Research District and (soon) Building Material, and Building Style.  These pick-lists are created and maintained with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target ="omeka"> Omeka Custom Vocabulary module</a>.
+
+  <h2 id="sites">Omeka Sites</h2> 
+  <p>So far we have been exploring CDASH from the Administrator's interface.  But users and also many page editing tasks may be taken care of from the prettier user interface provided through the custom CDASH Theme.  Themes provide the styling and structure that make CDASH unique.
+  <h3>Multiple potential Sites</h3>
+  <p>Note that the admin interface that we have been exploring is for the  <b>Cambridge Historical Commission</b>.  Within this ioveral Omeka-S facility, the CHC could have multiple <a href="https://omeka.org/s/docs/user-manual/sites/" target="omeka">Omeka-S <B>Sites</b></a> which have different presentation styles, resource templates and item-relational architectures.
+  <p>
+    For now, the only site we have defined is CDASH, but it is useful to keep in mind that this same Omeka-S Facility could also host other sites designed for other collections.
+
+  <h3>Launching the CDASH Phoenix site from the Admin interface</h3>
+  <p>Currently, the active CDASH site is named <b>CDASH Phoenix</b>.
+  For fun, lets go to the <b>Sites</b> menu on the left-hand side of the admin interface and explore some of the basic site properties. 
+  <p>Click the little link-out button to the right of the CDASH Phoenix
+title to open another browser tab that brings you to the pretty CDASH interface. 
+<p>Find your way to an item.  Notice that while you are logged in as administrator, you have a special tool bar at the bottom of the item show page, which will allow you to edit items. 
+
+
+<h2>Skill Building Exercises</h2>
+<p>As a CDASH contributor or manager you will create and enrich place and document items. Place Items may be created from scratch using the normal Omeka Item Creation tools.  Most of the time, document items and their media will be initialized using some custom batch upload tools created for CDASH. In any case, the initial properties for items leaves plenty of room for enrichment by managers and contributors who will edit items, filling in new resource properties.  SOme of these are plain text and some refer to custom pick-lists and controlled vocabularies. 
+<p>The following exercises are intended to introduce you to the tools, and recommended protocols for creating and enriching items.
+
+<h3>Enrich and Modify a Place Item</h3>
+<ul>
+<li>Use the CDASH Map to find a map marker that refers to a named place.
+<li>At the bottom of the page, find the Omeka Admin toolbar and choose <b>Edit</b> to edit the item.
+<li>Refer to the  <a href="../place_items_index.htm"> Detailed Data Dictionary for Place Items</a> for tips on how to fill in the blanks.
+<li>If you are curious, use <a href="https://chcomeka.azurewebsites.net/omeka-s/admin" target = "admin">the Omeka Admin interface </a>to explore the Resource Template for Place Items.
+<li>Again, in the Omeka Admin Interface, take a look at <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target ="omeka"> Omeka Custom Vocabulary module</a> DOn;t make any changes to these lists, but notice how easy it would be to change these. 
+<li>Adjust the location of the mapping marker using the<a href="https://omeka.org/s/docs/user-manual/modules/mapping/#editing-markers" target = "omeka">Mapping Module Edit Markers </a>
+</ul>
+
+<h3>Enrich a Document Item</h3>
+<ul>
+<li>Choose any document item -- perhaps a document associated with the place that you enriched, above.
+<li>At the bottom of the page, find the Omeka Admin toolbar and choose <b>Edit</b> to edit the item.
+<li>Refer to the  <a href="../doc_items_index.htm"> Detailed Data Dictionary for Document Items</a> for tips on how to fill in the blanks.
+<li>If you are curious, use the Omeka Admin interface to explore the Resource Template for Document Items.
+<li>Notice that the document item is related to the place item via the place item ID.
+</ul>
+<p>Normally, the location info for documents will be pushed from place item to all of the documents related to that place. This feature will be added to CDASH soon.  In any case it is good to understand how to do this from scratch. 
+
+<h3>Create a New Place Item</h3>
+<ul>
+  <li>Use the <a href="https://chcomeka.azurewebsites.net/omeka-s/admin" target = "admin">the Omeka Admin interface </a> to create a new item.  
+  <li>For the Item template, use the Place Item Template.
+  <li>Fill in the minimal property set -- Title, Place ID, Address, Place Type.
+  <li>Click the mapping tab to use the <a href="https://omeka.org/s/docs/user-manual/modules/mapping/#add-markers" target = "omeka">Mapping Module Edit Markers </a> to add a marker for the place.
+  </ul>
+  
+  <h3>Create a New Document Item</h3>
+  <ul>
+    <li>Use the <a href="https://chcomeka.azurewebsites.net/omeka-s/admin" target = "admin">the Omeka Admin interface </a> to create a new item. 
+    <li>For the Item template, use the Place Item Template.
+    <li>Fill in the minimal property set -- Title, Document ID, Address, Document Type, Subject.
+      <li>Click the mapping tab to use the <a href="https://omeka.org/s/docs/user-manual/modules/mapping/#add-markers" target = "omeka">Mapping Module Edit Markers </a> to add a marker for the place.
+    <li>Add Media for your place. 
+  </ul>
+    
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

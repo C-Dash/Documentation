@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>CDASH Place Items </title>
+    <meta name="description" content="Describes the rules for arranging information about places, documents, media in the Cambridge Digital Architectural Survey and History">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">CDASH Place Items</h1>
+  <p>This page discusses the notion of CDASH Place Items as catalog records describing various types of places within the digital collection management environment provided by Omeka-S.
+
+    <p>
+      For more information on the concept of an Omeka Item and the role of  CDASH place Items, see <a href="../schema/index.htm" >CDASH Schema</a>.
+
+  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <ul class="verses">
+    <li><a href="../place_items/index.htm#dictionary">Place Properties Dictionary</a>
+    <li><a href="../place_items/index.htm#types">Place Types</a>
+    <li><a href="../place_items/index.htm#neighborhoods">CHC Neighborhoods</a>
+    <li><a href="../place_items/index.htm#tbd">Terms To be Determined:</a>
+    <li><a href="../place_items/index.htm#use">Building Use</a>
+    <li><a href="../place_items/index.htm#style">Building Style</a>
+    <li><a href="../place_items/index.htm#material">Building Material</a>
+  </ul>
+
+  
+  <h2>CDASH Place Items: Metadata Properties Dictionary</h2>
+    
+    <table class="dictionary">
+      <h2>Required Place Properties</h2>
+      <tr><th width="20%">Name</th><th width="80%">Description
+      <tr><td><b>Resource Template</b><br>Pull-Down</td>
+      <td>All CDASH Places use the <b>CDASH Place</b> template.</td>
+      </tr>
+      <tr><td><b>Class</b><br>Pull-Down</td>
+        <td>All Place Items use <b>Dublin Core: Location</b></td>
+      </tr>
+      <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
+        <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a></td>
+      </tr>
+
+      <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
+        <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every place should be associated with at lest one or possibly more folders.   </td>
+      </tr>
+
+      <tr><td><b>Place Item</b><br>Text</td>
+        <td>The name of the place item.  This shows up as the Title in the item show page, and is the identifying string when choosing a place as a property of a Document item. 
+        <p>In the case of Address type places, uwe the street address or range. In the case of a named place, the name is formed as an Address and the Place Name.  eg: </b>77 Massachusetts Ave - MIT Bldg 7</b>.   </td>
+      </tr>
+
+      <tr><td><b>Place Name</b><br>Text</td>
+        <td>In the case of named places, this property carries the base-name of the place - without the pre-pended address.   </td>
+      </tr>
+
+      <tr><td><b>Place Type</b><br>Use pick-list.<br></td>
+        <td>Each place Item is assigned a type. Choose one from the pick-list provided.</td>
+      </tr>
+
+      <tr><td><b>Street Address</b><br>Text</td>
+        <td>Examples: 77 Massachusetts Ave, or 12-14 Broadway Terrace.  Make sure that the street name and suffic are spelled thhe same as other places on the same street. </td>
+      </tr>
+      <tr><td><b>Neighborhood</b><br>Text</td>
+        <td>Each cdash document item is assigned to a CHC neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The neighborhood name is disambiguated by the addition of <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
+      </tr>
+
+      <tr><td><b>Research District</b><br>Pick from List</td>
+        <td>Each cdash document item is assigned to a CHC Research District. Pick from the list of CHC neighborhoods. 
+      </tr>
+
+      <tr><td><b>Street Name</b><br>Text</td>
+        <td>The street name portion of the address may be useful for filtering/faceting results. </td>
+      </tr>
+
+      <tr><td><b>Street Sort Key</b><br>Text</td>
+        <td>This string is used for sorting items according to their street address.  This key consists of the street name (with "_" for spaces), concatenated with an 8-digit string consisting of the house number left-padded with zeros. Example: Massachusetts_Ave_00000077
+   </td>
+      </tr>
+
+    </table>
+<h2>Optional Place Properties</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
+
+      <tr><td><b>Description</b><br>Text</td>
+        <td>A description of the place which might appear as a caption. </td>
+      </tr>
+      <tr><td><b>Place Use/s</b><br>Text<br></td>
+        <td>A place may have a use.  For example, a buildng may serve as a bank.  If possible, choose a value from the CDASH List of Uses or choose from <a href="https://authorities.loc.gov/cgi-bin/Pwebrecon.cgi?DB=local&PAGE=First" target="outboard">Library of Congress  Subject Headings</a> or <a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="outboard">the Getty Art and Architecture Thesaurus.</a></td>
+      </tr>
+      <tr><td><b>Building Style/s</b><br>Controlled Vocabulary<br></td>
+        <td>Designed places such as buildings or monuments may ba categorrized according to their stylistic influences.  Choose a value form the CDASH list of styles or use the <a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="outboard">the Getty Art and Architecture Thesaurus.</a> </td>
+      </tr>
+
+      <tr><td><b>Architect, Developer, Builder </b><br>Text</td>
+        <td>The name of the individual(s) or firm(s) that deserve credit for the design or construction of the thing.  You may use Annotations to describe the role played by each.  Hopefully you can find validated spellings for architect names at <a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="outboard">the Getty Art and Architecture Thesaurus.</a>  </td>
+      </tr>
+      <tr><td><b>Appear Date</b><br>Date</td>
+        <td>The date when the existence of the thing is first recorded.  It may be the year built, or it may be the date of the first map that records the existence of the thing.  A plain four-digit year is sufficient.  Use annotations to clarify the sources or events associated with this date.</td>
+      </tr>
+      <tr><td><b>Date Renovated</b><br>Date</td>
+        <td>When the dates of renovations are known these may be entered here.  Use annotations to describe the rennovations associated with each date.</td>
+      </tr>
+      <tr><td><b>Disappear Date</b><br>Date</td>
+        <td>For places and objects that no longer exist, use this field to record the date that reflects the first evidence of the disappearance of the object.  Use annotations to refer to the related event or source.</td>
+      </tr>
+      <tr><td><b>Special District or Designation/s</b><br>Text, URL</td>
+        <td>Enter the name of any onservation or historic district or historical designation that applies to this property. Feel free to use the URI type entries to add hyperlinks to the official descriptive pages.</td>
+      </tr>
+      <td><b>Alternate Name</b><br>Text</td>
+        <td>This property is available for occasions when a place may be known by more than one name.  </td>
+      </tr>
+      <tr><td><b>Collection</b><br>text</td>
+        <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History </td>
+      </tr>
+
+    </table>
+
+    <h2>Deprecated Place Properties</h2>
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
+
+      <tr><td><b>MACRIS Inventory Number</b><br>Text, URL</td>
+        <td>When a document or a place is connected with a specific referent of the Massachusetts Cultural Resource Information System,  Use the URI button to set the <b>Label</b> field to be the MACRIS ID, and the <b>URI</b> field to the landing page for the related MACRIS Resource. <a href="https://maps.mhc-macris.net/" target=""macris">Search MACRIS here.</a>
+          <br>After saving, check that the result performs as a clickable link.
+          <br>This field is not recommended since the MACRIS map layer is easier for users and much easier to manage. 
+        </td></tr>
+      <tr><td><b>Assessing Map Lot</b><br>URL</td>
+        <td>Optionally use this field to add a reference to the Assessor's Map-Lot.  References can be found on the CDASH map. 
+          <br>This field is not recommended since the Assessing map layer is easier for users and much easier to manage. 
+
+        </td></tr>
+      <tr><td><b>CDASH Place Identifier</b><br>text</td>
+        <td>The place Identifier property is used during the bulk import process.  When Place items are new, this identifier can be used for posting revisions from the import CSV tables.  When creating place Items from scratch, it is not necessary to create a Place Identifier.  </td>
+      </tr>
+      <tr><td><b>CDASH Folder</b><br>Text</td>
+        <td>
+          These folder references were used during the bulk import process to generate Omeka item sets.  Use the Item-Sets tab on the Item edit page to manage the association between place items and folders.  See above.
+      </td></tr>
+
+
+    </table>
+  
+<h2>Controlled Vocabularies for Places</h2>
+<p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Place Items.  These lists are implemented and managed with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target="omeka">Omeka-S Custom Vocab module. </a> 
+
+<h3 id="types">Place Types</h3>
+<p>Each CDASH Place is assigned to one place type.  At the bulk cataloging stage these are all plain street addresses.  Later in the data enrichment phase. Historical Commission staff may create new place items or correct or enhance existing items to better reflect the subject matter of the related documents.  For this effort, it is necessary to try to cover at least 95% of the possible place -types with controlled vocabulary pick-lists.
+
+<ul>
+  <li><b>Address: </b>
+  <li><b>Building: </b>
+  <li><b>Streets and Squares: </b>These places refer to stretches of streets and squares.  Their spots are located in rights-of-way.  When a neighborhood or survey district boundary is nearby, try to put the spot in the most appropriate district. 
+  <li><b>Bridge: </b>
+  <li><b>Object: </b> This category will include but is not limited to:
+    <ul>
+    <li>monuments
+      <li>benches
+      <li>flagpoles
+      <li>fences
+      <li>signs
+      <li>public art
+      <li>water fountains
+    </ul>
+  <li><b>Open Space: </b> broad category with future option to parse into subgroups (see below). Examples: Charles River Reservation, Fresh Pond, Fresh Pond Golf Course, and the Harvard Science Center Plaza. This category will include but is not limited to some of the items below. As we handle the survey files, it will be useful for us all to observe and think about items that may fall into this category and keep in mind possible subcategories, which will include:
+    <ul>
+      <li>bodies of water (term still TBD)
+      <li>cemeteries
+      <li>parks
+    </ul>
+
+</ul>
+
+<h3 id="neighborhoods">CDD Neighborhoods</h3>
+<p>This list comes from the Community Development Department Neighborhoods layer.
+  <ul>
+    <li>East Cambridge
+    <li>MIT
+    <li>Wellington-Harrington
+    <li>The Port
+    <li>Cambridgeport
+    <li>Mid-Cambridge
+    <li>Riverside
+    <li>Baldwin (Agassiz)
+    <li>Neighborhood Nine
+    <li>West Cambridge
+    <li>North Cambridge
+    <li>Cambridge Highlands
+    <li>Strawberry Hill
+  </ul>
+
+<h3>CHC Survey Areas</h3>
+<ul>
+  <li>East Cambridge
+  <li>Mid Cambridge
+  <li>Cambridgeport
+  <li>Old Cambridge
+  <li>Northwest Cambridge
+  </ul>
+
+<h2 id="tbd">Terms TBD for Enrichment Phase</h2>
+<p>After the semi-automated creation of CDASH Place Items, staff will be able create new place items or to enrich the automatically created ones.  In this enrichment phase, it will save time and promote consistency to have frequently used terminology available in drop-down lists.  
+<p>These lists should be prepared and approved by a subject-matter expert.    
+
+  <p>Users will be offered the opportunity to choose terms from one of the following.     
+  <ul>
+  <li><a href="https://www.getty.edu/research/tools/vocabularies/aat/" target="sidecar">Getty Art & Architecture Thesaurus</a>
+  <li><a href="https://authorities.loc.gov/" target="sidecar">Library of Congress Subject Authority Headings</a>
+  </ul>
+<p>Editors will have the ability to choose from these authorities or they can enter free-text.
+
+<p>It is not necessary to have these lists ready right away.
+
+
+<h3 id="use">Building Use</h3>
+  <ul>
+    <li>Single-Family Residential
+    <li>Two-Family Residential
+    <li>Three-Family Residential
+    <li>Apartment Building/Multi-Family Residential
+    <li>Commercial
+    <li>Mixed-use
+    <li>Hospital/Medical Building
+    <li>Religious Building
+    <li>Industrial
+      <li>Institutional
+      <li>Education
+    <li>Garage
+    <li>Stable/Carriage house
+    <li>Shed/Out-Building
+    <li>Gas Station/Service Station
+    <li>Recreational
+    <li>Utilities
+    <li>Other
+    
+    </ul>
+
+  <h3 id="style">Building Style</h3>
+  <ul>
+<li>First Period/Post-Medieval English
+<li>Georgian
+  <li>Federal
+  <li>Greek Revival
+    <li>Gothic Revival
+<li>Italianate
+  <li>Second Empire
+    <li>Stick/Eastlake
+  <li>Queen Anne
+    <li>Shingle Style
+      <li>Richardsonian Romanesque
+  <li>Romanesque Revival
+    <li>Vernacular
+      <li>Colonial Revival
+  <li>Classical Revival
+    <li>Tudor
+      <li>Arts and Crafts
+  <li>Spanish Revival/Mission
+    <li>Commercial
+      <li>Beaux Arts
+        <li>Art Deco/Moderne
+  <li>International
+    <li>Mid-Century Modern
+  <li>Minimal Traditional
+    <li>Ranch/Split-level
+      <li>Contemporary
+<li>Brutalism
+  <li>Shed
+    <li>Post-Modern
+<li>Neo-Traditional
+  <li>Georgian Revival
+    <li>Other
+    
+    </ul>
+
+  <h3 id="material">Buildng Material(s)</h3>
+  <ul>
+    <li>Wood (clapboard)
+      <li>Wood (shingle)
+    <li>Vinyl
+      <li>Cement-board
+        <li>Asphalt
+    <li>Asbestos
+      <li>Brick
+        <li>Stucco
+          <li>Stone
+    <li>Limestone
+      <li>Concrete
+  <li>Glass
+    <li>Metal
+      <li>Other
+    
+    </ul>
+
+
+</div> <!-- Closes #article div -->
+<div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

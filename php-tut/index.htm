@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Laminas Module Tutorial</title>
+    <meta name="description" content="The CDASH development instance includes a generic laminas module that was created with the Laminas MVC Tutorial. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Laminas MVC Module Tutorial</h1>
+  <p>
+    Under the covers, Omeka-s is built on the Laminas framework for php applications.  As a shade-tree hacker brought up on Perl, python and a little Ruby, I find that php applications are not very easy to figure out.  This may be because I have limited experience working with object-oriented code written by professionals. 
+  <p> 
+    I find it difficult to follow the flow of control in php applications.  There does not seem to be a consistent way to "print to console" which is usually how I figure out how programs work, or why they fail. 
+  <p>
+    WHereas I'm used to writing code that has a lot of comments that explain what blocks of code are doing.  In Laminas applications including Omeks, there seems to be an assumption that you can tell what piece of code is going to run, and where it is based on the names of functions.  Laminas passes around references to various classes which are initialized by .ini files I think...
+  <p>
+    After much struggle, I decided to work through the basic Laminas tutorials, including the <a href="https://docs.laminas.dev/laminas-mvc/quick-start/" target="php-tut">Quick Start Tutorial, and then, the <a href="https://docs.laminas.dev/tutorials/getting-started/overview/" target="php-tut">Laminas MVC tutorial </a>.
+    <p>
+      One of the fundamental aspects of php applications is <b>Routing</b> which is how users and web-pages do things by entering a URL that specifies a Controller (a file in the controllers folder.) and an <b>Action</b> which is a sub-routine of the controller.  Usually these controllers express themselves by rendering <v>Views</b> which are web pages that may be loaded with special data that has been passed from the controller and potentially formatted through <b>Helpers</b>
+    <p>
+      <p>You will notice that the CDASH-Dev docker file associated with the CDASH-Dev repository, includes the completed and working tutorial files in the php-tut folder -- which are referenced on your desktop file system. We also install <b>Composer</b> which is the package manager for Laminas and some other php frameworks.
+ 
+    <p> If you open a terminal window on the CDASH container, you should find the php-tut files mounted on /var/www/html/php-tut/.  You should also have this php-tut folder on your desktop file-system where you can edit files with your favorite editor, and see the results through the localhost web server.  
+
+
+      <h3>The Laminas MVC Skeleton Application</h3>
+      <p>
+        if your web server and php-tut folder are working correctly, the URL <b>http://localhost/php-tut/laminas-mvctut/public/</b> which accesses the main Laminas Skeleton application, which behaves sort of like Omeka-s, in that the public/index.php loads some Laminas fundamentals that are "included" by references in index.php, which also includes the config.Application-config.php which also causes config/modules-config.php to load as well as putting autoload/global.php into the path. 
+  
+    <p>
+    The Quick-Start tutorial demonstrates the fundamentals of the  Laminas Skeleton Application, which would be sort of like Omeka-s which loads a lot of Laminas code, and provides a platform for running passing processing requests to programs through the URL requests to your web server (routing).
+    <p>
+    You can start learning about Laminas by opening the file /php-tut/laminas-mvctut/public/index.htm in your editor.  Notice how this file is a bunch of php code that includes references to a bunch of laminas modules (how does our web server know the path to these??) The index.html also reads the config/application-config.php into a variable named $appConfig, and then passes this to a module named Application.  
+    <p>
+    The skeleton application implements the famous <b>Model, View, Controller (MVC)</b> pattern, which seems to be the fundamental pattern behind most web applications.  You can see how this works by looking at the 
+
+    http://localhost/php-tut/laminas-mvctut/public/hello/world?message=fun
+
+
+    The MVC Tutorial is is a more complicated laminas module that manages simple metadata for an album collection, demonstrating the fundamental operations: <b>Create, Update, Delete (CRUD)</b>.  As a web appliction, the tutorial demonstrates how laminas applies the  
+
+  <p>
+    At least that is what I think I have learned so far. It is very early days for me.  At this stage, I am ready to try making my simple module an Omeka-s module, <b>CdashSearch</b> and then trying to make a variation on the default hbehavior of the Omeka-S seath and advanced search functions.  
+  
+ 
+    <h3>The Album Module</h3>
+    <p>The config/modules-config.php file is loaded by the skeleton app. It registers a lot of module namespaces, many of which are built in Laminas modules found in the vendor/laminas folder.  We have also added Album to the list of module namespaces.  I think that this reference lets the Laminas skeleton app know that Album is a module so that if Laminas sees the word "album" in the url 
+    <b>http://localhost/php-tut/laminas-mvctut/public/album<b> it will look for resources in the folder /module/Album.
+    <p>
+    It seems as though this reference also triggers the skeleton application to read the file module/album/
+    
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

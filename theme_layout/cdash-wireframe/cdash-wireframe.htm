@@ -1,0 +1,96 @@
+<!-- A Wireframe demo of the CDASH Map Layout.  github.com/c-dash  
+     Paul Cote February 7 2023                                     -->
+
+<html>
+    <head>
+        <link rel="stylesheet" href="css/cdash-wireframe.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+      </head>
+<body>  
+  <main>
+
+    <main-header>
+      <h1>CDASH!</h1>
+    </main-header> 
+
+    <map>
+       <h2>This is the map Frame</h2>
+        <map-tools>
+          <div id="layer-panel-flip"><p>Hide Layer Menu<p></div>
+          <div id="layer-panel">
+            <div id="overlay-menu">Overlays</div>
+            <div id="basemap-menu">Basemaps</div>
+          </div>
+           <!-- p>map tools</p -->
+        </map-tools>
+      </map>
+  
+      <tab-bar>
+        <button class="w3-bar-item w3-button tab selected-tab" onclick="openTab(event,'item')">Selected Item</button>
+        <button class="w3-bar-item w3-button tab" onclick="openTab(event,'search-results')">Search / Results</button>
+        <button class="w3-bar-item w3-button tab" onclick="openTab(event,'home')">CDASH Home</button>
+
+        <div id="search" class="left" style="width: 250px; border: solid 1px; padding: 3px">Quick Place Search</div>
+      </tab-bar>
+
+    <show-window>
+
+      <div id="home" class="show-tab" style="display:none">
+        <h2>CDASH Home Page</h2>
+          <p>Welcome to CDASH.
+          <p>About the CHC & Building FIles
+          <p>How to use
+          <p>Links for deeper information 
+      </div>
+
+      <div id="item" class="show-tab">
+        <p>Breadcrumbs: CDASH Folder / CDASH Place</p>
+        <h2>Selected Item</h2>
+        <p>The Selected or featured item is shown here. </p>
+      </div>
+
+      <div id="search-results" class="show-tab" style="display:none">
+        <h2>Search Results</h2>
+          <p>Filter options
+           <p>Results
+      </div>
+
+      <show-footer>
+        <div><b>&lt;&lt;</b> Drag to Expand / Shrink.</div>  
+      <div class="left">Powered by Omeka-S</div>
+      </show-footer> 
+    </show-window>
+
+
+
+  </main>
+
+  <script>
+$(document).ready(function(){
+  $("#layer-panel-flip").click(function(){
+    $("#layer-panel-flip").text(($("#layer-panel-flip").text() == 'Hide Layer Menu') ? 'Show Layer Menu' : 'Hide Layer Menu').fadeIn();
+    $("#layer-panel").slideToggle("slow");
+  });
+});
+
+function openTab(evt, tabName) {
+  var i, x, tabs;
+  x = document.getElementsByClassName("show-tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  //document.getElementById(tabName).style.display = "block";
+
+  tabs = document.getElementsByClassName("tab");
+  for (i = 0; i < tabs.length; i++) {
+    tabs[i].className = tabs[i].className.replace(" selected-tab", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " selected-tab";
+  //document.getElementById(tabName).className += " selected-tab";
+}
+
+  </script>
+</body>
+</html>
