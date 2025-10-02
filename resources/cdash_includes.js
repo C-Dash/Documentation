@@ -59,7 +59,7 @@ let index_htm = `
   </ul>
 <h3>Contributor Viewpoint</h3>
 <ul class="treeview">
-  <!--li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
+  <li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
     <ul class="verses">
       <li><a href="../fundamentals/index.htm#reading">Recommended Reading for the CDASH Manager</a>
       <li><a href="../fundamentals/index.htm#items">Items</a>
@@ -68,7 +68,14 @@ let index_htm = `
       <li><a href="../fundamentals/index.htm#sites">Omeka Sites (like CDASH)</a>
       <li><a href="../fundamentals/index.htm#sites">Skill Building Exercises</a>
     </ul>
-    -->
+  
+  <li class="chapter"><a href="../research/index.htm">Resources for Street Research </a></li>
+    <ul class="verses">
+    <li><a href="../research/index.htm#hale">Christopher Hail Cambridge Buildings and Architects</a>
+    <li><a href="../research/index.htm#1916">1916 Bromley Index</a>
+    <li><a href="../research/index.htm#1935">1935 Bromley Index</a>
+    </ul>
+
     <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>
     <!--ul class="verses">
       <li><a href="../schema/index.htm#digitization">Digitizing and Digesting the Collection</a>
