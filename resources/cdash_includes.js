@@ -55,7 +55,6 @@ let index_htm = `
       <li><a href="../assets/index.htm#scans">Scan Batches</a>
     </ul>
 
-
   </ul>
 <h3>Contributor Viewpoint</h3>
 <ul class="treeview">
@@ -72,6 +71,7 @@ let index_htm = `
   <li class="chapter"><a href="../research/index.htm">Resources for Street Research </a></li>
     <ul class="verses">
     <li><a href="../research/index.htm#hale">Christopher Hail Cambridge Buildings and Architects</a>
+    <li><a href="../research/index.htm#1894">1894 Bromley Index</a>
     <li><a href="../research/index.htm#1916">1916 Bromley Index</a>
     <li><a href="../research/index.htm#1935">1935 Bromley Index</a>
     </ul>
