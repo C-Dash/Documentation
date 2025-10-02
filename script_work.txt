@@ -1,0 +1,40 @@
+find /path/to/search -type f -newermt "YYYY-MM-DD HH:MM:SS" ! -newermt "YYYY-MM-DD HH:MM:SS"
+
+2024-06-26 14:47:39   -newermt 2024-06-26 14:47:38 ! -newermt 2024-06-26 14:47:40
+
+find ./large -type f -newermt "2024-06-26 14:47:38" ! -newermt "2024-06-26 14:47:40"
+
+ls -Ul --time-style=long-iso ./large > largefilelist.txt
+
+-rwxrwxrwx 1 nobody nogroup  391597 2025-03-12 14:23 0000ad18b0938f49584efcd022aed51f06d401e3.jpg
+
+cat largefilelist.txt |grep 2024-06-26 14:47
+
+cat largefilelist.txt |grep "2024-10-07 17:58"
+
+https://cdash.cambridgema.gov/files/original/8c613e888237efb411045cb810be08f01c73a1e6.tif
+
+
+#!/bin/bash
+
+# Output file
+output_file="ls_output.csv"
+
+# Write header
+echo "Permissions,Links,Owner,Group,Size,Month,Day,TimeOrYear,Filename" > "$output_file"
+
+# Process each line of ls -l output
+ls -l --time-style=long-iso | tail -n +2 | while read -r perms links owner group size month day time filename; do
+    # Handle filenames with spaces
+    for extra in "$@"; do
+        filename="$filename $extra"
+    done
+
+    # Escape commas in filename
+    filename=$(echo "$filename" | sed 's/,/\\,/g')
+
+    # Write to CSV
+    echo "$perms,$links,$owner,$group,$size,$month,$day,$time,$filename" >> "$output_file"
+done
+
+echo "CSV file created: $output_file"
