@@ -38,27 +38,24 @@
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">CHC Omeka in Azure Overview, Integrity Check, and Restoration</h1>
-  <p style="background-color: lightgray"><i><b>A note about Technical Level of Detail:</i></b> The purpose of this article is to provide a concise overview of the critical components of the CHC Omeka instance in Azure with special attention to how these are backed up and restored if needed.  Lots of technical details are omitted but can be learned by exploring the Omeka documentation,  <a href="https://omeka.org/s/docs/user-manual/install/Installating" target="omeka">Installing Omeka</a>.  All of the pages we will visit in the Azure Portal have associated help documentation that can be reviewed for deeper understanding.
-  </p>
+
 
   <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
   <ul class="verses">
     <li><a href="../azure_overview/index.htm#omeka">The CHC's Omeka Repository in Azure</a>
-    <li><a href="../azure_overview/index.htm#assets">A Dynamic Collection of Information Assets</a>
-    <li><a href="../azure_overview/index.htm#fences">Walking the Fences: Tour the Essential Omeka Components and their Backups in the Azure Portal</a>
+    <li><a href="../azure_overview/index.htm#webapp">CHCOmeka Instance -- an Azure Web Application For Linux</a>
     <li><a href="../azure_overview/index.htm#registry">The Docker Registry and Deployment Images</a>
-    <li><a href="../azure_overview/index.htm#webapp">The CHC Omeka Web Application</a>
-    <li><a href="../azure_overview/index.htm#shares">Azure File Shares</a>
     <li><a href="../azure_overview/index.htm#mysql">MySQL Database</a>
-    <li><a href="../azure_overview/index.htm#cloneempty">Building an Empty CDASH Instance</a>
-    <li><a href="../azure_overview/index.htm#recovery">Recovering a Past State of CDASH</a>
+    <li><a href="../azure_overview/index.htm#shares">Azure File Shares</a>
+    <li><a href="../azure_overview/index.htm#webadmin">.HTAccess, Robots.txt and Access Logs</a>
     </ul>
 
 
-  <h2 id="omeka">The CHC's Omeka Repository and Publishing Platform</h2>
-  <p>Omeka is an off-the-shelf repository and publishing tool.   The CHC Omeka repository is capable of hosting any number of collections.   What we think of as CDASH is a collection hosted in the Omeka application. What makes CDASH particularly unique is a customized conceptual schema of related Places, Documents and Folders and a customized Omeka Theme that provides the map-driven user interface. 
-  </p>
-  <p>The Historical Commission's installation of Omeka is implemented as an Azure Web Application for Linux -- a virtual server somewhere on the internet cloud.  
+  <h2 id="omeka">The CHC's Omeka Repository in Azure</h2>
+  <p>Omeka is a digital asset management system and web access platform.  Based on the Linux, Apache, MySQL, PHP (LAMP) stack.  An in-depth understanding of the architecture of Omeka can be found in the Omeka documentation,  <a href="https://omeka.org/s/docs/user-manual/install/Installating" target="omeka">Installing Omeka</a>. 
+  <p>An instance of Omeka is capable of hosting multiple omeka sites.  Currently, CDASH is the only site.   
+
+  <p>The Historical Commission's installation of Omeka is hosted in Microsoft Azure in a resource group named CHCOmekaIsland, provisioned by the Cambridge IT Department (ITD).  The components of the resource group and their interfaces are illustrated below.   
 
 
     <figure class="middle"> 
@@ -66,141 +63,67 @@
         <figcaption>Figure 1: Architecture of the CHC Omeka Resource Group in Azure</figcaption>
       </figure>
 
+<h2 id="webapp">CHCOmeka Instance -- an Azure Web Application For Linux</h2>
+<p>The core of the CHCOmeka installation is hosted as an Azure Web Application for Linux.  This is a virtual Linux server that can be accessed through the Azure Portal.  The portal console provides monitoring tools and access to the windows command line through the Secure Shell (SSH) interface, which is found in the Development Tools section of the web app's left-hand navigation menu.  
+
+<h3>Omeka Instances and Sites</h3>
+<p>An omeka installation or instance is capable of hosting multiple "sites" that each can have a distinctive theme, and will appear to users to be different web sites.  The distinction between Instances and Sites can be confusing.  In our case, we have two instances of Omeka:  the Production Instance and the Stage Instance.  Each instance can host multiple sites, but currently each instance hosts only one site:  CDASH.
+
+<h3>The CHCOmeka Stage Instance</h3>
+<p>Not shown in the diagram above, is a second instance of CHCOmeka that is used for testing and staging new features and content before they are deployed to the production instance.  The stage instance, named CHCOmekaStage is identical in architecture to the production instance and has its own MySQL database schema and Persistent file shares.   Each instance has its own database schema in the MySQL server and its own file shares.
+
+ <h2 id="registry">The Docker Registry and Deployment Images</h2>
+ <p>Docker is a popular tool for packaging and deploying web applications.  The CHC Omeka instance is built from a Docker Container Image that contains the Omeka application, the CDASH theme, and all of the modules and configuration files that are necessary to run the CHC's customized version of Omeka.  The docker image is stored in a private Docker Registry named CHCRegistry.  
+  
+<h3>Docker Configuration Files</h3>
+  The docker image is built from a set of instructions contained in a Dockerfile that is stored in the CHCOffline file share.  The docker image is built on a private workstation known as the Development Instance.  When the development instance is ready for deployment, a slightly different set of docker instructions are prepared for running on a desktop workstation for development purposes.  Details about how the development Docker instance is set up can be found at <a href="../docker/index.htm">Building and Configuring the CDASH Development Instance</a>.
 <p>
-   The diagram in figure 1 shows CHC Omeka instance running in the city's Azure cloud resource group has three primary components and two supplemental file systems: 
-  <h3>Primary Components</h3>
-  <p>The primary components are critical to the function of Omeka. These would be the most important to understand for the verification of backup and recovery capabilities.  
-   <ul>
-    <li><b><a href="../docker/index.htm">Docker Container Image</a></b> that contains all of the customized Omeka code and modules. 
-    <li>A <b>CHCPersist file share</b> that contains the CDASH Theme, some config files, and the place where Omeka will store images and other digital media that represent the digitized documents.
-    <li>A <b>MySQL database</b> that holds all of the properties of Places, Documents and Folders and the relationships that bind them together. 
+The configuration files for the production instances are stored in the CHCOffline file share in the folder named <b>Docker</b>.  The docker image is built from these files and pushed to the CHCRegistry.  Notes on the setup of the production instance are stored in the CHCOffline file share in the Documentation folder.    Docker images in the registry can be viewed in the <b>Services/Repositories</b> section of the CHCRegistry resource group.  Each image is named with a tag that lists the version of Omeka that is referenced, and the date that the image was built.  Whenever the web app is re-started it is initialized with the  latest version of the docker image from the registry.
+
+
+<h2 id="mysql">The MySQL Database</h2>
+<p>The docker image for CHCOmeka instance contains the initial state of the application.  As the application configured with modules, themes and config files (maintained in persistent file shares that are mounted on the web app).  Additional configuration information including resource templates and the properties of all of the items added to the repository are stored in the Azure Database for MySQL, named, CHCMySQL. 
+<p>The MySQL database is accessed through the desktop application <b>SQL Workbench</b>.  Adminstrators should be familiar with SQL Workbench as it is a critical tool in the maintenance and recovery of the CHC Omeka instance.  
+
+<h2 id="shares">Persistent File Shares</h2>
+<p>Because Docker images create an initial Omeka instance, files that are created or manipulated in the development and management of sites and collections are stored in persistent file shares that are mounted on the web application.  
+  
+<h3>The CHCPersist Storage Account</h3>
+<p>Every Omeka-S installation is installed with four folders that are normally stored in the root folder of the Omeka installation.  These are:
+  <ul>
+    <li><b>config:</b>  This folder contains configuration files for the Omeka application including database connection information and settings for modules and themes.
+    <li><b>files:</b> This folder contains all of the media files that have been uploaded to Omeka.  These include images, PDFs and other media files that are attached to items in the repository.
+    <li><b>logs:</b> This folder contains log files that can be useful in diagnosing problems with the application.
+    <li><b>modules:</b> This folder contains the code for all of the modules that have been installed in the Omeka instance.
+    <li><b>themes:</b> This folder contains the code for all of the themes that have been installed in the Omeka instance.
   </ul>
-  <h3>Supplemental File Shares</h3>
+
+<p>In our Azure-based installation, these folders are stored in the CHCPersist file share.  The CHCPersist file share is mounted on the web application as <b>/var/www/html/persist</b>.  This means that the config folder is found at <b>/var/www/html/persist/config</b> and so forth.  These are represented in the Omeka-s root folder as symlinks that are created in the docker image.
+
+<h3 id="webadmin">.Htaccess, robots.txt and access.log files</h3>
+<p>The config folder holds the various .ini files that that are part of the Omeka setup.  In our installation, the config folder also holds the .htaccess, robots.txt and access.log files that are useful for ongoing monitoring and management of the web service.  
+
+<h3>CHCOffLine File Share</h3>
+<p>Resources related to the setup and management of the CHCOmeka web application that are not shared on the open web are stored in a the CHCOffline file share.  This file share contains the following folders:
+
   <ul>
-    <li><b>CHCScans:</b>During the item import process original media files and metadata are archived in the <b>CHCScans File Share</b>. The CHCScans file share and its contents wil be discussed in a forthcoming web page about importing items. 
-    <li><b>CHCOffline:</b> Here, you will find 
-       <ul>
-        <li>The files necessary to build the Docker image for the development and production instances.  
-        <li>Code for preparng scans for bulk import
-        <li>Private documentation that may be of interest for the Camridge IT department. 
-        </ul>
-      </ul>
-
-
-  
-
-  <h3 id="assets">A Dynamic, Growing Collection of Information Assets</h3> 
-  <p>Safe operation of Omeka and understanding recovery scenarios starts with an understandnng of how information acumulates in the database and file systems in the following ways:
-    <ul>
-      <li><b>Bulk Upload of Folder, Place, Document metadata and and Media </b> through the customized CDASH CSV Import Module.
-      <li><b>Manual creation of Place and Document items -- with associated Media -- and Folders. </b>
-      <li><b>Enrichment of item properties</b> Experts improving on the naming, classification, annnotation and locations for CDASH items. 
-      <li><b>Modification of the Relationships among folders, places and documents.</b>   
-      <li><b>Creation of Pages and Exhibits</b>  
-      </ul>
-<p>All of the changes itemized above are recorded in the MySQL database by the Omeka application.  
-<p>Media files that are uploaded to Omeka are stored in the persistent file-system, <b>CHC_Persist</b> witin the <b>Files</b> subdirectory.  
- 
-<h2 id="fences">Walking the Fences: Tour the Essential Omeka Components and their Backups in the Azure Portal</h2> 
-
-<p>Assuming you are a CHC Omeka Administrator, or a member of the Cambridge IT staff, you should be able to launch the <a href="https://portal.azure.com/" target="azure">Microsoft Azure Portal</a> where you will find yourself sitting at the controls for the <b>CHC_Omeka_Island</b> Resource Group. CHC_Omeka_Island is a domain that holds all of the components for the CDASH production instance and the stage instance.  A person with the right permissions can also create new instances here.  
-  <p>
-  <h3>Backups and Recovery</h3>
-    <p>Azure has many measures for providing redundancy for recovery from hardware failure.  Azure also provides customizable scheduled snapshots that allow for recovery from accidental data loss.  It is critical for the CDASH administrator to understand how these work and to regularly verify that they are working.  For more information about planning for successful recovery scenarios, see <a href="../recovery/index.htm"> CDASH Disaster and Accident Recovery</a>
-    The sections below will discuss each of the critical CDASH components and their snapshot and recovery provisions.  
-
-  <h3 id="registry">The Docker Registry and Deployment Images</h3>
-    Omeka is built on a commonly used web server configuration known as LAMP:  (Linux, Apache PhP, and MySQL.   The <a href="https://omeka.org/s/docs/user-manual/install/"> target="omeka">Omeka-S Installation documention</a>, explains how preparing an Omeka installation boils down to putting a bunch of files into a properly configured LAMP stack that includes several special modules and config files.  Creating instances of Omeka used to involve a lot of set-up for each server instance.  Thankfully, our Omeka installation has been set up as a <b>Docker Container Image</b> that will reliably build a running installation of the CHC's particular Omeka site -- with CDASH customizations -- on any computer, physical or virtual.  
-    </p> 
-
-    <p>The original CHC Omeka instance, known as the <b>Development Instance</b>, is hosted on a private workstation. For more information see: <a href="../docker/index.htm">Building and Configuring the CDASH Development Instance</a>.  When the developmet instance is ready for deployment, a slightly different set of docker instructions are prepared for running Omeka in Azure. You can think of Docker Container Images as the installer files for a CHC Omeka instance.  The files used to build the container images for the Development and Production are copied in the CHCOffLine filesystem. 
-    <p>
-    The Docker container images for the production instance of CHC Omeka are stored n the <b>CHCRegistry</b> a private docker registry hosted on the CHCOmeka Island resource group.    
-
-<h2 id="webapp">The CHC Omeka Web Application</h2>
-<p>The core of the CHC Omeka instance is an Azure Web Application for Linux.  You can think of this as the web server that renders pages to web browsers.  The web application is built from the docker image.  To see how the web app references the docker image go to the <b>CHCOmeka/Deployment Settings</b> 
-
-<h3>Backup and Restore of Web Applications</h3>
-<p>Azure automatically creates a snapshot of web app services  every hour.  The hourly backups are saved for 3 days.  3-hour snapshots are saved for 14 days, 6-hour snapshots are saved for 30 days.   Snapshots contain all of the settings for the web app.  App services are recovered to a deployment slot that is attached to the original app service. See <a href="https://learn.microsoft.com/en-us/azure/app-service/manage-backup?tabs=portal" target="azure">Back up and restore your app in Azure App Service</a>
-<p>
-The administrator should be aware, however, that recovering the App service will not recover the database or media files. In most recovery scenarios, it would not be necessary to recover the app service.   The information stored in Omeka is stored in the CHCPersist file system and in the MySQL database. 
-
-<h2 id="shares">Azure File Shares</h2>
-<p>As discussed above, there are three file shares associated with the CHC Omeka installation.  The Omeka administrator should be aware of each of these especially with respect to their contents and Backup Status.
-
-<p>File shares, CHCPersist, CHCOffline and AltPersist are contained in the CHCPersist Storage Account.  The CHCScans fileshare is in its own storage account.  During our next re-build of the CHC Omeka Island we will consolidate these into a single storage account.  
-<p>
-To examine the contents of each file share, you should do the following:
-<ol>
-  <li>Open the overview page for the storage account.
-  <li>Click <b>Data Storage > File Shares</b>
-  <li>Then click the name of the share to open the overview page for that share. 
-  </ol>
-<p>To browse the contents of the file share you can click <b>Browse</b>
-<p>To check the status of backup snapshots for a file-share, click <b>Operations</b> in the left-hand navigation menu, then click <b>Backup</b>.  You should verify that there are 30 days of backups including one taken this morning. 
-
-
-<h2 id="mysql">The Omeka Database in MySQL</h2>
-<p>The last piece of the data storage architecture that we need to look at is the MySQL database where Omeka stores all of the information that constitutes all of the settings and items that accumulate in the CDASH instance. Each instance of Omeka, e.g. the Production Instance and the Stage Instance have their own tablespace in the same Azure MYSQL server.  In our case, the Azure MYSQL Server is named <b>CHCMySQL</b>.  Take a look at its configuration. You can see the individual databases for Omeka (production) and Omeka_Alt (stage) as shown below.
-
-  <figure class="middle"> 
-    <img src="./images/databases.jpg">
-      <figcaption>MySQL Databases.</figcaption>
-    </figure>
-
-<h3>Omeka Database Schema</h3>
-<p>As you can see, the Azure Database for MySQL is actually a host to multiple "databases".  Alternate terms for a database in this sense may be <b>Tablespace</b> or <b>Schema</b>. For the purposes of our discussion here we are going to use the term <b>Schema</b> to refer to the MySQL database that an instance of Omeka uses.  
-<p>
-  You will see that the CHCMySQL server has several schemas.  The two of interest for us are:
-  <ul>
-    <li><b>Omeka:</b> Schema for the production instance
-    <li><b>Omeka_Alt:</b> Schema for the Stage instance
+    <li><b>Documentation:</b> This folder contains private documentation that may be of interest for the Cambridge IT department. 
+    <li><b>Docker:</b> Here, you will find the files necessary to build the Docker image for the production instance.
+    <li><b>DB Exports</b> SQL dumps that are taken montly and at strategic times, such as before and after Omeka version upgrades.  These dump files are made and recovered with SQL Workbench application.
+    <li><b>Database_Connect</b> has connection parameters for connecting to the MySQL servers in the CHCOmekaIsland resource group.  These saved connections may not contain the actual login credentials, which may be obtained through the Azure portal. 
+    <li><b>ScanPrep:</b> This folder contains code for preparing scans for bulk import
     </ul>
-<h2>Connecting Omeka to a Database</h2>
-<p>Part of setting up or restoring an Omeka instance involves connecting the instance to a mySQL database.  
-If you are setting up a new instance of CDASH, you will need to create a schema in a MySQL server, and point to it using the config/database.ini file that exists in the <b>persist/config</b> folder.
 
-<h3>Use MySQL Workbench to explore and manage tables and schemas</h3>
-<p>Azure's tools for backing up and exporting databases are very coarse grained.  If you want to explore tables and import/export individual schemas then you should use <a href="https://www.mysql.com/products/workbench/" target="sidecar">MySQL Workbench</a> 
+<h3>ChcAltPersist File Share</h3>
+<p>The CHCAltPersist file share is a second persistent file share that is used by the stage instance of CHCOmeka.  
 
-<h3>MySQL Backup</h3>
-    <p>It is useful to know that our CHCMySQL database automatically stores a complete backup every day.  The snapshots are saved for 30 days.  Any snapshot can be restored to a new Azure MySQL server.  The illustration below shows the details and backup / restore functions at <b>CHCMySQL ->  Settings -> Backup Restore</b>  as shown below:
+
+<h2>CHCScans Storage Account</h2>
+<p> Media files uploaded to Omeka are stored in a Scans file share in the CHCScans storage account. Because of the number of scan files and the relatively low priority for speed, this separate storage account is stored as a medium access-speed tier.  
+<p>The Scans file share is mounted in the web root folders on both the production and stage instances.  
+   The top level of the Scans file share contains a sub-folder for each batch of media files uploaded to Omeka with the CSV Import Module. A subfolder named <b>Stage</b>, which serves as the side-load folder that is accessed by the Omeka CSV Bulk Opload module. 
   
-  <figure class="middle"> 
-    <img src="./images/database_backup.jpg">
-      <figcaption>MySQL Database Backup and Restore Settings.</figcaption>
-    </figure>
-
-<hr>
-
-<h2 id="cloneempty">Cloning a new Empty Instance of CHCOmeka</h2>
-<p>Creating a completely new empty instance of the CHCOmeka web app is a useful exercise and also a way to make a new stage instance.  
-<ol>
-  <li>Create a new Web App for Linux in Azure
-  <li>Use the web app deployment tools to choose the latest CDASH docker image.
-  <li>Create a new file share for persistent files.  The contents for this file share can be copied from the existing chcpersist file share, but do not copy the files directory.  Instead, create an empty Files directory in your new persist file share. 
-  <li>Mount the new persist file share onto your new app service as <b> /var/www/html/persist</b>. 
-  <li>Create a new Omeka tablespace in an Azure MySQL Database Server.  YOu can create this by importing the initial CDASH schema that has been saved to <b>CHCProdOffline</b> file share in the <b>db_exports</b> folder. 
-  <p>Note that the CDASH Schema does not need to be named Omeka. <b>Be careful that you don't wipe out the production Omeka schema!</b>
-  <li>Modify the <b>database.ini</b> file to point to your new mySQL schema.
-  <li>Point your browser at the new CDASH instance. Omeka will ask you to log in. If you can't find your login credentials, check the CDASH memo in your local admin wiki.
-</ol>
-
-<h2 id="recovery">Recovering a Prior State of CDASH from Azure Backups</h2>
-<p>Recovering a former state of a CDASH instance is similar to creating a new empty CDASH instance, except that if your recovery state was built on the same docker image that is currently in use, you can save yourself the trouble of creating a brand new web application by simply creating a new <a href="https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots?tabs=portal" target="azure">Deployment Slot</a> on the existing CDASH web app. 
-<ol>
-  <li>Create a new deployment slot for the CHCOmeka web app.
-  <li>Figure out what date and time you need to restore.   If media files have been uploaded in the period covered since the chosen date and time, then you must recover the CHC Persist file share.  In particular, you need to recover the contents of the <b>persist/files</b> directory.  If you don't need to restore media, then you can skip the next two steps.
-  <li>Restore the CHCPersist file share as a new file share in an existing storage account. 
-  <li>Mount the new persist file share to the CDASH web app as <b>/var/www/html/persist</b>.
-  <li>Restore the CHCMySql database server to a new Azure Database for MySQL.
-  <li>Modify the <b>config/database.ini</b> file in your newly restored persist file share to point to the newly restored schema. 
-  <li>Point your browser at your new deployment slot. 
-  
-  
-
-
-
+<p>Even though the import process saves a copy of each of the original media files (renamed with a GUID assigned by Omeka,  of the the original media files are kept on-line in Azure as they are useful in some troubleshooting and recovery situations.
 
 
 

@@ -44,29 +44,29 @@
   </p><p>
     The CHC Omeka Owner and the Administrator understand that the information in the CHC Omeka installation would be nearly impossible to regenerate should some sort of disaster strike or more importantly, if some simple mistake results in information disappearing or becoming corrupt. 
     <p>The prospect of noticing that some number of CDASH items has disappeared or been damaged, without knowing the extent of the damage or when and why the information was lost should make us very anxious. 
-    <B>The Good News</b> is that our web host, Microsoft Azure, contains facilities for recovering the necessary components to rebuild the Production CDASH instance and its contents. Nevertheless, the recoverability of CDASH is not without limits and requirements for specialized knowledge, which are discussed in detail, below.  
+    <B>The Good News</b> is that our web host, Microsoft Azure, contains facilities for recovering the necessary components to rebuild the Production CDASH instance and its contents. Nevertheless, recovery from backups has the following limitations:
+    <ul>
+      <li>The backup snapshots must exist and be functional. 
+      <li>Recovery must be completed before the backups are purged (normally 30 days) 
+      <li>Recovery is a process of rewinding all changes back to a spacific point in time, therefoe all intervening changes will be lost. 
+      <li>Recovering an Omake instance requires specialized knowledge and azure login permissions that the CHC Omeka administrator probably does not have.
+    <ul>
+      
     <p>THe key to a happy life is to have a regular routine of verifying that everything is OK and or for catching any problems without delay.
 
   <h3>Topics</h3>
   <ul class="verses">
-
     <li><a href="../audit_report/index.htm#audits">The Importance of Regular Audits</a>
     <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
     <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
-    <li><a href="../audit_report/index.htm#level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</a>
-    <li><a href="../audit_report/index.htm#level2">Preparedness Level 2: Check Basic Functionality</a>
-    <li><a href="../audit_report/index.htm#level3">Preparedness Level 3: Count your Chickens </a>
-    <li><a href="../audit_report/index.htm#giveashit">The Critical Importance of Giving a Shit</a>
-    <li><a href="../audit_report/index.htm#to-to">To-Do: Automated Audit Dashboard</a>
+    <li><a href="../audit_report/index.htm#manager">CHC Omeka Manager Weekly Journal</a>
+    <li><a href="../audit_report/index.htm#admin">Azure Administrator Monthly Journal</a>
     </ul>
 
 
 
 <h3 id="audits">The Importance of Regular Audits</h3>
-<p> Most computer users have experienced the sinking feeling that accompanies the discovery of mysterious lost or corrupted data.  Even if you have a great backup system, one of the trickiest problems is figuring out the extent of the problem and when the problem occurred.  Since the backup and restore accommodations allow an instance andd its contents to be restored to a specific date in the past, it is best to be able to restore to the day before the problem occurred. Finding out about the issue sooner is much better, since any additions or changes that were made after the restore date will be lost and have to be repeated.  There is also the possibility that more than one overlay of problems has occurred, which can lead to very confusing situations. 
-
-<p>
-The less time that has elapsed between the problem and the discovery of it, the greater will be the hope that a complete restoration can be made without problems. 
+<p> Most computer users have experienced the sinking feeling that accompanies the discovery of mysterious lost or corrupted data.  Even if you have a great backup system, one of the trickiest problems is figuring out the extent of the problem and when the problem occurred.  The less time that has elapsed between the problem and the discovery of it, the greater will be the hope that a complete restoration can be made without problems. 
 
 <h3 id="problems">What could Go Wrong?</h3>
 <p>Here is a list of the sorts of things that can go wrong. 
@@ -78,43 +78,33 @@ The less time that has elapsed between the problem and the discovery of it, the 
   <li>Other</b>
 </ul>
 <h3>Beware the Unexpected!</h3>
-<p>The worst sort of trouble is the sort that is unexpected and undetected.  As an example, did you know that if you remove a property from the resource template for a a type if item (Place or Document) that all of the values for that property will disappear without any warning or easy recovery method? This is the sort of a trap that may not be detected for a very long time after it has sprung.  
+<p>As an example, did you know that if you remove a property from the resource template for a a type if item (Place or Document) that all of the values for that property will disappear without any warning or easy recovery method? This is the sort of a trap that may not be detected for a very long time after it has sprung.  
 
-<h2 id="culture">Establish a Culture of Routine Data Safety</h2>
-<p>When it comes to protecting assets, a sense of anxiety is healthy -- especially if it motivates the administrator and the owner to establish regular routines of validating the integrity of the collection.  We recommend that the following checks be carried out every week by the Omeka Administrator and reported to the CHC Omeka Owner.
 
-<h2 id="level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</h2>
-<p>The cloud host for the CHC Omeka installation (Microsoft Azure) has facilities for taking daily backups of the Omeka installation.  Part of your safety culture should be to check each week that these backups are being saved and accessible.  This procedure is covered in the page <a href="../azure_overview/index.htm">CHC Omeka in Azure Overview, Integrity Check, and Restoration</a>. Check the backups for the MySQL database the CHCPersist and CHCCans file shares.  These are saved for 30 days. 
-  
-<h2 id="level2">Preparedness Level 2: Check Basic Functionality</h2>
-<p>A simple way of assuring theat your Omeka assets are safe is to simply use the application and pay attention to the following:
 
+<h2 id="culture">Establish a Culture of Data Safety and Accountability</h2>
+<p>It is  most regrettable when an orgamnization loses irreplaceable information without even noticing that the loss has occurred. 
+<p>When it comes to protecting assets, a sense of anxiety is healthy -- especially if it motivates the department director, the Omeka Manager and the Azure System Administrator to establish regular routines of validating and reporting on the integrity of various sytem components.   We recommend that the following checks be carried out every week by the Omeka Administrator and reported to the CHC Omeka Owner.
+
+
+<h2 id="manager">CHC Omeka Manager Weekly Journal</h2>
+<ul>
+  <li>Check the user interface of CDASH, click all of the map layers on and off. Notice load times for viewing and accessing the edit view of pages.
+  <li>In the Azure Portal:
+    <ul>
+      <li>Check the CHCOmeka performance Monitor graphs for the past 7 days of Response Time and Requests
+      <li>Verify that the backup daily snapshots and retention schedules are occuring as expected for each of the file shares in the storage accounts CHCpersit and CHCScans and the CHCMySQL database.
+      </ul>
+   <li>In Omeka, look at the count of Folders, Place Items, Document Items and Media files.  Compare with previous week. 
+      
+
+  <h2 id="admin">Azure Administrator Monthly Journal</h2>
   <ul>
-    <li>Does the map of place items look right?
-    <li>Use the <b>View</b> button to look at the full set of properties for Place and Document Items.  
-    <li>Verify that jumping from document to document, from a list of folder contents causes the locations of cicled on the map to move around appropriately.
-  </ul>
+    <li>In the Azure portal, verify that backup snapshots are recoverable
+    <li>Check the performance stats for the CHCOmeka web app for abnormal activity. 
+    <li>With SQL Workbench, take a monthly persistent snapshot of the Omeka schema and store it in the CHCOffline/dbbackups folder. 
+    </ul>
 
- <h2 id="level3">Preparedness Level 3: Count your Chickens </h2>
- <p>A very simple way to assure yourself and the CHC Omeka Owner that everything is OK is to regularly check the number of items, item-sets and media files.  
-<p>
-  If you update and double check the expected counts each time you add places, documents or folders, you can rest easy in the knowledge that your changes have been registered.  Even when you have not been knowingly addng or deleting things, repeating this count every week can provide you a timely assourance that everything is OK or provide a warning that some unexpected loss has occurred.
-
-   <figure class="middle"> 
-    <img src="./images/audit_report.jpg">
-      <figcaption>Simple audit running count of assets.</figcaption>
-    </figure>
-
- 
-<p>For now, our audit process consists of a spreadsheet that provides a running list of upload events.  For each event there is a number of items, item-sets (CDASH Folders), and media files (scans) that are affected.  The spreadsheet calculates cumulative counts that have been checked against the counts of actual items in Omeka.  At the time this is being written, we are involved with the initial population of CDASH, so these numbers are checked each time files are uploaded.  This simple procedure is one way of checking to make sure that the expected numbers of items and folders have been created, and that they persist. 
-
-  <div id="giveashit" class="feature funfact">
-    <h3>The Critical Importance of Giving a Shit</h3>
-    <p>It should now be clear that detecting and recovering from management mistakes is a lot of trouble.  By far the easiest way to live is to ignore problems -- especially ones that probably nobody is going to notice anyway.  This would be an understandable approach for many people.  The Historical Commission's Omeka Owner should be aware of the importance of having an Omeka administrator who has the archival mindset and temperament to do the right thing on a daily basis, and will not shy away from trouble that they may discovered. 
-    </div> <!-- closes funfact -->    
-
-  <h3 id="to-do">To Do: More Integrity Checks</h3>
-In addition to the simple count of items, relationships are an essential aspect of CDASH data that can become corrupt resulting in the loss of information.  For example, it is possible to change the properties of a Place Item or a Document Item in such a way that the relation between Documents and Places is lost.  If this happens, disassociated documents can become orphans which would become undiscoverable through the map interface. Similar situations can happen with folders.  Currently, this sort of data loss is difficult to discover.  In the next phase of CDASH development we hope to develop an audit tool that can catch this sort of corruption.
 
 
 

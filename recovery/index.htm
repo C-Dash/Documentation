@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Backup and Restore</title>
+    <meta name="description" content="Keeping assets safe.">
+    <meta name="keywords" content="">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Data Recovery</h1>
+  
+<!-- mysqldump --no-create-db dbname > dump.sql -->
+
+
+<p>Whereas Azure's automated backup systems may be relied on for recovery from equipment failure, 
+routine administration of an Omeka site, including accession of new documents, and revision andd enrichmwent of existing assets carries a risk of catastrophic accidental data loss. In these situations, it is necessary to
+
+<ol>
+  <li>Be aware that the data loss has occurred.  (Routine monitoring of Omeka integrity will be covered in another document.) 
+  <li>Refrain from any new work that will change the Omeka database or media files collection.
+  <li>Engage an Omeka System Adminstrator with Azure credentials and knowledge to initiate recovery procedures.
+</ol>
+<p>This document discusses the basics of a point-in-time recovery of a complete Omeka instance.  It may be possible to do finer-grained restorations of spefic items, resource templates, etc.  But these require a more in-depth understanding of the Omaks-S schema than is covered here.
+
+  <h3>Topics</h3>
+  <ul class="verses">
+    <li><a href="../recovery/index.htm#scenarios">Recovery Scenarios and Timeframe</a>
+    <li><a href="../recovery/index.htm#backups">Backup Retention</a>
+    <li><a href="../recovery/index.htm#audits">Routine Integrity Audits and Prompt Recovery Initiation</a>
+    <li><a href="../recovery/index.htm#restoration">Snapshot Restoration Fundamentals </a>
+    <li><a href="../recovery/index.htm#staged">Hot Vs Staged Recovery Scenarios</a>
+  </ul>
+
+  <h2 id="scenarios">Recovery Scenarios and Timeframe</h2>
+<p>When the Omeka manager realizes that data loss has occurred, all changes to the omeka instance are stopped, because the most typical recovery scenario will be to roll-back all changes to a specific date and time in the past.  At this point, the designated Omeka administrator is contacted.  This will be a person who understands the fundamental architecture of the <a href="../azure_overview.index.htm">CHC's Omeka installation in Azure.</a> 
+<p>
+Recovery of an Omeka instance requires the recovery of the entire Omeka schema in the CHCMySQL database, and if there was a loss of document items, it may also be necessary to recover the chcPersist file share which contains all of the media files and thumbnails. 
+
+<h2 id="backups">Backup Retention</h2>
+<p>The backup retention policies for MySQL databases preserve 30 days of database snapshots.  The Azure recovery systems allow for recovery of states down to specific times of day during this period. The current backup procedure for files is as follows:
+<ul>
+  <li>Daily snapshots preserved for 35 days.
+  <li>Weekly snapshots preserved for 12 weeks.
+  <li>Monthly snapshots preserved for 12 months.
+  </ul>
+<p>Our regular data audit procedure preserves a monthly MySQL backup that is stored indefinitely. in the chcOffline db backups folder.
+
+<h2 id="audits">Routine Integrity Audits and Prompt Recovery Initiation</h2>
+<p>Data loss be actively audited and backup procedures should be initiated as quickly as possible (definitely within a couple of weeks.)  First, is the 30 day window on the easily recoverable database and file-system snapshots, and second, because any changes made to the Omeka database or files hapening after the recovery target date will be lost. Details of the routine audits are provided at <a href="../sudit_report/index.htm">Regular Integrity Audits</a>
+
+<h2 id="restoration">Snapshot Restoration Fundamentals</h2>
+  <p>The details of MySQL recovery are coverd in <a href="https://learn.microsoft.com/en-us/azure/mysql/flexible-server/how-to-restore-server-portal">Point-in-time restore in Azure Database for MySQL with the Azure portal</a>.  
+   <p>Details of recovering Azure file share shapshots is covered in <a href="https://learn.microsoft.com/en-us/azure/backup/restore-afs?tabs=full-share-recovery">Restore Azure Files</a>
+
+
+<h2 id="staged">Hot vs Staged Restoration </h2>
+<p>The simplest recovery scenario would be restore the production instance to a point in time a few days ago.  Provided the Azure administrator is sure that the snapshots and recovery procedures are all error free, the simplest restore method would be to recover the database (and file shares, if necessary) directly to the CHCMySQL database and CHCPersist file share.  With this hot restoration procedure, the resulting restoration is validated by simply checking that the damage to the running CHCOmeka instance has been corrected.
+
+<p>In some scenarios, including routine testing of backup and restoration procedures, the restoration might be checked using a clone of the CHComka instance, such as the CHCOmekaStage instance.  In such a scenario,  the CHCMySQL database may be restored to a new instance of MySQL database for Azure. and the snapshot of the CHCPersist (or CHCaltPersist) would be recovered to the CHCAltPersist share. To test that the data and files are coherent, the database.ini file (in the CHCAltPersist/config folder) would be updated to point to the newly restored database.
+  
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

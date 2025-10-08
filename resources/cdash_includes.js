@@ -30,7 +30,7 @@ let index_htm = `
 <p style="background-color: white; margin-left: -10px; padding-left: 10px;">This is a very early draft of the C-Dash Docs.  It is not yet ready for public consumption.  Nevertheless you are welcome to take a look around. 
 </p>  
 <ul class="treeview">
-<h3>Extending Omeka</h3>
+<h3>Owner / Enterprise Viewpoint</h3>
 <li class="chapter"><a href="../home/index.htm">Enriching and Connecting Place-Based Knowledge</a></li>
     <!-- ul class="verses">
       <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
@@ -56,7 +56,7 @@ let index_htm = `
     </ul>
 
   </ul>
-<h3>Contributor Viewpoint</h3>
+<h3>Contributor / Manager Viewpoint</h3>
 <ul class="treeview">
   <li class="chapter"><a href="../fundamentals/index.htm">Omeka Fundamentals</a></li>
     <ul class="verses">
@@ -130,47 +130,51 @@ let index_htm = `
 </ul>
 
 
-<h3>Developer / Administrator Viewpoint</h3>
+<h3>Administrator / Developer Viewpoint</h3>
 <ul class="treeview">
-<li class="chapter"><a href="../docker/index.htm">Application Development and Production Set-Up</a></li>
-<ul class="verses">
-  <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
-  <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
-</ul>
+
+<li class="chapter"><a href="../azure_overview/index.htm">CHC Omeka in Azure Overview</a></li>
+  <ul class="verses">
+    <li><a href="../azure_overview/index.htm#omeka">The CHC's Omeka Repository in Azure</a>
+    <li><a href="../azure_overview/index.htm#webapp">CHCOmeka Instance -- an Azure Web Application For Linux</a>
+    <li><a href="../azure_overview/index.htm#registry">The Docker Registry and Deployment Images</a>
+    <li><a href="../azure_overview/index.htm#mysql">MySQL Database</a>
+    <li><a href="../azure_overview/index.htm#shares">Azure File Shares</a>
+    <li><a href="../azure_overview/index.htm#webadmin">.HTAccess, Robots.txt and Access Logs</a>
+    </ul>
 
 <li class="chapter"><a href="../audit_report/index.htm">Culture of Preparedness and Accountability</a></li>
   <ul class="verses">
     <li><a href="../audit_report/index.htm#audits">The Importance of Regular Audits</a>
     <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
     <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
-    <li><a href="../audit_report/index.htm#level1">Preparedness Level 1:  Verify Backup and Restore Capabilities</a>
-    <li><a href="../audit_report/index.htm#level2">Preparedness Level 2: Check Basic Functionality</a>
-    <li><a href="../audit_report/index.htm#level3">Preparedness Level 3: Count your Chickens </a>
-    <li><a href="../audit_report/index.htm#giveashit">The Critical Importance of Giving a Shit</a>
-    <li><a href="../audit_report/index.htm#to-to">To-Do: Automated Audit Dashboard</a>
+    <li><a href="../audit_report/index.htm#manager">CHC Omeka Manager Weekly Journal</a>
+    <li><a href="../audit_report/index.htm#admin">Azure Administrator Monthly Journal</a>
     </ul>
 
-
-<li class="chapter"><a href="../azure_overview/index.htm">CHC Omeka in Azure Overview, Integrity Check, and Restoration</a></li>
+<li class="chapter"><a href="../recovery/index.htm">Omeka in Azure Recovery</a></li>
   <ul class="verses">
-    <li><a href="../azure_overview/index.htm#omeka">The CHC's Omeka Repository in Azure</a>
-    <li><a href="../azure_overview/index.htm#assets">A Dynamic Collection of Information Assets</a>
-    <li><a href="../azure_overview/index.htm#fences">Walking the Fences: Tour the Essential Omeka Components and their Backups in the Azure Portal</a>
-    <li><a href="../azure_overview/index.htm#registry">The Docker Registry and Deployment Images</a>
-    <li><a href="../azure_overview/index.htm#webapp">The CHC Omeka Web Application</a>
-    <li><a href="../azure_overview/index.htm#shares">Azure File Shares</a>
-    <li><a href="../azure_overview/index.htm#mysql">MySQL Database</a>
-    <li><a href="../azure_overview/index.htm#cloneempty">Building an Empty CDASH Instance</a>
-    <li><a href="../azure_overview/index.htm#recovery">Recovering a Past State of CDASH</a>
-    </ul>
+    <li><a href="../recovery/index.htm#scenarios">Recovery Scenarios and Timeframe</a>
+    <li><a href="../recovery/index.htm#backups">Backup Retention</a>
+    <li><a href="../recovery/index.htm#audits">Routine Integrity Audits and Prompt Recovery Initiation</a>
+    <li><a href="../recovery/index.htm#restoration">Snapshot Restoration Fundamentals </a>
+    <li><a href="../recovery/index.htm#staged">Hot Vs Staged Recovery Scenarios</a>
+  </ul>
 
 
 
-<li class="chapter"><a href="../theme_layout/index.htm">CDASH Layout</a></li>
+<li class="chapter"><a href="../docker/index.htm">Production Set-Up and Application Development</a></li>
+<ul class="verses">
+  <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
+  <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
+</ul>
+
+<!--li class="chapter"><a href="../theme_layout/index.htm">CDASH Layout</a></li>
     <ul class="verses">
     <li><a href="../theme_layout/index.htm#themes">Omeka Themes</a>
     <li><a href="../theme_layout/index.htm#wireframe">Wireframe Demo</a>
     </ul>
+-->
 
 <!-- li class="chapter"><a href="../omeka_modules/index.htm">Understanding Critical Modules</a></li>
   <ul class="verses">
@@ -178,6 +182,9 @@ let index_htm = `
     <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
   </ul -->
 <br>
+
+-->
+
  <hr>
  <br> 
 <li class="chapter"><a href="../template/index.htm">Documentation Template / Style Guide</a></li>
