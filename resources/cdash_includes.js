@@ -74,6 +74,8 @@ let index_htm = `
     <li><a href="../research/index.htm#1894">1894 Bromley Index</a>
     <li><a href="../research/index.htm#1916">1916 Bromley Index</a>
     <li><a href="../research/index.htm#1935">1935 Bromley Index</a>
+    <li><a href="../research/index.htm#1873Hopkins">1873 Hopkins Index Map</a>
+    <li><a href="../research/index.htm#1886Hopkins">1886  Hopkins Index Map</a>
     </ul>
 
     <li class="chapter"><a href="../schema/index.htm">CDASH Schema: <br>CHC Building Files In Omeka</a></li>

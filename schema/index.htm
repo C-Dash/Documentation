@@ -42,10 +42,7 @@
   <p>
   As a physical filing system, the Architectural Survey has many properties that lend themselves to the creation of a map-oriented digital archive.  Every document has been labeled according to a street address of the subject.  Each folder is labeled by street and address range.  Some folders are also labeled with a thematic subject.
   <p>
-  CDASH is the home for a digital mirror this Architectural History collection presented using a Omeka-S, a popular open source asset management and publishing platform. CDASH is a unique Omeka site in many ways.  Especially that the documents are organized according to places that are presented on a map. The hierarchy of Folders, Places and Documents is useful. not only as an intuitive means of discovering documents and displaying them in the context of historic maps, the  folder-place-document hierarchy also provides important associations among documents that are useful for refining and enriching the information about documents and places. 
-  <p>
-  The CDASH Documentation Project is intended to provide an account of the tools that have been made for digitizing the collection and preparing it for importing into Omeka.  The modifications and collection guidelines that have been applied to create and maintain the CDASH application.
-
+  CDASH is the home for a digital mirror this Architectural History collection presented using a Omeka-S, a popular open source asset management and publishing platform. CDASH is a unique Omeka site in many ways.  Especially in the way that the collection is organized as  The hierarchy of Folders, Places and Documents. 
 
   </p>
   <figure class="middle">
@@ -55,7 +52,7 @@
   
 
   <!--
-  <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+  <h3>Topic Index</h3>  notice these paths reference the root folder so that this list can be copied to the index sidebar -->
 <!--
   <ul class="verses">
     <li><a href="../schema/index.htm#digitization">Digitizing and Digesting the Survey</a>
@@ -104,11 +101,19 @@
 <h3 id="editing">Creating and Editing Omeka Items</h3>
 <p><a href="../item_creation/index.htm">Detailed advice for Creating, Revising and Enriching CDASH Items has been moved to a new page.</a> 
 
+
+<h2 id="GeoSync">Place -> Document Hierarchy and Inheritance (GeoSync)</h2>
+<p> In CDASH, each document is related to a place.  For example, document titles are a composite of the Place Address, Place Name and Document Type.  If the properties of the place are changed, a custom CDASH procedure, GeoSync, propagates the changes to the related documents.  The GeoSync function is accessed from the administrator's toolbar for users who are logged in with Admin privileges.  For more info on using GeoSync see <a href="../item_creation/index.htm">Creating and Revising CDASH Documents</a>.    
+
+<h2 id="GeoAudit">Checking the Integrity of the CDASH Schema (GeoAudit)</h2>
+<p>Because users discover and access documents through places, situations can occur where documents can effectively become invisible.  For example if a parent place or its map marker is deleted.  Omeka does not prevent these situations from happening.  So we have added a GeoAudit function, which is accessed from the administrator's toolbar for users who are logged in with Admin privileges.
+
+
 <h2>The Custom CDASH Theme for Omeka</h2>
-<p>Omeka provides several <a href="https://omeka.org/s/docs/user-manual/sites/site_theme/" target="omekadoc">customizable themes that govern the way that items are displayed. Much of what makes CDASH a unique sort of Omeka site has been added via a highly modified CDASH theme.  The CDASH Theme provides the following unique CDASH features.
+<p>Omeka provides several <a href="https://omeka.org/s/docs/user-manual/sites/site_theme/" target="omekadoc">customizable themes</a> that govern the way that items are displayed. Much of what makes CDASH a unique sort of Omeka site has been added via a highly modified CDASH theme.  The CDASH Theme provides the following unique CDASH features.
 <ul>
   <li>The map display for Place Items.
-  <li>The PDIX feature, which updates the coordinates of Document Items when their Place has been moved.
+  <li>The GeoSync and GeoAudit features.
   <li>Many customizations to Place and Document Item show pages to represent the relationships between folders, Places and Items
   <li>Search capabilities, including the default sorting mode that properly orders items according to Street and House Number.
   <li>The CDASH header and sepia color scheme. 
