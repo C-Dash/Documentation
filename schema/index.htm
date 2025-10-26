@@ -102,11 +102,15 @@
 <p><a href="../item_creation/index.htm">Detailed advice for Creating, Revising and Enriching CDASH Items has been moved to a new page.</a> 
 
 
-<h2 id="GeoSync">Place -> Document Hierarchy and Inheritance (GeoSync)</h2>
-<p> In CDASH, each document is related to a place.  For example, document titles are a composite of the Place Address, Place Name and Document Type.  If the properties of the place are changed, a custom CDASH procedure, GeoSync, propagates the changes to the related documents.  The GeoSync function is accessed from the administrator's toolbar for users who are logged in with Admin privileges.  For more info on using GeoSync see <a href="../item_creation/index.htm">Creating and Revising CDASH Documents</a>.    
+<h2 id="GeoAudit">Checking the Integrity of the CDASH Schema (GeoAudit)  </h2>
+<p> While the CDASH concepts of Places and Documents and FOlders and their properties map perfectly onto the Omeka concepts of Items and Item Sets, one way that CDASH extends the noremal Omeka schema is the hierarchal relationship of Places to their child Documents.  A critical illustration of this is that since Places are the only items that show up on the map, and since documents are only found via their association with places or folders, if an item is not related to a place or a folder, then that item is effectively invisible or lost to the ordinary user.  Since there is no feature of Omeka that prevents these situations from happening and since these situations of disconnection can be caused easily, it has been necessary to create the <b>GeoAudit Function</b> which checks various conditions of connectivity of Places, Documents and Folders and reports odn any orphan situations so thatt they can be repaired.  
+<p>
+Once the CDASH schema is established, integrity problems uncovered with the GeoAudit function should be rare.  But when they happen, they may be an indication of a deeper problem, which -- if it is not addressed in a timely fashion, may result an unreoverable data loss. Therefore, it is recommmended to run the GeoAudit function weekly, with the results noted in the weekly journal.  
+  
 
-<h2 id="GeoAudit">Checking the Integrity of the CDASH Schema (GeoAudit)</h2>
-<p>Because users discover and access documents through places, situations can occur where documents can effectively become invisible.  For example if a parent place or its map marker is deleted.  Omeka does not prevent these situations from happening.  So we have added a GeoAudit function, which is accessed from the administrator's toolbar for users who are logged in with Admin privileges.
+<h2 id="GeoSync">Place -> Document Hierarchy and Inheritance (GeoSync)</h2>
+<p>The hierarchy in which each document related to a single place presents opportunities.  Many properties of documents are derived from the properties of the document's place.  These propeerties and relatonships are described in the <a href="../doc_items/index.htm">Document Data Dictionary</a>.  When the properties of a place are adjuasted, these changes are propogated to the child documents.  This propogation is accomplished via the GeoSync function. 
+
 
 
 <h2>The Custom CDASH Theme for Omeka</h2>

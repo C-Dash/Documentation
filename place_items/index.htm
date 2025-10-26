@@ -58,7 +58,7 @@
     
     <table class="dictionary">
       <h2>Required Place Properties</h2>
-      <tr><th width="20%">Name</th><th width="80%">Description
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
       <tr><td><b>Resource Template</b><br>Pull-Down</td>
       <td>All CDASH Places use the <b>CDASH Place</b> template.</td>
       </tr>
@@ -68,27 +68,14 @@
       <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
         <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a></td>
       </tr>
-
       <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
         <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every place should be associated with at lest one or possibly more folders.   </td>
-      </tr>
-
-      <tr><td><b>Place Item</b><br>Text</td>
-        <td>The name of the place item.  This shows up as the Title in the item show page, and is the identifying string when choosing a place as a property of a Document item. 
-        <p>In the case of Address type places, uwe the street address or range. In the case of a named place, the name is formed as an Address and the Place Name.  eg: </b>77 Massachusetts Ave - MIT Bldg 7</b>.   </td>
-      </tr>
-
-      <tr><td><b>Place Name</b><br>Text</td>
-        <td>In the case of named places, this property carries the base-name of the place - without the pre-pended address.   </td>
       </tr>
 
       <tr><td><b>Place Type</b><br>Use pick-list.<br></td>
         <td>Each place Item is assigned a type. Choose one from the pick-list provided.</td>
       </tr>
 
-      <tr><td><b>Street Address</b><br>Text</td>
-        <td>Examples: 77 Massachusetts Ave, or 12-14 Broadway Terrace.  Make sure that the street name and suffic are spelled thhe same as other places on the same street. </td>
-      </tr>
       <tr><td><b>Neighborhood</b><br>Text</td>
         <td>Each cdash document item is assigned to a CHC neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The neighborhood name is disambiguated by the addition of <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
       </tr>
@@ -97,20 +84,43 @@
         <td>Each cdash document item is assigned to a CHC Research District. Pick from the list of CHC neighborhoods. 
       </tr>
 
+      <tr><td><b>House Number</b><br>Text</td>
+       <td>Can be a single number, or a hyphenated range (e.g. 451-455) and may include 1/2 (e.g. 451 1/2)  or letters (e.g. 451r)</td>
+
       <tr><td><b>Street Name</b><br>Text</td>
         <td>The street name portion of the address may be useful for filtering/faceting results. </td>
       </tr>
 
-      <tr><td><b>Street Sort Key</b><br>Text</td>
-        <td>This string is used for sorting items according to their street address.  This key consists of the street name (with "_" for spaces), concatenated with an 8-digit string consisting of the house number left-padded with zeros. Example: Massachusetts_Ave_00000077
+
    </td>
+      </tr>
+    </table>
+
+
+      <table class="dictionary">
+      <h2>Required Derived Place Properties</h2>
+      <p>Several place properties are derived by assembling values of other place properties.  This work is accomplished by the GeoSync function.  If you are creating place items by hand, you should keep in mind that these derived properties must be initialized  (even with dummy values) or the GeoSync function will not be able to assign new values to them.
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
+      
+      <tr><td><b>Place Item</b><br>Text</td>
+        <td>Automatically Concatenated from the House Number and the Place Name (if it exists)   </td>
+      </tr>
+
+      <tr><td><b>Street Sort Key</b><br>Text</td>
+        <td>Automatically calculated from House Number and Streetname, concatenated with the right number of leading zeroes.</td>
+
+        <tr><td><b>Street Address</b><br>Text</td>
+        <td>Addresses are automatically concatenated from the House Number and Street Name.</td>
       </tr>
 
     </table>
+
 <h2>Optional Place Properties</h2>
     <table class="dictionary">
       <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
-
+      <tr><td><b>Place Name</b><br>Text</td>
+        <td>In the case of named places, this property carries the base-name of the place - without the pre-pended address.   </td>
+      </tr>
       <tr><td><b>Description</b><br>Text</td>
         <td>A description of the place which might appear as a caption. </td>
       </tr>

@@ -60,18 +60,6 @@
           <tr><td><b>Class</b><br>Pull-Down</td>
             <td>All Place Items use Choose <b>Bibliographic Ontology: Document.</b></td>
           </tr>
-          <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
-            <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a> In the case of Document Items, the exact location of the Place Marker is not important, since it will synced with the PDIX function.  But each document needs to have an initial Place Marker. </td>
-          </tr>
-    
-          <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
-            <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every Document Item should be associated with one and only one folder.   </td>
-          </tr>
-    
-          <tr><td><b>Place Item</b><br>Omeka Item Resource</td>
-            <td>Use the <b>Omeka Resource</b> button and the associated item picker tools to choose the Place Item that will be the parent of the current Document Item.   </td>
-          </tr>
-
       <tr><td><b>Document Type</b><br>Pick from list.<br></td>
         <td>Each document Item is assigned a type -- e.g. Interior Image. These types are assigned during the bulk import process or chosen from the list, <a href="#doctypes">CDASH Document Types.</a></td>
       </tr>
@@ -79,9 +67,26 @@
         <td>This value is useful for assessing the relevance of search results. 
    </td>
       </tr>
-      <tr><td><b>Place Item</b><br>Omeka Resource</td>
-        <td>Each document Item must be related one and only one CDASH Place Item. Use the <b>Omeka Resource</b> button to initiate the process of choosing a place item. </td>
+    
+          <tr><td><b>Place Item</b><br>Omeka Item Resource</td>
+            <td>Use the <b>Omeka Resource</b> button and the associated item picker tools to choose the Place Item that will be the parent of the current Document Item.   </td>
+          </tr>
+      <tr><td><b>Rights</b><br>text</td>
+        <td>If a document has a known copyright status enter it.  Defaults to: <i>Rights status not evaluated.</i> </td>
       </tr>
+    </table>
+
+      <table class="dictionary">
+      <h2>Required Derived Document Properties</h2>
+      <p>Several document properties are derived by assembling values from the property of the document's parent place.  This work is accomplished by the GeoSync function.  If you are creating document items by hand, you should keep in mind that these derived properties must be initialized  (even with dummy values) or the GeoSync function will not be able to assign new values to them.
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
+
+
+          <tr><td><b>Place Marker</b><br>Use Mapping Tab</td>
+            <td>Use the Mapping Tab to set the position of the marker <a href="../item_creation/images/marker_edit.jpg" target="outboard">See screen-Shot</a> In the case of Document Items, the exact location of the Place Marker is not important, since it will synced with the PDIX function.  But each document needs to have an initial Place Marker. </td>
+          </tr>
+    
+
 
       <tr><td><b>Neighborhood</b><br>Pick From List</td>
         <td>Each cdash document item is assigned to a CDD Neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The automatic item uploader adds a second value for Neighborhood. <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
@@ -93,12 +98,11 @@
         <tr><td><b>Street Sort Key</b><br>Text</td>
           <td>This string is used for sorting items according to their street address.  This key consists of the street name (with "_" for spaces), concatenated with an 8-digit string consisting of the house number left-padded with zeros.  Example: Massachusetts_Ave_00000077
       </tr>
-      <tr><td><b>Collection</b><br>text</td>
-        <td>Refers to a local collection and bibliographic citation. Defaults to: <i>Cambridge Historical Commission, Digital Architectural Survey and History</i> </td>
-      </tr>
-      <tr><td><b>Rights</b><br>text</td>
-        <td>If a document has a known copyright status enter it.  Defaults to: <i>Rights status not evaluated.</i> </td>
-      </tr>
+          <tr><td><b>CDASH Folder</b><br>Use Item-Set Tab</td>
+            <td>CDASH Folders are implemented as Omeka Item-Sets.  To choose an folder, use the <b>Item Sets tab</b> at the top of the edit page. Every Document Item should be associated with one and only one folder.   </td>
+          </tr>
+
+
 
 
     </table>
