@@ -46,7 +46,7 @@
     <li><b>Folders that have duplicate names: </b> Folders are item Sets that are referenced by document and place items. These items refer to folders by name.  If there are folders with duplicate names, some items may fail to appear where we would expect them to.  
     <li><b>Document Items that reference zero or more than one Place item: </b> Since documents get their, titles, locations and streetsort keys from their parent Place items, if a document references more than one place, crucial properties of documents can become messed up -- which is can become hopelessly confusing.  It is very important to catch this problem immediately after the situation has arisen, otherwise, the resulting damage to the collection integrity can be very difficult to track down and fix.
     <li><b>Place Items that reference zero Document items: </b> While this is not necessarily an integrity issue, it usually indicates a situation where place items with duplicate names were created by different upload batches.  
-  <ul>
+    </ul>
 
     <div class="feature funfact">
     <h3>A Most Unfortunate Situation</h3>
@@ -91,14 +91,29 @@ Most of the time, the batches having duplicate places and folders are associated
   <ol>
     <li>Look at the folders (Item Sets) involved.  When you find folders that geoAudit has identified as problematic, you can edit these first, distinquishing the folder names with the name or abbreviation of the research district.  Note that Folders have a hidden StreetSort property (visible with the <b>View</b> function on the admin toolbar.) that may be a clue to shich research district that the folder is referring to.     
     <li>Edit the Place Items
-    <li>Update the Street Name property, adding an indicator for the research district (abbreviation?) to the name.  This change will propogate to the PlaceItem (Title) property of the Place and of any related documents, once you run the GeoSync button <b><i>But don;t push it 
+    <li>Update the Street Name property, adding an indicator for the research district (abbreviation?) to the name.  This change will propogate to the PlaceItem (Title) property of the Place and of any related documents, once you run the GeoSync button <b><i>But don't push it yet!</i></b>
     <li>Edit the marker location (Mapping Tab in the Item Edit interface.)  Remember that to register the change, you need to click Save on the left-side of the map and Save at the top right of the Mapping page.
     <li>Note that Omeka's Item ID for the places will stay the same.  This ID is what is used in the Document Item properties to reference the item's parent place item.
     <li>Where appropriate, change the Item Set association for the place to point to the correct folder.
     <li>Press <b>Save</b> to save your changes.
   </ol>
 
-  
+  <h3>3. Use Advanced Item Search and Bulk Edits to Re-Assign Documents to Places and Folders as Apropriate</h3>
+  <p> One of your place items that you edited above will have accumulated the items that should have been assigned to the other formerly duplicate places.  Your task now is to 
+    <ol>
+      <li>Examine the properties, including the Research District and the Identifiers, of these document items to figure out how you are going to round them up with the advanced query tool.
+      <li>Start with an advanced item query to select all of the documents associated with the initial place, and make a not of the total number of items.  Note this in your ledger.
+      <li>Now refine the query to narrow the selection to a set of <b>Bocument Items</b> associated with a batch which should be assigned to one of the empty Place Items that you edited, above.  
+      <li><span style="color: red"><b>Important:</b></span> Make sure that your query selects Items by <b>Resource Template = CDASH Document</b> 
+      <li>Note the number of documents affected.  Make sure that there aren;t place items mixed in. 
+      <li>Lets tackle the folder assignment first. 
+      <li>In the menu at the top left of the query return list, you have a pulldown that allows you to choose Batch Actions, choose <b>Edit</b>
+      <li>Notice the number of items that is going to be affected. 
+      <li>Use the <b>Add to Item Set and Remove from Item Set functions to correct the folder situation.  Each document should be in one and only one folder. 
+        
+      </ol>
+
+
   
 
 
