@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Managing CDASH Integrity</title>
+    <meta name="description" content="A few workflows for reparing issues with CDASH Items." >
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.ico" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the cdash_includes.js.
+          When you add a new page or internalachcor, you should update the index in cdash_includes.js.-->
+    <script src="../resources/cdash_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cdash_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cdash_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cdash_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Managing CDASH Relational Integrity</h1>
+  <p>The relational organization of CDASH Folders, Place items and Document items mirros the organization of the physical Architectural Survey collection and the efficient update of the properties of document items that follow updates to their parent place items.  However, this extra layer of hierarchy goes beyond the ordinary structure of Omeka-S.  It is possible create issues with the relational integrity of the CDASH collections that will cause document items to become invisible and/or damaged.  
+  
+  <p>The CDASH theme adds a couple of functions to the Admin Toolbar that shows up at the bottom of item show pages when an admin user is logged in.  The <b>GeoSync</b> function is the tool that automatically updates the Title, Streetsort and Marker location for related documents when one or more place items are updated. The <b>GeoAudit</b> function takes inventory of the collection and reports on integrity issues that can cause problems with establishing the relationship of documents to folders and places. 
+  <h3>Integrity Issues flagged by the GeoAudit function</h3>
+    <ul>
+    <li><b>Folders that have duplicate names: </b> Folders are item Sets that are referenced by document and place items. These items refer to folders by name.  If there are folders with duplicate names, some items may fail to appear where we would expect them to.  
+    <li><b>Document Items that reference zero or more than one Place item: </b> Since documents get their, titles, locations and streetsort keys from their parent Place items, if a document references more than one place, crucial properties of documents can become messed up -- which is can become hopelessly confusing.  It is very important to catch this problem immediately after the situation has arisen, otherwise, the resulting damage to the collection integrity can be very difficult to track down and fix.
+    <li><b>Place Items that reference zero Document items: </b> While this is not necessarily an integrity issue, it usually indicates a situation where place items with duplicate names were created by different upload batches.  
+  <ul>
+
+    <div class="feature funfact">
+    <h3>A Most Unfortunate Situation</h3>
+    <p>One of the more harmful and difficult situations that can arize is if you assign one or more document items to the wrong place item.  The problem with this is that once you run the GeoSync process, the title and other properties of the affectd documents will be updated to match the wrong place.  
+    <p>
+    This is a situation that if you don't catch it right away, it may never get caught, and this will effectively cause the affected items to become practically undiscoverable.
+    <p>This is why, it is crucial that CDASH managers who are updating items check their work thoroughly and possibly even keep a log of the corrections that they have made, so that steps can be re-traced.      
+    </div>
+      
+<h2>Workflows for repairing common integrity issues</h2>
+<p>At the time I am writing this the GeoAudit function is exposing many integrity problems that were created during the bulk upload process.  Most of these problems stem from the fact that the initial bulk loading process proceeded by batches of media folders which were digested to create Omeka Folders (item sets), Places and Documents, which were presumed to be unique.  As it happens, there are some folders and places whose names were repeated in subsequent batches.  When this happened, new folders and places were created, but the items that should have been assigned to the new folders and places were associated with the first Folder and Place that had been created.  
+<p>
+Most of the time, the batches having duplicate places and folders are associated with different research districts. So the remedy will be to find the duplicate folders places and change the folder names and PlaceItem designations to distinguish them according to research district. Then round up the affected documents and associate them with the appropriate folder using Omeka's bulk editing tools.  The fact that documents have a Research District property.  Documents also have an Identifier property (visible when you click <b>View</b> in the admin bar) and this identifier includes the batch and folder identifier.  These properties can be used with the advanced search tool (from the Admin interface -- chcomekastage.azurewebsites.net/admin or cdash.cambridgema.gov/admin) to select items that are associated with a specific place ID and also having an identifier that begins with a particular batch or a particular research district property, which can be used to select all of the documents (details below) 
+<p>
+  The <a href="./images/cdash_import_ledger_251014.pdf" target="importledger">cdash_import_ledger.pdf</a> may also be useful for associating batches with their original banker's boxes.
+
+
+
+
+</p>
+  <h3>Care and Preparation</h3>
+  <p>Each of the workflows described here involves a similar set of steps:
+    <ol>
+      <li>Selection of a set of items (either Documents or Places, but rarely both)
+      <li>Initiating a bulk edit for the selected records.
+      <li>Clearing the values from one or more properties
+      <li>Setting new values for the properties.
+      <li>Checking the results
+    </ol>
+  <h2>Accidents Happen</h2> 
+  <p>Adding and removing item values with Omeka-S exposes opportunities to make complicated mistakes.  We will illustrate several situations in the workflow descriptions.  But there are a few categories of screw-ups -- and remedies that are worth outlining in advance.  For example, it is easy to 
+  <h3>Recoverable and Unrecoverable and Invisible Situations<h3>
+  <p>Many problems that arise from manipulating item values may be completely reversed with subsequent bulk edit. There are other problems that can only be recoverd by restoring a point-in-time snapshot of last night's database backup.  The worst sort of mistake is one that nobody is aware of.  Many times reparing a problem can be very difficult if there is no recollection of the extent or the cause of the problem.  This to underscore the benefit of careful analysis of situations, planning, execution, and checking.   In some cases it is worth keeping a journal of fixes that have been made and their dates.  
+
+
+<h3>1. Start a ledger to record your update steps.</h3>
+<p>In this ledger, it may be useful to record the names of the place documents and folders that have been split and the query expressions used to select the affectd documents and the numbers of documents that were shifted from one or the other.  This information will be helpful to have in front of you when you check the results of the changes.  The same information may be indispensible later if any of these changes ever come into question.
+
+
+<h3>2. Begin with a Duplicated Place</h3>
+<p>It may be useful to begin the repair process by selecting a duplicated place from the GeoAudit output. By looking at the place on the map, you will probably find one or more other places nearby, or on the same street that share the same name.  From here, it may be clear that these places belong in different districts.  It may not matter, but for the sake of thoroughness, it may be better to select the place having the lowest Omeka Item ID (visible in the URL) and assign this to the research district that came earliest in the order of Box/Batches.  Then 
+  <ol>
+    <li>Look at the folders (Item Sets) involved.  When you find folders that geoAudit has identified as problematic, you can edit these first, distinquishing the folder names with the name or abbreviation of the research district.  Note that Folders have a hidden StreetSort property (visible with the <b>View</b> function on the admin toolbar.) that may be a clue to shich research district that the folder is referring to.     
+    <li>Edit the Place Items
+    <li>Update the Street Name property, adding an indicator for the research district (abbreviation?) to the name.  This change will propogate to the PlaceItem (Title) property of the Place and of any related documents, once you run the GeoSync button <b><i>But don;t push it 
+    <li>Edit the marker location (Mapping Tab in the Item Edit interface.)  Remember that to register the change, you need to click Save on the left-side of the map and Save at the top right of the Mapping page.
+    <li>Note that Omeka's Item ID for the places will stay the same.  This ID is what is used in the Document Item properties to reference the item's parent place item.
+    <li>Where appropriate, change the Item Set association for the place to point to the correct folder.
+    <li>Press <b>Save</b> to save your changes.
+  </ol>
+
+  
+  
+
+
+ 
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

@@ -129,6 +129,7 @@ let index_htm = `
     <li><a href="../media_format/index.htm#compression">Compression</a>
     <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
     </ul>
+  <li class="chapter"><a href="../integrity_mgt/index.htm">Managing CDASH Relational Integrity</a></li>
 </ul>
 
 
