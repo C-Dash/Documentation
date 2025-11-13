@@ -1,0 +1,21 @@
+
+CDASH Updates
+
+Nov 12, 2025
+
+3 folders named Cambridge Street Views articulated by research District
+
+Updating the place Cambridge St - East Cambridge 
+
+****Be sure to check the folder 1-225 Cambridge St Bridge St-Third St for more lost items.
+
+200 documents associated with Place: "Cambridge St"
+
+100 documents identifier starts with "CDB250823"  Confirms East Cambridge Batch
+
+Batch Edit:  
+Clear and reset  Neighborhood, Researdistrinct
+Assign to Place: 238445
+
+*** Double check folders later
+ 

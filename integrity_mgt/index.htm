@@ -77,31 +77,39 @@ Most of the time, the batches having duplicate places and folders are associated
       <li>Checking the results
     </ol>
   <h2>Accidents Happen</h2> 
-  <p>Adding and removing item values with Omeka-S exposes opportunities to make complicated mistakes.  We will illustrate several situations in the workflow descriptions.  But there are a few categories of screw-ups -- and remedies that are worth outlining in advance.  For example, it is easy to 
-  <h3>Recoverable and Unrecoverable and Invisible Situations<h3>
-  <p>Many problems that arise from manipulating item values may be completely reversed with subsequent bulk edit. There are other problems that can only be recoverd by restoring a point-in-time snapshot of last night's database backup.  The worst sort of mistake is one that nobody is aware of.  Many times reparing a problem can be very difficult if there is no recollection of the extent or the cause of the problem.  This to underscore the benefit of careful analysis of situations, planning, execution, and checking.   In some cases it is worth keeping a journal of fixes that have been made and their dates.  
-
-
+  <p>Adding and removing item values with Omeka-S exposes opportunities to make complicated mistakes.  We will illustrate several situations in the workflow descriptions.  But there are a few categories of screw-ups -- and remedies that are worth outlining in advance. 
+  <h3>Recoverable and Unrecoverable and Invisible Situations</h3>
+  <p>Most problems that arise from manipulating item values may be completely reversed with subsequent bulk edit. There are other problems that can only be recovered by restoring a point-in-time snapshot of last night's database backup.  The worst sort of mistake is one that nobody is aware of.  Many times repairing a problem can be very difficult if there is no recollection of the extent or the cause of the problem.  This to underscore the benefit of checking each step that you do and keeping a count of the numbers of records affected so that you can un-do mistakes easily, and be confident that your work is improving things. 
+     
 <h3>1. Start a ledger to record your update steps.</h3>
-<p>In this ledger, it may be useful to record the names of the place documents and folders that have been split and the query expressions used to select the affectd documents and the numbers of documents that were shifted from one or the other.  This information will be helpful to have in front of you when you check the results of the changes.  The same information may be indispensible later if any of these changes ever come into question.
+<p>In this ledger, it may be useful to record the names of the place documents and folders that have been split and the query expressions used to select the affected documents and the numbers of documents that were shifted from one or the other.  This information will be helpful to have in front of you when you check the results of the changes.  The same information may be indispensable later if any of these changes ever come into question.  Here is a very verbose ledger demonstrating the de-consolidation of several folders Places and Documents.  <a href="./images/CDASH_Updates_Ledger.pdf" target="updates">CDASH_Updates_Ledger.pdf</a>.
 
 
 <h3>2. Begin with a Duplicated Place</h3>
 <p>It may be useful to begin the repair process by selecting a duplicated place from the GeoAudit output. By looking at the place on the map, you will probably find one or more other places nearby, or on the same street that share the same name.  From here, it may be clear that these places belong in different districts.  It may not matter, but for the sake of thoroughness, it may be better to select the place having the lowest Omeka Item ID (visible in the URL) and assign this to the research district that came earliest in the order of Box/Batches.  Then 
   <ol>
-    <li>Look at the folders (Item Sets) involved.  When you find folders that geoAudit has identified as problematic, you can edit these first, distinquishing the folder names with the name or abbreviation of the research district.  Note that Folders have a hidden StreetSort property (visible with the <b>View</b> function on the admin toolbar.) that may be a clue to shich research district that the folder is referring to.     
-    <li>Edit the Place Items
-    <li>Update the Street Name property, adding an indicator for the research district (abbreviation?) to the name.  This change will propogate to the PlaceItem (Title) property of the Place and of any related documents, once you run the GeoSync button <b><i>But don't push it yet!</i></b>
+    <li>Look at the folders (Item Sets) involved.  When you find folders that geoAudit has identified as problematic, you can edit these first, distinguishing the folder names with the name or abbreviation of the research district.  use a single hyphen surrounded by spaces to append the District name to the folder name. Note that changing the names of folders does not alter the way that they inter-relate with items. 
+    <li>While lookning at the folder item sets, click on the Items link on the right sidebar to get a sense of whether the folder has aything in it.  It is likely that some of them are empty and that subsequent fixes on duplicate place items will cause these folders to gain some contents. 
+    </ol>
+      
+  <h3>3. Edit Duplicate Place Items</h3>
+  <p>For place items that have accumulated document items associated with different research districts.
+  <0l>
+      <li>Update the Street Name property.  Use a hyphen between spaces to append the research district to the name to the Street Name property.  This change will propagate to the PlaceItem (Title) property of the Place and of any related documents, once you run the GeoSync button <b><i>But don't push it yet!</i></b>
     <li>Edit the marker location (Mapping Tab in the Item Edit interface.)  Remember that to register the change, you need to click Save on the left-side of the map and Save at the top right of the Mapping page.
     <li>Note that Omeka's Item ID for the places will stay the same.  This ID is what is used in the Document Item properties to reference the item's parent place item.
-    <li>Where appropriate, change the Item Set association for the place to point to the correct folder.
+    <li>Where appropriate, change the Item Set association for the place to point to the correct folder.  Note that the changing the association with Item Sets is done through the Item Set tab at the top of the edit form.  The item property for Folders may be useful, but these deprecated properties don't actually do anything or appear anywhere. 
     <li>Press <b>Save</b> to save your changes.
+    <li>Refresh your map window to confirm that your Place Item appears where it should and that its show page links the its folders as it should. 
+    <li>Note the changes to this item and its omeka Item ID in your ledger. 
   </ol>
 
-  <h3>3. Use Advanced Item Search and Bulk Edits to Re-Assign Documents to Places and Folders as Apropriate</h3>
+  <h3>Re-Assign Document Items to different Place Items and Folders</h3>
+    4. Use Advanced Item Search and Bulk Edits to Re-Assign Documents to Places and Folders as Appropriate</h3>
   <p> One of your place items that you edited above will have accumulated the items that should have been assigned to the other formerly duplicate places.  Your task now is to 
     <ol>
       <li>Examine the properties, including the Research District and the Identifiers, of these document items to figure out how you are going to round them up with the advanced query tool.
+      <li>You may find it useful to inspect the properties of an item with the View button on the Admin bar.  Note the Identifier button begins with the Batch and folder identifiers, which can be looked up in the <a href="./images/cdash_import_ledger_251014.pdf" target="importledger">cdash_import_ledger.pdf</a>
       <li>Start with an advanced item query to select all of the documents associated with the initial place, and make a not of the total number of items.  Note this in your ledger.
       <li>Now refine the query to narrow the selection to a set of <b>Bocument Items</b> associated with a batch which should be assigned to one of the empty Place Items that you edited, above.  
       <li><span style="color: red"><b>Important:</b></span> Make sure that your query selects Items by <b>Resource Template = CDASH Document</b> 
@@ -109,7 +117,7 @@ Most of the time, the batches having duplicate places and folders are associated
       <li>Lets tackle the folder assignment first. 
       <li>In the menu at the top left of the query return list, you have a pulldown that allows you to choose Batch Actions, choose <b>Edit</b>
       <li>Notice the number of items that is going to be affected. 
-      <li>Use the <b>Add to Item Set and Remove from Item Set functions to correct the folder situation.  Each document should be in one and only one folder. 
+      <li>Use the <b>Add to Item Set</b> and <b>Remove from Item Set</b> functions to correct the folder situation.  Each document should be in one and only one folder. 
         
       </ol>
 
