@@ -77,11 +77,11 @@
       </tr>
 
       <tr><td><b>Neighborhood</b><br>Text</td>
-        <td>Each cdash document item is assigned to a CHC neighborhood. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The neighborhood name is disambiguated by the addition of <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
+        <td>Each cdash Place Item is assigned to a CHC neighborhoods. A Place can be in more than one neighborhood if it is on the boundary. To enter a neighborhood manually, use the button provided to pick from the list of CHC neighborhoods. The neighborhood name is disambiguated by the addition of <i>Cambridge, Massachusetts, USA</i> to make CDASH records compliant with cataloging standards.</td>
       </tr>
 
       <tr><td><b>Research District</b><br>Pick from List</td>
-        <td>Each cdash document item is assigned to a CHC Research District. Pick from the list of CHC neighborhoods. 
+        <td>Each cdash document item is assigned to a CHC Research District. A Place can be in more than one district if it is on the boundary. Pick from the list of CHC neighborhoods. 
       </tr>
 
       <tr><td><b>House Number</b><br>Text</td>
@@ -91,7 +91,9 @@
         <td>The street name portion of the address may be useful for filtering/faceting results. </td>
       </tr>
 
-
+      <tr><td><b>Place Name</b><br>Text</td>
+        <td>In the case of named places, this property carries the base-name of the place - without the pre-pended address.   </td>
+      </tr>
    </td>
       </tr>
     </table>
@@ -102,8 +104,8 @@
       <p>Several place properties are derived by assembling values of other place properties.  This work is accomplished by the GeoSync function.  If you are creating place items by hand, you should keep in mind that these derived properties must be initialized  (even with dummy values) or the GeoSync function will not be able to assign new values to them.
       <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
       
-      <tr><td><b>Place Item</b><br>Text</td>
-        <td>Automatically Concatenated from the House Number and the Place Name (if it exists)   </td>
+      <tr><td><b>Place Item</b><br>Text <b>*</b></td>
+        <td>Automatically Concatenated from the House Number and the Place Name (if it exists).  The value of this propwerty serves as the title for the Place Item, and is also the name that appears as name of the parent place for each associated Document Item.   </td>
       </tr>
 
       <tr><td><b>Street Sort Key</b><br>Text</td>
@@ -115,12 +117,13 @@
 
     </table>
 
+<p><b>*</b> Note that the value for the CDASH: PlaceItem property, when it is associated with a Place Item, is a plain text string, that serves as the title for the Place Item.  The reason this property is re-used in this way is to simplify the search of items related to a place whether they should be places or documents. 
+
 <h2>Optional Place Properties</h2>
+<p>These properties are not populated by the batch accession tool, but they have vbeen carefully sdesigned in xcollaboration with the survey manager to be used to add useful information to place items as needed.  
     <table class="dictionary">
       <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
-      <tr><td><b>Place Name</b><br>Text</td>
-        <td>In the case of named places, this property carries the base-name of the place - without the pre-pended address.   </td>
-      </tr>
+
       <tr><td><b>Description</b><br>Text</td>
         <td>A description of the place which might appear as a caption. </td>
       </tr>
@@ -155,30 +158,38 @@
 
     </table>
 
-    <h2>Deprecated Place Properties</h2>
+    <h2>Legacy Place Properties</h2>
+    <p>The batch accession process creates a couple of properties that turn out not to be updated or used by Omeka.  It happens that they can be used to trace the lineage of place items in the event of accidents.
     <table class="dictionary">
       <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
 
+      <tr><td><b>CDASH Place Identifier</b><br>text</td>
+        <td>The place Identifier property is used during the bulk import process.  Values consist of "CDP_" concatenated by the original value for House Number, Street Name, and potentially, the original Place Name that were assigned during the accession process.   Although the Place Identifier is not used and not updated, it can be useful for tracing the lineage of an item   </td>
+      </tr>
+      <tr><td><b>CDASH Folder</b><br>Text</td>
+        <td>
+          These folder references were used during the bulk import process to generate Omeka item sets. After the initia accession of items the link between an item with its "CDASH Folders" (really, Omeka Item-Sets) is managed through the Item Sets tab on the item edit page.  
+          Although the values for an item's CDASH Folder property are not updated, they may be useful for tracing the lineage of an item in case something happens to the omeka item-set or its links.  
+      </td></tr>
+          </table>
+
+<h2>Deprecated Place Properties</h2>
+<p>These properties were part of the origianl schema design.  They were never populated and are slated for removal from the schema. 
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
       <tr><td><b>MACRIS Inventory Number</b><br>Text, URL</td>
         <td>When a document or a place is connected with a specific referent of the Massachusetts Cultural Resource Information System,  Use the URI button to set the <b>Label</b> field to be the MACRIS ID, and the <b>URI</b> field to the landing page for the related MACRIS Resource. <a href="https://maps.mhc-macris.net/" target=""macris">Search MACRIS here.</a>
           <br>After saving, check that the result performs as a clickable link.
           <br>This field is not recommended since the MACRIS map layer is easier for users and much easier to manage. 
         </td></tr>
       <tr><td><b>Assessing Map Lot</b><br>URL</td>
-        <td>Optionally use this field to add a reference to the Assessor's Map-Lot.  References can be found on the CDASH map. 
-          <br>This field is not recommended since the Assessing map layer is easier for users and much easier to manage. 
-
-        </td></tr>
-      <tr><td><b>CDASH Place Identifier</b><br>text</td>
-        <td>The place Identifier property is used during the bulk import process.  When Place items are new, this identifier can be used for posting revisions from the import CSV tables.  When creating place Items from scratch, it is not necessary to create a Place Identifier.  </td>
-      </tr>
-      <tr><td><b>CDASH Folder</b><br>Text</td>
-        <td>
-          These folder references were used during the bulk import process to generate Omeka item sets.  Use the Item-Sets tab on the Item edit page to manage the association between place items and folders.  See above.
-      </td></tr>
-
-
+        <td>This field deprecated since the Assessing map layer is easier for users and much easier to manage. 
+       </td></tr>
+      <tr><td><b>Street Address</b><br>Text</td>
+        <td>This property has been replaced by the individual properties: House Number and Street Name. 
+       </td></tr>
     </table>
+
   
 <h2>Controlled Vocabularies for Places</h2>
 <p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Place Items.  These lists are implemented and managed with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target="omeka">Omeka-S Custom Vocab module. </a> 

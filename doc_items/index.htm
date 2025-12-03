@@ -68,13 +68,15 @@
    </td>
       </tr>
     
-          <tr><td><b>Place Item</b><br>Omeka Item Resource</td>
+          <tr><td><b>Place Item</b><br>Omeka Item Resource<b>*</b></td>
             <td>Use the <b>Omeka Resource</b> button and the associated item picker tools to choose the Place Item that will be the parent of the current Document Item.   </td>
           </tr>
       <tr><td><b>Rights</b><br>text</td>
         <td>If a document has a known copyright status enter it.  Defaults to: <i>Rights status not evaluated.</i> </td>
       </tr>
     </table>
+
+    <p><b>*</b> Keep in mind that the value of Cdash: PlaceItem is an "Omeka Resource" which means that it is a pointer to a place item.  This is not to be confused with the usage of the term of the same name as the property that serves as the title for a Place Item -- which takes a simple text value. The reason this property is re-used in this way is to simplify the search of items related to a place whether they should be places or documents.
 
       <table class="dictionary">
       <h2>Required Derived Document Properties</h2>
@@ -130,25 +132,24 @@
       </tr>
     </table>
 
-      <h3>
-        <h2>Deprecated Document Properties</h2>
-        <p>These properties are created and populated by the bulk import process.  Once the items are created, these are not used. 
-        <table class="dictionary">
 
-          <tr><th width="20%">Name</th><th width="80%"></tr>
-      <tr><td><b>CDASH Folder</b><br>Text</td>
-        <td>These folder references were used during the bulk import process to generate Omeka item sets.  Use the Item-Sets tab on the Item edit page to manage the association between place items and folders.  See above.
-      </td></tr>
+    <h2>Legacy Place Properties</h2>
+    <p>The batch accession process creates a couple of properties that turn out not to be updated or used by Omeka.  It happens that they can be used to trace the lineage of document items in the event of accidents.
+    <table class="dictionary">
+      <tr><th width="20%">Name</th><th width="80%">Description</th></tr>
 
       <tr><td><b>CDASH Document Identifier</b><br>Text</td>
-        <td>This value is used by the CDASH Doucument Item Uploader. It is not necessary to create new identifiers when creating items deom scratch.  
-
-        </td>
-      </tr>
+        <td>This value is created during the batch accession process.  It is very useful for tracing tht lineage of documemt items if they should ever become dis-associated form their links to Folders or Place Item.  Because the Batch itentifier is included in the ID, it is very handy for finding the origibal media assocuiated with a document.   
+        </td></tr>
+      <tr><td><b>CDASH Folder</b><br>Text</td>
+          <td>This folder reference was used during the bulk import process to associate each document with a single folder (item Set). After the Institutional accession of items the link between an item with its "CDASH Folders" (really, Omeka Item-Sets) is managed through the Item Sets tab on the item edit page.  
+          Although the values for an item's CDASH Folder property are not updated, they may be useful for tracing the lineage of an item in case something happens to the omeka item-set or its links. 
+      </td></tr>
 
     </table>
+  
 
-    <h2>Controlled Vocabularies for Documents</h2>
+    <h2>Controlled Vocabularies for Document Items</h2>
     <p>The following lists are used as pick-lists to normalize the assignment of key-words to CDASH Document Items.  These lists are implemented and managed with the <a href="https://omeka.org/s/docs/user-manual/modules/customvocab/" target="omeka">Omeka-S Custom Vocab module. </a> 
 
     <h3 id="defaults">CDASH Document Types and Default Metadata Properties</h3>

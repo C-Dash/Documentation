@@ -57,8 +57,9 @@ routine administration of an Omeka site, including accession of new documents, a
     <li><a href="../recovery/index.htm#scenarios">Recovery Scenarios and Timeframe</a>
     <li><a href="../recovery/index.htm#backups">Backup Retention</a>
     <li><a href="../recovery/index.htm#audits">Routine Integrity Audits and Prompt Recovery Initiation</a>
-    <li><a href="../recovery/index.htm#restoration">Snapshot Restoration Fundamentals </a>
-    <li><a href="../recovery/index.htm#staged">Hot Vs Staged Recovery Scenarios</a>
+    <li><a href="../recovery/index.htm#scenarios">Backup Recovery Scenarios </a>
+    <li><a href="../recovery/index.htm#database_restore">Database Restoration Technicalities</a>
+    <li><a href="../recovery/index.htm#database_restore">Filesystem Restoration Technicalities</a>
   </ul>
 
   <h2 id="scenarios">Recovery Scenarios and Timeframe</h2>
@@ -78,15 +79,31 @@ Recovery of an Omeka instance requires the recovery of the entire Omeka schema i
 <h2 id="audits">Routine Integrity Audits and Prompt Recovery Initiation</h2>
 <p>Data loss be actively audited and backup procedures should be initiated as quickly as possible (definitely within a couple of weeks.)  First, is the 30 day window on the easily recoverable database and file-system snapshots, and second, because any changes made to the Omeka database or files hapening after the recovery target date will be lost. Details of the routine audits are provided at <a href="../sudit_report/index.htm">Regular Integrity Audits</a>
 
-<h2 id="restoration">Snapshot Restoration Fundamentals</h2>
-  <p>The details of MySQL recovery are coverd in <a href="https://learn.microsoft.com/en-us/azure/mysql/flexible-server/how-to-restore-server-portal">Point-in-time restore in Azure Database for MySQL with the Azure portal</a>.  
-   <p>Details of recovering Azure file share shapshots is covered in <a href="https://learn.microsoft.com/en-us/azure/backup/restore-afs?tabs=full-share-recovery">Restore Azure Files</a>
+<h2 id="scenarios">Restoration Scenarios </h2>
+<p>There are two types of recovery scenario:  
+  <ul>
+    <li><B>File Recovery Required: </b> If media has been deleted (usually because a Document Item has been deleted) then files will need to be restored.  Namely the original and thumbnail images that are kept in the <b>CdashPersist/Files</b> folder within the CDASHPersist storage account. In this scenario, a database recovery should also be made which will restore a snapshot of the database that is concurrent with the recoverd file system snapshot.
+     
+<li><b>Database Recovery: </b> In cases where item and item set properties and relationships have been altered but no items or media has been deleted, then a restoration can be accomplished by restoring a snapshot of the database only. 
+</ul>
 
 
-<h2 id="staged">Hot vs Staged Restoration </h2>
-<p>The simplest recovery scenario would be restore the production instance to a point in time a few days ago.  Provided the Azure administrator is sure that the snapshots and recovery procedures are all error free, the simplest restore method would be to recover the database (and file shares, if necessary) directly to the CHCMySQL database and CHCPersist file share.  With this hot restoration procedure, the resulting restoration is validated by simply checking that the damage to the running CHCOmeka instance has been corrected.
+<h2 id="database_restore">Database Restoration Technicalities</h2>
 
-<p>In some scenarios, including routine testing of backup and restoration procedures, the restoration might be checked using a clone of the CHComka instance, such as the CHCOmekaStage instance.  In such a scenario,  the CHCMySQL database may be restored to a new instance of MySQL database for Azure. and the snapshot of the CHCPersist (or CHCaltPersist) would be recovered to the CHCAltPersist share. To test that the data and files are coherent, the database.ini file (in the CHCAltPersist/config folder) would be updated to point to the newly restored database.
+
+  <p>The details of MySQL recovery are covered in <a href="https://learn.microsoft.com/en-us/azure/mysql/flexible-server/how-to-restore-server-portal">Point-in-time restore in Azure Database for MySQL with the Azure portal</a>.  
+
+<p>In most recovery scenarios, including routine testing of backup and restoration procedures, a database restoration would be made to a new instance of Azure Database for MySQL and then the Stage instance -- CHCOmekaStage.  In such a scenario,  the CHCMySQL database may be restored to a new instance of MySQL database for Azure. Linking an instance of CHCOmeka or CHCOmekaStage to the database is accomplished by using Azure Storage Explorer to save copy of the<b>database.ini</b> file located in CHCPersist/Config.  All you need to do is alter the to point to the new database instance <b>Host:</b>  the database.ini.  
+  
+  <h2 id="filesystem_restore">Database Restoration Technicalities</h2>
+    <p>Details of recovering Azure file share shapshots is covered in <a href="https://learn.microsoft.com/en-us/azure/backup/restore-afs?tabs=full-share-recovery">Restore Azure Files</a>
+
+      <p>When a recovery requires the restoration of media files, a filesystem restoration of the CHCPresist file share must be carried out. The simplest way to do this would be to do a point-in-time restore directly to the original location.   In cases where you wanted to verify that the restoration actually achieves wgat you want, you may choose to restore the file system wi an alternate location.  Note that in the case of the production instance of chcPersist, this is a very large number of relatively large files.  
+  
+<p>If you need to point an instance of CHC Omeka (Production or Stage) to a file system restored to an alternate location, this is accomplished in the Azure portal, by accessing the Web App's Settings.  Under Configuration, add or alter the storage mount for the <b>persist</b> volume, which is linked to the appropriate folders within the web app's running container. 
+ 
+  
+  
   
 
   </div> <!-- Closes #article div -->

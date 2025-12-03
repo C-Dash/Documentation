@@ -160,13 +160,14 @@ let index_htm = `
     <li><a href="../recovery/index.htm#scenarios">Recovery Scenarios and Timeframe</a>
     <li><a href="../recovery/index.htm#backups">Backup Retention</a>
     <li><a href="../recovery/index.htm#audits">Routine Integrity Audits and Prompt Recovery Initiation</a>
-    <li><a href="../recovery/index.htm#restoration">Snapshot Restoration Fundamentals </a>
-    <li><a href="../recovery/index.htm#staged">Hot Vs Staged Recovery Scenarios</a>
+    <li><a href="../recovery/index.htm#scenarios">Backup Recovery Scenarios </a>
+    <li><a href="../recovery/index.htm#database_restore">Database Restoration Technicalities</a>
+    <li><a href="../recovery/index.htm#database_restore">Filesystem Restoration Technicalities</a>
   </ul>
 
 
 
-<li class="chapter"><a href="../docker/index.htm">Production Set-Up and Application Development</a></li>
+<li class="chapter"><a href="../docker/index.htm">Development Container Set-Up</a></li>
 <ul class="verses">
   <li><a href="../docker/index.htm#containers">Contianerized Web Application</a>
   <li><a href="../docker/index.htm#dockerfiles">Docker Resources and Set-Up Tips</a>
