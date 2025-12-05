@@ -45,7 +45,8 @@ let index_htm = `
     <li><a href="../stewardship/index.htm#tabtargets">IT Service Agreement</a>
     </ul>
 
-    <li class="chapter"><a href="../assets/index.htm">CHC Omeka Assets</a></li>
+    <!--
+     <li class="chapter"><a href="../assets/index.htm">CHC Omeka Assets</a></li>
     <ul class="verses">
     <li><a href="../assets/index.htm#containers">Containerized Web Application</a>
     <li><a href="../assets/index.htm#stack">The CHC Omeka Application Stack</a>
@@ -53,7 +54,8 @@ let index_htm = `
       <li><a href="../assets/index.htm#data">MySQL Data</a>
     <li><a href="../assets/index.htm#persist">Persistent Application Files</a>
       <li><a href="../assets/index.htm#scans">Scan Batches</a>
-    </ul>
+    </ul> 
+    -->
 
   </ul>
 <h3>Contributor / Manager Viewpoint</h3>
@@ -187,7 +189,7 @@ let index_htm = `
   </ul -->
 <br>
 
--->
+
 
  <hr>
  <br> 
