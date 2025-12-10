@@ -148,25 +148,26 @@ let index_htm = `
     <li><a href="../azure_overview/index.htm#webadmin">.HTAccess, Robots.txt and Access Logs</a>
     </ul>
 
-<li class="chapter"><a href="../audit_report/index.htm">Culture of Preparedness and Accountability</a></li>
+<li class="chapter"><a href="../audit_report/index.htm">Taking Stock: Weekly Audit Practice</a></li>
   <ul class="verses">
     <li><a href="../audit_report/index.htm#audits">The Importance of Regular Audits</a>
-    <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
-    <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
-    <li><a href="../audit_report/index.htm#manager">CHC Omeka Manager Weekly Journal</a>
-    <li><a href="../audit_report/index.htm#admin">Azure Administrator Monthly Journal</a>
+    <li><a href="../audit_report/index.htm#journal">Weekly Journal Practice</a>
+    <li><a href="../audit_report/index.htm#counts">Count Assets and Integrity Issues</a>
+    <li><a href="../audit_report/index.htm#backups">File Share and Database Backup Inventory</a>
+    <li><a href="../audit_report/index.htm#performance">Web App Performance and Security</a>
+     <li><a href="../audit_report/index.htm#omekalogs">Check Omeka's Application Logs</a>
     </ul>
+
 
 <li class="chapter"><a href="../recovery/index.htm">Omeka in Azure Recovery</a></li>
   <ul class="verses">
     <li><a href="../recovery/index.htm#scenarios">Recovery Scenarios and Timeframe</a>
     <li><a href="../recovery/index.htm#backups">Backup Retention</a>
     <li><a href="../recovery/index.htm#audits">Routine Integrity Audits and Prompt Recovery Initiation</a>
-    <li><a href="../recovery/index.htm#scenarios">Backup Recovery Scenarios </a>
+    <li><a href="../recovery/index.htm#plan">Plan, Execute and Verify your Recovery</a>
     <li><a href="../recovery/index.htm#database_restore">Database Restoration Technicalities</a>
     <li><a href="../recovery/index.htm#database_restore">Filesystem Restoration Technicalities</a>
   </ul>
-
 
 
 <li class="chapter"><a href="../docker/index.htm">Development Container Set-Up</a></li>

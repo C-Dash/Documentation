@@ -3,7 +3,7 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Culture of Preparedness and Accountability</title>
+    <title>Taking Stock: Regular CDASH Audit </title>
     <meta name="description" content="Keeping assets safe.">
     <meta name="keywords" content="">
     <meta name="author" content="Paul B. Cote">
@@ -37,30 +37,31 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Culture of Preparedness and Accountability</h1>
+  <h1 class="title">Taking Stock: Regular CDASH Audit</h1>
   
   <p>
-    CDASH is a treasure chest that accumulates knowledge collected and organized over a long period of time.  Once items are initially loaded into the Production CDASH Instance, information about places and documents may be corrected or enriched, and before too long, CDASH becomes the only repository for the most authoritative representation of the Architectural Survey.  
+    CDASH is a treasure chest that accumulates knowledge collected and organized over a long period of time.  Once items are initially loaded into the Production CDASH Instance, information about places and documents may be corrected or enriched, and before long, CDASH becomes the most authoritative representation of the Architectural Survey.  
   </p><p>
-    The CHC Omeka Owner and the Administrator understand that the information in the CHC Omeka installation would be nearly impossible to regenerate should some sort of disaster strike or more importantly, if some simple mistake results in information disappearing or becoming corrupt. 
-    <p>The prospect of noticing that some number of CDASH items has disappeared or been damaged, without knowing the extent of the damage or when and why the information was lost should make us very anxious. 
+    The CHC Omeka Owner and the Administrator understand that the information in the CHC Omeka installation would be nearly impossible to regenerate should unrecoverable data loss should occur due to predictable user error, or unforeseen unknown problems.  The prospect of noticing that some number of CDASH resources or properties have disappeared or been damaged, without knowing the extent of the damage or when and why the information was lost should make us very anxious. Like a treasurer, the archivist has a duty to conduct regular checks that the count and integrity of assets in each collection comports to the logical story as described in weekly and monthly audits and activity logs. 
+<p>
     <B>The Good News</b> is that our web host, Microsoft Azure, contains facilities for recovering the necessary components to rebuild the Production CDASH instance and its contents. Nevertheless, recovery from backups has the following limitations:
     <ul>
       <li>The backup snapshots must exist and be functional. 
       <li>Recovery must be completed before the backups are purged (normally 30 days) 
       <li>Recovery is a process of rewinding all changes back to a specific point in time, therefore all intervening changes will be lost. 
-      <li>Recovering an Omeka instance requires specialized knowledge and azure login permissions that the CHC Omeka administrator probably does not have.
+      <li>Recovery will be successful and complete only to the extent that the scope of the data loss or damage and a detailed accounting of the "before condition" are thoroughly understood. 
       </ul>
       
-    <p>THe key to a happy life is to have a regular routine of verifying that everything is OK and or for catching any problems without delay.
+    <p>THe key to a happy life is to have a regular routine of verifying and recording the essential aspects of the repository system so that you always have a point of comparison for catching problems without delay and for understanding when a recovery has been successful.  The recovery process is described on the page, <a href="../recovery/index.htm">Omeka in Azure Recovery</a>.  
 
   <h3>Topics</h3>
   <ul class="verses">
     <li><a href="../audit_report/index.htm#audits">The Importance of Regular Audits</a>
-    <li><a href="../audit_report/index.htm#problems">What Could Go Wrong</a>
-    <li><a href="../audit_report/index.htm#culture">Establish a Culture of Routine Data Safety</a>
-    <li><a href="../audit_report/index.htm#manager">CHC Omeka Manager Weekly Journal</a>
-    <li><a href="../audit_report/index.htm#admin">Azure Administrator Monthly Journal</a>
+    <li><a href="../audit_report/index.htm#journal">Weekly Journal Practice</a>
+    <li><a href="../audit_report/index.htm#counts">Count Assets and Integrity Issues</a>
+    <li><a href="../audit_report/index.htm#backups">File Share and Database Backup Inventory</a>
+    <li><a href="../audit_report/index.htm#performance">Web App Performance and Security</a>
+     <li><a href="../audit_report/index.htm#omekalogs">Check Omeka's Application Logs</a>
     </ul>
 
 
@@ -71,46 +72,253 @@
 <h3 id="problems">What could Go Wrong?</h3>
 <p>Here is a list of the sorts of things that can go wrong. 
 <ul>
-  <li>Place or Document Items disappear.
-  <li>Media (scannned pages) associated with Document Items may disappear.
+  <li>Place or Document Items or associated media representations disappear.
+  <li>Relations between Places, Documents and Folders become corrupted.
+  <li>Media files disappear from the file system.
   <li>Item properties can become messed up due to errors with bulk editing.
-  <li>Relationships between Places, Documents or Folders could become discombobulated, leading to orphan documents and places or folders that seem to have no related information.
-  <li>Other</b>
+  <li>Administrative data such as vocabularies or resource templates may become damaged.
+  <li>Other, TBA
 </ul>
-<h3>Beware the Unexpected!</h3>
-<p>As an example, did you know that if you remove a property from the resource template for a a type if item (Place or Document) that all of the values for that property will disappear without any warning or easy recovery method? This is the sort of a trap that may not be detected for a very long time after it has sprung.  
-
-
 
 <h2 id="culture">Establish a Culture of Data Safety and Accountability</h2>
-<p>It is  most regrettable when an orgamnization loses irreplaceable information without even noticing that the loss has occurred. 
-<p>When it comes to protecting assets, a sense of anxiety is healthy -- especially if it motivates the department director, the Omeka Manager and the Azure System Administrator to establish regular routines of validating and reporting on the integrity of various sytem components.   We recommend that the following checks be carried out every week by the Omeka Administrator and reported to the CHC Omeka Owner.
+<p>It is  most regrettable when an individual who is responsible for keeping assets safe loses irreplaceable information without even noticing that the loss has occurred.  Assuming that everything is OK until problems become evident on their own is a losing strategy.  A responsible repository manager has a routine of actively looking for problems. A sense of anxiety is healthy -- especially if it motivates the department director, the Omeka Manager and the Azure System Administrator to establish regular routines of validating and reporting on the integrity of various system components.   We recommend that the following checks be carried out every week by the Omeka Administrator and reported to the CHC Omeka Owner.
 
 
-<h2 id="manager">CHC Omeka Manager Weekly Journal</h2>
-<ul>
-  <li>Check the user interface of CDASH, click all of the map layers on and off. Notice load times for viewing and accessing the edit view of pages.
-  <li>In the Azure Portal:
-    <ul>
-      <li>Check the CHCOmeka performance Monitor graphs for the past 7 days of Response Time and Requests
-      <li>Verify that the backup daily snapshots and retention schedules are occuring as expected for each of the file shares in the storage accounts CHCpersit and CHCScans and the CHCMySQL database.
-      </ul>
-   <li>In Omeka, look at the count of Folders, Place Items, Document Items and Media files.  Compare with previous week. 
-   </ul>
-
-  <h2 id="admin">Azure Administrator Monthly Journal</h2>
+<h2 id="journal">CHC Omeka Manager Weekly Journal</h2>
+<p>Preparing a regular audit report and posting it for review or sending it to someone who cares is form of accountability that has several benefits.  If problems ever do come up it is very important to understand exactly what the situation should be.  What are the known unresolved issues? Have there been trends Weekly audit reports provide critical information about what is normal and what sorts of trends have been developing.
   <ul>
-    <li>In the Azure portal, verify that backup snapshots are recoverable
-    <li>Check the performance stats for the CHCOmeka web app for abnormal activity. 
-    <li>With SQL Workbench, take a monthly persistent snapshot of the Omeka schema and store it in the CHCOffline/dbbackups folder. 
+    <li>Rather than assuming that everything is OK, a weekly walk-through establishes what normal is and allows the archivist to rest assured that everything is safe and running OK.
+    <li>The regular cycle and the expectation helps to keep this important but non-emergency task on your list of priorities.
+    <li>The ability to restore critical database and filesystems in case of emergency requires that the backups exist and be operable.  A responsible archivist does not assume that these conditions are valid.  Backups should be checked regularly and tested semi-regularly. 
+    <li>When it becomes necessary to recover from a prior state of the Omeka Database or the persist/files file system, it is important to have a prior understanding of the basic inventory of resources that you should expect to see on such and such a date in the past. 
+    <li>Web services can develop issues over time, with user traffic, bot-behavior or issues with code that can degrade or crash the application.  It is a good idea to have in idea of what the trends are and to have some advance notice, if possible.
+    </ul>
+
+<h2>Technicalities of Audit Journals</h2>
+<ul>
+<li>Develop a consistent format for the regular journal entries so that observations for the current week can easily be compared with the previous period or other periods in the past. 
+<li>Post journal entries somewhere where they can be reviewed by a person other than the one posting the reports. Some sort of departmental wiki or slack channel would probably be well suited.  For now we are just formatting as an email and sending to the project manager with the subject line: <b>CDASH Health Stats</b>
+</ul>  
+
+<h2>Observations to make and record weekly</h2>
+
+<h3>User Experience: Completeness and Responsiveness of the CDASH Front-End</h3>
+<ul>
+  <li>Check the user interface of CDASH, click all of the map layers on and off. 
+  <li>Click some Place and Document items and folders 
+  <li>Notice load times for viewing and accessing the edit view of pages.
+  <li>What is the load time to open an edit dialog for an item?
+</ul>
+  
+<h3 id="counts">Count Resources and Integrity Issues with the GeoAudit Function</h2> 
+  <p>Log in as administrator and click the GeoAudit button at the bottom of an item show page.  After a minute or two a new window will show up with a summary of CDASH-specific integrrity issues.  At the bottom of this page, you will find summaries that can be cut and pasted into your email.  I typically just copy the text and paste it as plain text into the email.  I leave last week's inventories so that there are two weeks to compare as shown in the illustration. 
+
+   <!-- Slideshow container -->
+    <div id="geoauditslides" class="slideshow in-page" 
+    data-imgheight = "250px" 
+    data-title = "Two weeks of GeoAudit Summaries" 
+    data-playpaused = "playing"
+    data-fadespeed = "10" >
+  
+    <div class="slidecontainer" data-title="Two weeks of resource counts." data-caption="Resource Counts.">
+      <div class="slide"><img src="./images/geoaudit_resource_counts.png" ></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+   </div>
+    <div class="slidecontainer" data-title="Two weeks of issue counts." data-caption="Issue Counts.">
+      <div class="slide"> <img src="./images/geoaudit_issue_counts.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+    </div>
+</div> <!-- Closes ooslideshow-->
+
+<p>It is helpful to calculate the change from one week to the next and to note whether this change is the same as what is indicated in the activity logs. 
+
+<h3>Omeka Media Count vs Count of Actual Media Files</h3>
+<p>The count of media returned by the GeoAudit function reflects the count of media files that Omeka knows about.  
+  There is another media count that is more difficult to obtain that reflects the actual number of media files in the <b>files</b> subdirectory of the <b>chcPersist</b> file share.  The number of files found in ech subdirectory of <b>files</b> reflects the number of images that have been imported and thumbnails that have been created, and not deleted.   Theoretically, the counts of media files and Omeka's understanding of Media counts should be exactly equal.  However, this is sometimes not the case.  Glitches in the import process or interrupted deletion of items and potentially other unexpected problems can cause media to become dis-associated with items.  The example journal entry reflects that there are over 2400 media files that are not associated with items.  This was discovered by actually counting the numbers of files in chcpersist/files using the Azure Storage Explorer.
+<p>
+  After discovering this problem, the cause was deciphered by looking at the dates of the earliest imports in the activity log and sorting the files by creation date.  It seems as though the extra files were not cleaned up after soeom experiments in the earliest days of our CDASH installation.  Although it may take some time to figure out how to get rid of these extra files, understanding that the problem exists puts us way ahead in case of a recovery process where the problem of an unexplained mis-match of media counts is discovered during the final check of a recovery scenario. 
+
+
+  <h3>Using Azure Storage Explorer to count media files</h3>
+<p>Counting media files may not always be part of the weekly journal process, but it is good to know how to use Azure File Explorer for transferring files in and out of file shares and for counting files.  <a href="https://azure.microsoft.com/en-us/products/storage/storage-explorer" target="sidecar">Click here to download the Azure Storage Explorer</a>.  If you are logged into the Azure portal, you should also be able to see the storage accounts and file shares associated with the chcOmekaIsland resource group.
+
+  <figure class="middle">
+  <img src="images/File Explorer_counts.png">
+  <figcaption>Counting Files with Azure Storage Explorer</figcaption>
+  </figure>
+
+<h2 id="backups">File Share Backup Inventory</h2>
+<p>Azure saves backups of each file share every morning.  FIle shares are childresn of Azure Storage Accounts.  The most important file share in a restoration scenario is the <b>CHCPersist</b> storage account in the <b>CHCPersist</b> storage account.  CHCPersist contains all of the media files referenced by Omeka items.  The <b>CHCOffline</b> file share contains documentation and administrative data that is critical to maintain but not part of the day-to-day operations of CDASH.  The <b>CHCScans</b> file share in the CHCScans storage account contains all of the original media files that have been uploaded along with the catalog information that was used to create original Place and Document Items.  CHCScans is a critical resource fro more complicated restoration scenarios where selective restoration of media files may be desired.   It is a good idea to check these each week to make sure they are running and that the history is being preserved.  
+<p>
+The retention policy for file share backups is as follows:
+<ul>
+  <li>Retain daily snapshots of every file for 30 days
+  <li>Retain Sunday snapshots for 16 weeks (which is 12 weeks beyond the 30 days specified above)
+  <li>Retain the backup taken on the first sunday of the month for 12 months.
+  <li>When backups are running as expected, there should be 51 snapshots available for each file share. 
+</ul> 
+<p>Steps for checking the status of file system backups:
+  <ol>
+    <li>Log in to the azure portal. You should find yourself in the CHCOmekaIsland resource group.
+    <li>Click the Storage Account in the list of resources.
+    <li>In the left-hand sidebar, click <b>Data Storage</b> then <b>File Shares</b> to expose a list of the shares.
+    <li>You will find the summary of snapshots available near the bottom of the overview page. 
+    <li>Highlight the summary and copy-paste (as unformatted text) into your journal.
+  </ol>
+     
+  <p>The slides below show the process for reviewing backups for the CHCPersist storage account.  The process is the same for CHC Scans. 
+  
+     <!-- Slideshow container -->
+    <div id="backupauditslides" class="slideshow in-page" 
+    data-imgheight = "350px" 
+    data-title = "Backup Status of critical File Shares" 
+    data-playpaused = "playing"
+    data-fadespeed = "10" >
+  
+    <div class="slidecontainer" data-title="Find FIle Shares." data-caption="XXX">
+      <div class="slide"><img src="./images/fileshare_backup.png" ></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+   </div>
+    <div class="slidecontainer" data-title="Copy Backup Status" data-caption="YYYY.">
+      <div class="slide"> <img src="./images/fileshare_backup_2.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+    </div>
+        <div class="slidecontainer" data-title="Journal Backup Summary" data-caption="ZZZZ.">
+      <div class="slide"> <img src="./images/backup_summary.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+    </div>
+</div> <!-- Closes ooslideshow-->
+  
+  
+<p>The backup rules and other helpful information, including automated notifications are accessible in the <b>vault-lsc9nwas</b> storage vault resource that can be found on your azure portal home page. 
+
+
+<H3>Database Backups</h3>
+  <p>Other than media files, all changes to CDASH are registered and referenced in the MySQL database.  Azure keeps a sequence of backup snapshots of the database for 30 days.  The snapshots are segmented into days, but within each daily snapshot, recovery can be made for practically any time of day.  
+  <p>
+  In our weekly walk-through we check whether the 30 days of database backups are current.  The procedure is as follows:
+  <ol>
+    <li>In the Azure Overview page, find the CHCMySQL resource and open its overview page.
+    <li>In the overview page, click <b>Settings -> Backup and Restore</b>
+    <li>Copy the first part of the first and last snapshot that reveals the date and time, and copy these into your journal.
+  </ol>
+<p>
+  Azure currently does not have a provision for saving snapshots for longer than 30 days.  For longer retention, database backups may be made deliberately using the MySQL Workbench desktop tool -- we may include documentation of this below.
+
+
+<h3 id="performance">Web App Performance and Security</h3>
+<p>The CHCOmeka web app is an Azure Web Application for Linux.  Azure Web Applications are virtual servers spawned from a Docker Container Image stored in the CHCRegistry -- a resource in CHCOmekaIsland Resource group.  Currently we are running a single instance of the CHCOmeka web application.  On average, the number of requests is less than 10 per minute and the average response time trends to be mostly below 2 seconds -- which is not great, but ours is a complicated site with a lot to download when people move the map around. 
+<p>
+  The performance of the CHCOmeka web app can be an indication of aggressive scraping by robots.  There are also cases of roque behavior that seems intended to stress out web sites.  Sometimes changes to the coding of the web application introduce inefficiencies and vulnerabilities.  In any case, it is good to look at the performance on a weekly basis so that performance issues --if they are substantial --  may be traced to their causes and addressed. 
+
+<h2>Record the Weekly Access and Response Time Charts</h2>
+<p>It is useful to use the weekly check-in as an opportunity to look at the past week's charts for Requests (sum) and Response Time (Avg and Max).  The most useful way to look at these is as follows:
+  
+ <p> From azure's the CHCOmeka web-app's home page:
+  <ol> 
+  <li>Choose <b>Monitoring</b> from the middle of the page, then click <b>Show All Metrics</b> 
+  <li>On the Metrics page use the pull-down menus to set your metric and the aggregation method.
+  <li>Click the blue oval at the top left of the Metrics page to choose <b>Past 7 Days</b>. 
+  </ol>
+
+
+     <!-- Slideshow container -->
+    <div id="metrics" class="slideshow in-page" 
+    data-imgheight = "350px" 
+    data-title = "Backup Status of critical File Shares" 
+    data-playpaused = "playing"
+    data-fadespeed = "10" >
+  
+    <div class="slidecontainer" data-title="CHCOmeka Resource Overview." data-caption="XXX">
+      <div class="slide"><img src="./images/see_all_metrics.png" ></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+   </div>
+    <div class="slidecontainer" data-title="Metrics Page" data-caption="YYYY.">
+      <div class="slide"> <img src="./images/metrics.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+    </div>
+
+</div> <!-- Closes ooslideshow-->
+
+<p>It seems as though there are always unusual and curious spikes in Requests and Response time.  These do not always align the way you would expect when the graphs are on the same page.  For example, in the graphs collected in the past few weeks there have been a regular pattern of spikes in Max Response Time that happen around 11:00 at night.  Are they caused by the restarts that happen around the same time or are the spikes and the restarts both caused by something else?  
+<p>
+<h3>Diagnosis and Troubleshooting</h3>
+To explore this in more depth, you can use the time picker (blue oval) on the metrics page to set a custom time interval so see the spikes at much higher resolution (down to the minute).  You can also see another set of charts that shows the restarts by doing the following:
+<p>
+From the CHCOmeka Overview Page:
+<ol>
+  <li>Choose <b>Diagnose and Solve Problems</b> from the left-hand sidebar.
+  <li>On the Diagnose page, click the tile labeled, <b>Availability and Performance</b>.  Don't click on the links, just click the box itself. 
+  <li>There are numerous charts available here.  One of the most interesting ones is the one that appears on the overview page, which shows requests, including errors and response times. 
+  <li>Another useful chart can be accessed by clicking the link for <b>CPU Usage</b> The colored lines on this chart show when the app service has been restarted.
+</ol>
+<p>These Diagnose and Troubleshoot charts are very useful for exploring problems, they are not always included in theweekly journal.
+
+<div class="feature tour">
+  <h3>Apache Access Logs and Access Control</h3>
+  <p>The Request and Response time logs in Azure, often reveal spikes and plateaus of extraordinary quantities of hits and application stress as indicated by slow response.  Before we installed and configured access control via the apache robots.txt and associated seddings in the apache2.conf file, these server load issues were more threatening.  After that, they appear to be transitory. What sorts of requests cause these spikes and errors?  Who is making them?  Can they be prevented?  These questions can be investigated using the apache access.log file, which you can find and download from  <b>chcPersist/logs/apache2</b>.  There are tools that help you drill into access logs, but as of yet, we have not had time to get into this.
+  <p>
+  The easiest way to control abusive access to the web server and its resources is through the aforementioned robots.txt file and the server configuration in apache2.conf.  Both of these files are stored in <b>chcpersist/config/apache2.</b>
+  </div>
+
+<hr>
+
+<h3 id="omekalogs">Check Omeka's Application Logs</h3>
+<p>The chcOmeka installation includes the modules: <b>Log</b> and <b>LockOut</b>.  These are useful to look at since they can reveal various sorts of failure.  As it happens, the logs always show lots of errors.  The reason to look at the Omeka logs every week, is so you get a sense of what level of chaos is normal, so that when something really unusual happens, your analysis can start by sorting out the ordinary background chatter.  
+<p><b>Handy Techniques</b>
+<ol>
+  <li>Go to the Omeka logs by logging in as an admin user and clicking <b>Logs</b> on the left-hand sidebar.
+  <li>Scan and count a week's worth of errors and warnings by clicking the back button on the Page selecttor at the top left of the page until you get back to 7 days ago. 
+  <li>It is useful when scanning through these pages to notice if theere are concentrations of failed requests within specific time periods. 
+</ol>
+<p><b>Fishing"</b> On a good day, most log errors or warnings are caused by bots that are systematically making up URLs for items that they think ought to exist.  These have the form: 
+  <quote>
+    Omeka\Api\Exception\NotFoundException: Omeka\Entity\Item entity with criteria {"id":"45077"} <br>
+    not found in /var/www/html/omeka-s/application/src/Api/Adapter/AbstractEntityAdapter.php:722
+  </quote>
+<p>Although there may be hundreds of these, when you think about spreading them over a week, these are not putting much stress on the server.  
+
+<p><b>More sinister behavior:</b>  Another sort of error seen frequently in the Omeka log, comes from people or bots trying odd requests through Omeka's API (Application Programer Interface) these look like:
+    <quote>
+     Omeka\Api\Exception\BadRequestException: The API does not support the "actuator" resource. in /var/www/html/omeka-s/application/src/Api/Manager.php:200
+    </quote>
+  <p>An ordinary user would not ask for an "actuator".  From the quantity of failed attempts of this form, it looks like there are automated processes out there that are searching for vulnerabilities.  What would they do if they found one?  The scary thing about this is that if such an agent ever succeeds in finding an API call that works, it will not show up in the log! 
+  <p><b>Filtering the Logs:</b> If you have a lot of log entries for a particular week, or if there is an episode or spike you want to investigate, the <b>Quick Filter</b> button at the top center of the log listing opens a somewhat clunky query interface.  This interface is not well documented, and I have found that many queries that you think ought to be useful, do nothing.  After a lot of trial and error, I have discovered these useful queries:
+    
+    
+    I have found the following queries useful:
+    <ul>
+      <li><b>Exclude "Item Not Found" errors.</b> At the bottom of the query panel, entering 
+        <blockquote>
+          AbstractEntityAdapter.php:722
+        </blockquote> 
+        in the <b>Not in untranslated message</b> field, then pushing the <b>Search</b> button at the bottom of the query panel should result in eliminating all of the requests for non-existing items. 
+      <li><b>Focus on just bad api calls: </b> you can enter:
+                <blockquote>
+        Api/Manager.php:200
+                </blockquote>
+          in the <b>Included in Untranslated messages</b> blank.  Don;t forget to hit the Search button at the bottom of the panel.
+        <li><b>Select the errors for a particular date: </b> The date field can just do one date at a time (not ranges.)  dates should follow the YYYY-MM-DD format.
     </ul>
 
 
 
-
-
- 
-
+<h3>Looking at Failed Login Attempts</H3>
+<p>Of all of the API requests that would not be difficult to guess, the first would be <b>login</b>.  The CHCOmeka instance includes the <b>LockOut</b> module which detects and rejects and saves a log entry for repeated failed login attempts.  You can check these by following these steps:
+  
+  <ol>
+    <li>In the Omeka Admin interface, choose <b>Modules</b> 
+    <li>In the main panel, find  <b>Lockout</b> and click <b>Configure</b>.
+    <li>Find the log at the bottom of this page.  In the several months since we have installed this, apparently we have not had any sequences of login attempts that may have triggered our lockout configuration. 
+  </ol>
+  
 
   </div> <!-- Closes #article div -->
   <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 

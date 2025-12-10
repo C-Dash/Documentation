@@ -43,12 +43,12 @@
 
 
 <p>Whereas Azure's automated backup systems may be relied on for recovery from equipment failure, 
-routine administration of an Omeka site, including accession of new documents, and revision andd enrichmwent of existing assets carries a risk of catastrophic accidental data loss. In these situations, it is necessary to
+routine administration of an Omeka site, including accession of new documents, and revision andd enrichment of existing assets carries a risk of catastrophic accidental data loss. In these situations, it is necessary to
 
 <ol>
   <li>Be aware that the data loss has occurred.  (Routine monitoring of Omeka integrity will be covered in another document.) 
   <li>Refrain from any new work that will change the Omeka database or media files collection.
-  <li>Engage an Omeka System Adminstrator with Azure credentials and knowledge to initiate recovery procedures.
+  <li>Engage an Omeka System Administrator with Azure credentials and knowledge to initiate recovery procedures.
 </ol>
 <p>This document discusses the basics of a point-in-time recovery of a complete Omeka instance.  It may be possible to do finer-grained restorations of spefic items, resource templates, etc.  But these require a more in-depth understanding of the Omaks-S schema than is covered here.
 
@@ -57,7 +57,7 @@ routine administration of an Omeka site, including accession of new documents, a
     <li><a href="../recovery/index.htm#scenarios">Recovery Scenarios and Timeframe</a>
     <li><a href="../recovery/index.htm#backups">Backup Retention</a>
     <li><a href="../recovery/index.htm#audits">Routine Integrity Audits and Prompt Recovery Initiation</a>
-    <li><a href="../recovery/index.htm#scenarios">Backup Recovery Scenarios </a>
+    <li><a href="../recovery/index.htm#plan">Plan, Execute and Verify your Recovery</a>
     <li><a href="../recovery/index.htm#database_restore">Database Restoration Technicalities</a>
     <li><a href="../recovery/index.htm#database_restore">Filesystem Restoration Technicalities</a>
   </ul>
@@ -73,11 +73,12 @@ Recovery of an Omeka instance requires the recovery of the entire Omeka schema i
   <li>Daily snapshots preserved for 35 days.
   <li>Weekly snapshots preserved for 12 weeks.
   <li>Monthly snapshots preserved for 12 months.
+  <li>Our monthly journal procedure preserves a MySQL backup that is stored indefinitely. in the chcOffline db backups folder.
   </ul>
-<p>Our regular data audit procedure preserves a monthly MySQL backup that is stored indefinitely. in the chcOffline db backups folder.
+<p>
 
 <h2 id="audits">Routine Integrity Audits and Prompt Recovery Initiation</h2>
-<p>Data loss be actively audited and backup procedures should be initiated as quickly as possible (definitely within a couple of weeks.)  First, is the 30 day window on the easily recoverable database and file-system snapshots, and second, because any changes made to the Omeka database or files hapening after the recovery target date will be lost. Details of the routine audits are provided at <a href="../sudit_report/index.htm">Regular Integrity Audits</a>
+<p>The the weekly and monthly audit journal procedures are intended to actively check for data loss and integrity issues.  Because data loss and recovery scenarios become more cloudy and complicated as time passes, they shuold be analyzd and executed as soon as practical (definitely within a couple of weeks.)  First, is the 30 day window on the easily recoverable database and file-system snapshots, and second, because any changes made to the Omeka database or files hapening after the recovery target date will be lost. Details of the routine audits are provided at <a href="../audit_report/index.htm">Regular Integrity Audits</a>
 
 <h2 id="scenarios">Restoration Scenarios </h2>
 <p>There are two types of recovery scenario:  
@@ -86,6 +87,30 @@ Recovery of an Omeka instance requires the recovery of the entire Omeka schema i
      
 <li><b>Database Recovery: </b> In cases where item and item set properties and relationships have been altered but no items or media has been deleted, then a restoration can be accomplished by restoring a snapshot of the database only. 
 </ul>
+
+
+<h2 id="plan">Plan, Execute and Verify your Recovery</h2>
+<p>Every recovery workflow should begin with a clear understanding of the problem, the current situation and what a successful recovery should look like. 
+<ol>
+  <li>Discover the problem
+  <li>Analyze the cause and the scope of the issue in terms of:
+      <ul>
+        <li>Dates 
+        <li>Numbers of resources affected
+        <li>As specific as possible, the defining properties of the set of resources affected.
+        <li>The cause of the issue.
+        </ul>
+      </ol>
+  <li>Plan the restoration:  
+      <ul>
+        <li>Make a note of the resource counts -- including the counts of thumbnail and original image files -- and outstanding integrity issues from the latest weekly and monthly audits and activity logs. 
+        <li>How many resources do you expect to have before and after the restoration?
+        <li>What queries will you make to verify that the recovery has impacted the missing or damaged resources?
+        </ul>
+  <li>Execute the restoration on the Stage instance.
+  <li>Verify the restoration according to your plan.
+  <li>Point the production image to the restored dtabase and file system as necessary. 
+  </ol>
 
 
 <h2 id="database_restore">Database Restoration Technicalities</h2>
@@ -102,8 +127,9 @@ Recovery of an Omeka instance requires the recovery of the entire Omeka schema i
   
 <p>If you need to point an instance of CHC Omeka (Production or Stage) to a file system restored to an alternate location, this is accomplished in the Azure portal, by accessing the Web App's Settings.  Under Configuration, add or alter the storage mount for the <b>persist</b> volume, which is linked to the appropriate folders within the web app's running container. 
  
-  
-  
+  <h2 id="verify">Verify a Successful Restoration</h2>
+  <p>Before you walk away from a restoration, you should do a few things to check that the restoration was successful. 
+    
   
 
   </div> <!-- Closes #article div -->
