@@ -155,6 +155,7 @@ let index_htm = `
     <li><a href="../audit_report/index.htm#counts">Count Assets and Integrity Issues</a>
     <li><a href="../audit_report/index.htm#backups">File Share and Database Backup Inventory</a>
     <li><a href="../audit_report/index.htm#performance">Web App Performance and Security</a>
+    <li><a href="../audit_report/index.htm#diagnose">Diagnose and Troubleshoot</a>
      <li><a href="../audit_report/index.htm#omekalogs">Check Omeka's Application Logs</a>
     </ul>
 
