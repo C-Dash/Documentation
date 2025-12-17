@@ -94,6 +94,9 @@
     <li>Web services can develop issues over time, with user traffic, bot-behavior or issues with code that can degrade or crash the application.  It is a good idea to have in idea of what the trends are and to have some advance notice, if possible.
     </ul>
 
+<a href="./images/CDASHHealthStats4.pdf" target="healthstats">View Example in new tab</a>
+
+
 <h2>Technicalities of Audit Journals</h2>
 <ul>
 <li>Develop a consistent format for the regular journal entries so that observations for the current week can easily be compared with the previous period or other periods in the past. 
@@ -259,13 +262,49 @@ From the CHCOmeka Overview Page:
   <li>There are numerous charts available here.  One of the most interesting ones is the one that appears on the overview page, which shows requests, including errors and response times. 
   <li>Another useful chart can be accessed by clicking the link for <b>CPU Usage</b> The colored lines on this chart show when the app service has been restarted.
 </ol>
-<p>These Diagnose and Troubleshoot charts are very useful for exploring problems, they are not always included in theweekly journal.
+
+   <!-- Slideshow container -->
+    <div id="Diagnose" class="slideshow in-page" 
+    data-imgheight = "450px" 
+    data-title = "Diagnose and Solve Problems" 
+    data-playpaused = "playing"
+    data-fadespeed = "10" >
+  
+    <div class="slidecontainer" data-title="Availability and Access." data-caption="Resource Counts.">
+      <div class="slide"><img src="./images/diagnose.png" ></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+   </div>
+    <div class="slidecontainer" data-title="Overview Charts." data-caption="Issue Counts.">
+      <div class="slide"> <img src="./images/diag_chart2.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+
+    </div>
+    <div class="slidecontainer" data-title="Review Dates" data-caption="Issue Counts.">
+      <div class="slide"> <img src="./images/scroll_date.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+    </div>
+        <div class="slidecontainer" data-title="CPU Usage." data-caption="Issue Counts.">
+      <div class="slide"> <img src="./images/cpu_graph.png"></div>
+      <div class="caption"></div>
+      <div class="learnmore">Click image to enlarge.</div>
+    </div>
+</div> <!-- Closes ooslideshow-->
+
+<p><b>Overview Charts:</b> The first chart to pop up provides a detailed view of the volume of requests and their status. The various types failure are handy for understanding aggressive fishing, scraping by external agents, as well as potential software or server issues. 
+<p><b>Reviewing prior dates: </b> The troubleshooting charts only show you 24 hours of activity.  It is easy to scroll back in time by simply choosing <b>Custom</b> then n the <b>Start</b> then bump the date back by 1 either with the calendar or by typing.  The End date will automatically update itself to maintain the interval (double check that the interval is still 24 hours.) This technique makes it easy to heck the previous week's activity.
+<p><b>CPU Usage Chart: </b> This chart shows how hard the web application is working and when it restarts.  The chart shown in the 4th slide above shows the typical pattern of three restarts happening about an hour apart in the middle of the night.  Note that the postings on these charts are UTC which is either 5 (winter) or 4 hours later (summer) than Eastern time.
+
+
+<p>These Diagnose and Troubleshoot charts are very useful for exploring problems.  They are not always included in the weekly journal.
 
 <div class="feature tour">
   <h3>Apache Access Logs and Access Control</h3>
-  <p>The Request and Response time logs in Azure, often reveal spikes and plateaus of extraordinary quantities of hits and application stress as indicated by slow response.  Before we installed and configured access control via the apache robots.txt and associated seddings in the apache2.conf file, these server load issues were more threatening.  After that, they appear to be transitory. What sorts of requests cause these spikes and errors?  Who is making them?  Can they be prevented?  These questions can be investigated using the apache access.log file, which you can find and download from  <b>chcPersist/logs/apache2</b>.  There are tools that help you drill into access logs, but as of yet, we have not had time to get into this.
+  <p>Exploring the performance charts in Azure and the Omeka logs always reveals spikes and plateaus of extraordinary quantities of hits and application stress.   One gets a sense that the internet is a wild place, with all sorts of rogue behavior that could easily get out of control.  Before we installed and configured access control via the apache robots.txt and associated settings in the apache2.conf file, these server load issues were more threatening.  What sorts of requests cause these spikes and errors?  Who is making them?  Can they be prevented?  These questions can be investigated using the apache access.log file, which you can find and download from  <b>chcPersist/logs/apache2</b>.  There are tools that help you drill into access logs, but as of yet, we have not had time to get into this.
   <p>
-  The easiest way to control abusive access to the web server and its resources is through the aforementioned robots.txt file and the server configuration in apache2.conf.  Both of these files are stored in <b>chcpersist/config/apache2.</b>
+  The easiest way to control abusive access to the web server and its resources is through the aforementioned robots.txt file and the server configuration in apache2.conf.  <b>Robots.txt</b> is a file that informs properly configured bots and crawlers of what resources that we prefer that they harvest, and which ones we prefer that they do not.  These directives are voluntarily.  In a case where some sort of agent or set of agents is causing a problem it may be possible to block them explicitly by modifying the <b>apache2.conf</b> Both of these files are stored in <b>chcpersist/config/apache2.</b>
   </div>
 
 <hr>
