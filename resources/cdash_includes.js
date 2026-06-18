@@ -70,6 +70,15 @@ let index_htm = `
       <li><a href="../fundamentals/index.htm#sites">Skill Building Exercises</a>
     </ul>
   
+
+  <li class="chapter"><a href="../digester/index.htm">CDASH Digester</a></li>
+  <ul class="verses">
+    <li><a href="../digester/index.htm#download">Download</a>
+    <li><a href="../digester/index.htm#walkthrough">Walkthrough</a>
+</ul>
+
+
+
   <li class="chapter"><a href="../research/index.htm">Resources for Street Research </a></li>
     <ul class="verses">
     <li><a href="../research/index.htm#hale">Christopher Hail Cambridge Buildings and Architects</a>
