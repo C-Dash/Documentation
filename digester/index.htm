@@ -38,6 +38,8 @@
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">CDASH Pre-Sort Digester</h1>
+<p style = "color: red"><b><i>This page is currently in work keep usimg shift-refresh to see new updates.</i></b>
+
   <p>The CDASH Digester assists with preparing collections of digital documents for accession into the CDASH repository. 
   <p>  
 The Digester is an open source python program that can be used on any platform.  Our version has a windows executeable produced with pyinstaller (link below).  The source code and a more technical user document can be explored and forked on the github repository.
@@ -53,26 +55,24 @@ The Digester is an open source python program that can be used on any platform. 
     <h2 id="downloads">Downloads</h2>
     <p>Right-Click these links and paste into your browser URL Bar.  </p>
   <ul>
-    <li><a href=http://www.pbcgis.com/tmp/cdash_digester/cdash-digester.zip>Digester Program</a>
+    <li><a href=http://www.pbcgis.com/tmp/cdash_digester/cdash-digester.zip>Digester Program</a> Updated 6/29/26 9:30.
     <li><a href="http://www.pbcgis.com/tmp/cdash_digester/digester_test_batch.zip">Digester Test Batch</a>
-
-          <li><a href="http://www.pbcgis.com/tmp/cdash_digester/csv_mappings.zip">CSV Filed Mappings for Importer</a>
   </ul>
   <p>
 
-  <h2 id="walkthrough">Preparing Media Files for Accession</h2>
+  <h2 id="walkthrough">Preparing a Batch Media Files for Accession</h2>
     In the earliest phase of the accession process, the archivist has media files representing documents that may have been born digital or digitized.    
-  The archivist uses the windows file manager and the CDASH Digester to organize the files into a structured Archival Information Package (aka: CDASH Batch).  A CDASH Batch is a collection of media files along with catalog information.  The batch is used to by the <a href="https://github.com/C-Dash/CDASH-CSVImportPlus" target="github">Omeka CSV Import Tool (CDASH Mod)</a> which creates the necessary omeka resources with all of the necessary relationships.  Once uploaded. the CDASH Batch is preserved in cold storage as the preservation master for the new documents.      
+  The archivist uses the windows file manager and the CDASH Digester to organize the files into a structured Archival Information Package (aka: CDASH Batch).  A CDASH Batch is a collection of media files along with catalog information.  The batch is used to by the <a href="https://github.com/C-Dash/CDASH-CSVImportPlus" target="github">Omeka CSV Import Tool (CDASH Mod)</a> to create new Documents and Media with all of the necessary connections to existing Place Items and Folders in a running CDASH instance.   Once uploaded, the CDASH Batch is preserved in cold storage as the preservation master for the new documents and media.      
   <p>
   <h3>Tokenized Folder and File Names</h3>
   A CDASH Batch is a folder that contains systematically named media folders and media files.  The naming convention provides an identification scheme that makes the coherence between the files and the batch catalog information and links media files as new documents with relations with Places and Folders in the on-line CDASH repository.   
 <p>
- For example, the first step in creating a new CDASH Batch is to create a new folder whose name includes two tokens, separated by a "-".
+ The first step in creating a new CDASH Batch is to create a new folder whose name includes two tokens, separated by a "-".
  <pre><b>CDB[YYMMDD](a-z)-[Mnemonic Name]</b></pre>
  e.g. CDB260624-EastCambridge_Box40 .
 <p>
-  Like always, no spaces are allowed in file names.  Only alphanumeric characters.  "-" is reserved as a delimiter between tokens and "_" is allowed to represent spaces in a tokenized word.
-<p>When this documentation refers to a token as <b>Mnemonic</b> it means that it is a string that is intended to remind the archivist of the subject of the resource and potentially the page order of sequential media files. Once the omeka resource ID has been validated, the digester replaces the mnemonic with a space-removed version of the linked folder or place. This mneomic portion of the file name helps to keep the batch easily searchable by un assisted humans. 
+  No spaces are allowed in file names.  Only alphanumeric characters.  "-" is reserved as a delimiter between tokens and "_" is allowed to represent spaces in a tokenized word.
+<p>When this documentation refers to a token as <b>Mnemonic</b> it means that it is a string that is intended to remind the archivist of the subject of the resource and potentially the page order of sequential media files. Once the omeka resource ID has been validated, the digester replaces the mnemonic with a space-removed version of the linked folder or place. This mnemonic portion of the file name helps to keep the batch easily searchable by un assisted humans. 
 
   <p>The scheme of tokenized names will be expanded below.  The naming convention provides unique identifiers for documents and media and the file system address of the preservation master.  These IDs are assigned as identifier properties of corresponding Omeka resources and easily traced to the original batch, which is very handy means of retrieving and troubleshooting. 
 
@@ -90,8 +90,8 @@ The Digester is an open source python program that can be used on any platform. 
       <pre><b>[Mnemonic Name]-OF[item-set-id]</b></pre>
       <p>e.g. 128-136_Main_St-OF23789
     <li>Initially, individual media files in a folder can have any names at all, so long as media files representing sequential pages sort in page-order. 
-    <li>Optionally, while you have the item-id of the CDASH Place Item associated with your new document, you are welcome to append this ineger (no leading zeros) to the name of the first media file in your document sequence (sorted alphabetically).  Media files with a place id are formatted like this:
-      <pre><b>[Mnemomic Name]-OP[omeka_item-id]</b></pre>
+    <li>Optionally, while you have the item-id of the CDASH Place Item associated with your new document, you are welcome to append this integer (no leading zeros) to the name of the first media file in your document sequence (sorted alphabetically).  Media files with a place id are formatted like this:
+      <pre><b>[Mnemonic Name]-OP[omeka_item-id]</b></pre>
       <p>e.g. 125_Main_St-OP456345
       
      <li><b>* </b> Every CDASH document must be related to one and only one CDASH Place and One CDASH Folder.  If the new media files are related to places or folders that do not already exist, these resources must be created before the digester will permit the media files to be ready for importing.      
@@ -102,16 +102,24 @@ The Digester is an open source python program that can be used on any platform. 
 <p>
   Upon initialization the digester creates a Batch Database (catalog\batchdb.sqlite) and builds a catalog of the folders and media files, documents, places.  The database also holds cached information from the various validation and screening stages so that these do nto have to be repeated unless the modification time of the file changes.  
  
-</p><p>
-The archivist can continue to add files and folders and use the windows file manager to change names, if needed, and the digester can re-scan the batch folder and update its graphical use interface to assist with the particulars of the file names and the which files and folders are ready and which ones still need attention. The user can force a re-scan of a folder or of the whole batch using the <b>Rescan</b> options under the Batch or Folder menus.
+</p>
+
+
+
+<p>
+The archivist can continue to add files and folders and use the windows file manager; to change names, if needed.  The digester can re-scan the batch folder -- to re-valuate names and formats and update its catalog and graphical interface.  The interface assists with the particulars of the file names, grouping media into documents that are tagged as one of the CDASH document types. The digester is also very handy for screening the formats of media files and offering tools and transformations to assist the archivist with making the files ready for a trouble-free upload and long-term preservation and recovery.
 
 
   <figure class="middle">
-  <img src="images/digester_init.jpg">
+  <img src="images/digester_init_1.jpg">
   <figcaption>The CDASH Digester</figcaption>
   </figure>
 
+<h2>Introducing and Using the Test Batch</h2>
+<p>The Digester test batch (downloadable above) is a batch that demonstrates media files with a variety of issues with file names and formats.  The test batch expands to a folder named <b>CDB260430-Test_batch</b> (the date may be different.  Because of the way the zip program works you will see that accepting the defaults when you unzip it creates an extra parent folder with the same name.  This can be fixed when unzipping by removing the outer folder from the unzip destination.
+<p>It is useful to explore the test batch using the Windows file explorer before opening it with the Digester.  Then explore the batch again after opening it for the first time.  You will notice that the digester has renamed the media folders.  Look into the new <b>catalog</b>  folder to see how the batch database is created.  As optional advanced adventure you can open the batch database using <a href="https://sqlitebrowser.org/" target="dbbrowser">DB Browser for SQLite.</a>.  You also can open the batch.log to see for yourself that it accumulates all of the running commentary that passes through the console.  After making repairs (discussed below) check the structure of a folder to observe how the rejects folder works.  
 
+<h2>Exploring the Digester Functions</h2>
 <p>The first thing to do with the Digester is to scan a batch (Batch menu > Scan Batch). 
 <p>If that batch has not been scanned before the digester will create a catlog folder at the top level of the batch. In this folder a batch database is created and a couple of log files. 
 <p>Then the digester looks at every media folder. 
@@ -125,12 +133,12 @@ The archivist can continue to add files and folders and use the windows file man
         <li>Each media file is assigned to a document ID   
       </ol>
 
-<p>As the digester is doing all of these things, it is streaming messages to the console window. It is useful to look at this log to see if anything weird happened.  The contents of the console log are also saved in the batch catalog folder.  
+<p>As the digester is doing all of these things, it is streaming messages to the console window. It is useful to look at this log to see if anything weird happened.  The contents of the console log are also saved in the batch.log in the batch catalog folder.  
 
 <h3>Ready Vs. Not Ready</h3>
 <p>The gist of the digester workflow is to engage the archivist in a dialog to move all of the media files from a Not Ready (red) to a Ready (green) status.  In the folder pane on the left, you can see the ready status of folders.  Click a red folder, and the digester renders a thumbnail of each media file and in the Thumbnail Pane.  The border color of each thumbnails reflect the ready status.  Above the thumbnail pane, the folder media table shows useful info about the status of the media files, with recommendations to the archivist.
 <p>
-The aim of the game is to move all of the media files to a Ready status. 
+The aim of the game is to move all of the media files to a Ready status. You can drag your own files into the test batch to see how they behave.  If you want to practice writing CSV files before fixing all of the files in the test batch you can go to the windows explorer and delete the folders that aren't ready and use the <b>Batch > Rescan</b> menu item to quickly get the batch into a ready state which will allow you to produce the CSV files. 
 <p>
 <h3>Ready Names</h3>
 <p>The structuring form and the content of folder and file names is critical. We mentioned that in the initial human-managed state of a batch, there is a lot of leeway.  Once the batch has been groomed the names will all conform to the folowing tokenization:
@@ -150,37 +158,43 @@ The aim of the game is to move all of the media files to a Ready status.
 <p>As it scans the files in a folder, the Digester keeps track of the documents and pages that are implied by the Doc and Page indexes specified in file names.  If these indexes are not already present in file names, then the files' statuses will be Not Ready.  These issues can be fixed by selecting one or more documents in the table or on the thumbnail pane and operating on them with the <b>Media > Assign Metadata</b> dialog. 
 <p>
 
-  <figure class="middle">
-  <img src="images/digester_metadata.jpg">
-  <figcaption>The Assign Metadata Dialog</figcaption>
-  </figure>
+  <!-- Slideshow container -->
+  <div id="moreslides" class="slideshow in-page" 
+  data-imgheight = "400px" 
+  data-title = "Digester Features" 
+  data-playpaused = "paused" >
+  <div class="slidecontainer" data-title="Assign Metadata" data-caption="A Batch Initialized.">
+    <div class="slide"><img src="./images/digester_metadata.jpg" ></div>
+    <div class="caption"></div>
+    <!-- div class="learnmore"><a href='#funfact'>Learn More about wide images</a></div-->
+  </div>
+  <div class="slidecontainer" data-title="Repair Format Issues" >
+    <div class="slide"> <img src="./images/digester_metadata_2.jpg"></div>
+    <div class="caption"></div>
+    <!-- div class="learnmore"><a href='#funfact'>Learn More about Tall Images</a></div -->
+  </div>
 
+  <div class="slidecontainer" data-title="Folder is ready" >
+    <div class="slide"> <img src="./images/digester_metadata_3.jpg"></div>
+    <div class="caption"></div>
+    <!-- div class="learnmore"><a href='#funfact'>Learn More about Tall Images</a></div-->
+  </div>
+</div> <!-- Closes moreslides-->
 
-  <figure class="middle">
-  <img src="images/digester_metadata_2.jpg">
-  <figcaption>The Assign Metadata Dialog</figcaption>
-  </figure>
-
-    <figure class="middle">
-  <img src="images/digester_metadata_3.jpg">
-  <figcaption>The Assign Metadata Dialog</figcaption>
-  </figure>
 
 
 
 <p>The <b>Assign Metadata</b> dialog, launched from the Media menu provides a means of grouping files into documents or for exploding formerly grouped pages into individual documents. The Assign Metadata dialog also manages the assignment of documents to CDASH Places and document types.  
-<p>The ordering of pages in documents depends of the way that the files sort alphabetically.  If this ordering gets messed up, it may be necessary to change names using the windows file explorer.  Use Folder > Rescan after you have done this.
+<p>The ordering of pages in documents depends of the way that the files sort alphabetically.  If this ordering isn't right, it may be necessary to change names using the windows file explorer to change the page index.  Use Folder > Rescan after you have done this.
 
 <h2>Format Repair</h2>
 <p>As the Digester scans the files in a folder, it checks each media file for conformance with <a href="../media_format/index.htm">CDASH Media Format Requirements</a>.  
   
   Ideally, contributors to the repository and the archivist will develop habits such that all submissions are properly formatted as 8 or 24 bit image files or PDFa compliant documents.  Since the digester was originally designed to process large batches of haphazard files, we have built in some repair functions for common and easily repairable issues. Repair issues these are explained in the table pane for each media file in the current folder.  Most issues can be repaired by selecting one or more files and choosing <b>Media > Repair Media</b>.  
-
-<div class="feature tour">
   <p>
-    It is always best to take care of media format issues as far up-stream as you can.  Best of all, to make sure that whartever process is producing the digital file is capturing in the best compatible format, bit-depth and compression and with the appropriate PDF/a compliance tags.  There is no warranty with the Digester's Repair capabilities, so it is always to e archivists responsibility to assign the appropriate level of confidence when doing bulk uploads. 
-  </p>  
-</div>
+    It is recommended that the archivist look at each of the thumbnails to look for issues such as rotation or document pages that are improperly grouped. We have learned many tough lessons by blindly bulk loading media only to find out later that the collection is sprinkled with mis-rotated images.  These are examples.  But the whole point is to expect unexpected problems. 
+
+
 
 <h3>The Rejects Folder and Log</h3>
 <p>The Digester's repair function begins by creating a copy of the original media file into a <b>rejects</b> sub-folder.  The repaired version is written back to the top level of the media folder. This strategy is useful in cases where one has questions about whether a repair may have had undesired effects. 
@@ -195,7 +209,75 @@ The repair process saves a rejects.csv in the batch\catalog folder which can be 
 <h2>Batch Ready and Generating CSV Files</h2>
 <p>When all of the media files folders are have a Ready status, you will find the <b>Generate CSV Files</b> function is now clickable.  Choosing this function triggers a consolidation of all of the Digester's catalog information into a set of CSV Import files that are ready to run through the <a href="https://github.com/C-Dash/CDASH-CSVImportPlus" target="github">Omeka CSV Import Tool (CDASH Mod)</a> to create the Omeka resources necessary to materialize the new documents and media reflected in the batch.
 <p>
+<h3>Explore the Ready Batch and Catalog </h3>
+<p>Now that your batch is all ready, go ahead and check that the CSV files exist in the batch catalog.  We will look at the CSV files after a short explanation of how they are used. 
 
+
+<hr>
+
+<h1>Creating Documents and Linking Media in a CDASH Instance<h2>
+
+<h2>Overview: CSV Import Module with CDASH Modifications</h2>
+<p>Now that the CDASH batch has been thoroughly groomed, validated and cataloged, the pathway should be clear for a trouble-free upload into a compatible instance of CDASH.  Before getting into the details, it will be useful to have an overview of our modified version of Omeka CSV Import tool.
+
+<p>Creating an item using the Omeka administrator's view is a relatively tedious process.  Creating 50 items and uploading media for each of them could a day or more. The Omeka CSV Import Module along with another module called File Sideload provide a way to automate the process of item creation.  The media files are uploaded to a cloud-based file share accessible to the Omeka instance (The side-load directory).  Then the CSV Import module can be handed a csv table with the essential metadata to create an item.  A second csv table references files in the sideload folder, and has some media metadata, including a reference to a unique identifier for each newly created item.  the CSV Import Module can also create omeka item sets and manage the association between items and item-sets and relationships between items, such as the relationdhip between CDASH Document Items and CDASH Place Items.
+<p>
+<h2>The CDASH CSV Import Mod for Repeatable Uploads</h2>
+<p>One problem with the off-the shelf CSV Import module is that there is a complicated set of forms that must be filled out to map to map the columns from the CSV to the resource template properties.  This process is complicated and time consuming, and it is easy to make mistakes that result in faulty resources and relationships that are difficult to check thoroughly.  Our modified version of the module allows all of the settings to be saved so that import procedures can be repeated easily and reliable.
+<p>
+  if you are curious to read the documentation for these modules, see the links below.  But you can also continue with this overview tutorial and learn how to use the CSV data files and the ready-made column mapping specification files.
+
+  <ul>
+    <li><A href="https://omeka.org/s/docs/user-manual/modules/csvimport/" target="docs">CSV Import Module User Documentation</a>
+    <li><a href="https://omeka.org/s/docs/user-manual/modules/filesideload/" target="docs">File Sideload Module</a>
+    <li><a href="https://github.com/C-Dash/CDASH-CSVImportPlus/blob/develop/README.md" target="docs">CDASH Modified CSV Import Module</a>
+  </ul>
+
+  <h2>Two CSV Import Scenarios:  Testing and Production</h2>
+
+  <p>There have been two epochs of accession into CDASH.  In the first bulk-loading of massive quantities of scanned images into a a blank-slate repository, Place items and CDASH Folders (Omeka item-sets) were inferred from the file and folder names and created as needed.  Now that we are in the second epoch of routine accession of new documents, the parent Place items and CDASH Folders (Omeka Item-sets) that every document requires are presumed to exist prior to adding the documents and media. As you have seen, the Digester confirms that these conditions exist before admitting files. So the normal, the accession process for new CDASH Document Items involves just creating the metadata for new documents in the repository and then attaching the media. 
+<p>
+  However, there are situations including testing and practice where an archivist wants to place documents into a CDASH instance in which the target places and folders do not already exist. This is why the Digester produces CSV files that create the necessary Folders and Place Items. This is very handy for validating that a batch is coherent and fit for trouble-free accession.
+
+<h2>Inspect and Understand the CSV Import Files</h2>
+<p>If this is your first time practicing this workflow, open and inspect the catalog/csv files for Folders, Places, Documents and Media.  You can open them in Excel or your favorite spreadsheet tool. This overview will not go into every detail of these files, but the following should provide an adequate idea of how they work. 
+  
+<p><b>Batch.csv</b>: has one row of headings, as a CSV file should, and one row that lists the counts of each sort of resource that is associated with the batch.
+
+<p><b>document.csv</b>: Notice how the columns represent the essential metadata properties that are required in the <b>CDASH Document</b> resource template. Also notice that there is a column called <b>Identifier</b> that is a unique identifier that also references the batch, folder and document index assigned by the digester.  The Document also references the CDASH Folder (ItemSetID) and the CDASH Place (PlaceItemID).  Some of the property values here were expanded from information that is embedded in the batch media file names, and place information gathered from the running CDASH instance.  
+
+<p><b>media.csv</b>: The <b>Source</b> column specifies the file location of each media file relative to and including the name of the batch folder.  This path help the CSV Import tool to find each file in the Sideload Directory.  The values for the column, relation is a reference to the unique identifier for the parent document item.
+  
+<p><b>place.csv amd folder.csv:</b> These CSV files use properties that were harvested from the running CDASH instance based on the Place and Folder IDs attached to our batch files.  When fed into the CSV import tool with the right field mapping file, they will re-create the folders and places in a situation where they do not already exist. 
+
+<p><b>About Row Counts</b>: You may have noticed that the row count for each of these CSV files is one more than the count provided in the batch.csv file.  THis is vecause the first row of the CSV is the column headings.  
+
+<h2>Inspect and Understand the CSV Mapping Files</h2>
+<p>Assuming that a batch is ready and the CSV files have been produced, you should find a sub-folder named csv_mappings under the batch catalog folder. WIthin CSV Mappings, there is a stage subfolder.  These hold json files that can be provided to the CDASH version of the Omeka CSV Import module, as we will demonstrate.  One thing to note before digging into the rote application of these files, is that in the case of creating resources in the production setting or a clean-slate (stage) situation, the CSV data files are the same, the difference is in which CSV mapping file you use. 
+
+
+  <h2>Preparing for a Bulk Upload</h2>
+  <p>Creating resources in the CDASH repository is a momentous situation.  If everything goes right, you will have resources that are prepared to be procedurally managed in perpetuity without problems.  If something goes wrong, there can be long-lasting difficulties.  The key to success is to anticipate problems and take pains to discover them as quickly as possible. One advantage of using the CSV Import module is that it allows for undo-ing of bulk creation of resources and media import transactions.  This is a great thing, but as time passes undoing a transaction can have complicated repercussions if subsequent work has altered or referenced resources created.  So preparing for and following up on batch import operations, the archivist should expect unexpected problems and prepare and follow up vigilantly, with an eye toward catching problems right away.      
+  
+  <h3>Prepare</h3>
+  <p>The most basic form of archival quality assurance is simply to count the resources that you have and the number you think you are adding, and then count again to make sure that there is no obvious mis-match in your expectations. Passing this test does not guarantee 100% certainty that there aren't problems.  But failure to notice a problem as obvious as a mismatch of counts means guaranteed problems. 
+    <ol>
+     <li>Use the Azure Storage Explorer to open the <b>chcscans/scans/stage</b> folder.  Then upload your entire batch folder.  This can take a little while.   <b><i>Note:</i></b> if there is already a version of your batch folder in the stage subdirectory, you should delete it and upload a new one since any name changes you may have made while playing with the test batch would not be reflected.
+    <li>If you suspect that the resources declared in your new batch may already exist in your test repository, you should delete them, using the undo function of the <b>CSV Import > Past Imports</b> page.  Or you can just clear all of the items, media and folders to empty the repository using the <a href="https://omeka.org/s/docs/user-manual/content/items/#batch-actions" target-"docs">batch actions</a> for Items and Item-Sets in the Admin interface.  
+    <p>You can also practice deleting resources created by previous upload trials of the demo batch using the <a href="https://omeka.org/s/docs/user-manual/modules/csvimport/#manage-past-imports" target="docs">>CSV Import Module > Past Imports</a> function.  
+    <li>Check the <b>catalog\batch.csv file</b> for the counts of Folders, Places, Documents and Media for your new CDASH batch.  If the batch is open in the Digester, these counts should also be printed in the console window. 
+    <li>If you want to be extra thorough, you can use your Azure Storage Explorer to count the number of files in the CHCPersist/altpersist/files/original folder.  (Use the Directory Statistics under More... at the upper-right side of the Storage Explorer toolbar.)   
+    <li>If you are planning to create documents in the production instance, tou should fo to the CDASH Transactions table (a google doc) and create a new record reflecting the upload date and the name of the batch and the the expected counts of additions of media and documents should.
+    </ol>  
+
+    <p><b><i>...To be continued keep refreshing to see new changes.</i></b>
+
+
+  <h2>Practicing Accession into a Clean Repository</h2>
+  <p>The stage instance of CDASH should be functionally the same as the production instance, except that it uses an independent file-system and database.  So it is worry-free to clean it out and start fresh or to try risky things. 
+
+  <h2> For Production </h2>
+      <li>Open the CDASH Transactions google sheet and check the total using the cdash geoAudit function</li>
 
 
 
