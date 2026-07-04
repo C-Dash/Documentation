@@ -71,14 +71,6 @@ let index_htm = `
     </ul>
   
 
-  <li class="chapter"><a href="../digester/index.htm">CDASH Digester</a></li>
-  <ul class="verses">
-    <li><a href="../digester/index.htm#download">Download</a>
-    <li><a href="../digester/index.htm#walkthrough">Walkthrough</a>
-</ul>
-
-
-
   <li class="chapter"><a href="../research/index.htm">Resources for Street Research </a></li>
     <ul class="verses">
     <li><a href="../research/index.htm#hale">Christopher Hail Cambridge Buildings and Architects</a>
@@ -141,10 +133,24 @@ let index_htm = `
     <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
     </ul>
   <li class="chapter"><a href="../integrity_mgt/index.htm">Managing CDASH Relational Integrity</a></li>
+
+<li class="chapter"><a href="../accession/index.htm">Growing CDASH: Accession Workflow </a></li>
+  <ul class="verses">
+    <li><a href="../accession/index.htm#downloads">Downloads</a>
+    <li><a href="../accession/index.htm#prepare">Preparing a Batch Media Files for Accession</a>
+    <li><a href="../accession/index.htm#initialize">Initializing a Batch</a>
+    <li><a href="../accession/index.htm#digester">Introducing the Batch Digester</a>
+    <li><a href="../accession/index.htm#testbatch">Introducing the Test Batch</a>
+    <li><a href="../accession/index.htm#csv">Generating the CSV Manifest Tables</a>
+    <li><a href="../accession/index.htm#upload">Upload the Batch to the Cloud</a>
+    <li><a href="../accession/index.htm#csvimport">CSV Import Module with CDASH Repeater Modification</a>
+    <li><a href="../accession/index.htm#accessionprep">Preparing an Accession Transaction</a>
+    <li><a href="../accession/index.htm#generate">Generating Omeka Resources with the Modified CSV Import Tool</a>
+    <li><a href="../accession/index.htm#logging">Logging and Verifying Transactions</a>
+  </ul>
 </ul>
 
-
-<h3>Administrator / Developer Viewpoint</h3>
+<h3>System Administrator / Developer Viewpoint</h3>
 <ul class="treeview">
 
 <li class="chapter"><a href="../azure_overview/index.htm">CHC Omeka in Azure Overview</a></li>
