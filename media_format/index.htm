@@ -55,10 +55,52 @@
     <li><a href="../media_format/index.htm#compression">Compression</a>
     <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
     </ul>
-    <h2 id="lifecycle">Lifecyle Concerns for Archiving Digital Data</h2>
-  <p>Documents in CHC Omeka applications are composed of descriptive metadata attached to one or more scanned pages or born-digital documents such as web pages.  We will use the term <b>Media</b> to described the digital documents or pages associated with Omeka documents. Omeka provides a framework for managing, searching, discovering  and viewing media and their metadata. More importantly, Omeka has to perform as a vehicle for taking the metadata and digital media into the future whence it will be necessary to systematically migrate the metadata and media to some unknown future management and publishing system.  
+
+<h2>The Archivist's Perspective on Digital Media</h2>
+<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They often open with no problem using your system's default app assigned to whatever media type that may be detectable.  Of course, this does not always work for various reasons.  For a digital archivist the question of what a digital media file is, and how to make sure that they behave reliably demands a deeper-than-normal understanding of digital media. 
+<p>The digital repository, like Omeka does many things. A critical function is to serve as a container for master media files that are guaranteed to function reliably with unknown software in the future.  What could possibly go wrong?  
+<div class="funfact">
+<h3>The Mystery of the Mis-Rotated Images</h3>
+<p>In the early days of CDASH, we were loading lots of image files.  We had not yet worked out a rigorous specification for admissible media files, but considered tif format as admissible. After a while we began to see photographs of buildings in CDASH that were mis-rotated.  Looking at the original images in the import batches revealed no mis-rotation.  Odd!  Over the months that followed, we found many more of these.  We deduced that these mis-rotated images originated on a staff-member's iphone and were taken with the phone oriented in landscape mode.  Furthermore, these were submitted as jpeg or HEIF format, and were converted to tif using some app or other, could not remember which. 
+<p>I will not go into the chain of foolery that resulted in these images behaving perfectly fine during the pre-screening process, then all of the sudden being problematic in the repository.  It is worth noting that the number of these mis-rotated images that managed to sneak into the repository was in the hundreds, and finding them and fixing them in the repository was going to cost scores of hours for an Omeka developer.  The take-away here is that it is much better to prevent bad images from getting into the repository than it is to try to fix them after they have been deposited. 
+<p>  
+The essence of the problem is that the archive team was not aware of the structure of digital media files and the importance of understanding the <b>Technical Lineage</b> of every sort of media file that is being deposited.
+
+</div>
+
+<h2>Media File Structure and Technical Lineage</h2>
+<p>Assuring that media files behave reliably in today's repository, and in repositories in the future, is covered in depth 
+<p>
+https://www.digitizationguidelines.gov FAGDI Federal Agencies Digital Guidelines Initiative
+
+https://www.digitizationguidelines.gov/guidelines/FADGITechnicalGuidelinesforDigitizingCulturalHeritageMaterials_ThirdEdition_05092023.pdf
+
+
+<p>Whether a media file represents a scan, or an image from a cell-phone camera or a PDF that was saved from a digital document, the media file has three parts:
+  <ol>
+    <li>The Bitstream: which is the graphical content: i.e. pixels, or formatted text or both.
+    <li>Technical Metadata that describes the device and the settings in play when the file was captured.
+    <li>A Preview thumbnail.  Sometimes the tumbnail may be embedded in the file, or rendered on the fly by whatever system or tool you are using.  Sometimes these previews interpret parameters the technical metadata like orientation/rotation, or color correction. Sometimes they don't.  It depends on the tool and the settings. 
+  </ol>
+<p>A principle common to all digital archiving standards is that whenever possible, the original bitstream and technical metadata should be preserved with a minimum of extra manipulation. 
+<!-- <p>When media files are transformed or reformatted between the original capture and accession, all sorts of unpredictable and confusing things can happen. In the case of our mis-rotated image mystery described above, the problem started with the capture device (iphone) embedding an orientation tag indicating a landscape oriented image.  But when the archivist converted these images to TIF, the preview thumbnail indicated a need for rotation, so some tool or other was used to rotate the pixels.  This created a thumbnail that appeared to be oriented correctly.  However, when the files were imported into Omeka, the Omeka thumbnailer interpreted the embedded orientation tags differently and so the previews in Omeka wee mis-rotated, and the preservation masters fo rthese images must now be discovered, and corrected.
+<p>
+There are countless ways that media files can be messed up.  The best way to make sure that they aren't is to 
+<ol>
+<li>understand the original capture devices whether they be particular models of scanners, or cameras, and the specific settings that are known to work
+<li>the nature of the technical metadata that is embedded in the media at capture time.  
+<li>Keep the number of intervening transformations to a minimum.  
+<li>If adjustments are necessary -- like cropping or straightening, only use tools that have been tested end-to-end in the accession process. 
+<li>Be aware of how the current repository (Omeka) honors or ignores technical metadata of different sorts when producing derivative presentation images
+--> 
+    <h2 id="lifecycle">Lifecyle Concerns for Archiving Digital Media</h2>
+  <p>Documents in CHC Omeka applications are composed of descriptive metadata attached to one or more scanned pages or born-digital documents.  We will use the term <b>Media</b> to described the digital documents or pages associated with documents.  While  
+    
+    
+    
+    Omeka provides a framework for managing, searching, discovering  and viewing media and their metadata. More importantly, Omeka has to perform as a vehicle for taking the metadata and digital media into the future whence it will be necessary to systematically migrate the metadata and media to some unknown future management and publishing system.  
   </p>
-  <p>There are many possible formats for media that can be created by the tools for scanning pages or saving born-digital documents.  Not all of these possible formats are readable by the import tools in Omeka.  In the long run we also have to be concerned about the media import ant export tolerances of the as-yet unknown tools that may be used to harvest and migrate the CHC-assets in the future. The best bet for assuring the future resilience of the digital collection is to avoid the use of any media formats that may cause problems in automated processing in the future.
+  <p>There are many possible formats for media that can be created by the tools for scanning pages or saving born-digital documents.  Not all of these possible formats are readable by the import tools in Omeka.  In the long run we also have to be concerned about the media import and export tolerances of the as-yet unknown tools that may be used to harvest and migrate the CHC-assets in the future. The best bet for assuring the future resilience of the digital collection is to avoid the use of any media formats that may cause problems in automated processing in the future.
   <p>
   Fortunately, digital archiving projects and interest groups have hashed and re-hashed the question of best practices for archiving digital media.  We take guidance from the Digital Commonwealth 
   <p>
