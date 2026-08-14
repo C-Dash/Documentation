@@ -57,24 +57,41 @@
     </ul>
 
 <h2>The Archivist's Perspective on Digital Media</h2>
-<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They often open with no problem using your system's default app assigned to whatever media type that may be detectable.  Of course, this does not always work for various reasons.  For a digital archivist the question of what a digital media file is, and how to make sure that they behave reliably demands a deeper-than-normal understanding of digital media. 
-<p>The digital repository, like Omeka does many things. A critical function is to serve as a container for master media files that are guaranteed to function reliably with unknown software in the future.  What could possibly go wrong?  
-<div class="funfact">
+<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They often open with no problem using your system's default app assigned to whatever media type that may be detectable.  The question of what digital media is, or how it works is hidden frm the ordinary user and is irrelevant for ordinary purposes, as long as the display of the content looks right.
+  Of course, this does not always work for various reasons.  For a digital archivist the question of what a digital media file is, and how to make sure that they behave reliably demands a deeper-than-normal understanding of digital media. 
+
+  <figure class="middle">
+  <img src="images/lineage_consumer.jpg">
+  <figcaption>Consumer Viewpoint on Digital Media</figcaption>
+  </figure>
+
+
+ <figure class="middle">
+  <img src="images/lineage_archivist.jpg">
+  <figcaption>Archivist's Responsibility</figcaption>
+  </figure>
+
+
+  <p>The digital repository like Omeka does many things. A critical function is to serve as a container for master media files that are guaranteed to function reliably with unknown software in the future.  What could possibly go wrong?  
+<!-- div class="funfact">
 <h3>The Mystery of the Mis-Rotated Images</h3>
 <p>In the early days of CDASH, we were loading lots of image files.  We had not yet worked out a rigorous specification for admissible media files, but considered tif format as admissible. After a while we began to see photographs of buildings in CDASH that were mis-rotated.  Looking at the original images in the import batches revealed no mis-rotation.  Odd!  Over the months that followed, we found many more of these.  We deduced that these mis-rotated images originated on a staff-member's iphone and were taken with the phone oriented in landscape mode.  Furthermore, these were submitted as jpeg or HEIF format, and were converted to tif using some app or other, could not remember which. 
 <p>I will not go into the chain of foolery that resulted in these images behaving perfectly fine during the pre-screening process, then all of the sudden being problematic in the repository.  It is worth noting that the number of these mis-rotated images that managed to sneak into the repository was in the hundreds, and finding them and fixing them in the repository was going to cost scores of hours for an Omeka developer.  The take-away here is that it is much better to prevent bad images from getting into the repository than it is to try to fix them after they have been deposited. 
 <p>  
 The essence of the problem is that the archive team was not aware of the structure of digital media files and the importance of understanding the <b>Technical Lineage</b> of every sort of media file that is being deposited.
 
-</div>
+</div> -->
 
 <h2>Media File Structure and Technical Lineage</h2>
 <p>Assuring that media files behave reliably in today's repository, and in repositories in the future, is covered in depth 
-<p>
-https://www.digitizationguidelines.gov FAGDI Federal Agencies Digital Guidelines Initiative
+<ul>
+<li><a href="https://www.loc.gov/preservation/resources/rfs/TOC.html"> Library of Congress Recommended Formats Statement</a>
+<li><a href="https://www.digitizationguidelines.gov/guidelines/FADGITechnicalGuidelinesforDigitizingCulturalHeritageMaterials_ThirdEdition_05092023.pdf" target="doc">Federal Agencies Digital Guidlines Initiative, (FAGDI): Technical Guidelines for DigitizingCultural Heritage Materials( 2023)</a> See the tables beginning on Page 27,
+  <li>
+  <a href="https://www.archives.gov/files/preservation/technical/guidelines.pdf" target="nara">U.S. National Archives and Records Administration (NARA)
+Technical Guidelines for Digitizing Archival Materials for Electronic Access: Creation of Production Master Files – Raster Images</a> Accessed from <a href="https://www.archives.gov/files/preservation/technical/" target="nara">https://www.archives.gov/files/preservation/technical/</a> (See Page 60.
 
-https://www.digitizationguidelines.gov/guidelines/FADGITechnicalGuidelinesforDigitizingCulturalHeritageMaterials_ThirdEdition_05092023.pdf
-
+</ul>
 
 <p>Whether a media file represents a scan, or an image from a cell-phone camera or a PDF that was saved from a digital document, the media file has three parts:
   <ol>
@@ -92,28 +109,55 @@ There are countless ways that media files can be messed up.  The best way to mak
 <li>Keep the number of intervening transformations to a minimum.  
 <li>If adjustments are necessary -- like cropping or straightening, only use tools that have been tested end-to-end in the accession process. 
 <li>Be aware of how the current repository (Omeka) honors or ignores technical metadata of different sorts when producing derivative presentation images
+</ol>
 --> 
-    <h2 id="lifecycle">Lifecyle Concerns for Archiving Digital Media</h2>
-  <p>Documents in CHC Omeka applications are composed of descriptive metadata attached to one or more scanned pages or born-digital documents.  We will use the term <b>Media</b> to described the digital documents or pages associated with documents.  While  
-    
-    
-    
-    Omeka provides a framework for managing, searching, discovering  and viewing media and their metadata. More importantly, Omeka has to perform as a vehicle for taking the metadata and digital media into the future whence it will be necessary to systematically migrate the metadata and media to some unknown future management and publishing system.  
-  </p>
-  <p>There are many possible formats for media that can be created by the tools for scanning pages or saving born-digital documents.  Not all of these possible formats are readable by the import tools in Omeka.  In the long run we also have to be concerned about the media import and export tolerances of the as-yet unknown tools that may be used to harvest and migrate the CHC-assets in the future. The best bet for assuring the future resilience of the digital collection is to avoid the use of any media formats that may cause problems in automated processing in the future.
-  <p>
-  Fortunately, digital archiving projects and interest groups have hashed and re-hashed the question of best practices for archiving digital media.  We take guidance from the Digital Commonwealth 
-  <p>
-<ul>
-  <li><a href="https://www.digitizationguidelines.gov/guidelines/FADGITechnicalGuidelinesforDigitizingCulturalHeritageMaterials_ThirdEdition_05092023.pdf" target="doc">Federal Agencies Digital Guidlines Initiative, (FAGDI): Technical Guidelines for DigitizingCultural Heritage Materials( 2023)</a> See the tables beginning on Page 27,
-  </ul> 
 
-<p>or...
+
+<h2 id="image">Image File Profiles</h2>
+<p>The following properties can be evaluated for any image using your computer's file explorer.  In Windows, right-click the image and choose properties.</p>
+<h3 id="tif">TIFF Format</h3>
+<p>The TIFF format for digital images is a very flexible container for a variety of image encodings some of which are considered solid for archival use and many others, that are less portable.  While TIFF is recommended, it is necessary to look at specific properties of the TIFF file to assure that the image will be most likely to be preserved and transferrable for the long-term. 
+<h3 id="names">File Names:</h3>
+<p>Even though WIndows and Apple operating systems may be more flexible in terms of file and folder names, our folder and file names should be compatible with the more universal conventions used by Linux OS amd web applications.
 <ul>
-  <li>
-  <a href="https://www.archives.gov/files/preservation/technical/guidelines.pdf" target="nara">U.S. National Archives and Records Administration (NARA)
-Technical Guidelines for Digitizing Archival Materials for Electronic Access: Creation of Production Master Files – Raster Images</a> Accessed from <a href="https://www.archives.gov/files/preservation/technical/" target="nara">https://www.archives.gov/files/preservation/technical/</a> (See Page 60.
-  </ul>
+  <li>Use only alphabetical and numerical characters plus "-", and "_".
+  <li>No spaces or tabs in filenames!
+  <li>Tif files should end with a simple ".tif" suffix.
+  </ul> 
+<h3 id="pages">Single-Page Media</h3>
+<p>Although it may be possible to save Tif files with multiple pages (or frames), these files cannot be loaded into Omeka and are also problematic in other archival management applications.  Therefore all images should contain a single page or frame. 
+<h3 id="color">Color Representation /  Bit Depth:</h3>
+<ul>
+  <li>8 bits per channel.
+  <li>Gray Scale: One Channel -- 8 bits.
+  <li>Color: 3 Channel RGB -- 24 bits. 
+  <li>No transparency should be applied.   Remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per chanmel.)
+  <li>TIF images should use LZW compression
+</ul>
+
+<h3 id="profiles">Color Profiles:</h3>
+<p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> other than simple RGB or sRGB.  These should be avoided.   
+</p>
+<p>According to the NARA Guidelines (p38):
+  <blockquote>
+    An ideal workflow would be to scan originals with a calibrated and characterized device, assign the profile of that
+device to the image file, and convert the file to the chosen workspace (Adobe RGB 1998 for color or Gray Gamma
+2.2 for grayscale).
+  </blockquote>
+
+
+<h3>Compression:</h3>
+<ul>
+
+  <li>LZW Compression
+</ul>
+<p>Various scanners and file-save operations will default to other sorts of compression that will cause problems.  Therefore it is important to choose tools and export functions that use No compression or LZW and make sure to check frequently that your images are safe.
+</p> 
+<h3 id="pixels">Image Pixel Dimensions and DPI</h3>
+<p>
+  The vast majority of physical holdings in the Architectural survey are letter-sized pages.  The original scanning requirements were to make 24-bit RGB images at 200dpi. On average the pixel dimention of these images is about 
+  
+  Pixel Dimension os the count of pixels for the height and width of the rectangular image.  In most cases, our digital documents are less than 30" x 40' Inches scanned at 300 dpi.  These images have approximately 2500 x 3500 pixels and compressed with the LZW process, are around 4 megabytes each.  Occaisionally there is a 30x40 drawing scanned at 300dpi might be contributed.  SUch an image would be 6000x8000 pixels.  A file such as this, uncompressed would be approximately  This would be a maximum pixel dimension of 6000 x 8000 pixels, and may weigh in at around 100mb. This would be the limit for pixel dimension and file size.
 
 <h2 id="pdfa">Quick Links for Scanning and Saving Archival PDFs</h2>
 <p>PDF format documents are easy to handle today.  A hundred years from now, we probably should expect problems.  Features that make PDFs compact today, such as relying on external font libraries or clever media or compression formats are all likely to cause problems in the future.  Luckily for us, archivists have come up with a common denominator for packaging documents as Archival PDF documents.  We can be reasonably sure that archival tools of the future will be able to read these and if necessary import these into the archival systems of the future, or to migrate these to digital document formats of the future, if necessary.    
@@ -135,50 +179,7 @@ Technical Guidelines for Digitizing Archival Materials for Electronic Access: Cr
 
 <p>If you ware experimenting with a new workflow and want to test your images for compatibility with the Omeka importer, try importing the the image as media for an item in the Stage instance.   
 
-<h2 id="image">Recommendations for Image Files</h2>
-<p>The following properties can be evaluated for any image using your computer's file explorer.  In Windows, right-click the image and choose properties.</p>
-<h3 id="tif">TIFF Format</h3>
-<p>The TIFF format for digital images is a very flexible container for a varieety of image encodings some of which are considered solid for archival use and many others, that are less portable.  While TIFF is recommended, it is necessary to look at specific properties of the TIFF file to assure that the image will be most likely to be preserved and transferrable for the long-term. 
-<h3 id="names">File Names:</h3>
-<p>Even though WIndows and Apple operating systems may be more flexible in terms of file and folder names, our folder and file names should be compatible with the more universal conventions used by Linux OS amd web applications.
-<ul>
-  <li>Use only alphabetical and numerical characters plus "-", and "_".
-  <li>No spaces or tabs in filenames!
-  <li>Tif files should end with a simple ".tif" suffix.
-  </ul> 
-<h3 id="pages">Single-Page Media</h3>
-<p>Although it may be possible to save Tif files with multiple pages (or frames), these files cannot be loaded into Omeka and are also problematic in other archival management applications.  Therefore all images should contain a single page or frame. 
-<h3 id="color">Color Representation /  Bit Depth:</h3>
-<ul>
-  <li>8 bits per channel.
-  <li>Gray Scale: One Channel -- 8 bits.
-  <li>Color: 3 Channel RGB -- 24 bits. 
-  <li>Transparency:  It is rare to see transparency in historical documents. When transparency is present in an image it is encoded as an additional channel (Alpha) which may result in a 4-channel, 32-bit image.  This unnecessary complication causes problems occasionally.  To remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per chanmel.)
-</ul>
 
-<h3 id="profiles">Color Profiles:</h3>
-<p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> other than simple RGB or sRGB.  These should be avoided.   
-</p>
-<p>According to the NARA Guidelines (p38):
-  <blockquote>
-    An ideal workflow would be to scan originals with a calibrated and characterized device, assign the profile of that
-device to the image file, and convert the file to the chosen workspace (Adobe RGB 1998 for color or Gray Gamma
-2.2 for grayscale).
-  </blockquote>
-
-
-<h3>Compression:</h3>
-<ul>
-  <li>No Compression
-  <li>LZW Compression
-</ul>
-<p>Various scanners and file-save operations will default to other sorts of compression that will cause problems.  Therefore it is important to choose tools and export functions that use No compression or LZW and make sure to check frequently that your images are safe.
-</p> 
-<h3 id="pixels">Image Pixel Dimensions and DPI</h3>
-<p>
-  The vast majority of physical holdings in the Architectural survey are letter-sized pages.  The original scanning requirements were to make 24-bit RGB images at 200dpi. On average the pixel dimention of these images is about 
-  
-  Pixel Dimension os the count of pixels for the height and width of the rectangular image.  In most cases, our digital documents are less than 30" x 40' Inches scanned at 300 dpi.  These images have approximately 2500 x 3500 pixels and compressed with the LZW process, are around 4 megabytes each.  Occaisionally there is a 30x40 drawing scanned at 300dpi might be contributed.  SUch an image would be 6000x8000 pixels.  A file such as this, uncompressed would be approximately  This would be a maximum pixel dimension of 6000 x 8000 pixels, and may weigh in at around 100mb. This would be the limit for pixel dimension and file size.
 
   </div> <!-- Closes #article div -->
   <div id="footer"> <!-- Content provided by cdash_includes.js--> </div> 

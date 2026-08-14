@@ -137,7 +137,7 @@ let index_htm = `
 <li class="chapter"><a href="../accession/index.htm">Growing CDASH: Accession Workflow </a></li>
   <ul class="verses">
     <li><a href="../accession/index.htm#downloads">Downloads</a>
-    <li><a href="../accession/index.htm#prepare">Preparing a Batch Media Files for Accession</a>
+    <li><a href="../accession/index.htm#prepare">Preparing a Batch of Media Files for Accession</a>
     <li><a href="../accession/index.htm#initialize">Initializing a Batch</a>
     <li><a href="../accession/index.htm#digester">Introducing the Batch Digester</a>
     <li><a href="../accession/index.htm#testbatch">Introducing the Test Batch</a>
