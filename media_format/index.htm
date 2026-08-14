@@ -113,7 +113,7 @@ There are countless ways that media files can be messed up.  The best way to mak
 --> 
 
 
-<h2 id="image">Image File Profiles</h2>
+<h2 id="image">TIF Format Profiles</h2>
 <p>The following properties can be evaluated for any image using your computer's file explorer.  In Windows, right-click the image and choose properties.</p>
 <h3 id="tif">TIFF Format</h3>
 <p>The TIFF format for digital images is a very flexible container for a variety of image encodings some of which are considered solid for archival use and many others, that are less portable.  While TIFF is recommended, it is necessary to look at specific properties of the TIFF file to assure that the image will be most likely to be preserved and transferrable for the long-term. 
@@ -131,11 +131,11 @@ There are countless ways that media files can be messed up.  The best way to mak
   <li>8 bits per channel.
   <li>Gray Scale: One Channel -- 8 bits.
   <li>Color: 3 Channel RGB -- 24 bits. 
-  <li>No transparency should be applied.   Remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per chanmel.)
+  <li>No transparency should be applied.   Remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per channel.)
   <li>TIF images should use LZW compression
 </ul>
 
-<h3 id="profiles">Color Profiles:</h3>
+<h3 id="profiles">TIF Color Profiles:</h3>
 <p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> other than simple RGB or sRGB.  These should be avoided.   
 </p>
 <p>According to the NARA Guidelines (p38):
@@ -146,7 +146,7 @@ device to the image file, and convert the file to the chosen workspace (Adobe RG
   </blockquote>
 
 
-<h3>Compression:</h3>
+<h3>TIF Compression:</h3>
 <ul>
 
   <li>LZW Compression
@@ -158,6 +158,14 @@ device to the image file, and convert the file to the chosen workspace (Adobe RG
   The vast majority of physical holdings in the Architectural survey are letter-sized pages.  The original scanning requirements were to make 24-bit RGB images at 200dpi. On average the pixel dimention of these images is about 
   
   Pixel Dimension os the count of pixels for the height and width of the rectangular image.  In most cases, our digital documents are less than 30" x 40' Inches scanned at 300 dpi.  These images have approximately 2500 x 3500 pixels and compressed with the LZW process, are around 4 megabytes each.  Occaisionally there is a 30x40 drawing scanned at 300dpi might be contributed.  SUch an image would be 6000x8000 pixels.  A file such as this, uncompressed would be approximately  This would be a maximum pixel dimension of 6000 x 8000 pixels, and may weigh in at around 100mb. This would be the limit for pixel dimension and file size.
+
+
+<h3>TIF Rendering and Migration Rules</h3>
+<p>Embedded Technical Metadata in TIF files, whether it be native TIF tags, XMP or EXIF, will be preserved disregarded in rendereing and other transformations.  
+This means that any rotation or color profiles assigned to these files should be baked-in to the RGB bit-stream. 
+</p>
+
+
 
 <h2 id="pdfa">Quick Links for Scanning and Saving Archival PDFs</h2>
 <p>PDF format documents are easy to handle today.  A hundred years from now, we probably should expect problems.  Features that make PDFs compact today, such as relying on external font libraries or clever media or compression formats are all likely to cause problems in the future.  Luckily for us, archivists have come up with a common denominator for packaging documents as Archival PDF documents.  We can be reasonably sure that archival tools of the future will be able to read these and if necessary import these into the archival systems of the future, or to migrate these to digital document formats of the future, if necessary.    
