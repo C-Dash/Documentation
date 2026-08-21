@@ -56,14 +56,40 @@
     <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
     </ul>
 
-<h2>The Archivist's Perspective on Digital Media</h2>
-<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They often open with no problem using your system's default app assigned to whatever media type that may be detectable.  The question of what digital media is, or how it works is hidden frm the ordinary user and is irrelevant for ordinary purposes, as long as the display of the content looks right.
-  Of course, this does not always work for various reasons.  For a digital archivist the question of what a digital media file is, and how to make sure that they behave reliably demands a deeper-than-normal understanding of digital media. 
-
+<h2>The Consumer vs Archivist Perspective on Digital Media</h2>
+<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They almost always perform as expected in a variety of tools.  The question of how image files and PDFs are encoded and how they are rendered is hidden from the ordinary users. As long as the display of the content looks right in whatever viewing or editing tool you are using.
+</p>
   <figure class="middle">
   <img src="images/lineage_consumer.jpg">
   <figcaption>Consumer Viewpoint on Digital Media</figcaption>
   </figure>
+
+<h2>Media Files are Packages</h2>
+<p>A digital media file is either captured by a device: scanner or camera, or resulted in some kind of a save-as from a program or download.  In any case, the media file is a package that typically has two parts: 
+  <ul>
+    <li><b>Technical Metadata</b> which may describe the device or media creator and other details about the context. 
+    <li><b>Bitstream</b>: the graphical content.  In the case of an image, this would be systematic descriptions of pixels.  
+  </ul>
+
+<h3>Technical Metadata</h3>
+<p>There are several schemes for embedding technical metadata tags into a media file.  In the context of CDASH, the important ones are EXIF, XMP and TIFF. Each of these schemes uses tags to describe aspects of the lineage of the file. It seems like any sort of media file may have metadata embedded in one or more of these schemes.
+<p>
+  <b>Orientation: </b> One of the most interesting tags, which is found in at least two of the common schemes for embedded metadata.  The tag is a means of recording whether the device, or the original was in landscape or portrait orientation (among other options) documents.   In the case of an image from a hand-held digital camera, the value of the Orientation tag is recorded from the device accelerometer at the moment of capture and written to the media's EXIF:Orientation tag.  In the case of a scanner, the orientation tag may be switched by the operator by flipping the orientation of the scan preview.  <i>I think </i> that in this situation, the value is written to the embedded XMP metadata.
+
+<h3>Bitstream Data</h3>
+<p>The Bitstream portion of a media file can be thought of as the content of the media file.  Each format family, like TIFF or JPEG or PDF will have its own conventions for how the bitstream is encoded.  Within each of these families, there are distinctive variations.  These variations are what make it necessary to define <b>Format Profiles</b> because just saying TIFF, or PDF is is not specific enough to stipulate how a tool should render the content.
+<p>
+You can look at our listing of Format Profiles, below to see some of the ways that bitstream characteristics such as pixel-organization, color model and compression or archival compliance level can be used to declare a format profile that will ensure reliable rendering.    
+
+<h3>Rendering, Preview & Confusion</h3>
+<p>Ordinarily nobody looks at the actual bitstream, you only see a rendering or a preview of it.  This preview may or may not involve transformations, such as rotation, or color adjustments based on the values of tags included in the technical metadata.  
+<p>
+  The question of whether technical metadata should cause the bitsream to render one way or another is sometimes presented as a user-preference option in some technically oriented tools.  Most user-centric tools will do /or not-do/ it one way or the other.  The potential for confusion multiplies when you consider the possibility that different sorts of embedded technical metadata can be contradictory.  And it gets even more devilish when a well intentioned contributor who applies a mis-guided rotation to the bitstream after being confused by a rendering mis-corrected according to tags....
+<p>
+  All of this sounds humorous, but can be quite vexing when a stream of this sort of image sneaks into the repository and is not discovered until some new sort of display module reveals that the collection is now infiltrated by thousands of roque assets that cause unexpected problems.   
+
+<h3>An Archivist's Viewpoint on Digital Media</h3>
+<p>An archivist can appreciate how an image works well in a page-view, they also have to worry about whether a collection of one million images will perform reliably in a digital media ecosystem of 100 years from now.  Most likely, this ecosystem will be one where the formats that we use today will no longer be "what everyone uses."  The archivist must have a level of understanding that allows her to foresee problems that a normal user would have no clue about. 
 
 
  <figure class="middle">
@@ -72,18 +98,22 @@
   </figure>
 
 
-  <p>The digital repository like Omeka does many things. A critical function is to serve as a container for master media files that are guaranteed to function reliably with unknown software in the future.  What could possibly go wrong?  
-<!-- div class="funfact">
-<h3>The Mystery of the Mis-Rotated Images</h3>
-<p>In the early days of CDASH, we were loading lots of image files.  We had not yet worked out a rigorous specification for admissible media files, but considered tif format as admissible. After a while we began to see photographs of buildings in CDASH that were mis-rotated.  Looking at the original images in the import batches revealed no mis-rotation.  Odd!  Over the months that followed, we found many more of these.  We deduced that these mis-rotated images originated on a staff-member's iphone and were taken with the phone oriented in landscape mode.  Furthermore, these were submitted as jpeg or HEIF format, and were converted to tif using some app or other, could not remember which. 
-<p>I will not go into the chain of foolery that resulted in these images behaving perfectly fine during the pre-screening process, then all of the sudden being problematic in the repository.  It is worth noting that the number of these mis-rotated images that managed to sneak into the repository was in the hundreds, and finding them and fixing them in the repository was going to cost scores of hours for an Omeka developer.  The take-away here is that it is much better to prevent bad images from getting into the repository than it is to try to fix them after they have been deposited. 
-<p>  
-The essence of the problem is that the archive team was not aware of the structure of digital media files and the importance of understanding the <b>Technical Lineage</b> of every sort of media file that is being deposited.
 
-</div> -->
+<h2>Maintaining Control in Archival Accession and Management</h2>
+<p>How does the archivist develop a professional level of confidence that the repository being built day by day is sustainable and ready for the next inevitable migration to the media formats of the future? By understanding and applying the following principles:
+</p>
+<ul>
+  <li>Define <b>Format Profiles</b> that can be generated by the devices at hand, and reliable for the archival applications including presentation and migration.
+  <li>Test and document the way that each profile is created for each device or digital capture method. Educate all technical assistants.
+  <li>For each format profile, define rendering rules and expectations that are simple and conventional.  
+  <li>Understand situations where manipulation of media is necessary, how this can be done without unwanted disruption to the bitstream and technical metadata.  
+  <li>Make sure that previews generated by manipulation tools follow the aforementioned rendering rules. 
+  <li>Validate that the files are compliant with format profiles on accession
+</ul>
 
-<h2>Media File Structure and Technical Lineage</h2>
-<p>Assuring that media files behave reliably in today's repository, and in repositories in the future, is covered in depth 
+
+<h3>References</h3>
+<p>I'm still looking for a beginner's guide to digital media.  Here are some references that go right nto the deep end of digital preservation, media and technical lineage:
 <ul>
 <li><a href="https://www.loc.gov/preservation/resources/rfs/TOC.html"> Library of Congress Recommended Formats Statement</a>
 <li><a href="https://www.digitizationguidelines.gov/guidelines/FADGITechnicalGuidelinesforDigitizingCulturalHeritageMaterials_ThirdEdition_05092023.pdf" target="doc">Federal Agencies Digital Guidlines Initiative, (FAGDI): Technical Guidelines for DigitizingCultural Heritage Materials( 2023)</a> See the tables beginning on Page 27,
@@ -93,99 +123,113 @@ Technical Guidelines for Digitizing Archival Materials for Electronic Access: Cr
 
 </ul>
 
-<p>Whether a media file represents a scan, or an image from a cell-phone camera or a PDF that was saved from a digital document, the media file has three parts:
-  <ol>
-    <li>The Bitstream: which is the graphical content: i.e. pixels, or formatted text or both.
-    <li>Technical Metadata that describes the device and the settings in play when the file was captured.
-    <li>A Preview thumbnail.  Sometimes the tumbnail may be embedded in the file, or rendered on the fly by whatever system or tool you are using.  Sometimes these previews interpret parameters the technical metadata like orientation/rotation, or color correction. Sometimes they don't.  It depends on the tool and the settings. 
-  </ol>
-<p>A principle common to all digital archiving standards is that whenever possible, the original bitstream and technical metadata should be preserved with a minimum of extra manipulation. 
-<!-- <p>When media files are transformed or reformatted between the original capture and accession, all sorts of unpredictable and confusing things can happen. In the case of our mis-rotated image mystery described above, the problem started with the capture device (iphone) embedding an orientation tag indicating a landscape oriented image.  But when the archivist converted these images to TIF, the preview thumbnail indicated a need for rotation, so some tool or other was used to rotate the pixels.  This created a thumbnail that appeared to be oriented correctly.  However, when the files were imported into Omeka, the Omeka thumbnailer interpreted the embedded orientation tags differently and so the previews in Omeka wee mis-rotated, and the preservation masters fo rthese images must now be discovered, and corrected.
+<h1>Admissible Format Profiles and their Use-Cases</h1>
+<p>From the consumer perspective Media formats like TIFF, JPEG and PDF are expressed as the file-type or the suffix that appears on file names.  To an archivist, these formats are actually more like families of special-purpose encodings that may be more or less compatible or incompatible with a particular application.  When it comes to archival needs, discussion of format needs to go deeper than these familiar family names. 
 <p>
-There are countless ways that media files can be messed up.  The best way to make sure that they aren't is to 
-<ol>
-<li>understand the original capture devices whether they be particular models of scanners, or cameras, and the specific settings that are known to work
-<li>the nature of the technical metadata that is embedded in the media at capture time.  
-<li>Keep the number of intervening transformations to a minimum.  
-<li>If adjustments are necessary -- like cropping or straightening, only use tools that have been tested end-to-end in the accession process. 
-<li>Be aware of how the current repository (Omeka) honors or ignores technical metadata of different sorts when producing derivative presentation images
-</ol>
---> 
+The following description of admissible format profiles attempts to describe the parameters that you should be able to find in the user-preferences or save-as options on your devices and media manipulation tools.
+
+<h2 id="image">TIFF Format Profiles</h2>
+<p><b>Use Cases</b> TIFF is the default format for scanned documents that represent views and paper artifacts like photos and ephemera.
+<p><b>No Multi-Page TIFFs</b>  All TIFF images must contain a single image frame.  Multi-frame or multi-page tiff files are not accepted.
+<p><b>No Transparency Layers</b> (aka alpha channel) THis applies to 16-bit and 32-bit tiffs.  TIFF images should be flattened before saving out of editing tools.
+<p><b>LZW Compression preferred</b> Where possible, LZW compression should be applied to the bitstream at the time of collection.  
+
+<p><b>Admissible TIFF Color Models:</b>
+  <ul>
+    <li><b>Standard RGB (sRGB), three chanel, 24-bit</b>: THis is the default color model for scanned paper documents and photographs.  (Preferred)
+    <li><b>8-Bit Grayscale</b> is occaisionally used for tiffs generated frmo born-digital media that is strictly monochrome.
+    <li><b>1-Bit Black and White</b> this should be very rare.  It sometimes results from images exported from vector-based originals like CAD drawings. 
+    </ul>
 
 
-<h2 id="image">TIF Format Profiles</h2>
-<p>The following properties can be evaluated for any image using your computer's file explorer.  In Windows, right-click the image and choose properties.</p>
-<h3 id="tif">TIFF Format</h3>
-<p>The TIFF format for digital images is a very flexible container for a variety of image encodings some of which are considered solid for archival use and many others, that are less portable.  While TIFF is recommended, it is necessary to look at specific properties of the TIFF file to assure that the image will be most likely to be preserved and transferrable for the long-term. 
-<h3 id="names">File Names:</h3>
-<p>Even though WIndows and Apple operating systems may be more flexible in terms of file and folder names, our folder and file names should be compatible with the more universal conventions used by Linux OS amd web applications.
-<ul>
-  <li>Use only alphabetical and numerical characters plus "-", and "_".
-  <li>No spaces or tabs in filenames!
-  <li>Tif files should end with a simple ".tif" suffix.
-  </ul> 
-<h3 id="pages">Single-Page Media</h3>
-<p>Although it may be possible to save Tif files with multiple pages (or frames), these files cannot be loaded into Omeka and are also problematic in other archival management applications.  Therefore all images should contain a single page or frame. 
-<h3 id="color">Color Representation /  Bit Depth:</h3>
-<ul>
-  <li>8 bits per channel.
-  <li>Gray Scale: One Channel -- 8 bits.
-  <li>Color: 3 Channel RGB -- 24 bits. 
-  <li>No transparency should be applied.   Remove transparency you should <b>Flatten</b> the image and check to make sure that the result has a bit-depth of 24.  (8-bits per channel.)
-  <li>TIF images should use LZW compression
+<p><b>CDASH-Specific Use-Cases: </b><br>
+  <ul>
+<li>Architectural Inventory Form (AI) - TIFF
+<li>Contact Sheet (CS) - TIFF
+<li>Detail View (VD) - TIFF
+<li>Ephemera (EP) - TIFF when image-dominant (tend to <li>lean towards image/TIFF)
+<li>Exterior View (VE) - TIFF
+<li>Interior View (VI) - TIFF
+<li>Plan View (VP) - TIFF
+<li>Supplemental Material (SM) - TIFF when image-dominant 
 </ul>
 
-<h3 id="profiles">TIF Color Profiles:</h3>
-<p>Images exported from graphics and design applications often use color mapped images that apply <b>Color Profiles</b> other than simple RGB or sRGB.  These should be avoided.   
-</p>
-<p>According to the NARA Guidelines (p38):
-  <blockquote>
-    An ideal workflow would be to scan originals with a calibrated and characterized device, assign the profile of that
-device to the image file, and convert the file to the chosen workspace (Adobe RGB 1998 for color or Gray Gamma
-2.2 for grayscale).
-  </blockquote>
+
+    <p><b>TIFF Rendering Rules:</b> The bitstream will be rendered as is.  AAny rotation or color profile adjustments must be baked-in.  Technical metadata tags will be completely ignored for rendering and migration. 
 
 
-<h3>TIF Compression:</h3>
-<ul>
 
-  <li>LZW Compression
-</ul>
-<p>Various scanners and file-save operations will default to other sorts of compression that will cause problems.  Therefore it is important to choose tools and export functions that use No compression or LZW and make sure to check frequently that your images are safe.
-</p> 
-<h3 id="pixels">Image Pixel Dimensions and DPI</h3>
+<hr>
+
+
+<h2>JPEG Format Profiles</h2>
+<p>JPEG images are normally frowned upon as preservation masters, because JPEG compression is not reversable, and will lose fidelity if the images are  re-sampled. Nevertheless, when considering the potential formats created by cell-phone cameras, JPEG is actually the most archive-friendly option.  And considering the way that photographs of scenes register in the eye, the effect of JPEG dithering is not considered a problem.
 <p>
-  The vast majority of physical holdings in the Architectural survey are letter-sized pages.  The original scanning requirements were to make 24-bit RGB images at 200dpi. On average the pixel dimention of these images is about 
+<b>Use Case:</b> Photographs from portable digital cameras.
+<p><b>Resolution & Compression: </b> ~10 or more megapixels, Minimum compression (quality factor closer to 100)  
+
+  <p><b>Color Model: </b>Outwardly, our jpgs will render with Standard RGB (sRGB), and internally the bitstream is YCbCr.  Other profiles of Jpeg are rare and not admissable. 
+
+  <p><b>Rendering & Migration Rules: </b> JPEGs will be rotated according to the value of the EXIF: Orientation tag.  All other tags and color profiles will be ignored.  
+
+<hr>
+
+<h2>PDF/a Format Profiles</h2>
+<p>Compared with image formats, PDF is a very complicated graphical format that can carry vector graphics including crisp geometrical shapes and scaleable fonts and searchable text, systematic pagination and outlining.  These advantages come at a cost of complicating the technology for rendering and viewing the documents.  Special PDF plugins are easily accessible in web browsers today, but it is likely that in the future when newer document formats replace today's PDFs the plug-ins or whatever technology people use to browse archives, may not be as universal or easy to use. 
+
+<p>In anticipation of tha challenges of long-term preservation and migration of PDFs the archival community and software developers have developed several archival flavors of PDF.  This is another format family, known as PDF/a but this family name encompasses several conformance profiles, some of which are admissible to CDASH, and some aren't. 
+
+<p><b>Admitted Conformance Levels: </b>PDF/A-1, PDF/A-2 and PDF/A-3 are admissible.  PDF/A-4 is excluded because these files can carry arbitrary attached files. 
+
+<p><b>General PDF Use Cases:</b> Use PDF/A for 
+   <ul>
+  <li>Born-digital documents and downloaded web-pages. (see print-to-pdf instructions below)
+  <li>Documents with systematic pagination.
+  </ul>
+
+<p><b>CDASH-Specific Use-Cases: </b><br>
+  <ul>
+<li>Correspondence (CD) - PDF/A
+<li>Demo Memo (DM) - PDF/A
+<li>Historic Buildings Survey (HS) - PDF/A
+<li>Published Material (AM) - PDF/A
+<li>Research Form (RF) - PDF/A
+<li>Research Notes (RN) - PDF/A
+<li>Supplemental Material (SM) - when text-dominant
+<li>Ephemera (EP) - when text-dominant (tend to lean towards image/TIFF)
+</ul>
+
+  <h2 id="pdfa">Quick Links for Scanning and Saving Archival PDFs</h2>
   
-  Pixel Dimension os the count of pixels for the height and width of the rectangular image.  In most cases, our digital documents are less than 30" x 40' Inches scanned at 300 dpi.  These images have approximately 2500 x 3500 pixels and compressed with the LZW process, are around 4 megabytes each.  Occaisionally there is a 30x40 drawing scanned at 300dpi might be contributed.  SUch an image would be 6000x8000 pixels.  A file such as this, uncompressed would be approximately  This would be a maximum pixel dimension of 6000 x 8000 pixels, and may weigh in at around 100mb. This would be the limit for pixel dimension and file size.
-
-
-<h3>TIF Rendering and Migration Rules</h3>
-<p>Embedded Technical Metadata in TIF files, whether it be native TIF tags, XMP or EXIF, will be preserved disregarded in rendereing and other transformations.  
-This means that any rotation or color profiles assigned to these files should be baked-in to the RGB bit-stream. 
-</p>
-
-
-
-<h2 id="pdfa">Quick Links for Scanning and Saving Archival PDFs</h2>
-<p>PDF format documents are easy to handle today.  A hundred years from now, we probably should expect problems.  Features that make PDFs compact today, such as relying on external font libraries or clever media or compression formats are all likely to cause problems in the future.  Luckily for us, archivists have come up with a common denominator for packaging documents as Archival PDF documents.  We can be reasonably sure that archival tools of the future will be able to read these and if necessary import these into the archival systems of the future, or to migrate these to digital document formats of the future, if necessary.    
-<p>Here are some PDFs that describe how Historical Commission staff can compile Archival PDFs as sequenses of scanned pages, or save digital documents as Archival PDF from digital documents.
+  <p>Here are some PDFs that describe how Historical Commission staff can compile Archival PDFs as sequenses of scanned pages, or save digital documents as Archival PDF from digital documents.
 <ul>
   <li><a href="./PDFA_and_Image_instructions.pdf" target="pdfa"> Create PDFa Documents on the Ricoh Copier</a>
   <li><a href="SaveAs_PDFA_instructions_PDFA.pdf" target="pdfa"> Save Digital Documents as PDFa</a>
   </ul>
 
+<hr>
 
-<h2 id="tools">Tools For Handling and Checking Image Files</h2>
-<p>When scanning documents and manipulating the results, use a tool that allows you to 
-  <ul>
-    <li>Inspect and set the color profile
-    <li>Flatten the image to remove transparency
-    <li>Set the compression format
-  </ul>
-<p>To determine whether an image is formatted correctly, you can inspect its properties by right-clicking it in Windows, choose Properties, and then inspect the Details tab. 
+<h2>Intervening Manipulation</h2>
+<p>Sometimes there are good reasons to edit, transform or otherwise manipulate a media package either through its embedded tags or modifying the bitstream or both.  From the archivists perspective, the asset that is saved from whatever tool that was used is a completely new product with unknown properties from an admissibility perspective.   
+<p>
+  It is best to avoid the manipulation stages if possible.  When it is necessary, the work should be done by someone who understands the concepts covered in this document, and that the behavior of the tools has been tested with specific documented Save-As preferences and rendering behavior for a specific target format profile.  
+<p>The goal in any manipulation scenario is to avoid disturbing the bitstream:
+  <ul> 
+    <li>Avoid rotation if you can.  
+    <li>Rotation in exact increments of 90 degrees may be possible to do without resampling pixel values 
+    <li>For TIFF images, rotation needs to be carried out on the pixels, not merely by toggling an orientation tag.
+    <li>For JPEG's rotation in 90 degree increments should be accomplished with the orientation tag. 
+    <li>Straightening (incremental rotation) may be done when necessary.
+    </uL>
+    
+  <h3>Recommended Tools</h3>
+  <p><b>For cropping and straightening JPEG cell-phone images:</b> choose the newer of the WIndows Photo editing tools. <img src="./images/windows_photos.jpg"/>
 
-<p>If you ware experimenting with a new workflow and want to test your images for compatibility with the Omeka importer, try importing the the image as media for an item in the Stage instance.   
+   <p>...need save-as instructions here 
+
+  <p><b>For manipulating TIFs:</b>...
+
+  <p>...to be continued.
 
 
 
