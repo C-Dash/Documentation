@@ -69,6 +69,7 @@
   <ul>
     <li><b>Technical Metadata</b> which may describe the device or media creator and other details about the context. 
     <li><b>Bitstream</b>: the graphical content.  In the case of an image, this would be systematic descriptions of pixels.  
+    <li></b>Embedded Thumbnail:</b> Used by file browsers, like windows explorer.
   </ul>
 
 <h3>Technical Metadata</h3>
@@ -79,9 +80,12 @@
 <h3>Bitstream Data</h3>
 <p>The Bitstream portion of a media file can be thought of as the content of the media file.  Each format family, like TIFF or JPEG or PDF will have its own conventions for how the bitstream is encoded.  Within each of these families, there are distinctive variations.  These variations are what make it necessary to define <b>Format Profiles</b> because just saying TIFF, or PDF is is not specific enough to stipulate how a tool should render the content.
 <p>
-You can look at our listing of Format Profiles, below to see some of the ways that bitstream characteristics such as pixel-organization, color model and compression or archival compliance level can be used to declare a format profile that will ensure reliable rendering.    
+You can look at our listing of Format Profiles, below to see some of the ways that bitstream characteristics such as pixel-organization, color model and compression or archival compliance level can be used to declare a format profile that will ensure reliable rendering.  
 
-<h3>Rendering, Preview & Confusion</h3>
+<h3>Embedded Thumbnail</h3>
+Some devices and software place a low-res thumbnail into the image file to help tools like windows explorer provide a representation of the image.  If the image is edited later, sometimes this thumbnail is updated, sometimes it isn't.  <a href="https://devblogs.microsoft.com/oldnewthing/20110517-00/?p=10653" target="sidecar">This can lead to confusion</a>, especially in cases of rotation and cropping. 
+
+<h2>Rendering, Preview & Confusion</h2>
 <p>Ordinarily nobody looks at the actual bitstream, you only see a rendering or a preview of it.  This preview may or may not involve transformations, such as rotation, or color adjustments based on the values of tags included in the technical metadata.  
 <p>
   The question of whether technical metadata should cause the bitsream to render one way or another is sometimes presented as a user-preference option in some technically oriented tools.  Most user-centric tools will do /or not-do/ it one way or the other.  The potential for confusion multiplies when you consider the possibility that different sorts of embedded technical metadata can be contradictory.  And it gets even more devilish when a well intentioned contributor who applies a mis-guided rotation to the bitstream after being confused by a rendering mis-corrected according to tags....
