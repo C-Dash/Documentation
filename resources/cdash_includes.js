@@ -27,8 +27,8 @@
 
 
 let index_htm = `
-<p style="background-color: white; margin-left: -10px; padding-left: 10px;">This is a very early draft of the C-Dash Docs.  It is not yet ready for public consumption.  Nevertheless you are welcome to take a look around. 
-</p>  
+<!-- p style="background-color: white; margin-left: -10px; padding-left: 10px;">This is a very early draft of the C-Dash Docs.  It is not yet ready for public consumption.  Nevertheless you are welcome to take a look around. 
+</p -->  
 <ul class="treeview">
 <h3>Owner / Enterprise Viewpoint</h3>
 <li class="chapter"><a href="../home/index.htm">Enriching and Connecting Place-Based Knowledge</a></li>
@@ -118,36 +118,42 @@ let index_htm = `
       <li><a href="../doc_items/index.htm#doctypes">Document Types and Default Properties</a>
     <li><a href="../doc_items/index.htm#subjects">CDASH Subject Keywords</a>
     </ul>
-   <li class="chapter"><a href="../media_format/index.htm">Media Format Requirements</a></li>
-  <ul class="verses">
-    <li><a href="../media_format/index.htm#lifecycle">Lifecyle Concerns for Archiving Digital Data</a>
-    <li><a href="../media_format/index.htm#lifecycle">Media Lifecycle Concerns</a>
-    <li><a href="../media_format/index.htm#pdfa">Quick Links for creating and sabing PDFa Files</a>
-    <li><a href="../media_format/index.htm#images">Recommendations for Image Files</a>
-    <li><a href="../media_format/index.htm#tif">TIFF Format</a>
-    <li><a href="../media_format/index.htm#name">File Names</a>
-    <li><a href="../media_format/index.htm#pages">Single Page</a>
-    <li><a href="../media_format/index.htm#color">Color Representation /  Bit Depth</a>
-    <li><a href="../media_format/index.htm#profiles">Color Profiles</a>
-    <li><a href="../media_format/index.htm#compression">Compression</a>
-    <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
-    </ul>
-  <li class="chapter"><a href="../integrity_mgt/index.htm">Managing CDASH Relational Integrity</a></li>
+   <li class="chapter"><a href="../media_format/index.htm">Admissable Media</a></li>
 
-<li class="chapter"><a href="../accession/index.htm">Growing CDASH: Accession Workflow </a></li>
+  <ul class="verses">
+    <li><a href="../media_format/index.htm#perspective">The Consumer vs Archivist Perspective on Digital Media</a>
+    <li><a href="../media_format/index.htm#packages">Media Files are Packages</a>
+    <li><a href="../media_format/index.htm#confusion">Rendering, Preview & Confusion</a>
+    <li><a href="../media_format/index.htm#control">Maintaining Control in Archival Accession and Management</a>
+    <li><a href="../media_format/index.htm#references">References</a>
+    <li><a href="../media_format/index.htm#tiff">TIFF Format Profiles</a>
+    <li><a href="../media_format/index.htm#jpeg">JPEG Format Profiles</a>
+    <li><a href="../media_format/index.htm#pdfa">PDF/A Format Profiles</a>
+    <li><a href="../media_format/index.htm#pdfa-prod">Quick Links for Scanning and Saving Archival PDFs</a>
+    <li><a href="../media_format/index.htm#manipulation">Intervening Manipulation</a>
+    </ul>
+
+
+<li class="chapter"><a href="../accession/index.htm">Accession Workflow </a></li>
   <ul class="verses">
     <li><a href="../accession/index.htm#downloads">Downloads</a>
-    <li><a href="../accession/index.htm#prepare">Preparing a Batch of Media Files for Accession</a>
+    <li><a href="../accession/index.htm#overview">Overview</a>
+
+    <li><a href="../accession/index.htm#prepare">Preparing a Batch Folder</a>
     <li><a href="../accession/index.htm#initialize">Initializing a Batch</a>
-    <li><a href="../accession/index.htm#digester">Introducing the Batch Digester</a>
     <li><a href="../accession/index.htm#testbatch">Introducing the Test Batch</a>
+    <li><a href="../accession/index.htm#digester">Introducing the Batch Digester</a>
+    <li><a href="../accession/index.htm#ready_names">Batch Ready Names</a>
+    <li><a href="../accession/index.htm#grooming">Interactive Batch grooming</a>
     <li><a href="../accession/index.htm#csv">Generating the CSV Manifest Tables</a>
     <li><a href="../accession/index.htm#upload">Upload the Batch to the Cloud</a>
     <li><a href="../accession/index.htm#csvimport">CSV Import Module with CDASH Repeater Modification</a>
     <li><a href="../accession/index.htm#accessionprep">Preparing an Accession Transaction</a>
     <li><a href="../accession/index.htm#generate">Generating Omeka Resources with the Modified CSV Import Tool</a>
     <li><a href="../accession/index.htm#logging">Logging and Verifying Transactions</a>
-  </ul>
+</ul>
+<!-- li class="chapter"><a href="../integrity_mgt/index.htm">Managing CDASH Relational Integrity</a></li -->
+
 </ul>
 
 <h3>System Administrator / Developer Viewpoint</h3>

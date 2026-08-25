@@ -3,7 +3,7 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Recommended Media Formats for CHC Omeka Applications</title>
+    <title>CDASH Admissible Media</title>
     <meta name="description" content="Describes file formats recommended for the Cambridge Digital Architectural Survey and History ">
     <meta name="keywords" content="Archiving">
     <meta name="author" content="Paul B. Cote">
@@ -37,35 +37,38 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Recommended Media Formats for CHC Omeka Applications</h1>
+  <h1 class="title">CDASH Admissible Media</h1>
   <p>  
   </p>
 
   <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
 
-  <!-- ul class="verses">
-    <li><a href="../media_format/index.htm#lifecycle">Lifecyle Concerns for Archiving Digital Data</a>
-    <li><a href="../media_format/index.htm#lifecycle">Media Lifecycle Concerns</a>
-    <li><a href="../media_format/index.htm#pdfa">Quick Links for creating and sabing PDFa Files</a>
-    <li><a href="../media_format/index.htm#images">Recommendations for Image Files</a>
-    <li><a href="../media_format/index.htm#tif">TIFF Format</a>
-    <li><a href="../media_format/index.htm#name">File Names</a>
-    <li><a href="../media_format/index.htm#pages">Single Page</a>
-    <li><a href="../media_format/index.htm#color">Color Representation /  Bit Depth</a>
-    <li><a href="../media_format/index.htm#profiles">Color Profiles</a>
-    <li><a href="../media_format/index.htm#compression">Compression</a>
-    <li><a href="../media_format/index.htm#pixekls">Pixel Dimension</a>
-    </ul -->
+  <ul class="verses">
+    <li><a href="../media_format/index.htm#perspective">The Consumer vs Archivist Perspective on Digital Media</a>
+    <li><a href="../media_format/index.htm#packages">Media Files are Packages</a>
+    <li><a href="../media_format/index.htm#confusion">Rendering, Preview & Confusion</a>
+    <li><a href="../media_format/index.htm#control">Maintaining Control in Archival Accession and Management</a>
+    <li><a href="../media_format/index.htm#references">References</a>
+    <li><a href="../media_format/index.htm#tiff">TIFF Format Profiles</a>
+    <li><a href="../media_format/index.htm#jpeg">JPEG Format Profiles</a>
+    <li><a href="../media_format/index.htm#pdfa">PDF/A Format Profiles</a>
+    <li><a href="../media_format/index.htm#pdfa-prod">Quick Links for Scanning and Saving Archival PDFs</a>
+    <li><a href="../media_format/index.htm#manipulation">Intervening Manipulation</a>
+    </ul>
 
-<h2>The Consumer vs Archivist Perspective on Digital Media</h2>
-<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They almost always perform as expected in a variety of tools.  The question of how image files and PDFs are encoded and how they are rendered is hidden from the ordinary users. As long as the display of the content looks right in whatever viewing or editing tool you are using.
+<h2 id="perspective">The Consumer vs Archivist Perspective on Digital Media</h2>
+<p>To an ordinary user, digital media appear as files that are supposed to display some kind of audio-visual content.  They almost always perform as expected in a variety of tools.  The question of how image files and PDFs are encoded and how they are rendered is hidden from the ordinary users. For the consumer, as long as the rendering in whatever tool has no apparent problems, then everything is fine. 
+<p>An archivist can appreciate how an image works well in a page-view, they also have to worry about whether a collection of one million images will perform reliably in a digital media ecosystem of 100 years from now.  Most likely, this ecosystem will be one where the formats that we use today will no longer be what every viewing tool expects.  Compared with an ordinary user of, the digital media archivist has responsibilities comparable with those of a an accountant or treasurer. The archivist must have a level of understanding that allows her to foresee problems that a normal user is happy to be completely clueless about. 
+<p>
+
+
 </p>
   <figure class="middle">
   <img src="images/lineage_consumer.jpg">
   <figcaption>Consumer Viewpoint on Digital Media (Click to Enlarge)</figcaption>
   </figure>
 
-<h2>Media Files are Packages</h2>
+<h2 id="packages">Media Files are Packages</h2>
 <p>A digital media file is either captured by a device: scanner or camera, or resulted in some kind of a save-as from a program or download.  In any case, the media file is a package that typically has two parts: 
   <ul>
     <li><b>Technical Metadata</b> which may describe the device or media creator and other details about the context. 
@@ -86,15 +89,14 @@ You can look at our listing of Format Profiles, below to see some of the ways th
 <h3>Embedded Thumbnail</h3>
 Some devices and software place a low-res thumbnail into the image file to help tools like windows explorer provide a representation of the image.  If the image is edited later, sometimes this thumbnail is updated, sometimes it isn't.  <a href="https://devblogs.microsoft.com/oldnewthing/20110517-00/?p=10653" target="sidecar">This can lead to confusion</a>, especially in cases of rotation and cropping. 
 
-<h2>Rendering, Preview & Confusion</h2>
-<p>Ordinarily nobody looks at the actual bitstream, you only see a rendering or a preview of it.  This preview may or may not involve transformations, such as rotation, or color adjustments based on the values of tags included in the technical metadata.  
+<h2 id="confusion">Rendering, Preview & Confusion</h2>
+<p>Ordinarily nobody looks at the actual bitstream, you only see a rendering or a preview of it.  This preview may or may not involve an on-the-fly transformation, such as rotation, or color adjustments based on the values of tags included in the technical metadata.  
 <p>
-  The question of whether technical metadata should cause the bitsream to render one way or another is sometimes presented as a user-preference option in some technically oriented tools.  Most user-centric tools will do /or not-do/ it one way or the other.  The potential for confusion multiplies when you consider the possibility that different sorts of embedded technical metadata can be contradictory.  And it gets even more devilish when a well intentioned contributor who applies a mis-guided rotation to the bitstream after being confused by a rendering mis-corrected according to tags....
+  The question of whether technical metadata should cause the bitsream to render one way or another is sometimes presented as a user-preference option in technically-oriented tools.  Most, tools oriented toward consumers will behave one way or another with regard to reading and writing embedded metadata as directives for aspects like color profile or rotation.    The potential for confusion multiplies when you consider the possibility that similar tags found in separate embedded metadata schema can be contradictory.  It gets even more devilish when a well intentioned contributor applies a mis-guided rotation to the bitstream after being confused by a rendering mis-corrected according to one tag or another. 
 <p>
-  All of this sounds humorous, but can be quite vexing when a stream of this sort of image sneaks into the repository and is not discovered until some new sort of display module reveals that the collection is now infiltrated by thousands of roque assets that cause unexpected problems.   
+  We all have probably experienced this kind of confusion without really understanding what is going on. For the user, if it looks right in your tool, its OK.  If not, just start over.   For the archivist, especially in the distant future, these invisible problems can be quite vexing when a new display module reveals that the collection has been infiltrated by thousands of roque assets with problems that were not obvious, and now very difficult to sort out. 
 
-<h3>An Archivist's Viewpoint on Digital Media</h3>
-<p>An archivist can appreciate how an image works well in a page-view, they also have to worry about whether a collection of one million images will perform reliably in a digital media ecosystem of 100 years from now.  Most likely, this ecosystem will be one where the formats that we use today will no longer be "what everyone uses."  The archivist must have a level of understanding that allows her to foresee problems that a normal user would have no clue about. 
+
 
 
  <figure class="middle">
@@ -104,7 +106,7 @@ Some devices and software place a low-res thumbnail into the image file to help 
 
 
 
-<h2>Maintaining Control in Archival Accession and Management</h2>
+<h2 id="control">Maintaining Control in Archival Accession and Management</h2>
 <p>How does the archivist develop a professional level of confidence that the repository being built day by day is sustainable and ready for the next inevitable migration to the media formats of the future? By understanding and applying the following principles:
 </p>
 <ul>
@@ -117,7 +119,7 @@ Some devices and software place a low-res thumbnail into the image file to help 
 </ul>
 
 
-<h3>References</h3>
+<h3 id="references">References</h3>
 <p>I'm still looking for a beginner's guide to digital media.  Here are some references that go right nto the deep end of digital preservation, media and technical lineage:
 <ul>
 <li><a href="https://www.loc.gov/preservation/resources/rfs/TOC.html"> Library of Congress Recommended Formats Statement</a>
@@ -128,12 +130,12 @@ Technical Guidelines for Digitizing Archival Materials for Electronic Access: Cr
 
 </ul>
 
-<h1>Admissible Format Profiles and their Use-Cases</h1>
+<h1 id="profiles">Admissible Format Profiles and their Use-Cases</h1>
 <p>From the consumer perspective Media formats like TIFF, JPEG and PDF are expressed as the file-type or the suffix that appears on file names.  To an archivist, these formats are actually more like families of special-purpose encodings that may be more or less compatible or incompatible with a particular application.  When it comes to archival needs, discussion of format needs to go deeper than these familiar family names. 
 <p>
 The following description of admissible format profiles attempts to describe the parameters that you should be able to find in the user-preferences or save-as options on your devices and media manipulation tools.
 
-<h2 id="image">TIFF Format Profiles</h2>
+<h2 id="tiff">TIFF Format Profiles</h2>
 <p><b>Use Cases</b> TIFF is the default format for scanned documents that represent views and paper artifacts like photos and ephemera.
 <p><b>No Multi-Page TIFFs</b>  All TIFF images must contain a single image frame.  Multi-frame or multi-page tiff files are not accepted.
 <p><b>No Transparency Layers</b> (aka alpha channel) THis applies to 16-bit and 32-bit tiffs.  TIFF images should be flattened before saving out of editing tools.
@@ -167,8 +169,8 @@ The following description of admissible format profiles attempts to describe the
 <hr>
 
 
-<h2>JPEG Format Profiles</h2>
-<p>JPEG images are normally frowned upon as preservation masters, because JPEG compression is not reversable, and will lose fidelity if the images are  re-sampled. Nevertheless, when considering the potential formats created by cell-phone cameras, JPEG is actually the most archive-friendly option.  And considering the way that photographs of scenes register in the eye, the effect of JPEG dithering is not considered a problem.
+<h2 id="jpeg">JPEG Format Profiles</h2>
+<p>JPEG images are normally frowned upon as preservation masters, because JPEG compression is not reversable, and will lose fidelity at each stage in the production of derivitive proxies or in migration. Nevertheless, when considering the potential formats created by cell-phone cameras, JPEG is actually the most archive-friendly option.  And considering the way that photographs of scenes register in the eye, the effect of JPEG dithering is not considered a problem.
 <p>
 <b>Use Case:</b> Photographs from portable digital cameras.
 <p><b>Resolution & Compression: </b> ~10 or more megapixels, Minimum compression (quality factor closer to 100)  
@@ -179,7 +181,7 @@ The following description of admissible format profiles attempts to describe the
 
 <hr>
 
-<h2>PDF/a Format Profiles</h2>
+<h2 id="pdfa">PDF/a Format Profiles</h2>
 <p>Compared with image formats, PDF is a very complicated graphical format that can carry vector graphics including crisp geometrical shapes and scaleable fonts and searchable text, systematic pagination and outlining.  These advantages come at a cost of complicating the technology for rendering and viewing the documents.  Special PDF plugins are easily accessible in web browsers today, but it is likely that in the future when newer document formats replace today's PDFs the plug-ins or whatever technology people use to browse archives, may not be as universal or easy to use. 
 
 <p>In anticipation of tha challenges of long-term preservation and migration of PDFs the archival community and software developers have developed several archival flavors of PDF.  This is another format family, known as PDF/a but this family name encompasses several conformance profiles, some of which are admissible to CDASH, and some aren't. 
@@ -204,7 +206,7 @@ The following description of admissible format profiles attempts to describe the
 <li>Ephemera (EP) - when text-dominant (tend to lean towards image/TIFF)
 </ul>
 
-  <h2 id="pdfa">Quick Links for Scanning and Saving Archival PDFs</h2>
+  <h2 id="pdfa-prod">Quick Links for Scanning and Saving Archival PDFs</h2>
   
   <p>Here are some PDFs that describe how Historical Commission staff can compile Archival PDFs as sequenses of scanned pages, or save digital documents as Archival PDF from digital documents.
 <ul>
@@ -214,17 +216,22 @@ The following description of admissible format profiles attempts to describe the
 
 <hr>
 
-<h2>Intervening Manipulation</h2>
-<p>Sometimes there are good reasons to edit, transform or otherwise manipulate a media package either through its embedded tags or modifying the bitstream or both.  From the archivists perspective, the asset that is saved from whatever tool that was used is a completely new product with unknown properties from an admissibility perspective.   
+<h2 id="manipulation">Intervening Manipulation</h2>
+<p>Sometimes there are good reasons to edit, transform or otherwise manipulate a media package either through its embedded tags or modifying the bitstream or both.  If the product is a candidate for accession then is is critical that the technician be aware of how their chosen tool and operations affect the arrangement of pixels and the color model and compression, and whatever embedded metadata as might be affecting the display of the image in the tool at hand, and in the target repository.   
 <p>
   It is best to avoid the manipulation stages if possible.  When it is necessary, the work should be done by someone who understands the concepts covered in this document, and that the behavior of the tools has been tested with specific documented Save-As preferences and rendering behavior for a specific target format profile.  
 <p>The goal in any manipulation scenario is to avoid disturbing the bitstream:
+  <p>For TIFF Images</p>
   <ul> 
     <li>Avoid rotation if you can.  
-    <li>Rotation in exact increments of 90 degrees may be possible to do without resampling pixel values 
-    <li>For TIFF images, rotation needs to be carried out on the pixels, not merely by toggling an orientation tag.
-    <li>For JPEG's rotation in 90 degree increments should be accomplished with the orientation tag. 
-    <li>Straightening (incremental rotation) may be done when necessary.
+    <li>Rotation needs to be carried out on the pixels, not merely by toggling an orientation tag.
+    <li>Rotation in exact increments of 90 degrees may be less destructive than intermediate adjustments.
+    </ul>
+
+    <p>For JPEGs</p>
+    <ul>
+    <li>For JPEG's rotation in 90 degree increments should be accomplished with a tol that modifies the EXIF  orientation tag. 
+    <li>Straightening (incremental rotation) may be done when necessary, but avoid doing it repeatedly.
     </uL>
     
   <h3>Recommended Tools</h3>
@@ -234,7 +241,7 @@ The following description of admissible format profiles attempts to describe the
 
   <p><b>For manipulating TIFs:</b>...
 
-  <p>...to be continued.
+  <p>...[Need to document preferred tols fo rmanipuating tiffs.
 
 
 

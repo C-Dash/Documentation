@@ -3,7 +3,7 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Accession</title>
+    <title>CDASH Accession Workflow</title>
     <meta name="description" content="The CDASH accession process provides tools and workflows that assist with transforming media files on your desktop to archival information package that create cdash documents with media that are linked to existing CDASH Places and Folders. ">
     <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
     <meta name="author" content="Paul B. Cote">
@@ -37,10 +37,10 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Routine Accession of new Documents into CDASH</h1>
+  <h1 class="title">CDASH AcCession Workflow</h1>
 
 <p>
-This page describes the workflow for taking media files from the wild and making them ready for integration with the schema of folders and places the running CDASH repository.  The elements highlighted in red in the diagram below illustrate the technical pathway of stages that the Omeka / CDASH administrator will use to create CDASH documents from digital media files. 
+This page describes the workflow for taking media files from the wild and making them ready for integration with the schema of folders and places the running CDASH repository.  The elements highlighted in red in the diagram below illustrate the technical pathway that the Omeka / CDASH administrator will use to create CDASH documents from digital media files. 
 
   <figure class="middle">
   <img src="images/accession.jpg">
@@ -49,19 +49,23 @@ This page describes the workflow for taking media files from the wild and making
 
 
   <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
-  <!-- ul class="verses">
+  <ul class="verses">
     <li><a href="../accession/index.htm#downloads">Downloads</a>
-    <li><a href="../accession/index.htm#prepare">Preparing a Batch of Media Files for Accession</a>
+    <li><a href="../accession/index.htm#overview">Overview</a>
+
+    <li><a href="../accession/index.htm#prepare">Preparing a Batch Folder</a>
     <li><a href="../accession/index.htm#initialize">Initializing a Batch</a>
-    <li><a href="../accession/index.htm#digester">Introducing the Batch Digester</a>
     <li><a href="../accession/index.htm#testbatch">Introducing the Test Batch</a>
+    <li><a href="../accession/index.htm#digester">Introducing the Batch Digester</a>
+    <li><a href="../accession/index.htm#ready_names">Batch Ready Names</a>
+    <li><a href="../accession/index.htm#grooming">Interactive Batch grooming</a>
     <li><a href="../accession/index.htm#csv">Generating the CSV Manifest Tables</a>
     <li><a href="../accession/index.htm#upload">Upload the Batch to the Cloud</a>
     <li><a href="../accession/index.htm#csvimport">CSV Import Module with CDASH Repeater Modification</a>
     <li><a href="../accession/index.htm#accessionprep">Preparing an Accession Transaction</a>
     <li><a href="../accession/index.htm#generate">Generating Omeka Resources with the Modified CSV Import Tool</a>
     <li><a href="../accession/index.htm#logging">Logging and Verifying Transactions</a>
-</ul -->
+</ul>
 
   <h2 id="downloads">Downloads</h2>
     <p>Right-Click these links and paste into your browser URL Bar.  </p>
@@ -72,13 +76,14 @@ This page describes the workflow for taking media files from the wild and making
   <p>
 
 
-<h2>Overview of the Accession Process</h2>
+<h2 id="overview">Overview of the Accession Process</h2>
 <p>CDASH is a repository of media files and metadata that is intended to be maintained and developed and preserved for a very long time. Many aspects of the accession process will be better understood in light of the idea that the fundamental task of the archivist is to screen and organize media in such a way that the collection of Reproduction Masters in the repository behave in a predictable way, to support activities -- such as rendering derived media previews within the current archive applications, and also that the collection of Reproduction Masters behave predictably when migrating to a successor repository without any loss of information or un-wanted rendering glitches.  
 <p>
- The page on <a href="../media_format/index.htm"> CDASH Media Formats</a> discusses the many traps that are likely to plague un-informed contributers.  Please re-read that page to understand the principles that must be applied in order to prevent the very costly and embarrassing situations where faulty media files find their way into the repository.  The CDASH Digester tool provides validation, previews and format-screening as it turns informally-organized batches of media into the formal Archival Information packages ready for systematic accession into CDASH.  While the Digester has tools for limited repair of media files, problematic files finding their way into the accession process at this stage calls attention to problems in the Technical Lineage of media files that should be addressed upstream.    
+ The page on <a href="../media_format/index.htm"> CDASH Admissible Media</a> discusses the many traps that are likely to plague un-informed contributors.  Please re-read that page to understand the principles that must be applied in order to prevent the very costly and embarrassing situations where faulty media files find their way into the repository.  
+ <p>The CDASH Batch Digester tool provides validation, previews and format-screening as it turns informally-organized batches of media into the formal <a href="https://www.dpconline.org/docs/technology-watch-reports/1359-dpctw14-02/file#page=20" target="outboard">Archival Information Package</a> ready for systematic accession into CDASH.  While the Digester has tools for limited repair of media files, problematic files finding their way into the accession process at this stage calls attention to problems in the Technical Lineage of media files that should be addressed upstream.    
 </p> 
   
-  <h2 id="prepare">What is a Batch?</h2>
+  <h2 id="batch">What is a Batch?</h2>
   A CDASH Batch is a file-system folder that contains systematically named media folders and media files.  The naming convention for batches, folders and tiles provides an identification scheme that follows each document and file into the repository and provides a back-link to the original batch and file. The CDASH Digester is a tool for developing the organization of a batch.  The Digester creates a catalog and facilitates the grouping of media files into items of different types, which are associated with existing Places and Folders in the on-line CDASH repository.
   <p>
  When the the batch and its files have been throughly validated, the digester prepares CSV manifest tables  which are used in conjunction with <a href="https://github.com/C-Dash/CDASH-CSVImportPlus" target="github">Omeka CSV Import Tool (with the CDASH Repeater Modification)</a> to materialize the new documents in CDASH with all of the necessary connections to existing places and folders. Once a batch has been processed through the Import tool, the transaction is recorded and the CDASH Batch is copied cold storage.      
@@ -90,7 +95,7 @@ This page describes the workflow for taking media files from the wild and making
 
 
 
-<h3>Preparing a Batch Folder</h3>
+<h2 id="prepare">Preparing a Batch Folder</h2>
 <p>A Batch folder is a normal folder in the Windows file system.  It starts out with a subfolder named <b>media</b> which has any number of batch-media folders which correspond with folders in the CDASH repository.  Into these media folders, the archivist places media files, which will be associated as pages of new CDASH documents. 
 <p>
 <h3>Tokenized File and Folder Names</h3>
@@ -108,7 +113,7 @@ This page describes the workflow for taking media files from the wild and making
 <p>When this documentation refers to a token as <b>Mnemonic</b> it means that it is a string that is intended to remind the archivist of the subject of the resource and potentially the page order of sequential media files. Once the omeka resource ID has been validated, the digester replaces the mnemonic with a space-removed version of the linked CDASH folder or place. This mnemonic portion of the file name helps to keep the batch easily searchable by unassisted humans. 
 <p> 
 
-  <h3 id="initialize">Initializing a Batch</h3>
+  <h2 id="initialize">Initializing a Batch</h2>
   <p>The first stage of the accession process is carried out with Windows Explorer.
     
     <ul>
@@ -133,7 +138,7 @@ This page describes the workflow for taking media files from the wild and making
 e.g. 128-136_Main_St-OF23789 
 </pre>
 <p>
-  The <b>OF[item_set_id] refers to the Omeka resource ID of the CDASH folder. You can find this ID in the URL of the folder once you have chosen it in CDASH. 
+  The <b>OF[item_set_id]</b> refers to the Omeka resource ID of the CDASH folder. You can find this ID in the URL of the folder once you have chosen it in CDASH. 
 
 <p>Once the batch is scanned with the digester the mnemonic name token wil be replaced with the actual CDASH folder name. 
 
@@ -147,7 +152,7 @@ Since media files are probably already given mnemonic names and index numbers as
   </figure>
 
 
-  <li>Optionally, while you have the item-id of the CDASH Place Item associated with your new document, you are welcome to append this integer (no leading zeros) to the name of the first media file in your document sequence (sorted alphabetically).  As shown on the right, a sequence of media files shares a common mneomic string, then has a page index that assures the sort-order.  If the first file in the sequense includes an  -OP[Place_ID], then this place is assigned to subsequent files in the sequence.  A Document Type ID may also be assigned, or not.
+  <li>Optionally, while you have the item-id of the CDASH Place Item associated with your new document, you are welcome to append this integer (no leading zeros) to the name of the first media file in your document sequence (sorted alphabetically).  As shown on the right, a sequence of media files shares a common mnemonic string, then has a page index that assures the sort-order.  If the first file in the sequence includes an  -OP[Place_ID], then this place is assigned to subsequent files in the sequence.  A Document Type ID may also be assigned, or not.
   <p>
   When the Digester encounters a sequence of files as shown, the files are grouped together as pages of single a CDASH Document.  These are easy to explode into individual single-page documents using the Digester Media > Assign Metadata function.    
     
@@ -164,7 +169,7 @@ Since media files are probably already given mnemonic names and index numbers as
 <h2 id="testbatch">Introducing the Test Batch</h2>
 <p>Now that you understand they fundamental building blocks of a batch, it may be a good idea to have a look at the CDASH Digester Test Batch.  You can download the test bach from the <a href="#downloads">Downloads section, above.</a>  While you are downloading things, download that zip file of the CDASH Digester program, as well. 
 
-<p>The Digester test batch is useful for demonstrating how the Digester deals a variety of issues with file names and formats.  The test batch expands to a folder named <b>CDB260430-Test_batch</b> (the date may be different).  Because of the way the zip program works you will see that accepting the defaults when you unzip it creates an extra parent folder with the same name.  This can be fixed when unzipping by removing the outer folder from the unzip destination.
+<p>The Digester test batch is useful for demonstrating how the Digester deals a variety of issues with file names and formats.  The zipped test batch expands to a folder named <b>CDB260430-Test_batch</b> (the date may be different).  Because of the way the zip program works you will see that accepting the defaults when you unzip it creates an extra parent folder with the same name.  This can be fixed when unzipping by removing the outer folder from the unzip destination.
 
 
 <h2 id="digester">Introducing the Batch Digester</h2>
@@ -225,18 +230,18 @@ The digester starts streaming a lot of text to the console pane.  It reports the
 After scanning, the batch remains open for dragging in new files and folders using Windows Explorer.  Just rescan the batch or an individual folder to check the validity and format of the files.  If there is a problem, the digester's suggestions are listed in the media metadata pane. 
 
 
-<h2>Ready Names and Hints</h2>
+<h2 id="ready_names">Batch Ready Names</h2>
 <p>The structure and names of folders and files is critical. We mentioned that in the initial human-managed state of a batch, there is a lot of leeway for file names, as <a href="#initnames">descrived above</a>  Once the batch has been validated and interactively groomed with the digester, the names will all conform to the following tokenization templates:
 
-<h3>Batch Media Folders</h3>
+<h3>Batch Media Folder Names (Ready)</h3>
   <pre>F[Folder Index]-[CDASH Folder Name]-OF[Item-Set-ID]</pre>
   ex: F13-122-136_Main_St-OF234987
 
-<h3>Batch Media Files</h3>
+<h3>Batch Media File Names (Ready)</h3>
   <pre>[CDASH Place Title]-[Doc_Index]p[Page Index]-[Doc Type Code]-OP[CDASH Place ID]</pre>
   ex: 122_Main_St-Oliver_Holmes_House-OP8473
   
-<H1>Interactive Batch Grooming</h1> 
+<H2 id="grooming">Interactive Batch Grooming</h2> 
 <p>The routine use of the digester boils down to finding problems with media files and fixing them.  Problems fall into three categories:
   <ul>
     <li>Problems with Metadata.  These are basically problems with the file names and the way that they associate groups of media files with single or multi-page documents that have valid document type and a relation to place.
@@ -247,7 +252,7 @@ After scanning, the batch remains open for dragging in new files and folders usi
   <!-- Slideshow container -->
   <div id="moreslides" class="slideshow in-page" 
   data-imgheight = "400px" 
-  data-title = "Digester Features" 
+  data-title = "Digester Features --  Click image to enlarge" 
   data-playpaused = "paused" >
   <div class="slidecontainer" data-title="Assign Metadata" data-caption="A Batch Initialized.">
     <div class="slide"><img src="./images/digester_metadata.jpg" ></div>
@@ -265,6 +270,7 @@ After scanning, the batch remains open for dragging in new files and folders usi
     <div class="caption"></div>
     <!-- div class="learnmore"><a href='#funfact'>Learn More about Tall Images</a></div-->
   </div>
+
 </div> <!-- Closes moreslides-->
 
 
@@ -272,7 +278,7 @@ After scanning, the batch remains open for dragging in new files and folders usi
 <p>The <b>Assign Metadata</b> dialog, launched from the Media menu provides a means of grouping files into documents or for exploding formerly grouped pages into individual documents. The Assign Metadata dialog also manages the assignment of documents to CDASH Places and document types.  
 <p>The ordering of pages in documents depends of the way that the files sort alphabetically.  If this ordering isn't right, it may be necessary to change names using the windows file explorer to change the page index.  Use Folder > Rescan after you have done this.
 
-<h3>Format Repairs and Unrepairable Files<h3>
+<h3>Format Repairs and Unrepairable Files</h3>
 <p>As the Digester scans the files in a folder, the format pre-screener checks each media file for conformance with <a href="../media_format/index.htm">CDASH Media Format Requirements</a>.  If repairable issues are found the Digester posts these in the media table, and the media are marked as Not Ready.
 
 
@@ -291,7 +297,7 @@ After scanning, the batch remains open for dragging in new files and folders usi
 
 <p>There are some format issues that the digester will not repair.  These will reveal themselves with the word <b>Reject</b> in the repair issues column of the media table. To reject a file or a bunch of files, select them and use <b>Media > Reject</b> to reject them.  
 <p>
-The reject function moves the selected files to a <b>reject<b> folder at the top level of the batch.  The rejects folder is organized in sub-folders named according to the original batch/media folder for each file.   
+The reject function moves the selected files to a <b>reject</b> folder at the top level of the batch.  The rejects folder is organized in sub-folders named according to the original batch/media folder for each file.   
 
 <h3>The repair_reject.csv Log</h3>
   <p>
@@ -320,6 +326,8 @@ The reject function moves the selected files to a <b>reject<b> folder at the top
 <li><b>place.csv amd folder.csv:</b> These CSV files use properties that were harvested from the running CDASH instance based on the Place and Folder IDs attached to our batch files.  When fed into the CSV import tool with the right field mapping file, they will re-create the folders and places in a situation where they do not already exist. 
 
 <li><b>About Row Counts</b>: You may have noticed that the row count for each of these CSV files is one more than the count provided in the batch.csv file.  THis is vecause the first row of the CSV is the column headings.  
+</ul>
+
 
 <h3>The CSV Mapping Files</h3>
 <p>After you produce CSV files for your batch, You will notice a new folder named <b>csv_mapping_files</b> in the batch/catalog.  These files will be explained in the section on the CSV Import Tool. 
